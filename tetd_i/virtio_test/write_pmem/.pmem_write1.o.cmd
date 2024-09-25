@@ -1,0 +1,1 @@
+savedcmd_/root/new_tetd/tetd_i/virtio_test/write_pmem/pmem_write1.o := ld -m elf_x86_64 -z noexecstack --no-warn-rwx-segments   -r -o /root/new_tetd/tetd_i/virtio_test/write_pmem/pmem_write1.o @/root/new_tetd/tetd_i/virtio_test/write_pmem/pmem_write1.mod 

@@ -1,0 +1,150 @@
+#include <linux/init.h>
+#include <linux/module.h>
+#include <linux/kernel.h>
+#include <linux/gfp.h>
+#include <linux/mm.h>
+#include <linux/io.h>
+#include <linux/slab.h>
+#include <linux/kfifo.h>
+
+MODULE_LICENSE("GPL");
+
+#define RESERVED_PHYS_ADDR 0x1000
+static void __iomem *mapped_page = NULL;
+int kernel_pa2va(void){
+    mapped_page = ioremap(RESERVED_PHYS_ADDR,4096);
+    if(!mapped_page){
+        printk(KERN_ERR "failed to map pa 0x%lx\n",RESERVED_PHYS_ADDR);
+	return -ENOMEM;
+    }
+    printk(KERN_INFO "pa 0x%lx to va %lx\n", RESERVED_PHYS_ADDR, mapped_page);
+    
+    /*
+    for(int i=0;i<4096;i++){
+	if(ioread8(mapped_page+i)!=0){
+            printk(KERN_INFO "%u\n",ioread8(mapped_page+i));
+    
+	}
+    }
+    */
+    return 0;
+}
+
+#define FIFO_SIZE 1024
+static struct kfifo tdi_fifo;
+
+
+/*
+#define QUEUE_SIZE 1024
+struct queue{
+    unsigned long data[QUEUE_SIZE];
+    unsigned long head;
+    unsigned long tail;
+    int count;
+};
+static struct queue *queue_ptr = NULL;
+static void queue_init(struct queue *q){
+    q->head = 0;
+    q->tail = 0;
+    q->count = 0;
+}
+static int queue_enqueue(struct queue *q, unsigned long value){
+    if(q->count == QUEUE_SIZE){
+        printk(KERN_ERR "queue is full!\n");
+	return -1;
+    }
+    q->data[q->tail] = value;
+    q->tail = (q->tail + 1) % QUEUE_SIZE;
+    q->count++;
+    printk(KERN_INFO "enqueued value %lx\n", value);
+    return 0;
+}
+static int queue_dequeue(struct queue *q, unsigned long *value){
+    if(q->count == 0){
+        printk(KERN_ERR "queue is empty!\n");
+	return -1;
+    }
+    *value = q->data[q->head];
+    q->head = (q->head + 1) % QUEUE_SIZE;
+    q->count--;
+    printk(KERN_INFO "dequeued value %lx\n", *value);
+    return 0;
+}
+*/
+/*
+static unsigned long page1_addr = 0;
+int page_alloc(void){
+    page1_addr = __get_free_pages(GFP_KERNEL, 0);
+    if(!page1_addr){
+        printk(KERN_ERR "failed to allocate 4kb page\n");
+	return -ENOMEM;
+    }
+    printk(KERN_INFO "allocated 4kb page at address:%lx\n", page1_addr);
+    return 0;
+}
+void page_free(unsigned long page_addr){
+    if(page_addr){
+        free_pages(page_addr,0);
+	printk(KERN_INFO "freed the 4kb page at address %lx\n",page_addr);
+    }
+}
+*/
+void private2share(unsigned long gva){
+    phys_addr_t gpa;
+    gpa = virt_to_phys((void*)gva);
+    unsigned long opcode = 0x10001;
+    unsigned long page_size = 4096;
+    unsigned long ret = 10;
+    asm(
+           "movq %1, %%r11;\n\t"
+	   "movq %2, %%r12;\n\t"
+	   "movq %3, %%r13;\n\t"
+	   "tdcall;\n\t"
+	   "movq %%r10, %0;\n\t"
+	   :"=r"(ret)
+	   :"r"(opcode), "r"(gpa), "r"(page_size)
+       );
+    printk("ret=%lx\n", ret);
+
+}
+
+static int __init tdi_init(void){
+    printk(KERN_INFO "loading tdi module\n");
+    //page_alloc();
+    //private2share(page1_addr);
+    kernel_pa2va();
+    
+    int ret;
+    u8 val;
+    int i;
+    ret = kfifo_init(&tdi_fifo,(void*)mapped_page,FIFO_SIZE);
+    if(ret){
+        printk(KERN_INFO "failed to fifo\n");
+	iounmap(mapped_page);
+	return ret;
+    }
+    printk(KERN_INFO "fifo initialized\n");
+    for(i = 0; i< FIFO_SIZE; i++){
+        val = 12;
+	kfifo_in(&tdi_fifo,&val,1);
+    }
+    for(i = 0; i< 10; i++){
+        printk(KERN_INFO "%lx ",ioread8(mapped_page+i));
+    }
+    printk("\n\n\n");   
+    
+    //queue_ptr = (struct queue*)mapped_page;
+    //queue_init(queue_ptr);
+    //queue_enqueue(queue_ptr,10);
+    //queue_enqueue(queue_ptr,20);
+    //unsigned long dequeue_value;
+    //queue_dequeue(queue_ptr,&dequeue_value);
+    
+    //page_free(page1_addr);
+    return 0;
+}
+static void __exit tdi_exit(void){
+    printk(KERN_INFO "unloading tdi module\n");
+}
+module_init(tdi_init);
+module_exit(tdi_exit);

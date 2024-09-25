@@ -1,0 +1,1 @@
+savedcmd_/root/new_tetd/tetd_i/virtio_test/write_pmem/modules.order := {   echo /root/new_tetd/tetd_i/virtio_test/write_pmem/pmem_write1.o; :; } > /root/new_tetd/tetd_i/virtio_test/write_pmem/modules.order

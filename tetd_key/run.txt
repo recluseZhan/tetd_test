@@ -1,0 +1,13 @@
+生成私钥
+openssl genpkey -algorithm RSA -out private_key.pem -pkeyopt rsa_keygen_bits:3072
+
+获得公钥
+openssl rsa -in private_key.pem -pubout -out public_key.pem
+
+查看私公钥内容
+openssl rsa -in private_key.pem -text -noout
+openssl rsa -in public_key.pem -pubin -text -noout
+
+编译
+gcc sha256_asm_ni.S sign_main.c -lssl -lcrypto
+
