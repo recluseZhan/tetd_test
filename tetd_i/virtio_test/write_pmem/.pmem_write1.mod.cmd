@@ -1,1 +1,0 @@
-savedcmd_/root/new_tetd/tetd_i/virtio_test/write_pmem/pmem_write1.mod := printf '%s\n'   pmem_write.o | awk '!x[$$0]++ { print("/root/new_tetd/tetd_i/virtio_test/write_pmem/"$$0) }' > /root/new_tetd/tetd_i/virtio_test/write_pmem/pmem_write1.mod

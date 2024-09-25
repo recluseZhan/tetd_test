@@ -1,1 +1,0 @@
-savedcmd_/root/new_tetd/tetd_i/virtio_test/write_pmem/Module.symvers :=  scripts/mod/modpost -M -m -a      -o /root/new_tetd/tetd_i/virtio_test/write_pmem/Module.symvers -T /root/new_tetd/tetd_i/virtio_test/write_pmem/modules.order -i Module.symvers -e 
