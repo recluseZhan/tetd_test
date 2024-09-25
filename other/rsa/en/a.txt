@@ -1,0 +1,1 @@
+gcc -o a a.c -lssl -lcrypto
