@@ -1,0 +1,95 @@
+#include <linux/module.h>
+#include <linux/kernel.h>
+#include <linux/crypto.h>
+#include <linux/scatterlist.h>
+#include <linux/gfp.h>
+#include <linux/err.h>
+#include <linux/syscalls.h>
+#include <linux/slab.h>
+#include <crypto/skcipher.h>
+#include <crypto/akcipher.h>
+#include <linux/random.h>
+#include <linux/delay.h>
+#include <linux/highmem.h>
+#define BEGIN_PUB_KEY "-----BEGIN PUBLIC KEY-----\n"
+#define END_PUB_KEY "-----END PUBLIC KEY-----\n"
+
+/* 待加密的数据 */
+static const char plaintext[] = "Hello, RSA!";
+static const char rsa_pubkey[] =
+    "-----BEGIN PUBLIC KEY-----\n"
+    "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAzvgIkszsz1hlGnJg0gmR\n"
+    "vrBySL80bzGBYEpwRe92KZStaJFmLlryuquYl3OMH3yMWgIFNS3wF+STvoU4M0kV\n"
+    "0cyQr8TzSfYCX8MyuZc2KwgsWLUuPrmCMyYb/WWjXpepMnLJBt/mkKJ51rmA4qkG\n"
+    "6BmHuvIqF0lTvUVOv4ZdWd4uwONjB8gy2yBrzLyIi7DZtjmM0SZM0W75zYjHsjvY\n"
+    "zB7cbVpBqlTn7AzERhvay++lQ3spx0OvIeTF0/5cxvAgBl8CwLpDwxNdrY+DeB36\n"
+    "fIyj2dRzChxshzhS9q9+QyX4PKnfApfYMCrxAvn5E1k+lB2wDz5AbhrYFrypVg1H\n"
+    "zQIDAQAB\n"
+    "-----END PUBLIC KEY-----\n";
+/* 模块初始化函数 */
+static int __init rsa_encrypt_init(void)
+{   
+    
+    /*
+    unsigned char *der_pub_key;
+    size_t der_len;
+    int ret;
+    ret = pem_to_der(pem_pub_key, &der_pub_key, &der_len);
+    if (ret) {
+        printk("Failed to convert PEM to DER: %d\n", ret);
+        return ret;
+    }
+    */
+    struct crypto_akcipher *tfm;
+    struct akcipher_request *req;
+    struct scatterlist sg_input;
+    struct scatterlist sg_output;
+    int ret;
+    /* 分配 RSA 加密操作句柄 */
+    tfm = crypto_alloc_akcipher("rsa", 0, 0);
+    req = akcipher_request_alloc(tfm, GFP_KERNEL);
+
+
+
+    ret = crypto_akcipher_set_pub_key(tfm, rsa_pubkey, strlen(rsa_pubkey));
+
+/*
+
+    sg_init_one(&sg_input, plaintext, strlen(plaintext));
+
+
+    sg_init_one(&sg_output, NULL, 0);
+
+
+    akcipher_request_set_crypt(req, &sg_input, &sg_output, strlen(plaintext), 256);
+
+
+    ret = crypto_akcipher_encrypt(req);
+    if (ret) {
+        printk(KERN_ERR "RSA encryption failed: %d\n", ret);
+        goto free_req;
+    }
+*/
+    printk(KERN_INFO "RSA encryption successful\n");
+
+free_req:
+    if (req)
+        akcipher_request_free(req);
+free_tfm:
+    if (tfm)
+        crypto_free_akcipher(tfm);
+exit:
+    return ret;
+}
+
+/* 模块退出函数 */
+static void __exit rsa_encrypt_exit(void)
+{
+    printk(KERN_INFO "Exiting RSA encryption module\n");
+}
+
+module_init(rsa_encrypt_init);
+module_exit(rsa_encrypt_exit);
+
+MODULE_LICENSE("GPL");
+

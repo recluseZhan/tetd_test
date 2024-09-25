@@ -1,0 +1,85 @@
+#include <linux/module.h>
+#include <linux/kernel.h>
+#include <linux/crypto.h>
+#include <linux/scatterlist.h>
+#include <linux/gfp.h>
+#include <linux/err.h>
+#include <linux/syscalls.h>
+#include <linux/slab.h>
+#include <crypto/skcipher.h>
+#include <crypto/akcipher.h>
+#include <linux/random.h>
+#include <linux/delay.h>
+#include <linux/highmem.h>
+//#include <crypto/asymmetric_keys.h>
+#include <crypto/public_key.h>
+#include <crypto/hash.h>
+#include<linux/string.h>
+#define KEY_ID "my_rsa_key"
+
+static char *priv_key ="MIIBVgIBADANBgkqhkiG9w0BAQEFAASCAUAwggE8AgEAAkEAvwAeyp0hgaAENr+1iayT0myjn83Xyg33VSMC0cAKrA2ACFoSjjmyK+qp4TOa/5xR9pqKGHCFCVQREMvaoiglmQIDAQABAkEAidYNYoy4xHH0+Imq+brIRr/N6SJEivU/O3pzq2jaisRIEh9U3GJRhxGSbVTMYQrXezpQf+ufka3PzzupkTfFMQIhAOLOI6GlHq29PjgF+Z2sRB+WZ27PeDaAMI4+E1ECyT/tAiEA15YdcHO3Z8hlblw1Ldo8j7mjEpGw0n5ZT9xtzb0BDt0CIQCjXB7F+wyRz1DVQVh9fOrEZayyX7USbFqM2aFIJF2YMQIgEV2PK4K2sE5tFTGqOvJMVItwfktsAdiZmxw3YA4saqUCIQCS+nJEIAwB+2A3GJQm7LFt+bCWdrBo7vFDPj4J90DmIg==MIIBVgIBADANBgkqhkiG9w0BAQEFAASCAUAwggE8AgEAAkEAvwAeyp0hgaAENr+1iayT0myjn83Xyg33VSMC0cAKrA2ACFoSjjmyK+qp4TOa/5xR9pqKGHCFCVQREMvaoiglmQIDAQABAkEAidYNYoy4xHH0+Imq+brIRr/N6SJEivU/O3pzq2jaisRIEh9U3GJRhxGSbVTMYQrXezpQf+ufka3PzzupkTfFMQIhAOLOI6GlHq29PjgF+Z2sRB+WZ27PeDaAMI4+E1ECyT/tAiEA15YdcHO3Z8hlblw1Ldo8j7mjEpGw0n5ZT9xtzb0BDt0CIQCjXB7F+wyRz1DVQVh9fOrEZayyX7USbFqM2aFIJF2YMQIgEV2PK4K2sE5tFTGqOvJMVItwfktsAdiZmxw3YA4saqUCIQCS+nJEIAwB+2A3GJQm7LFt+bCWdrBo7vFDPj4J90DmIg=i=";
+
+
+static char *pub_key ="MFwwDQYJKoZIhvcNAQEBBQADSwAwSAJBAL8AHsqdIYGgBDa/tYmsk9Jso5/N18oN91UjAtHACqwNgAhaEo45sivqqeEzmv+cUfaaihhwhQlUERDL2qIoJZkCAwEAAQ==";
+
+
+const char *msg = "Hello, World!";
+
+
+static int __init rsa_crypto_init(void)
+{  
+    int priv_key_len = strlen(priv_key);   
+    int pub_key_len = strlen(pub_key);
+    int msg_len = strlen(msg); 
+    printk("%d %d\n",priv_key_len,pub_key_len);
+    
+    struct scatterlist sg;
+    struct crypto_akcipher *tfm;
+    struct akcipher_request *req;
+    int ret;
+/*
+    // 分配 RSA 加密转换器
+    tfm = crypto_alloc_akcipher("rsa", 0, 0);
+    printk("tfm:%lx\n",tfm);
+    // 设置公钥
+    ret = crypto_akcipher_set_pub_key(tfm, pub_key, pub_key_len);
+    printk("ret:%d\n",ret);
+*/
+    // 分配请求结构
+    req = akcipher_request_alloc(tfm, GFP_KERNEL);
+    printk("req:%lx\n",req);
+
+    
+    // 准备要签名的数据
+    sg_init_one(&sg, msg, msg_len);
+    printk("%lx\n",sg);
+
+    // 设置请求参数
+    akcipher_request_set_callback(req, CRYPTO_TFM_REQ_MAY_BACKLOG,
+                                  NULL, NULL);
+    akcipher_request_set_crypt(req, &sg, &sg, msg_len, pub_key_len);
+
+    // 执行 RSA 签名
+    //ret = crypto_akcipher_sign(req);
+
+
+    printk("Data signed successfully\n");
+
+
+    akcipher_request_free(req);
+    crypto_free_akcipher(tfm);
+    
+    return ret;
+}
+
+static void __exit rsa_crypto_exit(void)
+{
+    printk(KERN_INFO "Exiting RSA crypto module\n");
+}
+
+module_init(rsa_crypto_init);
+module_exit(rsa_crypto_exit);
+
+MODULE_LICENSE("GPL");
+MODULE_AUTHOR("Your Name");
+MODULE_DESCRIPTION("RSA Crypto Module");
