@@ -7,7 +7,6 @@
 #define IVSHMEM_BAR0_ADDRESS 0x383800000000
 #define IVSHMEM_BAR0_SIZE (1 * 1024 * 1024)
 
-
 void __iomem *ivshmem_base;  // 保存映射的基地址
 struct task_struct *get_task(pid_t pid) {
     struct pid *pid_struct = find_get_pid(pid); // 获取 PID 结构
@@ -42,6 +41,16 @@ static int copy_idt(void){
     return 0; 
 }
 
+static int copy_gdt(void){
+    struct desc_ptr gdt_desc;
+    asm("sgdt %0" : "=m"(gdt_desc));
+    
+    memcpy(ivshmem_base, (void *)gdt_desc.address, gdt_desc.size);
+    printk("gdt %lx, limit %lx ",gdt_desc.address, gdt_desc.size);
+
+    return 0;
+}
+
 void read_pcb(void){
     unsigned long value;
     for(int i = 0; i < sizeof(struct task_struct)/8; i++){
@@ -55,6 +64,14 @@ void read_idt(void){
     for(int i = 0; i < 256; i++){
         value = readq(ivshmem_base + i * 8);
 	pr_info("Read value 0x%x from offset 0x%x\n", value, i*8);
+    }
+}
+
+void read_gdt(void){
+    unsigned long value;
+    for (int i = 0; i < 0x7f / sizeof(unsigned long); i++) {
+        value = readq(ivshmem_base + i * 8);
+        printk(KERN_CONT "0x%lx ", value);
     }
 }
 // 写入 ivshmem 的函数
@@ -96,12 +113,14 @@ static int __init ivshmem_init(void) {
     pr_info("ivshmem memory mapped at address: %p\n", ivshmem_base);
 
     // 测试写入数据
-  //  write_ivshmem(0, 0x12345678);  // 将 0x12345678 写入偏移 0
+    //write_ivshmem(0, 0x12345678);  // 将 0x12345678 写入偏移 0
     //copy_idt();
     //read_idt();
-    copy_pcb();
-    read_pcb();  
-  //mb();
+    //copy_pcb();
+    //read_pcb();
+    copy_gdt();  
+    read_gdt();
+    //mb();
     // 测试读取数据
     //read_value = read_ivshmem(0);  // 读取偏移 0 的数据
     //pr_info("Read value 0x%x from offset 0x0\n", read_value);
