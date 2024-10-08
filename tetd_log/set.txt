@@ -1,0 +1,38 @@
+# /usr/src/linux-source-6.8.0/linux-source-6.8.0
+---------------------------------------------------
+# sudo apt update
+# sudo apt install build-essential libncurses-dev bison flex libssl-dev libelf-dev
+# sudo apt install linux-source
+# make menuconfig
+
+make -j$(nproc)
+make modules -j$(nproc)
+sudo make modules_install
+sudo make install
+
+----------------------------------------------------
+# /etc/default/grub
+
+-GRUB_TIMEOUT_STYLE=hidden
++#GRUB_TIMEOUT_STYLE=hidden
+
+# Optional kernel options that you very likely want. Don't affect GRUB itself.
+# Remove quiet to show the boot logs on terminal. Otherwise, you see just init onwards.
+# Add console=ttyS0, or else kernel does not output anything to terminal.
+-GRUB_CMDLINE_LINUX_DEFAULT="quiet splash"
+-GRUB_CMDLINE_LINUX=""
++GRUB_CMDLINE_LINUX_DEFAULT=""
++GRUB_CMDLINE_LINUX="console=ttyS0"
+
+# Show grub on both serial and on display.
+-#GRUB_TERMINAL=console
++GRUB_TERMINAL="console serial"
+--------------
+# /etc/default/grub.d/50-cloudimg-settings.cfg 
+GRUB_TIMEOUT=10
+--------------
+##
+sudo update-grub
+-----------------------------------------------------
+
+
