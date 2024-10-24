@@ -1,0 +1,10 @@
+x86_64-linux-gnu: no data for Memory load parallelism
+x86_64-linux-gnu: No 8MB random access memory latency, using 0.08594
+x86_64-linux-gnu: no data for Memory load parallelism
+x86_64-linux-gnu: lat_mem_rand = 130.777
+x86_64-linux-gnu: no data for Memory load parallelism
+x86_64-linux-gnu: lat_mem_rand = 173.231
+Argument "" isn't numeric in numeric gt (>) at ../scripts/getsummary line 944, <FD> line 3727.
+Argument "" isn't numeric in numeric gt (>) at ../scripts/getsummary line 944, <FD> line 3727.
+Argument "" isn't numeric in numeric gt (>) at ../scripts/getsummary line 944, <FD> line 3727.
+Argument "" isn't numeric in numeric gt (>) at ../scripts/getsummary line 944, <FD> line 3727.
