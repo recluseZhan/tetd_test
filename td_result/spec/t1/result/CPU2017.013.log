@@ -1,0 +1,1566 @@
+runcpu v6612 started at 2024-10-24 11:51:00 on "tdx-guest"
+runcpu is: /home/tdx/speccpu2017/bin/harness/runcpu
+runcpu: runcpu '--config=tdx2.cfg' '--tune=base' 500.perlbench_r
+toolset: linux-x86_64
+suite: CPU2017 1.1.9
+
+Locating benchmarks...found 47 benchmarks in 73 benchsets.
+Reading config file '/home/tdx/speccpu2017/config/tdx2.cfg'
+
+1 configuration selected:
+
+ Action    Run Mode   Workload     Report Type      Benchmarks
+--------   --------   --------   ----------------   ---------------------------
+validate   rate       refrate    SPECrate2017_int   500.perlbench_r            
+-------------------------------------------------------------------------------
+
+Setting up environment for running 500.perlbench_r...
+Starting runcpu for 500.perlbench_r...
+Running "specperl /home/tdx/speccpu2017/bin/sysinfo" to gather system information.
+sysinfo: r6732 of 2022-11-07 (fe91c89b7ed5c36ae2c92cc097bec197)
+sysinfo: ...getting basic information about kernel, users, and limits
+sysinfo: Getting system information for Linux...
+sysinfo: ...getting CPU info
+sysinfo: ...getting info from numactl
+sysinfo: ...getting memory info
+sysinfo: ...getting info from systemd
+sysinfo: ...getting power info
+sysinfo: ...getting system tuning info
+sysinfo: ...getting OS info
+sysinfo: ...getting disk info
+sysinfo: ...getting info from /sys/devices/virtual/dmi/id
+sysinfo: ...getting info from dmidecode
+Read 305 info lines from the sysinfo program:
+  1: notes_plat_sysinfo_100 =  
+  2: notes_plat_sysinfo_101 = Sysinfo program /home/tdx/speccpu2017/bin/sysinfo
+  3: notes_plat_sysinfo_102 = Rev: r6732 of 2022-11-07 fe91c89b7ed5c36ae2c92cc097bec197
+  4: notes_plat_sysinfo_103 = running on tdx-guest Thu Oct 24 11:51:02 2024
+  5: notes_plat_sysinfo_104 =  
+  6: notes_plat_sysinfo_105 = SUT (System Under Test) info as seen by some common utilities.
+  7: notes_plat_sysinfo_107 = 
+  8: notes_plat_sysinfo_108 = ------------------------------------------------------------
+  9: notes_plat_sysinfo_109 = Table of contents
+ 10: notes_plat_sysinfo_110 = ------------------------------------------------------------
+ 11: notes_plat_sysinfo_111 =  1. uname -a
+ 12: notes_plat_sysinfo_112 =  2. w
+ 13: notes_plat_sysinfo_113 =  3. Username
+ 14: notes_plat_sysinfo_114 =  4. ulimit -a
+ 15: notes_plat_sysinfo_115 =  5. sysinfo process ancestry
+ 16: notes_plat_sysinfo_116 =  6. /proc/cpuinfo
+ 17: notes_plat_sysinfo_117 =  7. lscpu
+ 18: notes_plat_sysinfo_118 =  8. numactl --hardware
+ 19: notes_plat_sysinfo_119 =  9. /proc/meminfo
+ 20: notes_plat_sysinfo_120 = 10. who -r
+ 21: notes_plat_sysinfo_121 = 11. Systemd service manager version: systemd 255 (255.4-1ubuntu8.1)
+ 22: notes_plat_sysinfo_122 = 12. Services, from systemctl list-unit-files
+ 23: notes_plat_sysinfo_123 = 13. Linux kernel boot-time arguments, from /proc/cmdline
+ 24: notes_plat_sysinfo_124 = 14. cpupower frequency-info
+ 25: notes_plat_sysinfo_125 = 15. sysctl
+ 26: notes_plat_sysinfo_126 = 16. /sys/kernel/mm/transparent_hugepage
+ 27: notes_plat_sysinfo_127 = 17. /sys/kernel/mm/transparent_hugepage/khugepaged
+ 28: notes_plat_sysinfo_128 = 18. OS release
+ 29: notes_plat_sysinfo_129 = 19. Disk information
+ 30: notes_plat_sysinfo_130 = 20. /sys/devices/virtual/dmi/id
+ 31: notes_plat_sysinfo_131 = 21. dmidecode
+ 32: notes_plat_sysinfo_132 = 22. BIOS
+ 33: notes_plat_sysinfo_133 = ------------------------------------------------------------
+ 34: notes_plat_sysinfo_206 =  
+ 35: notes_plat_sysinfo_207 = ------------------------------------------------------------
+ 36: notes_plat_sysinfo_208 = 1. uname -a
+ 37: notes_plat_sysinfo_209 =   Linux tdx-guest 6.8.0-35-generic #35-Ubuntu SMP PREEMPT_DYNAMIC Mon May 20 15:51:52 UTC 2024 x86_64 x86_64
+ 38: notes_plat_sysinfo_210 =   x86_64 GNU/Linux
+ 39: notes_plat_sysinfo_211 =  
+ 40: notes_plat_sysinfo_212 = ------------------------------------------------------------
+ 41: notes_plat_sysinfo_213 = 2. w
+ 42: notes_plat_sysinfo_214 =    11:51:02 up 38 min,  1 user,  load average: 0.01, 0.00, 0.00
+ 43: notes_plat_sysinfo_215 =   USER     TTY      FROM             LOGIN@   IDLE   JCPU   PCPU WHAT
+ 44: notes_plat_sysinfo_216 =   root     hvc0     -                11:12    6.00s  0.55s   ?    tmux
+ 45: notes_plat_sysinfo_217 =  
+ 46: notes_plat_sysinfo_218 = ------------------------------------------------------------
+ 47: notes_plat_sysinfo_219 = 3. Username
+ 48: notes_plat_sysinfo_220 =   From environment variable $USER:  root
+ 49: notes_plat_sysinfo_221 =  
+ 50: notes_plat_sysinfo_222 = ------------------------------------------------------------
+ 51: notes_plat_sysinfo_223 = 4. ulimit -a
+ 52: notes_plat_sysinfo_224 =   time(seconds)        unlimited
+ 53: notes_plat_sysinfo_225 =   file(blocks)         unlimited
+ 54: notes_plat_sysinfo_226 =   data(kbytes)         unlimited
+ 55: notes_plat_sysinfo_227 =   stack(kbytes)        8192
+ 56: notes_plat_sysinfo_228 =   coredump(blocks)     0
+ 57: notes_plat_sysinfo_229 =   memory(kbytes)       unlimited
+ 58: notes_plat_sysinfo_230 =   locked memory(kbytes) 233908
+ 59: notes_plat_sysinfo_231 =   process              7107
+ 60: notes_plat_sysinfo_232 =   nofiles              1024
+ 61: notes_plat_sysinfo_233 =   vmemory(kbytes)      unlimited
+ 62: notes_plat_sysinfo_234 =   locks                unlimited
+ 63: notes_plat_sysinfo_235 =   rtprio               0
+ 64: notes_plat_sysinfo_236 =  
+ 65: notes_plat_sysinfo_237 = ------------------------------------------------------------
+ 66: notes_plat_sysinfo_238 = 5. sysinfo process ancestry
+ 67: notes_plat_sysinfo_239 =  /sbin/init
+ 68: notes_plat_sysinfo_240 =  tmux
+ 69: notes_plat_sysinfo_241 =  -bash
+ 70: notes_plat_sysinfo_242 =  runcpu --config=tdx2.cfg --tune=base 500.perlbench_r
+ 71: notes_plat_sysinfo_243 =  runcpu --configfile tdx2.cfg --tune base --noreportable --nopower --runmode rate --tune base --size refrate
+ 72: notes_plat_sysinfo_244 =    500.perlbench_r --nopreenv --note-preenv --logfile $SPEC/tmp/CPU2017.013/templogs/preenv.intrate.013.0.log
+ 73: notes_plat_sysinfo_245 =    --lognum 013.0 --from_runcpu 2
+ 74: notes_plat_sysinfo_246 =  specperl $SPEC/bin/sysinfo
+ 75: notes_plat_sysinfo_247 = $SPEC = /home/tdx/speccpu2017
+ 76: notes_plat_sysinfo_248 =  
+ 77: notes_plat_sysinfo_249 = ------------------------------------------------------------
+ 78: notes_plat_sysinfo_250 = 6. /proc/cpuinfo
+ 79: notes_plat_sysinfo_251 =     model name      : 06/8f
+ 80: notes_plat_sysinfo_252 =     vendor_id       : GenuineIntel
+ 81: notes_plat_sysinfo_253 =     cpu family      : 6
+ 82: notes_plat_sysinfo_254 =     model           : 143
+ 83: notes_plat_sysinfo_255 =     stepping        : 8
+ 84: notes_plat_sysinfo_256 =     microcode       : 0x2b0005d1
+ 85: notes_plat_sysinfo_257 =     bugs            : spectre_v1 spectre_v2 spec_store_bypass swapgs eibrs_pbrsb bhi
+ 86: notes_plat_sysinfo_258 =     cpu cores       : 16
+ 87: notes_plat_sysinfo_259 =     siblings        : 16
+ 88: notes_plat_sysinfo_260 =     1 physical ids (chips)
+ 89: notes_plat_sysinfo_261 =     16 processors (hardware threads)
+ 90: notes_plat_sysinfo_262 =     physical id 0: core ids 0-15
+ 91: notes_plat_sysinfo_263 =     physical id 0: apicids 0-15
+ 92: notes_plat_sysinfo_264 =   Caution: /proc/cpuinfo data regarding chips, cores, and threads is not necessarily reliable, especially for
+ 93: notes_plat_sysinfo_265 =   virtualized systems.  Use the above data carefully.
+ 94: notes_plat_sysinfo_266 =  
+ 95: notes_plat_sysinfo_267 = ------------------------------------------------------------
+ 96: notes_plat_sysinfo_268 = 7. lscpu
+ 97: notes_plat_sysinfo_269 =  
+ 98: notes_plat_sysinfo_270 = From lscpu from util-linux 2.39.3:
+ 99: notes_plat_sysinfo_271 =   Architecture:                         x86_64
+100: notes_plat_sysinfo_272 =   CPU op-mode(s):                       32-bit, 64-bit
+101: notes_plat_sysinfo_273 =   Address sizes:                        52 bits physical, 57 bits virtual
+102: notes_plat_sysinfo_274 =   Byte Order:                           Little Endian
+103: notes_plat_sysinfo_275 =   CPU(s):                               16
+104: notes_plat_sysinfo_276 =   On-line CPU(s) list:                  0-15
+105: notes_plat_sysinfo_277 =   Vendor ID:                            GenuineIntel
+106: notes_plat_sysinfo_278 =   BIOS Vendor ID:                       QEMU
+107: notes_plat_sysinfo_279 =   Model name:                           06/8f
+108: notes_plat_sysinfo_280 =   BIOS Model name:                      pc-q35-8.2  CPU @ 2.0GHz
+109: notes_plat_sysinfo_281 =   BIOS CPU family:                      1
+110: notes_plat_sysinfo_282 =   CPU family:                           6
+111: notes_plat_sysinfo_283 =   Model:                                143
+112: notes_plat_sysinfo_284 =   Thread(s) per core:                   1
+113: notes_plat_sysinfo_285 =   Core(s) per socket:                   16
+114: notes_plat_sysinfo_286 =   Socket(s):                            1
+115: notes_plat_sysinfo_287 =   Stepping:                             8
+116: notes_plat_sysinfo_288 =   BogoMIPS:                             4800.00
+117: notes_plat_sysinfo_289 =   Flags:                                fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat
+118: notes_plat_sysinfo_290 =                                         clflush dts mmx fxsr sse sse2 ss ht tm syscall nx pdpe1gb rdtscp lm
+119: notes_plat_sysinfo_291 =                                         constant_tsc bts rep_good nopl tsc_reliable nonstop_tsc cpuid
+120: notes_plat_sysinfo_292 =                                         tsc_known_freq pni pclmulqdq dtes64 ds_cpl ssse3 fma cx16 pdcm pcid
+121: notes_plat_sysinfo_293 =                                         sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx
+122: notes_plat_sysinfo_294 =                                         f16c rdrand hypervisor lahf_lm abm 3dnowprefetch cpuid_fault ssbd
+123: notes_plat_sysinfo_295 =                                         ibrs ibpb stibp ibrs_enhanced tdx_guest fsgsbase bmi1 avx2 smep bmi2
+124: notes_plat_sysinfo_296 =                                         erms invpcid avx512f avx512dq rdseed adx smap avx512ifma clflushopt
+125: notes_plat_sysinfo_297 =                                         clwb avx512cd sha_ni avx512bw avx512vl xsaveopt xsavec xgetbv1 xsaves
+126: notes_plat_sysinfo_298 =                                         avx_vnni avx512_bf16 wbnoinvd avx512vbmi umip pku ospke avx512_vbmi2
+127: notes_plat_sysinfo_299 =                                         gfni vaes vpclmulqdq avx512_vnni avx512_bitalg avx512_vpopcntdq la57
+128: notes_plat_sysinfo_300 =                                         rdpid bus_lock_detect cldemote movdiri movdir64b fsrm md_clear
+129: notes_plat_sysinfo_301 =                                         serialize tsxldtrk amx_bf16 avx512_fp16 amx_tile amx_int8 flush_l1d
+130: notes_plat_sysinfo_302 =                                         arch_capabilities
+131: notes_plat_sysinfo_303 =   Hypervisor vendor:                    KVM
+132: notes_plat_sysinfo_304 =   Virtualization type:                  full
+133: notes_plat_sysinfo_305 =   L1d cache:                            512 KiB (16 instances)
+134: notes_plat_sysinfo_306 =   L1i cache:                            512 KiB (16 instances)
+135: notes_plat_sysinfo_307 =   L2 cache:                             64 MiB (16 instances)
+136: notes_plat_sysinfo_308 =   L3 cache:                             16 MiB (1 instance)
+137: notes_plat_sysinfo_309 =   NUMA node(s):                         1
+138: notes_plat_sysinfo_310 =   NUMA node0 CPU(s):                    0-15
+139: notes_plat_sysinfo_311 =   Vulnerability Gather data sampling:   Not affected
+140: notes_plat_sysinfo_312 =   Vulnerability Itlb multihit:          Not affected
+141: notes_plat_sysinfo_313 =   Vulnerability L1tf:                   Not affected
+142: notes_plat_sysinfo_314 =   Vulnerability Mds:                    Not affected
+143: notes_plat_sysinfo_315 =   Vulnerability Meltdown:               Not affected
+144: notes_plat_sysinfo_316 =   Vulnerability Mmio stale data:        Not affected
+145: notes_plat_sysinfo_317 =   Vulnerability Reg file data sampling: Not affected
+146: notes_plat_sysinfo_318 =   Vulnerability Retbleed:               Not affected
+147: notes_plat_sysinfo_319 =   Vulnerability Spec rstack overflow:   Not affected
+148: notes_plat_sysinfo_320 =   Vulnerability Spec store bypass:      Mitigation; Speculative Store Bypass disabled via prctl
+149: notes_plat_sysinfo_321 =   Vulnerability Spectre v1:             Mitigation; usercopy/swapgs barriers and __user pointer sanitization
+150: notes_plat_sysinfo_322 =   Vulnerability Spectre v2:             Mitigation; Enhanced / Automatic IBRS; IBPB conditional; RSB filling;
+151: notes_plat_sysinfo_323 =                                         PBRSB-eIBRS SW sequence; BHI BHI_DIS_S
+152: notes_plat_sysinfo_324 =   Vulnerability Srbds:                  Not affected
+153: notes_plat_sysinfo_325 =   Vulnerability Tsx async abort:        Not affected
+154: notes_plat_sysinfo_326 =  
+155: notes_plat_sysinfo_327 = From lscpu --cache:
+156: notes_plat_sysinfo_328 =      NAME ONE-SIZE ALL-SIZE WAYS TYPE        LEVEL  SETS PHY-LINE COHERENCY-SIZE
+157: notes_plat_sysinfo_329 =      L1d       32K     512K    8 Data            1    64        1             64
+158: notes_plat_sysinfo_330 =      L1i       32K     512K    8 Instruction     1    64        1             64
+159: notes_plat_sysinfo_331 =      L2         4M      64M   16 Unified         2  4096        1             64
+160: notes_plat_sysinfo_332 =      L3        16M      16M   16 Unified         3 16384        1             64
+161: notes_plat_sysinfo_333 =  
+162: notes_plat_sysinfo_334 = ------------------------------------------------------------
+163: notes_plat_sysinfo_335 = 8. numactl --hardware
+164: notes_plat_sysinfo_336 = NOTE: a numactl 'node' might or might not correspond to a physical chip.
+165: notes_plat_sysinfo_337 =   available: 1 nodes (0)
+166: notes_plat_sysinfo_338 =   node 0 cpus: 0-15
+167: notes_plat_sysinfo_339 =   node 0 size: 1827 MB
+168: notes_plat_sysinfo_340 =   node 0 free: 878 MB
+169: notes_plat_sysinfo_341 =   node distances:
+170: notes_plat_sysinfo_342 =   node   0
+171: notes_plat_sysinfo_343 =     0:  10
+172: notes_plat_sysinfo_344 =  
+173: notes_plat_sysinfo_345 = ------------------------------------------------------------
+174: notes_plat_sysinfo_346 = 9. /proc/meminfo
+175: notes_plat_sysinfo_347 =    MemTotal:        1871284 kB
+176: notes_plat_sysinfo_348 =  
+177: notes_plat_sysinfo_349 = ------------------------------------------------------------
+178: notes_plat_sysinfo_350 = 10. who -r
+179: notes_plat_sysinfo_351 =   run-level 5 Oct 24 11:12
+180: notes_plat_sysinfo_352 =  
+181: notes_plat_sysinfo_353 = ------------------------------------------------------------
+182: notes_plat_sysinfo_354 = 11. Systemd service manager version: systemd 255 (255.4-1ubuntu8.1)
+183: notes_plat_sysinfo_355 =   Default Target  Status
+184: notes_plat_sysinfo_356 =   graphical       running
+185: notes_plat_sysinfo_357 =  
+186: notes_plat_sysinfo_358 = ------------------------------------------------------------
+187: notes_plat_sysinfo_359 = 12. Services, from systemctl list-unit-files
+188: notes_plat_sysinfo_360 =   STATE            UNIT FILES
+189: notes_plat_sysinfo_361 =   enabled          ModemManager apparmor apport blk-availability cloud-config cloud-final cloud-init
+190: notes_plat_sysinfo_362 =                    cloud-init-local console-setup cron dmesg e2scrub_reap finalrd getty@ grub-common
+191: notes_plat_sysinfo_363 =                    grub-initrd-fallback keyboard-setup lvm2-monitor multipathd networkd-dispatcher open-iscsi
+192: notes_plat_sysinfo_364 =                    open-vm-tools rsyslog secureboot-db setvtrgb snapd ssh sysstat systemd-networkd
+193: notes_plat_sysinfo_365 =                    systemd-networkd-wait-online systemd-pstore systemd-resolved systemd-timesyncd
+194: notes_plat_sysinfo_366 =                    ua-reboot-cmds ubuntu-advantage udisks2 ufw unattended-upgrades vgauth
+195: notes_plat_sysinfo_367 =   enabled-runtime  netplan-ovs-cleanup systemd-fsck-root systemd-remount-fs
+196: notes_plat_sysinfo_368 =   disabled         console-getty debug-shell iscsid nftables rsync systemd-boot-check-no-failures
+197: notes_plat_sysinfo_369 =                    systemd-confext systemd-network-generator systemd-networkd-wait-online@
+198: notes_plat_sysinfo_370 =                    systemd-pcrlock-file-system systemd-pcrlock-firmware-code systemd-pcrlock-firmware-config
+199: notes_plat_sysinfo_371 =                    systemd-pcrlock-machine-id systemd-pcrlock-make-policy
+200: notes_plat_sysinfo_372 =                    systemd-pcrlock-secureboot-authority systemd-pcrlock-secureboot-policy systemd-sysext
+201: notes_plat_sysinfo_373 =                    systemd-time-wait-sync
+202: notes_plat_sysinfo_374 =   indirect         serial-getty@ systemd-sysupdate systemd-sysupdate-reboot uuidd
+203: notes_plat_sysinfo_375 =   masked           cryptdisks cryptdisks-early hwclock multipath-tools-boot pollinate screen-cleanup sudo
+204: notes_plat_sysinfo_376 =                    x11-common
+205: notes_plat_sysinfo_377 =  
+206: notes_plat_sysinfo_378 = ------------------------------------------------------------
+207: notes_plat_sysinfo_379 = 13. Linux kernel boot-time arguments, from /proc/cmdline
+208: notes_plat_sysinfo_380 =   BOOT_IMAGE=/vmlinuz-6.8.0-35-generic
+209: notes_plat_sysinfo_381 =   root=UUID=41106c9c-97fc-4396-8622-4f692c8c5bb1
+210: notes_plat_sysinfo_382 =   ro
+211: notes_plat_sysinfo_383 =   console=tty1
+212: notes_plat_sysinfo_384 =   console=ttyS0
+213: notes_plat_sysinfo_385 =  
+214: notes_plat_sysinfo_386 = ------------------------------------------------------------
+215: notes_plat_sysinfo_387 = 14. cpupower frequency-info
+216: notes_plat_sysinfo_388 =   analyzing CPU 10:
+217: notes_plat_sysinfo_389 =     Unable to determine current policy
+218: notes_plat_sysinfo_390 =     boost state support:
+219: notes_plat_sysinfo_391 =       Supported: no
+220: notes_plat_sysinfo_392 =       Active: no
+221: notes_plat_sysinfo_393 =  
+222: notes_plat_sysinfo_394 = ------------------------------------------------------------
+223: notes_plat_sysinfo_395 = 15. sysctl
+224: notes_plat_sysinfo_396 =   kernel.numa_balancing               0
+225: notes_plat_sysinfo_397 =   kernel.randomize_va_space           2
+226: notes_plat_sysinfo_398 =   vm.compaction_proactiveness        20
+227: notes_plat_sysinfo_399 =   vm.dirty_background_bytes           0
+228: notes_plat_sysinfo_400 =   vm.dirty_background_ratio          10
+229: notes_plat_sysinfo_401 =   vm.dirty_bytes                      0
+230: notes_plat_sysinfo_402 =   vm.dirty_expire_centisecs        3000
+231: notes_plat_sysinfo_403 =   vm.dirty_ratio                     20
+232: notes_plat_sysinfo_404 =   vm.dirty_writeback_centisecs      500
+233: notes_plat_sysinfo_405 =   vm.dirtytime_expire_seconds     43200
+234: notes_plat_sysinfo_406 =   vm.extfrag_threshold              500
+235: notes_plat_sysinfo_407 =   vm.min_unmapped_ratio               1
+236: notes_plat_sysinfo_408 =   vm.nr_hugepages                     0
+237: notes_plat_sysinfo_409 =   vm.nr_hugepages_mempolicy           0
+238: notes_plat_sysinfo_410 =   vm.nr_overcommit_hugepages          0
+239: notes_plat_sysinfo_411 =   vm.swappiness                      60
+240: notes_plat_sysinfo_412 =   vm.watermark_boost_factor       15000
+241: notes_plat_sysinfo_413 =   vm.watermark_scale_factor          10
+242: notes_plat_sysinfo_414 =   vm.zone_reclaim_mode                0
+243: notes_plat_sysinfo_415 =  
+244: notes_plat_sysinfo_416 = ------------------------------------------------------------
+245: notes_plat_sysinfo_417 = 16. /sys/kernel/mm/transparent_hugepage
+246: notes_plat_sysinfo_418 =   defrag          always defer defer+madvise [madvise] never
+247: notes_plat_sysinfo_419 =   enabled         always [madvise] never
+248: notes_plat_sysinfo_420 =   hpage_pmd_size  2097152
+249: notes_plat_sysinfo_421 =   shmem_enabled   always within_size advise [never] deny force
+250: notes_plat_sysinfo_422 =  
+251: notes_plat_sysinfo_423 = ------------------------------------------------------------
+252: notes_plat_sysinfo_424 = 17. /sys/kernel/mm/transparent_hugepage/khugepaged
+253: notes_plat_sysinfo_425 =   alloc_sleep_millisecs   60000
+254: notes_plat_sysinfo_426 =   defrag                      1
+255: notes_plat_sysinfo_427 =   max_ptes_none             511
+256: notes_plat_sysinfo_428 =   max_ptes_shared           256
+257: notes_plat_sysinfo_429 =   max_ptes_swap              64
+258: notes_plat_sysinfo_430 =   pages_to_scan            4096
+259: notes_plat_sysinfo_431 =   scan_sleep_millisecs    10000
+260: notes_plat_sysinfo_432 =  
+261: notes_plat_sysinfo_433 = ------------------------------------------------------------
+262: notes_plat_sysinfo_434 = 18. OS release
+263: notes_plat_sysinfo_435 =   From /etc/*-release /etc/*-version
+264: notes_plat_sysinfo_436 =   os-release Ubuntu 24.04 LTS
+265: notes_plat_sysinfo_437 =  
+266: notes_plat_sysinfo_438 = ------------------------------------------------------------
+267: notes_plat_sysinfo_439 = 19. Disk information
+268: notes_plat_sysinfo_440 = SPEC is set to: /home/tdx/speccpu2017
+269: notes_plat_sysinfo_441 =   Filesystem     Type  Size  Used Avail Use% Mounted on
+270: notes_plat_sysinfo_442 =   /dev/vda1      ext4   51G   18G   33G  36% /
+271: notes_plat_sysinfo_443 =  
+272: notes_plat_sysinfo_444 = ------------------------------------------------------------
+273: notes_plat_sysinfo_445 = 20. /sys/devices/virtual/dmi/id
+274: notes_plat_sysinfo_446 =     Vendor:         QEMU
+275: notes_plat_sysinfo_447 =     Product:        Standard PC (Q35 + ICH9, 2009)
+276: notes_plat_sysinfo_448 =  
+277: notes_plat_sysinfo_449 = ------------------------------------------------------------
+278: notes_plat_sysinfo_450 = 21. dmidecode
+279: notes_plat_sysinfo_451 =   Additional information from dmidecode 3.5 follows.  WARNING: Use caution when you interpret this section.
+280: notes_plat_sysinfo_452 =   The 'dmidecode' program reads system data which is "intended to allow hardware to be accurately
+281: notes_plat_sysinfo_453 =   determined", but the intent may not be met, as there are frequent changes to hardware, firmware, and the
+282: notes_plat_sysinfo_454 =   "DMTF SMBIOS" standard.
+283: notes_plat_sysinfo_455 =   Memory:
+284: notes_plat_sysinfo_456 =     1x QEMU Not Specified 2 GB
+285: notes_plat_sysinfo_457 =  
+286: notes_plat_sysinfo_458 =  
+287: notes_plat_sysinfo_459 = ------------------------------------------------------------
+288: notes_plat_sysinfo_460 = 22. BIOS
+289: notes_plat_sysinfo_461 = (This section combines info from /sys/devices and dmidecode.)
+290: notes_plat_sysinfo_462 =    BIOS Vendor:       Ubuntu distribution of EDK II
+291: notes_plat_sysinfo_463 =    BIOS Version:      2024.02-3+tdx1.0
+292: notes_plat_sysinfo_464 =    BIOS Date:         07/03/2024
+293: notes_plat_sysinfo_465 =    BIOS Revision:     0.0
+294: hw_cpu_name        = 06/8f
+295: hw_disk            = 51 GB  add more disk info here
+296: hw_memory001       = 1.785 GB fixme: If using DDR4, the format is:
+297: hw_memory002       = 'N GB (N x N GB nRxn PC4-nnnnX-X)'
+298: hw_nchips          = 1
+299: hw_ncores          = 16
+300: hw_nthreadspercore = 1
+301: prepared_by        = root  (is never output, only tags rawfile)
+302: sw_file            = ext4
+303: sw_os001           = Ubuntu 24.04 LTS
+304: sw_os002           = 6.8.0-35-generic
+305: sw_state           = Run level 5 (add definition here)
+
+Retrieving flags file (/home/tdx/speccpu2017/config/flags/gcc.xml)...
+Verbosity = 5
+Action    = validate
+Tune      = base
+Label     = mytest-m64
+Size      = refrate
+benchmarks= 500.perlbench_r
+outputs   = txt,html,cfg,pdf,csv
+username  = root
+Environment settings:
+LD_LIBRARY_PATH = "%{gcc_dir}/lib64/:%{gcc_dir}/lib/:/lib64"
+
+Benchmarks selected: 500.perlbench_r
+When checking executables (/home/tdx/speccpu2017/benchspec/CPU/500.perlbench_r/exe/perlbench_r_base.mytest-m64), no checksums were
+  found in the config file.  They will be installed after build.
+When checking executables (/home/tdx/speccpu2017/benchspec/CPU/500.perlbench_r/exe/perlbench_r_base.mytest-m64), no checksums were
+  found in the config file.  They will be installed after build.
+Compiling Binaries
+------------------------------------------------------------------------
+When checking options for /home/tdx/speccpu2017/benchspec/CPU/500.perlbench_r/exe/perlbench_r_base.mytest-m64, no checksums were
+  found in the config file.  They will be installed after build.
+When checking executables (/home/tdx/speccpu2017/benchspec/CPU/500.perlbench_r/exe/perlbench_r_base.mytest-m64), no checksums were
+  found in the config file.  They will be installed after build.
+  Building 500.perlbench_r base mytest-m64: (build_base_mytest-m64.0000) [2024-10-24 11:51:03]
+  Compile for '500.perlbench_r' started at: 2024-10-24 11:51:04 (1729770664)
+Issuing make.clean command 'specmake --output-sync --jobs=8 clean'
+Start make.clean command: 2024-10-24 11:51:04 (1729770664.19884)
+rm -rf *.o  diffmail.2.550.15.24.23.100.out perfect.b.3.out scrabbl.out splitmail.535.13.25.24.1091.1.out suns.out validate
+find . \( -name \*.o -o -name '*.fppized.f*' -o -name '*.i' -o -name '*.mod' \) -print | xargs rm -rf
+rm -rf perlbench_r
+rm -rf perlbench_r.exe
+rm -rf core
+Stop make.clean command: 2024-10-24 11:51:04 (1729770664.40439)
+Elapsed time for make.clean command: 00:00:00 (0.205544948577881)
+Issuing make command 'specmake --output-sync --jobs=8 build'
+Start make command: 2024-10-24 11:51:04 (1729770664.40773)
+/usr/bin/gcc     -std=c99   -m64 -c -o caretx.o -DSPEC -DNDEBUG -DPERL_CORE -I. -Idist/IO -Icpan/Time-HiRes -Icpan/HTML-Parser -Iext/re -Ispecrand -DDOUBLE_SLASHES_SPECIAL=0 -DSPEC_AUTO_SUPPRESS_OPENMP -D_LARGE_FILES -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64  -g -O3 -march=native        -DSPEC_LINUX_X64  -fno-strict-aliasing -fno-unsafe-math-optimizations -fno-finite-math-only -fgnu89-inline -fcommon     -DSPEC_LP64  caretx.c
+In file included from caretx.c:32:
+perl.h:3621:9: warning: undefining "__has_builtin"
+ 3621 | # undef __has_builtin
+      |         ^~~~~~~~~~~~~
+/usr/bin/gcc     -std=c99   -m64 -c -o deb.o -DSPEC -DNDEBUG -DPERL_CORE -I. -Idist/IO -Icpan/Time-HiRes -Icpan/HTML-Parser -Iext/re -Ispecrand -DDOUBLE_SLASHES_SPECIAL=0 -DSPEC_AUTO_SUPPRESS_OPENMP -D_LARGE_FILES -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64  -g -O3 -march=native        -DSPEC_LINUX_X64  -fno-strict-aliasing -fno-unsafe-math-optimizations -fno-finite-math-only -fgnu89-inline -fcommon     -DSPEC_LP64  deb.c
+In file included from deb.c:25:
+perl.h:3621:9: warning: undefining "__has_builtin"
+ 3621 | # undef __has_builtin
+      |         ^~~~~~~~~~~~~
+/usr/bin/gcc     -std=c99   -m64 -c -o globals.o -DSPEC -DNDEBUG -DPERL_CORE -I. -Idist/IO -Icpan/Time-HiRes -Icpan/HTML-Parser -Iext/re -Ispecrand -DDOUBLE_SLASHES_SPECIAL=0 -DSPEC_AUTO_SUPPRESS_OPENMP -D_LARGE_FILES -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64  -g -O3 -march=native        -DSPEC_LINUX_X64  -fno-strict-aliasing -fno-unsafe-math-optimizations -fno-finite-math-only -fgnu89-inline -fcommon     -DSPEC_LP64  globals.c
+In file included from globals.c:32:
+perl.h:3621:9: warning: undefining "__has_builtin"
+ 3621 | # undef __has_builtin
+      |         ^~~~~~~~~~~~~
+/usr/bin/gcc     -std=c99   -m64 -c -o locale.o -DSPEC -DNDEBUG -DPERL_CORE -I. -Idist/IO -Icpan/Time-HiRes -Icpan/HTML-Parser -Iext/re -Ispecrand -DDOUBLE_SLASHES_SPECIAL=0 -DSPEC_AUTO_SUPPRESS_OPENMP -D_LARGE_FILES -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64  -g -O3 -march=native        -DSPEC_LINUX_X64  -fno-strict-aliasing -fno-unsafe-math-optimizations -fno-finite-math-only -fgnu89-inline -fcommon     -DSPEC_LP64  locale.c
+In file included from locale.c:37:
+perl.h:3621:9: warning: undefining "__has_builtin"
+ 3621 | # undef __has_builtin
+      |         ^~~~~~~~~~~~~
+/usr/bin/gcc     -std=c99   -m64 -c -o av.o -DSPEC -DNDEBUG -DPERL_CORE -I. -Idist/IO -Icpan/Time-HiRes -Icpan/HTML-Parser -Iext/re -Ispecrand -DDOUBLE_SLASHES_SPECIAL=0 -DSPEC_AUTO_SUPPRESS_OPENMP -D_LARGE_FILES -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64  -g -O3 -march=native        -DSPEC_LINUX_X64  -fno-strict-aliasing -fno-unsafe-math-optimizations -fno-finite-math-only -fgnu89-inline -fcommon     -DSPEC_LP64  av.c
+In file included from av.c:24:
+perl.h:3621:9: warning: undefining "__has_builtin"
+ 3621 | # undef __has_builtin
+      |         ^~~~~~~~~~~~~
+/usr/bin/gcc     -std=c99   -m64 -c -o keywords.o -DSPEC -DNDEBUG -DPERL_CORE -I. -Idist/IO -Icpan/Time-HiRes -Icpan/HTML-Parser -Iext/re -Ispecrand -DDOUBLE_SLASHES_SPECIAL=0 -DSPEC_AUTO_SUPPRESS_OPENMP -D_LARGE_FILES -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64  -g -O3 -march=native        -DSPEC_LINUX_X64  -fno-strict-aliasing -fno-unsafe-math-optimizations -fno-finite-math-only -fgnu89-inline -fcommon     -DSPEC_LP64  keywords.c
+In file included from keywords.c:9:
+perl.h:3621:9: warning: undefining "__has_builtin"
+ 3621 | # undef __has_builtin
+      |         ^~~~~~~~~~~~~
+/usr/bin/gcc     -std=c99   -m64 -c -o doio.o -DSPEC -DNDEBUG -DPERL_CORE -I. -Idist/IO -Icpan/Time-HiRes -Icpan/HTML-Parser -Iext/re -Ispecrand -DDOUBLE_SLASHES_SPECIAL=0 -DSPEC_AUTO_SUPPRESS_OPENMP -D_LARGE_FILES -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64  -g -O3 -march=native        -DSPEC_LINUX_X64  -fno-strict-aliasing -fno-unsafe-math-optimizations -fno-finite-math-only -fgnu89-inline -fcommon     -DSPEC_LP64  doio.c
+In file included from doio.c:27:
+perl.h:3621:9: warning: undefining "__has_builtin"
+ 3621 | # undef __has_builtin
+      |         ^~~~~~~~~~~~~
+doio.c: In function 'S_exec_failed':
+iperlsys.h:771:41: warning: ignoring return value of 'write' declared with attribute 'warn_unused_result' [-Wunused-result]
+  771 | #define PerlLIO_write(fd, buf, count)   write((fd), (buf), (count))
+perl.h:312:40: note: in definition of macro 'PERL_UNUSED_RESULT'
+  312 | # define PERL_UNUSED_RESULT(v) ((void)(v))
+      |                                        ^
+doio.c:1529:28: note: in expansion of macro 'PerlLIO_write'
+ 1529 |         PERL_UNUSED_RESULT(PerlLIO_write(fd, (void*)&e, sizeof(int)));
+      |                            ^~~~~~~~~~~~~
+/usr/bin/gcc     -std=c99   -m64 -c -o doop.o -DSPEC -DNDEBUG -DPERL_CORE -I. -Idist/IO -Icpan/Time-HiRes -Icpan/HTML-Parser -Iext/re -Ispecrand -DDOUBLE_SLASHES_SPECIAL=0 -DSPEC_AUTO_SUPPRESS_OPENMP -D_LARGE_FILES -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64  -g -O3 -march=native        -DSPEC_LINUX_X64  -fno-strict-aliasing -fno-unsafe-math-optimizations -fno-finite-math-only -fgnu89-inline -fcommon     -DSPEC_LP64  doop.c
+In file included from doop.c:24:
+perl.h:3621:9: warning: undefining "__has_builtin"
+ 3621 | # undef __has_builtin
+      |         ^~~~~~~~~~~~~
+/usr/bin/gcc     -std=c99   -m64 -c -o numeric.o -DSPEC -DNDEBUG -DPERL_CORE -I. -Idist/IO -Icpan/Time-HiRes -Icpan/HTML-Parser -Iext/re -Ispecrand -DDOUBLE_SLASHES_SPECIAL=0 -DSPEC_AUTO_SUPPRESS_OPENMP -D_LARGE_FILES -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64  -g -O3 -march=native        -DSPEC_LINUX_X64  -fno-strict-aliasing -fno-unsafe-math-optimizations -fno-finite-math-only -fgnu89-inline -fcommon     -DSPEC_LP64  numeric.c
+In file included from numeric.c:30:
+perl.h:3621:9: warning: undefining "__has_builtin"
+ 3621 | # undef __has_builtin
+      |         ^~~~~~~~~~~~~
+In function 'S_my_atof_infnan',
+    inlined from 'Perl_my_atof2' at numeric.c:1414:21:
+perl.h:6138:29: warning: argument 1 null where non-null expected [-Wnonnull]
+ 6138 | #  define Perl_strtod(s, e) strtod(s, e)
+      |                             ^~~~~~~~~~~~
+numeric.c:1296:18: note: in expansion of macro 'Perl_strtod'
+ 1296 |             nv = Perl_strtod(fake, &endp);
+      |                  ^~~~~~~~~~~
+In file included from perl.h:810:
+/usr/include/stdlib.h: In function 'Perl_my_atof2':
+/usr/include/stdlib.h:118:15: note: in a call to function 'strtod' declared 'nonnull'
+  118 | extern double strtod (const char *__restrict __nptr,
+      |               ^~~~~~
+/usr/bin/gcc     -std=c99   -m64 -c -o perlapi.o -DSPEC -DNDEBUG -DPERL_CORE -I. -Idist/IO -Icpan/Time-HiRes -Icpan/HTML-Parser -Iext/re -Ispecrand -DDOUBLE_SLASHES_SPECIAL=0 -DSPEC_AUTO_SUPPRESS_OPENMP -D_LARGE_FILES -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64  -g -O3 -march=native        -DSPEC_LINUX_X64  -fno-strict-aliasing -fno-unsafe-math-optimizations -fno-finite-math-only -fgnu89-inline -fcommon     -DSPEC_LP64  perlapi.c
+In file included from perlapi.c:28:
+perl.h:3621:9: warning: undefining "__has_builtin"
+ 3621 | # undef __has_builtin
+      |         ^~~~~~~~~~~~~
+/usr/bin/gcc     -std=c99   -m64 -c -o mg.o -DSPEC -DNDEBUG -DPERL_CORE -I. -Idist/IO -Icpan/Time-HiRes -Icpan/HTML-Parser -Iext/re -Ispecrand -DDOUBLE_SLASHES_SPECIAL=0 -DSPEC_AUTO_SUPPRESS_OPENMP -D_LARGE_FILES -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64  -g -O3 -march=native        -DSPEC_LINUX_X64  -fno-strict-aliasing -fno-unsafe-math-optimizations -fno-finite-math-only -fgnu89-inline -fcommon     -DSPEC_LP64  mg.c
+In file included from mg.c:43:
+perl.h:3621:9: warning: undefining "__has_builtin"
+ 3621 | # undef __has_builtin
+      |         ^~~~~~~~~~~~~
+mg.c: In function 'Perl_magic_set':
+iperlsys.h:1111:33: warning: ignoring return value of 'setuid' declared with attribute 'warn_unused_result' [-Wunused-result]
+ 1111 | #define PerlProc_setuid(u)      setuid((u))
+perl.h:312:40: note: in definition of macro 'PERL_UNUSED_RESULT'
+  312 | # define PERL_UNUSED_RESULT(v) ((void)(v))
+      |                                        ^
+mg.c:2959:32: note: in expansion of macro 'PerlProc_setuid'
+ 2959 |             PERL_UNUSED_RESULT(PerlProc_setuid(new_uid));
+      |                                ^~~~~~~~~~~~~~~
+iperlsys.h:1111:33: warning: ignoring return value of 'setuid' declared with attribute 'warn_unused_result' [-Wunused-result]
+ 1111 | #define PerlProc_setuid(u)      setuid((u))
+perl.h:312:40: note: in definition of macro 'PERL_UNUSED_RESULT'
+  312 | # define PERL_UNUSED_RESULT(v) ((void)(v))
+      |                                        ^
+mg.c:2987:32: note: in expansion of macro 'PerlProc_setuid'
+ 2987 |             PERL_UNUSED_RESULT(PerlProc_setuid(new_euid));
+      |                                ^~~~~~~~~~~~~~~
+iperlsys.h:1112:33: warning: ignoring return value of 'setgid' declared with attribute 'warn_unused_result' [-Wunused-result]
+ 1112 | #define PerlProc_setgid(g)      setgid((g))
+perl.h:312:40: note: in definition of macro 'PERL_UNUSED_RESULT'
+  312 | # define PERL_UNUSED_RESULT(v) ((void)(v))
+      |                                        ^
+mg.c:3015:32: note: in expansion of macro 'PerlProc_setgid'
+ 3015 |             PERL_UNUSED_RESULT(PerlProc_setgid(new_gid));
+      |                                ^~~~~~~~~~~~~~~
+iperlsys.h:1112:33: warning: ignoring return value of 'setgid' declared with attribute 'warn_unused_result' [-Wunused-result]
+ 1112 | #define PerlProc_setgid(g)      setgid((g))
+perl.h:312:40: note: in definition of macro 'PERL_UNUSED_RESULT'
+  312 | # define PERL_UNUSED_RESULT(v) ((void)(v))
+      |                                        ^
+mg.c:3098:32: note: in expansion of macro 'PerlProc_setgid'
+ 3098 |             PERL_UNUSED_RESULT(PerlProc_setgid(new_egid));
+      |                                ^~~~~~~~~~~~~~~
+/usr/bin/gcc     -std=c99   -m64 -c -o gv.o -DSPEC -DNDEBUG -DPERL_CORE -I. -Idist/IO -Icpan/Time-HiRes -Icpan/HTML-Parser -Iext/re -Ispecrand -DDOUBLE_SLASHES_SPECIAL=0 -DSPEC_AUTO_SUPPRESS_OPENMP -D_LARGE_FILES -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64  -g -O3 -march=native        -DSPEC_LINUX_X64  -fno-strict-aliasing -fno-unsafe-math-optimizations -fno-finite-math-only -fgnu89-inline -fcommon     -DSPEC_LP64  gv.c
+In file included from gv.c:36:
+perl.h:3621:9: warning: undefining "__has_builtin"
+ 3621 | # undef __has_builtin
+      |         ^~~~~~~~~~~~~
+/usr/bin/gcc     -std=c99   -m64 -c -o dump.o -DSPEC -DNDEBUG -DPERL_CORE -I. -Idist/IO -Icpan/Time-HiRes -Icpan/HTML-Parser -Iext/re -Ispecrand -DDOUBLE_SLASHES_SPECIAL=0 -DSPEC_AUTO_SUPPRESS_OPENMP -D_LARGE_FILES -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64  -g -O3 -march=native        -DSPEC_LINUX_X64  -fno-strict-aliasing -fno-unsafe-math-optimizations -fno-finite-math-only -fgnu89-inline -fcommon     -DSPEC_LP64  dump.c
+In file included from dump.c:29:
+perl.h:3621:9: warning: undefining "__has_builtin"
+ 3621 | # undef __has_builtin
+      |         ^~~~~~~~~~~~~
+/usr/bin/gcc     -std=c99   -m64 -c -o hv.o -DSPEC -DNDEBUG -DPERL_CORE -I. -Idist/IO -Icpan/Time-HiRes -Icpan/HTML-Parser -Iext/re -Ispecrand -DDOUBLE_SLASHES_SPECIAL=0 -DSPEC_AUTO_SUPPRESS_OPENMP -D_LARGE_FILES -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64  -g -O3 -march=native        -DSPEC_LINUX_X64  -fno-strict-aliasing -fno-unsafe-math-optimizations -fno-finite-math-only -fgnu89-inline -fcommon     -DSPEC_LP64  hv.c
+In file included from hv.c:35:
+perl.h:3621:9: warning: undefining "__has_builtin"
+ 3621 | # undef __has_builtin
+      |         ^~~~~~~~~~~~~
+/usr/bin/gcc     -std=c99   -m64 -c -o pad.o -DSPEC -DNDEBUG -DPERL_CORE -I. -Idist/IO -Icpan/Time-HiRes -Icpan/HTML-Parser -Iext/re -Ispecrand -DDOUBLE_SLASHES_SPECIAL=0 -DSPEC_AUTO_SUPPRESS_OPENMP -D_LARGE_FILES -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64  -g -O3 -march=native        -DSPEC_LINUX_X64  -fno-strict-aliasing -fno-unsafe-math-optimizations -fno-finite-math-only -fgnu89-inline -fcommon     -DSPEC_LP64  pad.c
+In file included from pad.c:147:
+perl.h:3621:9: warning: undefining "__has_builtin"
+ 3621 | # undef __has_builtin
+      |         ^~~~~~~~~~~~~
+/usr/bin/gcc     -std=c99   -m64 -c -o perlmain.o -DSPEC -DNDEBUG -DPERL_CORE -I. -Idist/IO -Icpan/Time-HiRes -Icpan/HTML-Parser -Iext/re -Ispecrand -DDOUBLE_SLASHES_SPECIAL=0 -DSPEC_AUTO_SUPPRESS_OPENMP -D_LARGE_FILES -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64  -g -O3 -march=native        -DSPEC_LINUX_X64  -fno-strict-aliasing -fno-unsafe-math-optimizations -fno-finite-math-only -fgnu89-inline -fcommon     -DSPEC_LP64  perlmain.c
+In file included from perlmain.c:43:
+perl.h:3621:9: warning: undefining "__has_builtin"
+ 3621 | # undef __has_builtin
+      |         ^~~~~~~~~~~~~
+/usr/bin/gcc     -std=c99   -m64 -c -o perl.o -DSPEC -DNDEBUG -DPERL_CORE -I. -Idist/IO -Icpan/Time-HiRes -Icpan/HTML-Parser -Iext/re -Ispecrand -DDOUBLE_SLASHES_SPECIAL=0 -DSPEC_AUTO_SUPPRESS_OPENMP -D_LARGE_FILES -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64  -g -O3 -march=native        -DSPEC_LINUX_X64  -fno-strict-aliasing -fno-unsafe-math-optimizations -fno-finite-math-only -fgnu89-inline -fcommon     -DSPEC_LP64  perl.c
+In file included from perl.c:33:
+perl.h:3621:9: warning: undefining "__has_builtin"
+ 3621 | # undef __has_builtin
+      |         ^~~~~~~~~~~~~
+/usr/bin/gcc     -std=c99   -m64 -c -o perly.o -DSPEC -DNDEBUG -DPERL_CORE -I. -Idist/IO -Icpan/Time-HiRes -Icpan/HTML-Parser -Iext/re -Ispecrand -DDOUBLE_SLASHES_SPECIAL=0 -DSPEC_AUTO_SUPPRESS_OPENMP -D_LARGE_FILES -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64  -g -O3 -march=native        -DSPEC_LINUX_X64  -fno-strict-aliasing -fno-unsafe-math-optimizations -fno-finite-math-only -fgnu89-inline -fcommon     -DSPEC_LP64  perly.c
+In file included from perly.c:26:
+perl.h:3621:9: warning: undefining "__has_builtin"
+ 3621 | # undef __has_builtin
+      |         ^~~~~~~~~~~~~
+/usr/bin/gcc     -std=c99   -m64 -c -o pp_sort.o -DSPEC -DNDEBUG -DPERL_CORE -I. -Idist/IO -Icpan/Time-HiRes -Icpan/HTML-Parser -Iext/re -Ispecrand -DDOUBLE_SLASHES_SPECIAL=0 -DSPEC_AUTO_SUPPRESS_OPENMP -D_LARGE_FILES -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64  -g -O3 -march=native        -DSPEC_LINUX_X64  -fno-strict-aliasing -fno-unsafe-math-optimizations -fno-finite-math-only -fgnu89-inline -fcommon     -DSPEC_LP64  pp_sort.c
+In file included from pp_sort.c:31:
+perl.h:3621:9: warning: undefining "__has_builtin"
+ 3621 | # undef __has_builtin
+      |         ^~~~~~~~~~~~~
+/usr/bin/gcc     -std=c99   -m64 -c -o perlio.o -DSPEC -DNDEBUG -DPERL_CORE -I. -Idist/IO -Icpan/Time-HiRes -Icpan/HTML-Parser -Iext/re -Ispecrand -DDOUBLE_SLASHES_SPECIAL=0 -DSPEC_AUTO_SUPPRESS_OPENMP -D_LARGE_FILES -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64  -g -O3 -march=native        -DSPEC_LINUX_X64  -fno-strict-aliasing -fno-unsafe-math-optimizations -fno-finite-math-only -fgnu89-inline -fcommon     -DSPEC_LP64  perlio.c
+In file included from perlio.c:43:
+perl.h:3621:9: warning: undefining "__has_builtin"
+ 3621 | # undef __has_builtin
+      |         ^~~~~~~~~~~~~
+/usr/bin/gcc     -std=c99   -m64 -c -o pp_hot.o -DSPEC -DNDEBUG -DPERL_CORE -I. -Idist/IO -Icpan/Time-HiRes -Icpan/HTML-Parser -Iext/re -Ispecrand -DDOUBLE_SLASHES_SPECIAL=0 -DSPEC_AUTO_SUPPRESS_OPENMP -D_LARGE_FILES -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64  -g -O3 -march=native        -DSPEC_LINUX_X64  -fno-strict-aliasing -fno-unsafe-math-optimizations -fno-finite-math-only -fgnu89-inline -fcommon     -DSPEC_LP64  pp_hot.c
+In file included from pp_hot.c:36:
+perl.h:3621:9: warning: undefining "__has_builtin"
+ 3621 | # undef __has_builtin
+      |         ^~~~~~~~~~~~~
+pp_hot.c: In function 'Perl_pp_aassign':
+iperlsys.h:1111:33: warning: ignoring return value of 'setuid' declared with attribute 'warn_unused_result' [-Wunused-result]
+ 1111 | #define PerlProc_setuid(u)      setuid((u))
+perl.h:312:40: note: in definition of macro 'PERL_UNUSED_RESULT'
+  312 | # define PERL_UNUSED_RESULT(v) ((void)(v))
+      |                                        ^
+pp_hot.c:1259:36: note: in expansion of macro 'PerlProc_setuid'
+ 1259 |                 PERL_UNUSED_RESULT(PerlProc_setuid(PL_delaymagic_uid));
+      |                                    ^~~~~~~~~~~~~~~
+iperlsys.h:1112:33: warning: ignoring return value of 'setgid' declared with attribute 'warn_unused_result' [-Wunused-result]
+ 1112 | #define PerlProc_setgid(g)      setgid((g))
+perl.h:312:40: note: in definition of macro 'PERL_UNUSED_RESULT'
+  312 | # define PERL_UNUSED_RESULT(v) ((void)(v))
+      |                                        ^
+pp_hot.c:1295:36: note: in expansion of macro 'PerlProc_setgid'
+ 1295 |                 PERL_UNUSED_RESULT(PerlProc_setgid(PL_delaymagic_gid));
+      |                                    ^~~~~~~~~~~~~~~
+/usr/bin/gcc     -std=c99   -m64 -c -o run.o -DSPEC -DNDEBUG -DPERL_CORE -I. -Idist/IO -Icpan/Time-HiRes -Icpan/HTML-Parser -Iext/re -Ispecrand -DDOUBLE_SLASHES_SPECIAL=0 -DSPEC_AUTO_SUPPRESS_OPENMP -D_LARGE_FILES -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64  -g -O3 -march=native        -DSPEC_LINUX_X64  -fno-strict-aliasing -fno-unsafe-math-optimizations -fno-finite-math-only -fgnu89-inline -fcommon     -DSPEC_LP64  run.c
+In file included from run.c:26:
+perl.h:3621:9: warning: undefining "__has_builtin"
+ 3621 | # undef __has_builtin
+      |         ^~~~~~~~~~~~~
+/usr/bin/gcc     -std=c99   -m64 -c -o pp_sys.o -DSPEC -DNDEBUG -DPERL_CORE -I. -Idist/IO -Icpan/Time-HiRes -Icpan/HTML-Parser -Iext/re -Ispecrand -DDOUBLE_SLASHES_SPECIAL=0 -DSPEC_AUTO_SUPPRESS_OPENMP -D_LARGE_FILES -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64  -g -O3 -march=native        -DSPEC_LINUX_X64  -fno-strict-aliasing -fno-unsafe-math-optimizations -fno-finite-math-only -fgnu89-inline -fcommon     -DSPEC_LP64  pp_sys.c
+In file included from pp_sys.c:31:
+perl.h:3621:9: warning: undefining "__has_builtin"
+ 3621 | # undef __has_builtin
+      |         ^~~~~~~~~~~~~
+/usr/bin/gcc     -std=c99   -m64 -c -o scope.o -DSPEC -DNDEBUG -DPERL_CORE -I. -Idist/IO -Icpan/Time-HiRes -Icpan/HTML-Parser -Iext/re -Ispecrand -DDOUBLE_SLASHES_SPECIAL=0 -DSPEC_AUTO_SUPPRESS_OPENMP -D_LARGE_FILES -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64  -g -O3 -march=native        -DSPEC_LINUX_X64  -fno-strict-aliasing -fno-unsafe-math-optimizations -fno-finite-math-only -fgnu89-inline -fcommon     -DSPEC_LP64  scope.c
+In file included from scope.c:27:
+perl.h:3621:9: warning: undefining "__has_builtin"
+ 3621 | # undef __has_builtin
+      |         ^~~~~~~~~~~~~
+/usr/bin/gcc     -std=c99   -m64 -c -o pp_ctl.o -DSPEC -DNDEBUG -DPERL_CORE -I. -Idist/IO -Icpan/Time-HiRes -Icpan/HTML-Parser -Iext/re -Ispecrand -DDOUBLE_SLASHES_SPECIAL=0 -DSPEC_AUTO_SUPPRESS_OPENMP -D_LARGE_FILES -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64  -g -O3 -march=native        -DSPEC_LINUX_X64  -fno-strict-aliasing -fno-unsafe-math-optimizations -fno-finite-math-only -fgnu89-inline -fcommon     -DSPEC_LP64  pp_ctl.c
+In file included from pp_ctl.c:35:
+perl.h:3621:9: warning: undefining "__has_builtin"
+ 3621 | # undef __has_builtin
+      |         ^~~~~~~~~~~~~
+/usr/bin/gcc     -std=c99   -m64 -c -o taint.o -DSPEC -DNDEBUG -DPERL_CORE -I. -Idist/IO -Icpan/Time-HiRes -Icpan/HTML-Parser -Iext/re -Ispecrand -DDOUBLE_SLASHES_SPECIAL=0 -DSPEC_AUTO_SUPPRESS_OPENMP -D_LARGE_FILES -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64  -g -O3 -march=native        -DSPEC_LINUX_X64  -fno-strict-aliasing -fno-unsafe-math-optimizations -fno-finite-math-only -fgnu89-inline -fcommon     -DSPEC_LP64  taint.c
+In file included from taint.c:24:
+perl.h:3621:9: warning: undefining "__has_builtin"
+ 3621 | # undef __has_builtin
+      |         ^~~~~~~~~~~~~
+/usr/bin/gcc     -std=c99   -m64 -c -o pp.o -DSPEC -DNDEBUG -DPERL_CORE -I. -Idist/IO -Icpan/Time-HiRes -Icpan/HTML-Parser -Iext/re -Ispecrand -DDOUBLE_SLASHES_SPECIAL=0 -DSPEC_AUTO_SUPPRESS_OPENMP -D_LARGE_FILES -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64  -g -O3 -march=native        -DSPEC_LINUX_X64  -fno-strict-aliasing -fno-unsafe-math-optimizations -fno-finite-math-only -fgnu89-inline -fcommon     -DSPEC_LP64  pp.c
+In file included from pp.c:28:
+perl.h:3621:9: warning: undefining "__has_builtin"
+ 3621 | # undef __has_builtin
+      |         ^~~~~~~~~~~~~
+/usr/bin/gcc     -std=c99   -m64 -c -o universal.o -DSPEC -DNDEBUG -DPERL_CORE -I. -Idist/IO -Icpan/Time-HiRes -Icpan/HTML-Parser -Iext/re -Ispecrand -DDOUBLE_SLASHES_SPECIAL=0 -DSPEC_AUTO_SUPPRESS_OPENMP -D_LARGE_FILES -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64  -g -O3 -march=native        -DSPEC_LINUX_X64  -fno-strict-aliasing -fno-unsafe-math-optimizations -fno-finite-math-only -fgnu89-inline -fcommon     -DSPEC_LP64  universal.c
+In file included from universal.c:30:
+perl.h:3621:9: warning: undefining "__has_builtin"
+ 3621 | # undef __has_builtin
+      |         ^~~~~~~~~~~~~
+/usr/bin/gcc     -std=c99   -m64 -c -o op.o -DSPEC -DNDEBUG -DPERL_CORE -I. -Idist/IO -Icpan/Time-HiRes -Icpan/HTML-Parser -Iext/re -Ispecrand -DDOUBLE_SLASHES_SPECIAL=0 -DSPEC_AUTO_SUPPRESS_OPENMP -D_LARGE_FILES -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64  -g -O3 -march=native        -DSPEC_LINUX_X64  -fno-strict-aliasing -fno-unsafe-math-optimizations -fno-finite-math-only -fgnu89-inline -fcommon     -DSPEC_LP64  op.c
+In file included from op.c:103:
+perl.h:3621:9: warning: undefining "__has_builtin"
+ 3621 | # undef __has_builtin
+      |         ^~~~~~~~~~~~~
+/usr/bin/gcc     -std=c99   -m64 -c -o reentr.o -DSPEC -DNDEBUG -DPERL_CORE -I. -Idist/IO -Icpan/Time-HiRes -Icpan/HTML-Parser -Iext/re -Ispecrand -DDOUBLE_SLASHES_SPECIAL=0 -DSPEC_AUTO_SUPPRESS_OPENMP -D_LARGE_FILES -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64  -g -O3 -march=native        -DSPEC_LINUX_X64  -fno-strict-aliasing -fno-unsafe-math-optimizations -fno-finite-math-only -fgnu89-inline -fcommon     -DSPEC_LP64  reentr.c
+In file included from reentr.c:33:
+perl.h:3621:9: warning: undefining "__has_builtin"
+ 3621 | # undef __has_builtin
+      |         ^~~~~~~~~~~~~
+/usr/bin/gcc     -std=c99   -m64 -c -o pp_pack.o -DSPEC -DNDEBUG -DPERL_CORE -I. -Idist/IO -Icpan/Time-HiRes -Icpan/HTML-Parser -Iext/re -Ispecrand -DDOUBLE_SLASHES_SPECIAL=0 -DSPEC_AUTO_SUPPRESS_OPENMP -D_LARGE_FILES -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64  -g -O3 -march=native        -DSPEC_LINUX_X64  -fno-strict-aliasing -fno-unsafe-math-optimizations -fno-finite-math-only -fgnu89-inline -fcommon     -DSPEC_LP64  pp_pack.c
+In file included from pp_pack.c:33:
+perl.h:3621:9: warning: undefining "__has_builtin"
+ 3621 | # undef __has_builtin
+      |         ^~~~~~~~~~~~~
+/usr/bin/gcc     -std=c99   -m64 -c -o mro_core.o -DSPEC -DNDEBUG -DPERL_CORE -I. -Idist/IO -Icpan/Time-HiRes -Icpan/HTML-Parser -Iext/re -Ispecrand -DDOUBLE_SLASHES_SPECIAL=0 -DSPEC_AUTO_SUPPRESS_OPENMP -D_LARGE_FILES -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64  -g -O3 -march=native        -DSPEC_LINUX_X64  -fno-strict-aliasing -fno-unsafe-math-optimizations -fno-finite-math-only -fgnu89-inline -fcommon     -DSPEC_LP64  mro_core.c
+In file included from mro_core.c:30:
+perl.h:3621:9: warning: undefining "__has_builtin"
+ 3621 | # undef __has_builtin
+      |         ^~~~~~~~~~~~~
+/usr/bin/gcc     -std=c99   -m64 -c -o mathoms.o -DSPEC -DNDEBUG -DPERL_CORE -I. -Idist/IO -Icpan/Time-HiRes -Icpan/HTML-Parser -Iext/re -Ispecrand -DDOUBLE_SLASHES_SPECIAL=0 -DSPEC_AUTO_SUPPRESS_OPENMP -D_LARGE_FILES -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64  -g -O3 -march=native        -DSPEC_LINUX_X64  -fno-strict-aliasing -fno-unsafe-math-optimizations -fno-finite-math-only -fgnu89-inline -fcommon     -DSPEC_LP64  mathoms.c
+In file included from mathoms.c:46:
+perl.h:3621:9: warning: undefining "__has_builtin"
+ 3621 | # undef __has_builtin
+      |         ^~~~~~~~~~~~~
+/usr/bin/gcc     -std=c99   -m64 -c -o specrand/specrand.o -DSPEC -DNDEBUG -DPERL_CORE -I. -Idist/IO -Icpan/Time-HiRes -Icpan/HTML-Parser -Iext/re -Ispecrand -DDOUBLE_SLASHES_SPECIAL=0 -DSPEC_AUTO_SUPPRESS_OPENMP -D_LARGE_FILES -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64  -g -O3 -march=native        -DSPEC_LINUX_X64  -fno-strict-aliasing -fno-unsafe-math-optimizations -fno-finite-math-only -fgnu89-inline -fcommon     -DSPEC_LP64  specrand/specrand.c
+/usr/bin/gcc     -std=c99   -m64 -c -o dist/PathTools/Cwd.o -DSPEC -DNDEBUG -DPERL_CORE -I. -Idist/IO -Icpan/Time-HiRes -Icpan/HTML-Parser -Iext/re -Ispecrand -DDOUBLE_SLASHES_SPECIAL=0 -DSPEC_AUTO_SUPPRESS_OPENMP -D_LARGE_FILES -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64  -g -O3 -march=native        -DSPEC_LINUX_X64  -fno-strict-aliasing -fno-unsafe-math-optimizations -fno-finite-math-only -fgnu89-inline -fcommon     -DSPEC_LP64  dist/PathTools/Cwd.c
+In file included from dist/PathTools/Cwd.c:21:
+./perl.h:3621:9: warning: undefining "__has_builtin"
+ 3621 | # undef __has_builtin
+      |         ^~~~~~~~~~~~~
+/usr/bin/gcc     -std=c99   -m64 -c -o utf8.o -DSPEC -DNDEBUG -DPERL_CORE -I. -Idist/IO -Icpan/Time-HiRes -Icpan/HTML-Parser -Iext/re -Ispecrand -DDOUBLE_SLASHES_SPECIAL=0 -DSPEC_AUTO_SUPPRESS_OPENMP -D_LARGE_FILES -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64  -g -O3 -march=native        -DSPEC_LINUX_X64  -fno-strict-aliasing -fno-unsafe-math-optimizations -fno-finite-math-only -fgnu89-inline -fcommon     -DSPEC_LP64  utf8.c
+In file included from utf8.c:33:
+perl.h:3621:9: warning: undefining "__has_builtin"
+ 3621 | # undef __has_builtin
+      |         ^~~~~~~~~~~~~
+/usr/bin/gcc     -std=c99   -m64 -c -o util.o -DSPEC -DNDEBUG -DPERL_CORE -I. -Idist/IO -Icpan/Time-HiRes -Icpan/HTML-Parser -Iext/re -Ispecrand -DDOUBLE_SLASHES_SPECIAL=0 -DSPEC_AUTO_SUPPRESS_OPENMP -D_LARGE_FILES -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64  -g -O3 -march=native        -DSPEC_LINUX_X64  -fno-strict-aliasing -fno-unsafe-math-optimizations -fno-finite-math-only -fgnu89-inline -fcommon     -DSPEC_LP64  util.c
+In file included from util.c:30:
+perl.h:3621:9: warning: undefining "__has_builtin"
+ 3621 | # undef __has_builtin
+      |         ^~~~~~~~~~~~~
+util.c: In function 'Perl_croak_no_mem':
+iperlsys.h:771:41: warning: ignoring return value of 'write' declared with attribute 'warn_unused_result' [-Wunused-result]
+  771 | #define PerlLIO_write(fd, buf, count)   write((fd), (buf), (count))
+perl.h:312:40: note: in definition of macro 'PERL_UNUSED_RESULT'
+  312 | # define PERL_UNUSED_RESULT(v) ((void)(v))
+      |                                        ^
+util.c:1787:28: note: in expansion of macro 'PerlLIO_write'
+ 1787 |         PERL_UNUSED_RESULT(PerlLIO_write(fd, PL_no_mem, sizeof(PL_no_mem)-1));
+      |                            ^~~~~~~~~~~~~
+/usr/bin/gcc     -std=c99   -m64 -c -o ext/Devel-Peek/Peek.o -DSPEC -DNDEBUG -DPERL_CORE -I. -Idist/IO -Icpan/Time-HiRes -Icpan/HTML-Parser -Iext/re -Ispecrand -DDOUBLE_SLASHES_SPECIAL=0 -DSPEC_AUTO_SUPPRESS_OPENMP -D_LARGE_FILES -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64  -g -O3 -march=native        -DSPEC_LINUX_X64  -fno-strict-aliasing -fno-unsafe-math-optimizations -fno-finite-math-only -fgnu89-inline -fcommon     -DSPEC_LP64  ext/Devel-Peek/Peek.c
+In file included from ext/Devel-Peek/Peek.c:16:
+./perl.h:3621:9: warning: undefining "__has_builtin"
+ 3621 | # undef __has_builtin
+      |         ^~~~~~~~~~~~~
+/usr/bin/gcc     -std=c99   -m64 -c -o cpan/Digest-MD5/MD5.o -DSPEC -DNDEBUG -DPERL_CORE -I. -Idist/IO -Icpan/Time-HiRes -Icpan/HTML-Parser -Iext/re -Ispecrand -DDOUBLE_SLASHES_SPECIAL=0 -DSPEC_AUTO_SUPPRESS_OPENMP -D_LARGE_FILES -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64  -g -O3 -march=native        -DSPEC_LINUX_X64  -fno-strict-aliasing -fno-unsafe-math-optimizations -fno-finite-math-only -fgnu89-inline -fcommon     -DSPEC_LP64  cpan/Digest-MD5/MD5.c
+In file included from cpan/Digest-MD5/MD5.c:52:
+./perl.h:3621:9: warning: undefining "__has_builtin"
+ 3621 | # undef __has_builtin
+      |         ^~~~~~~~~~~~~
+/usr/bin/gcc     -std=c99   -m64 -c -o DynaLoader.o -DSPEC -DNDEBUG -DPERL_CORE -I. -Idist/IO -Icpan/Time-HiRes -Icpan/HTML-Parser -Iext/re -Ispecrand -DDOUBLE_SLASHES_SPECIAL=0 -DSPEC_AUTO_SUPPRESS_OPENMP -D_LARGE_FILES -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64  -g -O3 -march=native        -DSPEC_LINUX_X64  -fno-strict-aliasing -fno-unsafe-math-optimizations -fno-finite-math-only -fgnu89-inline -fcommon     -DSPEC_LP64  DynaLoader.c
+In file included from DynaLoader.c:16:
+perl.h:3621:9: warning: undefining "__has_builtin"
+ 3621 | # undef __has_builtin
+      |         ^~~~~~~~~~~~~
+/usr/bin/gcc     -std=c99   -m64 -c -o dist/Data-Dumper/Dumper.o -DSPEC -DNDEBUG -DPERL_CORE -I. -Idist/IO -Icpan/Time-HiRes -Icpan/HTML-Parser -Iext/re -Ispecrand -DDOUBLE_SLASHES_SPECIAL=0 -DSPEC_AUTO_SUPPRESS_OPENMP -D_LARGE_FILES -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64  -g -O3 -march=native        -DSPEC_LINUX_X64  -fno-strict-aliasing -fno-unsafe-math-optimizations -fno-finite-math-only -fgnu89-inline -fcommon     -DSPEC_LP64  dist/Data-Dumper/Dumper.c
+In file included from dist/Data-Dumper/Dumper.c:16:
+./perl.h:3621:9: warning: undefining "__has_builtin"
+ 3621 | # undef __has_builtin
+      |         ^~~~~~~~~~~~~
+/usr/bin/gcc     -std=c99   -m64 -c -o dist/IO/poll.o -DSPEC -DNDEBUG -DPERL_CORE -I. -Idist/IO -Icpan/Time-HiRes -Icpan/HTML-Parser -Iext/re -Ispecrand -DDOUBLE_SLASHES_SPECIAL=0 -DSPEC_AUTO_SUPPRESS_OPENMP -D_LARGE_FILES -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64  -g -O3 -march=native        -DSPEC_LINUX_X64  -fno-strict-aliasing -fno-unsafe-math-optimizations -fno-finite-math-only -fgnu89-inline -fcommon     -DSPEC_LP64  dist/IO/poll.c
+In file included from dist/IO/poll.c:14:
+./perl.h:3621:9: warning: undefining "__has_builtin"
+ 3621 | # undef __has_builtin
+      |         ^~~~~~~~~~~~~
+/usr/bin/gcc     -std=c99   -m64 -c -o cpan/MIME-Base64/Base64.o -DSPEC -DNDEBUG -DPERL_CORE -I. -Idist/IO -Icpan/Time-HiRes -Icpan/HTML-Parser -Iext/re -Ispecrand -DDOUBLE_SLASHES_SPECIAL=0 -DSPEC_AUTO_SUPPRESS_OPENMP -D_LARGE_FILES -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64  -g -O3 -march=native        -DSPEC_LINUX_X64  -fno-strict-aliasing -fno-unsafe-math-optimizations -fno-finite-math-only -fgnu89-inline -fcommon     -DSPEC_LP64  cpan/MIME-Base64/Base64.c
+In file included from cpan/MIME-Base64/Base64.c:42:
+./perl.h:3621:9: warning: undefining "__has_builtin"
+ 3621 | # undef __has_builtin
+      |         ^~~~~~~~~~~~~
+/usr/bin/gcc     -std=c99   -m64 -c -o dist/IO/IO.o -DSPEC -DNDEBUG -DPERL_CORE -I. -Idist/IO -Icpan/Time-HiRes -Icpan/HTML-Parser -Iext/re -Ispecrand -DDOUBLE_SLASHES_SPECIAL=0 -DSPEC_AUTO_SUPPRESS_OPENMP -D_LARGE_FILES -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64  -g -O3 -march=native        -DSPEC_LINUX_X64  -fno-strict-aliasing -fno-unsafe-math-optimizations -fno-finite-math-only -fgnu89-inline -fcommon     -DSPEC_LP64  dist/IO/IO.c
+In file included from dist/IO/IO.c:25:
+./perl.h:3621:9: warning: undefining "__has_builtin"
+ 3621 | # undef __has_builtin
+      |         ^~~~~~~~~~~~~
+/usr/bin/gcc     -std=c99   -m64 -c -o ext/Sys-Hostname/Hostname.o -DSPEC -DNDEBUG -DPERL_CORE -I. -Idist/IO -Icpan/Time-HiRes -Icpan/HTML-Parser -Iext/re -Ispecrand -DDOUBLE_SLASHES_SPECIAL=0 -DSPEC_AUTO_SUPPRESS_OPENMP -D_LARGE_FILES -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64  -g -O3 -march=native        -DSPEC_LINUX_X64  -fno-strict-aliasing -fno-unsafe-math-optimizations -fno-finite-math-only -fgnu89-inline -fcommon     -DSPEC_LP64  ext/Sys-Hostname/Hostname.c
+In file included from ext/Sys-Hostname/Hostname.c:13:
+./perl.h:3621:9: warning: undefining "__has_builtin"
+ 3621 | # undef __has_builtin
+      |         ^~~~~~~~~~~~~
+/usr/bin/gcc     -std=c99   -m64 -c -o regexec.o -DSPEC -DNDEBUG -DPERL_CORE -I. -Idist/IO -Icpan/Time-HiRes -Icpan/HTML-Parser -Iext/re -Ispecrand -DDOUBLE_SLASHES_SPECIAL=0 -DSPEC_AUTO_SUPPRESS_OPENMP -D_LARGE_FILES -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64  -g -O3 -march=native        -DSPEC_LINUX_X64  -fno-strict-aliasing -fno-unsafe-math-optimizations -fno-finite-math-only -fgnu89-inline -fcommon     -DSPEC_LP64  regexec.c
+In file included from regexec.c:78:
+perl.h:3621:9: warning: undefining "__has_builtin"
+ 3621 | # undef __has_builtin
+      |         ^~~~~~~~~~~~~
+/usr/bin/gcc     -std=c99   -m64 -c -o ext/XS-Typemap/stdio.o -DSPEC -DNDEBUG -DPERL_CORE -I. -Idist/IO -Icpan/Time-HiRes -Icpan/HTML-Parser -Iext/re -Ispecrand -DDOUBLE_SLASHES_SPECIAL=0 -DSPEC_AUTO_SUPPRESS_OPENMP -D_LARGE_FILES -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64  -g -O3 -march=native        -DSPEC_LINUX_X64  -fno-strict-aliasing -fno-unsafe-math-optimizations -fno-finite-math-only -fgnu89-inline -fcommon     -DSPEC_LP64  ext/XS-Typemap/stdio.c
+/usr/bin/gcc     -std=c99   -m64 -c -o Opcode.o -DSPEC -DNDEBUG -DPERL_CORE -I. -Idist/IO -Icpan/Time-HiRes -Icpan/HTML-Parser -Iext/re -Ispecrand -DDOUBLE_SLASHES_SPECIAL=0 -DSPEC_AUTO_SUPPRESS_OPENMP -D_LARGE_FILES -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64  -g -O3 -march=native        -DSPEC_LINUX_X64  -fno-strict-aliasing -fno-unsafe-math-optimizations -fno-finite-math-only -fgnu89-inline -fcommon     -DSPEC_LP64  Opcode.c
+In file included from Opcode.c:15:
+perl.h:3621:9: warning: undefining "__has_builtin"
+ 3621 | # undef __has_builtin
+      |         ^~~~~~~~~~~~~
+/usr/bin/gcc     -std=c99   -m64 -c -o ext/attributes/attributes.o -DSPEC -DNDEBUG -DPERL_CORE -I. -Idist/IO -Icpan/Time-HiRes -Icpan/HTML-Parser -Iext/re -Ispecrand -DDOUBLE_SLASHES_SPECIAL=0 -DSPEC_AUTO_SUPPRESS_OPENMP -D_LARGE_FILES -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64  -g -O3 -march=native        -DSPEC_LINUX_X64  -fno-strict-aliasing -fno-unsafe-math-optimizations -fno-finite-math-only -fgnu89-inline -fcommon     -DSPEC_LP64  ext/attributes/attributes.c
+In file included from ext/attributes/attributes.c:30:
+./perl.h:3621:9: warning: undefining "__has_builtin"
+ 3621 | # undef __has_builtin
+      |         ^~~~~~~~~~~~~
+/usr/bin/gcc     -std=c99   -m64 -c -o cpan/Time-HiRes/HiRes.o -DSPEC -DNDEBUG -DPERL_CORE -I. -Idist/IO -Icpan/Time-HiRes -Icpan/HTML-Parser -Iext/re -Ispecrand -DDOUBLE_SLASHES_SPECIAL=0 -DSPEC_AUTO_SUPPRESS_OPENMP -D_LARGE_FILES -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64  -g -O3 -march=native        -DSPEC_LINUX_X64  -fno-strict-aliasing -fno-unsafe-math-optimizations -fno-finite-math-only -fgnu89-inline -fcommon     -DSPEC_LP64  cpan/Time-HiRes/HiRes.c
+In file included from cpan/Time-HiRes/HiRes.c:31:
+./perl.h:3621:9: warning: undefining "__has_builtin"
+ 3621 | # undef __has_builtin
+      |         ^~~~~~~~~~~~~
+/usr/bin/gcc     -std=c99   -m64 -c -o cpan/Digest-SHA/SHA.o -DSPEC -DNDEBUG -DPERL_CORE -I. -Idist/IO -Icpan/Time-HiRes -Icpan/HTML-Parser -Iext/re -Ispecrand -DDOUBLE_SLASHES_SPECIAL=0 -DSPEC_AUTO_SUPPRESS_OPENMP -D_LARGE_FILES -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64  -g -O3 -march=native        -DSPEC_LINUX_X64  -fno-strict-aliasing -fno-unsafe-math-optimizations -fno-finite-math-only -fgnu89-inline -fcommon     -DSPEC_LP64  cpan/Digest-SHA/SHA.c
+In file included from cpan/Digest-SHA/SHA.c:16:
+./perl.h:3621:9: warning: undefining "__has_builtin"
+ 3621 | # undef __has_builtin
+      |         ^~~~~~~~~~~~~
+/usr/bin/gcc     -std=c99   -m64 -c -o sv.o -DSPEC -DNDEBUG -DPERL_CORE -I. -Idist/IO -Icpan/Time-HiRes -Icpan/HTML-Parser -Iext/re -Ispecrand -DDOUBLE_SLASHES_SPECIAL=0 -DSPEC_AUTO_SUPPRESS_OPENMP -D_LARGE_FILES -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64  -g -O3 -march=native        -DSPEC_LINUX_X64  -fno-strict-aliasing -fno-unsafe-math-optimizations -fno-finite-math-only -fgnu89-inline -fcommon     -DSPEC_LP64  sv.c
+In file included from sv.c:32:
+perl.h:3621:9: warning: undefining "__has_builtin"
+ 3621 | # undef __has_builtin
+      |         ^~~~~~~~~~~~~
+/usr/bin/gcc     -std=c99   -m64 -c -o ext/re/re.o -DSPEC -DNDEBUG -DPERL_CORE -I. -Idist/IO -Icpan/Time-HiRes -Icpan/HTML-Parser -Iext/re -Ispecrand -DDOUBLE_SLASHES_SPECIAL=0 -DSPEC_AUTO_SUPPRESS_OPENMP -D_LARGE_FILES -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64  -g -O3 -march=native        -DSPEC_LINUX_X64  -fno-strict-aliasing -fno-unsafe-math-optimizations -fno-finite-math-only -fgnu89-inline -fcommon     -DSPEC_LP64  ext/re/re.c
+In file included from ext/re/re.c:16:
+./perl.h:3621:9: warning: undefining "__has_builtin"
+ 3621 | # undef __has_builtin
+      |         ^~~~~~~~~~~~~
+/usr/bin/gcc     -std=c99   -m64 -c -o ext/mro/mro.o -DSPEC -DNDEBUG -DPERL_CORE -I. -Idist/IO -Icpan/Time-HiRes -Icpan/HTML-Parser -Iext/re -Ispecrand -DDOUBLE_SLASHES_SPECIAL=0 -DSPEC_AUTO_SUPPRESS_OPENMP -D_LARGE_FILES -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64  -g -O3 -march=native        -DSPEC_LINUX_X64  -fno-strict-aliasing -fno-unsafe-math-optimizations -fno-finite-math-only -fgnu89-inline -fcommon     -DSPEC_LP64  ext/mro/mro.c
+In file included from ext/mro/mro.c:13:
+./perl.h:3621:9: warning: undefining "__has_builtin"
+ 3621 | # undef __has_builtin
+      |         ^~~~~~~~~~~~~
+/usr/bin/gcc     -std=c99   -m64 -c -o ext/PerlIO-scalar/scalar.o -DSPEC -DNDEBUG -DPERL_CORE -I. -Idist/IO -Icpan/Time-HiRes -Icpan/HTML-Parser -Iext/re -Ispecrand -DDOUBLE_SLASHES_SPECIAL=0 -DSPEC_AUTO_SUPPRESS_OPENMP -D_LARGE_FILES -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64  -g -O3 -march=native        -DSPEC_LINUX_X64  -fno-strict-aliasing -fno-unsafe-math-optimizations -fno-finite-math-only -fgnu89-inline -fcommon     -DSPEC_LP64  ext/PerlIO-scalar/scalar.c
+In file included from ext/PerlIO-scalar/scalar.c:16:
+./perl.h:3621:9: warning: undefining "__has_builtin"
+ 3621 | # undef __has_builtin
+      |         ^~~~~~~~~~~~~
+/usr/bin/gcc     -std=c99   -m64 -c -o ext/arybase/arybase.o -DSPEC -DNDEBUG -DPERL_CORE -I. -Idist/IO -Icpan/Time-HiRes -Icpan/HTML-Parser -Iext/re -Ispecrand -DDOUBLE_SLASHES_SPECIAL=0 -DSPEC_AUTO_SUPPRESS_OPENMP -D_LARGE_FILES -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64  -g -O3 -march=native        -DSPEC_LINUX_X64  -fno-strict-aliasing -fno-unsafe-math-optimizations -fno-finite-math-only -fgnu89-inline -fcommon     -DSPEC_LP64  ext/arybase/arybase.c
+In file included from ext/arybase/arybase.c:17:
+./perl.h:3621:9: warning: undefining "__has_builtin"
+ 3621 | # undef __has_builtin
+      |         ^~~~~~~~~~~~~
+/usr/bin/gcc     -std=c99   -m64 -c -o regcomp.o -DSPEC -DNDEBUG -DPERL_CORE -I. -Idist/IO -Icpan/Time-HiRes -Icpan/HTML-Parser -Iext/re -Ispecrand -DDOUBLE_SLASHES_SPECIAL=0 -DSPEC_AUTO_SUPPRESS_OPENMP -D_LARGE_FILES -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64  -g -O3 -march=native        -DSPEC_LINUX_X64  -fno-strict-aliasing -fno-unsafe-math-optimizations -fno-finite-math-only -fgnu89-inline -fcommon     -DSPEC_LP64  regcomp.c
+In file included from regcomp.c:75:
+perl.h:3621:9: warning: undefining "__has_builtin"
+ 3621 | # undef __has_builtin
+      |         ^~~~~~~~~~~~~
+/usr/bin/gcc     -std=c99   -m64 -c -o cpan/HTML-Parser/Parser.o -DSPEC -DNDEBUG -DPERL_CORE -I. -Idist/IO -Icpan/Time-HiRes -Icpan/HTML-Parser -Iext/re -Ispecrand -DDOUBLE_SLASHES_SPECIAL=0 -DSPEC_AUTO_SUPPRESS_OPENMP -D_LARGE_FILES -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64  -g -O3 -march=native        -DSPEC_LINUX_X64  -fno-strict-aliasing -fno-unsafe-math-optimizations -fno-finite-math-only -fgnu89-inline -fcommon     -DSPEC_LP64  cpan/HTML-Parser/Parser.c
+In file included from cpan/HTML-Parser/Parser.c:35:
+./perl.h:3621:9: warning: undefining "__has_builtin"
+ 3621 | # undef __has_builtin
+      |         ^~~~~~~~~~~~~
+/usr/bin/gcc     -std=c99   -m64 -c -o toke.o -DSPEC -DNDEBUG -DPERL_CORE -I. -Idist/IO -Icpan/Time-HiRes -Icpan/HTML-Parser -Iext/re -Ispecrand -DDOUBLE_SLASHES_SPECIAL=0 -DSPEC_AUTO_SUPPRESS_OPENMP -D_LARGE_FILES -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64  -g -O3 -march=native        -DSPEC_LINUX_X64  -fno-strict-aliasing -fno-unsafe-math-optimizations -fno-finite-math-only -fgnu89-inline -fcommon     -DSPEC_LP64  toke.c
+In file included from toke.c:40:
+perl.h:3621:9: warning: undefining "__has_builtin"
+ 3621 | # undef __has_builtin
+      |         ^~~~~~~~~~~~~
+/usr/bin/gcc     -std=c99   -m64 -c -o ext/PerlIO-via/via.o -DSPEC -DNDEBUG -DPERL_CORE -I. -Idist/IO -Icpan/Time-HiRes -Icpan/HTML-Parser -Iext/re -Ispecrand -DDOUBLE_SLASHES_SPECIAL=0 -DSPEC_AUTO_SUPPRESS_OPENMP -D_LARGE_FILES -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64  -g -O3 -march=native        -DSPEC_LINUX_X64  -fno-strict-aliasing -fno-unsafe-math-optimizations -fno-finite-math-only -fgnu89-inline -fcommon     -DSPEC_LP64  ext/PerlIO-via/via.c
+In file included from ext/PerlIO-via/via.c:15:
+./perl.h:3621:9: warning: undefining "__has_builtin"
+ 3621 | # undef __has_builtin
+      |         ^~~~~~~~~~~~~
+/usr/bin/gcc     -std=c99   -m64 -c -o ext/File-Glob/Glob.o -DSPEC -DNDEBUG -DPERL_CORE -I. -Idist/IO -Icpan/Time-HiRes -Icpan/HTML-Parser -Iext/re -Ispecrand -DDOUBLE_SLASHES_SPECIAL=0 -DSPEC_AUTO_SUPPRESS_OPENMP -D_LARGE_FILES -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64  -g -O3 -march=native        -DSPEC_LINUX_X64  -fno-strict-aliasing -fno-unsafe-math-optimizations -fno-finite-math-only -fgnu89-inline -fcommon     -DSPEC_LP64  ext/File-Glob/Glob.c
+In file included from ext/File-Glob/Glob.c:17:
+./perl.h:3621:9: warning: undefining "__has_builtin"
+ 3621 | # undef __has_builtin
+      |         ^~~~~~~~~~~~~
+/usr/bin/gcc     -std=c99   -m64 -c -o ext/Hash-Util/Util.o -DSPEC -DNDEBUG -DPERL_CORE -I. -Idist/IO -Icpan/Time-HiRes -Icpan/HTML-Parser -Iext/re -Ispecrand -DDOUBLE_SLASHES_SPECIAL=0 -DSPEC_AUTO_SUPPRESS_OPENMP -D_LARGE_FILES -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64  -g -O3 -march=native        -DSPEC_LINUX_X64  -fno-strict-aliasing -fno-unsafe-math-optimizations -fno-finite-math-only -fgnu89-inline -fcommon     -DSPEC_LP64  ext/Hash-Util/Util.c
+In file included from ext/Hash-Util/Util.c:13:
+./perl.h:3621:9: warning: undefining "__has_builtin"
+ 3621 | # undef __has_builtin
+      |         ^~~~~~~~~~~~~
+/usr/bin/gcc     -std=c99   -m64 -c -o ext/File-Glob/bsd_glob.o -DSPEC -DNDEBUG -DPERL_CORE -I. -Idist/IO -Icpan/Time-HiRes -Icpan/HTML-Parser -Iext/re -Ispecrand -DDOUBLE_SLASHES_SPECIAL=0 -DSPEC_AUTO_SUPPRESS_OPENMP -D_LARGE_FILES -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64  -g -O3 -march=native        -DSPEC_LINUX_X64  -fno-strict-aliasing -fno-unsafe-math-optimizations -fno-finite-math-only -fgnu89-inline -fcommon     -DSPEC_LP64  ext/File-Glob/bsd_glob.c
+In file included from ext/File-Glob/bsd_glob.c:69:
+./perl.h:3621:9: warning: undefining "__has_builtin"
+ 3621 | # undef __has_builtin
+      |         ^~~~~~~~~~~~~
+/usr/bin/gcc     -std=c99   -m64 -c -o ext/Tie-Hash-NamedCapture/NamedCapture.o -DSPEC -DNDEBUG -DPERL_CORE -I. -Idist/IO -Icpan/Time-HiRes -Icpan/HTML-Parser -Iext/re -Ispecrand -DDOUBLE_SLASHES_SPECIAL=0 -DSPEC_AUTO_SUPPRESS_OPENMP -D_LARGE_FILES -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64  -g -O3 -march=native        -DSPEC_LINUX_X64  -fno-strict-aliasing -fno-unsafe-math-optimizations -fno-finite-math-only -fgnu89-inline -fcommon     -DSPEC_LP64  ext/Tie-Hash-NamedCapture/NamedCapture.c
+In file included from ext/Tie-Hash-NamedCapture/NamedCapture.c:15:
+./perl.h:3621:9: warning: undefining "__has_builtin"
+ 3621 | # undef __has_builtin
+      |         ^~~~~~~~~~~~~
+/usr/bin/gcc     -std=c99   -m64 -c -o ext/Hash-Util-FieldHash/FieldHash.o -DSPEC -DNDEBUG -DPERL_CORE -I. -Idist/IO -Icpan/Time-HiRes -Icpan/HTML-Parser -Iext/re -Ispecrand -DDOUBLE_SLASHES_SPECIAL=0 -DSPEC_AUTO_SUPPRESS_OPENMP -D_LARGE_FILES -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64  -g -O3 -march=native        -DSPEC_LINUX_X64  -fno-strict-aliasing -fno-unsafe-math-optimizations -fno-finite-math-only -fgnu89-inline -fcommon     -DSPEC_LP64  ext/Hash-Util-FieldHash/FieldHash.c
+In file included from ext/Hash-Util-FieldHash/FieldHash.c:13:
+./perl.h:3621:9: warning: undefining "__has_builtin"
+ 3621 | # undef __has_builtin
+      |         ^~~~~~~~~~~~~
+/usr/bin/gcc     -std=c99   -m64 -c -o dist/Storable/Storable.o -DSPEC -DNDEBUG -DPERL_CORE -I. -Idist/IO -Icpan/Time-HiRes -Icpan/HTML-Parser -Iext/re -Ispecrand -DDOUBLE_SLASHES_SPECIAL=0 -DSPEC_AUTO_SUPPRESS_OPENMP -D_LARGE_FILES -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64  -g -O3 -march=native        -DSPEC_LINUX_X64  -fno-strict-aliasing -fno-unsafe-math-optimizations -fno-finite-math-only -fgnu89-inline -fcommon     -DSPEC_LP64  dist/Storable/Storable.c
+In file included from dist/Storable/Storable.c:26:
+./perl.h:3621:9: warning: undefining "__has_builtin"
+ 3621 | # undef __has_builtin
+      |         ^~~~~~~~~~~~~
+/usr/bin/gcc     -std=c99   -m64 -c -o cpan/Scalar-List-Utils/ListUtil.o -DSPEC -DNDEBUG -DPERL_CORE -I. -Idist/IO -Icpan/Time-HiRes -Icpan/HTML-Parser -Iext/re -Ispecrand -DDOUBLE_SLASHES_SPECIAL=0 -DSPEC_AUTO_SUPPRESS_OPENMP -D_LARGE_FILES -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64  -g -O3 -march=native        -DSPEC_LINUX_X64  -fno-strict-aliasing -fno-unsafe-math-optimizations -fno-finite-math-only -fgnu89-inline -fcommon     -DSPEC_LP64  cpan/Scalar-List-Utils/ListUtil.c
+In file included from cpan/Scalar-List-Utils/ListUtil.c:21:
+./perl.h:3621:9: warning: undefining "__has_builtin"
+ 3621 | # undef __has_builtin
+      |         ^~~~~~~~~~~~~
+/usr/bin/gcc     -std=c99   -m64 -c -o ext/re/re_exec.o -DSPEC -DNDEBUG -DPERL_CORE -I. -Idist/IO -Icpan/Time-HiRes -Icpan/HTML-Parser -Iext/re -Ispecrand -DDOUBLE_SLASHES_SPECIAL=0 -DSPEC_AUTO_SUPPRESS_OPENMP -D_LARGE_FILES -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64  -g -O3 -march=native        -DSPEC_LINUX_X64  -fno-strict-aliasing -fno-unsafe-math-optimizations -fno-finite-math-only -fgnu89-inline -fcommon     -DSPEC_LP64  ext/re/re_exec.c
+In file included from ext/re/re_exec.c:78:
+./perl.h:3621:9: warning: undefining "__has_builtin"
+ 3621 | # undef __has_builtin
+      |         ^~~~~~~~~~~~~
+/usr/bin/gcc     -std=c99   -m64 -c -o ext/re/re_comp.o -DSPEC -DNDEBUG -DPERL_CORE -I. -Idist/IO -Icpan/Time-HiRes -Icpan/HTML-Parser -Iext/re -Ispecrand -DDOUBLE_SLASHES_SPECIAL=0 -DSPEC_AUTO_SUPPRESS_OPENMP -D_LARGE_FILES -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64  -g -O3 -march=native        -DSPEC_LINUX_X64  -fno-strict-aliasing -fno-unsafe-math-optimizations -fno-finite-math-only -fgnu89-inline -fcommon     -DSPEC_LP64  ext/re/re_comp.c
+In file included from ext/re/../../regcomp.c:75,
+                 from ext/re/re_comp.c:26:
+ext/re/../../perl.h:3621:9: warning: undefining "__has_builtin"
+ 3621 | # undef __has_builtin
+      |         ^~~~~~~~~~~~~
+/usr/bin/gcc     -std=c99   -m64      -g -O3 -march=native     -DSPEC_LINUX_X64     av.o caretx.o deb.o doio.o doop.o dump.o globals.o gv.o hv.o keywords.o locale.o mg.o numeric.o op.o pad.o perl.o perlapi.o perlio.o perlmain.o perly.o pp.o pp_ctl.o pp_hot.o pp_pack.o pp_sort.o pp_sys.o regcomp.o regexec.o run.o scope.o sv.o taint.o toke.o universal.o utf8.o util.o reentr.o mro_core.o mathoms.o specrand/specrand.o dist/PathTools/Cwd.o dist/Data-Dumper/Dumper.o ext/Devel-Peek/Peek.o cpan/Digest-MD5/MD5.o cpan/Digest-SHA/SHA.o DynaLoader.o dist/IO/IO.o dist/IO/poll.o cpan/MIME-Base64/Base64.o Opcode.o dist/Storable/Storable.o ext/Sys-Hostname/Hostname.o cpan/Time-HiRes/HiRes.o ext/XS-Typemap/stdio.o ext/attributes/attributes.o cpan/HTML-Parser/Parser.o ext/mro/mro.o ext/re/re.o ext/re/re_comp.o ext/re/re_exec.o ext/arybase/arybase.o ext/PerlIO-scalar/scalar.o ext/PerlIO-via/via.o ext/File-Glob/bsd_glob.o ext/File-Glob/Glob.o ext/Hash-Util/Util.o ext/Hash-Util-FieldHash/FieldHash.o ext/Tie-Hash-NamedCapture/
+NamedCapture.o cpan/Scalar-List-Utils/ListUtil.o             -lm         -o perlbench_r  
+Stop make command: 2024-10-24 11:51:21 (1729770681.78932)
+Elapsed time for make command: 00:00:17 (17.3815958499908)
+Issuing options command 'specmake --output-sync --jobs=8 options'
+Start options command: 2024-10-24 11:51:21 (1729770681.79265)
+COMP: "/usr/bin/gcc     -std=c99   -m64 -c -o options.o -DSPEC -DNDEBUG -DPERL_CORE -I. -Idist/IO -Icpan/Time-HiRes -Icpan/HTML-Parser -Iext/re -Ispecrand -DDOUBLE_SLASHES_SPECIAL=0 -DSPEC_AUTO_SUPPRESS_OPENMP -D_LARGE_FILES -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64  -g -O3 -march=native        -DSPEC_LINUX_X64  -fno-strict-aliasing -fno-unsafe-math-optimizations -fno-finite-math-only -fgnu89-inline -fcommon     -DSPEC_LP64  <source>"
+C: CC="/usr/bin/gcc     -std=c99   -m64"
+C: COBJOPT="-c -o options"
+P: CPUFLAGS="-DSPEC -DNDEBUG"
+P: BENCH_FLAGS="-DPERL_CORE -I. -Idist/IO -Icpan/Time-HiRes -Icpan/HTML-Parser -Iext/re -Ispecrand -DDOUBLE_SLASHES_SPECIAL=0 -DSPEC_AUTO_SUPPRESS_OPENMP -D_LARGE_FILES -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64"
+P: BENCH_CFLAGS=""
+O: OPTIMIZE="-g -O3 -march=native"
+O: COPTIMIZE=""
+P: PORTABILITY="-DSPEC_LINUX_X64"
+P: CPORTABILITY=""
+O: EXTRA_CFLAGS="-fno-strict-aliasing -fno-unsafe-math-optimizations -fno-finite-math-only -fgnu89-inline -fcommon"
+O: EXTRA_OPTIMIZE=""
+O: EXTRA_COPTIMIZE=""
+P: EXTRA_PORTABILITY="-DSPEC_LP64"
+P: EXTRA_CPORTABILITY=""
+LINK: "/usr/bin/gcc     -std=c99   -m64      -g -O3 -march=native     -DSPEC_LINUX_X64     <objects>   -lm         -o options  "
+C: LD="/usr/bin/gcc     -std=c99   -m64"
+O: OPTIMIZE="-g -O3 -march=native"
+P: PORTABILITY="-DSPEC_LINUX_X64"
+C: MATH_LIBS="-lm"
+C: LDOUT="-o options"
+Stop options command: 2024-10-24 11:51:21 (1729770681.97723)
+Elapsed time for options command: 00:00:00 (0.184576034545898)
+Issuing compiler-version command 'specmake --output-sync --jobs=8 compiler-version'
+Start compiler-version command: 2024-10-24 11:51:21 (1729770681.98124)
+ CC_VERSION_OPTION:
+gcc (Ubuntu 13.2.0-23ubuntu4) 13.2.0
+Copyright (C) 2023 Free Software Foundation, Inc.
+This is free software; see the source for copying conditions.  There is NO
+warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
+Stop compiler-version command: 2024-10-24 11:51:22 (1729770682.1723)
+Elapsed time for compiler-version command: 00:00:00 (0.191051006317139)
+  Compile for '500.perlbench_r' ended at: 2024-10-24 11:51:22 (1729770682)
+  Elapsed compile for '500.perlbench_r': 00:00:18 (18)
+Wrote to makefile '/home/tdx/speccpu2017/tmp/CPU2017.013.0/options.500.perlbench_r.base/Makefile.deps':
+# End dependencies
+# These are the build dependencies
+$(addsuffix $(OBJ), $(basename XSUB.h)): XSUB.h perlapi.h
+$(addsuffix $(OBJ), $(basename av.c)): av.c EXTERN.h av.h config.h cop.h cv.h embed.h embedvar.h form.h gv.h handy.h hv.h intrpvar.h iperlsys.h mg.h op.h opcode.h opnames.h overload.h pad.h parser.h patchlevel.h perl-orig-config.h perl.h perlio.h perlvars.h perly.h pp.h pp_proto.h proto.h regexp.h scope.h spec_config.h sv.h thread.h utf8.h util.h uudmap.h warnings.h
+$(addsuffix $(OBJ), $(basename config.h)): config.h perl-orig-config.h spec_config.h
+$(addsuffix $(OBJ), $(basename cpan/Digest-SHA/src/sha.c)): cpan/Digest-SHA/src/sha.c cpan/Digest-SHA/src/sha.h cpan/Digest-SHA/src/sha64bit.c cpan/Digest-SHA/src/sha64bit.h
+$(addsuffix $(OBJ), $(basename deb.c)): deb.c EXTERN.h av.h config.h cop.h cv.h embed.h embedvar.h form.h gv.h handy.h hv.h intrpvar.h iperlsys.h mg.h op.h opcode.h opnames.h overload.h pad.h parser.h patchlevel.h perl-orig-config.h perl.h perlio.h perlvars.h perly.h pp.h pp_proto.h proto.h regexp.h scope.h spec_config.h sv.h thread.h utf8.h util.h uudmap.h warnings.h
+$(addsuffix $(OBJ), $(basename doio.c)): doio.c EXTERN.h av.h config.h cop.h cv.h embed.h embedvar.h form.h gv.h handy.h hv.h intrpvar.h iperlsys.h mg.h op.h opcode.h opnames.h overload.h pad.h parser.h patchlevel.h perl-orig-config.h perl.h perlio.h perlvars.h perly.h pp.h pp_proto.h proto.h regexp.h scope.h spec_config.h sv.h thread.h utf8.h util.h uudmap.h warnings.h
+$(addsuffix $(OBJ), $(basename doop.c)): doop.c EXTERN.h av.h config.h cop.h cv.h embed.h embedvar.h form.h gv.h handy.h hv.h intrpvar.h iperlsys.h mg.h op.h opcode.h opnames.h overload.h pad.h parser.h patchlevel.h perl-orig-config.h perl.h perlio.h perlvars.h perly.h pp.h pp_proto.h proto.h regexp.h scope.h spec_config.h sv.h thread.h utf8.h util.h uudmap.h warnings.h
+$(addsuffix $(OBJ), $(basename dump.c)): dump.c EXTERN.h av.h config.h cop.h cv.h embed.h embedvar.h form.h gv.h handy.h hv.h intrpvar.h iperlsys.h mg.h mg_names.inc op.h opcode.h opnames.h overload.h pad.h parser.h patchlevel.h perl-orig-config.h perl.h perlio.h perlvars.h perly.h pp.h pp_proto.h proto.h regcharclass.h regcomp.h regexp.h regnodes.h scope.h spec_config.h sv.h thread.h utf8.h util.h uudmap.h warnings.h
+$(addsuffix $(OBJ), $(basename ext/Cwd/Cwd.c)): ext/Cwd/Cwd.c EXTERN.h XSUB.h av.h config.h cop.h cv.h embed.h embedvar.h form.h gv.h handy.h hv.h intrpvar.h iperlsys.h mg.h op.h opcode.h opnames.h overload.h pad.h parser.h patchlevel.h perl-orig-config.h perl.h perlapi.h perlio.h perlvars.h perly.h pp.h pp_proto.h proto.h regexp.h scope.h spec_config.h sv.h thread.h utf8.h util.h uudmap.h warnings.h
+$(addsuffix $(OBJ), $(basename ext/Data/Dumper/Dumper.c)): ext/Data/Dumper/Dumper.c EXTERN.h XSUB.h av.h config.h cop.h cv.h embed.h embedvar.h form.h gv.h handy.h hv.h intrpvar.h iperlsys.h mg.h op.h opcode.h opnames.h overload.h pad.h parser.h patchlevel.h perl-orig-config.h perl.h perlapi.h perlio.h perlvars.h perly.h pp.h pp_proto.h proto.h regexp.h scope.h spec_config.h sv.h thread.h utf8.h util.h uudmap.h warnings.h
+$(addsuffix $(OBJ), $(basename ext/Devel/Peek/Peek.c)): ext/Devel/Peek/Peek.c EXTERN.h XSUB.h av.h config.h cop.h cv.h embed.h embedvar.h form.h gv.h handy.h hv.h intrpvar.h iperlsys.h mg.h op.h opcode.h opnames.h overload.h pad.h parser.h patchlevel.h perl-orig-config.h perl.h perlapi.h perlio.h perlvars.h perly.h pp.h pp_proto.h proto.h regexp.h scope.h spec_config.h sv.h thread.h utf8.h util.h uudmap.h warnings.h
+$(addsuffix $(OBJ), $(basename ext/Digest/MD5/MD5.c)): ext/Digest/MD5/MD5.c EXTERN.h XSUB.h av.h config.h cop.h cv.h embed.h embedvar.h form.h gv.h handy.h hv.h intrpvar.h iperlsys.h mg.h op.h opcode.h opnames.h overload.h pad.h parser.h patchlevel.h perl-orig-config.h perl.h perlio.h perlvars.h perly.h pp.h pp_proto.h proto.h regexp.h scope.h spec_config.h sv.h thread.h utf8.h util.h uudmap.h warnings.h
+$(addsuffix $(OBJ), $(basename ext/Digest/SHA/SHA.c)): ext/Digest/SHA/SHA.c EXTERN.h XSUB.h av.h config.h cop.h cpan/Digest-SHA/src/sha.c cv.h embed.h embedvar.h form.h gv.h handy.h hv.h intrpvar.h iperlsys.h mg.h op.h opcode.h opnames.h overload.h pad.h parser.h patchlevel.h perl-orig-config.h perl.h perlio.h perlvars.h perly.h pp.h pp_proto.h proto.h regexp.h scope.h spec_config.h sv.h thread.h utf8.h util.h uudmap.h warnings.h
+$(addsuffix $(OBJ), $(basename ext/File-Glob/Glob.c)): ext/File-Glob/Glob.c av.h config.h cop.h cv.h embed.h embedvar.h ext/File-Glob/const-c.inc form.h gv.h handy.h hv.h intrpvar.h iperlsys.h mg.h op.h opcode.h opnames.h overload.h pad.h parser.h patchlevel.h perl-orig-config.h perl.h perlio.h perlvars.h perly.h pp.h pp_proto.h proto.h regexp.h scope.h spec_config.h sv.h thread.h utf8.h util.h uudmap.h warnings.h
+$(addsuffix $(OBJ), $(basename ext/IO/IO.c)): ext/IO/IO.c EXTERN.h XSUB.h av.h config.h cop.h cv.h embed.h embedvar.h ext/IO/poll.h form.h gv.h handy.h hv.h intrpvar.h iperlsys.h mg.h op.h opcode.h opnames.h overload.h pad.h parser.h patchlevel.h perl-orig-config.h perl.h perlapi.h perlio.h perlvars.h perly.h pp.h pp_proto.h proto.h regexp.h scope.h spec_config.h sv.h thread.h utf8.h util.h uudmap.h warnings.h
+$(addsuffix $(OBJ), $(basename ext/IO/poll.c)): ext/IO/poll.c EXTERN.h XSUB.h av.h config.h cop.h cv.h embed.h embedvar.h ext/IO/poll.h form.h gv.h handy.h hv.h intrpvar.h iperlsys.h mg.h op.h opcode.h opnames.h overload.h pad.h parser.h patchlevel.h perl-orig-config.h perl.h perlapi.h perlio.h perlvars.h perly.h pp.h pp_proto.h proto.h regexp.h scope.h spec_config.h sv.h thread.h utf8.h util.h uudmap.h warnings.h
+$(addsuffix $(OBJ), $(basename ext/MIME/Base64/Base64.c)): ext/MIME/Base64/Base64.c EXTERN.h XSUB.h av.h config.h cop.h cv.h embed.h embedvar.h form.h gv.h handy.h hv.h intrpvar.h iperlsys.h mg.h op.h opcode.h opnames.h overload.h pad.h parser.h patchlevel.h perl-orig-config.h perl.h perlapi.h perlio.h perlvars.h perly.h pp.h pp_proto.h proto.h regexp.h scope.h spec_config.h sv.h thread.h utf8.h util.h uudmap.h warnings.h
+$(addsuffix $(OBJ), $(basename ext/Storable/Storable.c)): ext/Storable/Storable.c EXTERN.h XSUB.h av.h config.h cop.h cv.h embed.h embedvar.h form.h gv.h handy.h hv.h intrpvar.h iperlsys.h mg.h op.h opcode.h opnames.h overload.h pad.h parser.h patchlevel.h perl-orig-config.h perl.h perlapi.h perlio.h perlvars.h perly.h pp.h pp_proto.h proto.h regexp.h scope.h spec_config.h sv.h thread.h utf8.h util.h uudmap.h warnings.h
+$(addsuffix $(OBJ), $(basename ext/Sys/Hostname/Hostname.c)): ext/Sys/Hostname/Hostname.c EXTERN.h XSUB.h av.h config.h cop.h cv.h embed.h embedvar.h form.h gv.h handy.h hv.h intrpvar.h iperlsys.h mg.h op.h opcode.h opnames.h overload.h pad.h parser.h patchlevel.h perl-orig-config.h perl.h perlapi.h perlio.h perlvars.h perly.h pp.h pp_proto.h proto.h regexp.h scope.h spec_config.h sv.h thread.h utf8.h util.h uudmap.h warnings.h
+$(addsuffix $(OBJ), $(basename ext/Time/HiRes/HiRes.c)): ext/Time/HiRes/HiRes.c EXTERN.h XSUB.h av.h config.h cop.h cv.h embed.h embedvar.h ext/Time/HiRes/const-c.inc form.h gv.h handy.h hv.h intrpvar.h iperlsys.h mg.h op.h opcode.h opnames.h overload.h pad.h parser.h patchlevel.h perl-orig-config.h perl.h perlapi.h perlio.h perlvars.h perly.h pp.h pp_proto.h proto.h regexp.h scope.h spec_config.h sv.h thread.h utf8.h util.h uudmap.h warnings.h
+$(addsuffix $(OBJ), $(basename ext/attrs/attrs.c)): ext/attrs/attrs.c EXTERN.h XSUB.h av.h config.h cop.h cv.h embed.h embedvar.h form.h gv.h handy.h hv.h intrpvar.h iperlsys.h mg.h op.h opcode.h opnames.h overload.h pad.h parser.h patchlevel.h perl-orig-config.h perl.h perlapi.h perlio.h perlvars.h perly.h pp.h pp_proto.h proto.h regexp.h scope.h spec_config.h sv.h thread.h utf8.h util.h uudmap.h warnings.h
+$(addsuffix $(OBJ), $(basename ext/re/re_comp.c)): ext/re/re_comp.c regcomp.c
+$(addsuffix $(OBJ), $(basename ext/re/re_exec.c)): ext/re/re_exec.c invlist_inline.h
+$(addsuffix $(OBJ), $(basename globals.c)): globals.c INTERN.h av.h config.h cop.h cv.h embed.h embedvar.h form.h gv.h handy.h hv.h intrpvar.h iperlsys.h mg.h op.h opcode.h opnames.h overload.h pad.h parser.h patchlevel.h perl-orig-config.h perl.h perlapi.h perlio.h perlvars.h perly.h pp.h pp_proto.h proto.h regexp.h scope.h spec_config.h sv.h thread.h utf8.h util.h uudmap.h warnings.h
+$(addsuffix $(OBJ), $(basename gv.c)): gv.c EXTERN.h av.h config.h cop.h cv.h embed.h embedvar.h form.h gv.h handy.h hv.h intrpvar.h iperlsys.h mg.h op.h opcode.h opnames.h overload.h overload.inc pad.h parser.h patchlevel.h perl-orig-config.h perl.h perlio.h perlvars.h perly.h pp.h pp_proto.h proto.h regexp.h scope.h spec_config.h sv.h thread.h utf8.h util.h uudmap.h warnings.h
+$(addsuffix $(OBJ), $(basename hv.c)): hv.c EXTERN.h av.h config.h cop.h cv.h embed.h embedvar.h form.h gv.h handy.h hv.h intrpvar.h iperlsys.h mg.h op.h opcode.h opnames.h overload.h pad.h parser.h patchlevel.h perl-orig-config.h perl.h perlio.h perlvars.h perly.h pp.h pp_proto.h proto.h regexp.h scope.h spec_config.h sv.h thread.h utf8.h util.h uudmap.h warnings.h
+$(addsuffix $(OBJ), $(basename iperlsys.h)): iperlsys.h perlio.h
+$(addsuffix $(OBJ), $(basename locale.c)): locale.c EXTERN.h av.h config.h cop.h cv.h embed.h embedvar.h form.h gv.h handy.h hv.h intrpvar.h iperlsys.h mg.h op.h opcode.h opnames.h overload.h pad.h parser.h patchlevel.h perl-orig-config.h perl.h perlio.h perlvars.h perly.h pp.h pp_proto.h proto.h regexp.h scope.h spec_config.h sv.h thread.h utf8.h util.h uudmap.h warnings.h
+$(addsuffix $(OBJ), $(basename mg.c)): mg.c EXTERN.h av.h config.h cop.h cv.h embed.h embedvar.h form.h gv.h handy.h hv.h intrpvar.h iperlsys.h mg.h op.h opcode.h opnames.h overload.h pad.h parser.h patchlevel.h perl-orig-config.h perl.h perlio.h perlvars.h perly.h pp.h pp_proto.h proto.h regexp.h scope.h spec_config.h sv.h thread.h utf8.h util.h uudmap.h warnings.h
+$(addsuffix $(OBJ), $(basename non-core-ext/HTML/Parser/Parser.c)): non-core-ext/HTML/Parser/Parser.c EXTERN.h XSUB.h av.h config.h cop.h cv.h embed.h embedvar.h form.h gv.h handy.h hv.h intrpvar.h iperlsys.h mg.h non-core-ext/HTML/Parser/hctype.h non-core-ext/HTML/Parser/hparser.c non-core-ext/HTML/Parser/hparser.h non-core-ext/HTML/Parser/parser-util.c non-core-ext/HTML/Parser/tokenpos.h op.h opcode.h opnames.h overload.h pad.h parser.h patchlevel.h perl-orig-config.h perl.h perlapi.h perlio.h perlvars.h perly.h pp.h pp_proto.h proto.h regexp.h scope.h spec_config.h sv.h thread.h utf8.h util.h uudmap.h warnings.h
+$(addsuffix $(OBJ), $(basename non-core-ext/HTML/Parser/hparser.c)): non-core-ext/HTML/Parser/hparser.c hctype.h tokenpos.h
+$(addsuffix $(OBJ), $(basename numeric.c)): numeric.c EXTERN.h av.h config.h cop.h cv.h embed.h embedvar.h form.h gv.h handy.h hv.h intrpvar.h iperlsys.h mg.h op.h opcode.h opnames.h overload.h pad.h parser.h patchlevel.h perl-orig-config.h perl.h perlio.h perlvars.h perly.h pp.h pp_proto.h proto.h regexp.h scope.h spec_config.h sv.h thread.h utf8.h util.h uudmap.h warnings.h
+$(addsuffix $(OBJ), $(basename op.c)): op.c EXTERN.h XSUB.h av.h config.h cop.h cv.h embed.h embedvar.h form.h gv.h handy.h hv.h intrpvar.h iperlsys.h keywords.h mg.h op.h opcode.h opnames.h overload.h pad.h parser.h patchlevel.h perl-orig-config.h perl.h perlapi.h perlio.h perlvars.h perly.h pp.h pp_proto.h proto.h regexp.h scope.h spec_config.h sv.h thread.h utf8.h util.h uudmap.h warnings.h
+$(addsuffix $(OBJ), $(basename pad.c)): pad.c EXTERN.h av.h config.h cop.h cv.h embed.h embedvar.h form.h gv.h handy.h hv.h intrpvar.h iperlsys.h mg.h op.h opcode.h opnames.h overload.h pad.h parser.h patchlevel.h perl-orig-config.h perl.h perlio.h perlvars.h perly.h pp.h pp_proto.h proto.h regexp.h scope.h spec_config.h sv.h thread.h utf8.h util.h uudmap.h warnings.h
+$(addsuffix $(OBJ), $(basename perl.c)): perl.c EXTERN.h av.h config.h cop.h cv.h embed.h embedvar.h form.h gv.h handy.h hv.h intrpvar.h iperlsys.h mg.h op.h opcode.h opnames.h overload.h pad.h parser.h patchlevel.h perl-orig-config.h perl.h perlio.h perlvars.h perly.h pp.h pp_proto.h proto.h regexp.h scope.h spec_config.h sv.h thread.h utf8.h util.h uudmap.h warnings.h
+$(addsuffix $(OBJ), $(basename perlapi.c)): perlapi.c EXTERN.h av.h config.h cop.h cv.h embed.h embedvar.h form.h gv.h handy.h hv.h intrpvar.h iperlsys.h mg.h op.h opcode.h opnames.h overload.h pad.h parser.h patchlevel.h perl-orig-config.h perl.h perlapi.h perlio.h perlvars.h perly.h pp.h pp_proto.h proto.h regexp.h scope.h spec_config.h sv.h thread.h utf8.h util.h uudmap.h warnings.h
+$(addsuffix $(OBJ), $(basename perlhost.h)): perlhost.h iperlsys.h perlio.h vdir.h vmem.h
+$(addsuffix $(OBJ), $(basename perlio.c)): perlio.c EXTERN.h XSUB.h av.h config.h cop.h cv.h embed.h embedvar.h form.h gv.h handy.h hv.h intrpvar.h iperlsys.h mg.h op.h opcode.h opnames.h overload.h pad.h parser.h patchlevel.h perl-orig-config.h perl.h perlapi.h perlio.h perliol.h perlsdio.h perlvars.h perly.h pp.h pp_proto.h proto.h regexp.h scope.h spec_config.h sv.h thread.h utf8.h util.h uudmap.h warnings.h
+$(addsuffix $(OBJ), $(basename perlmain.c)): perlmain.c EXTERN.h av.h config.h cop.h cv.h embed.h embedvar.h form.h gv.h handy.h hv.h intrpvar.h iperlsys.h mg.h op.h opcode.h opnames.h overload.h pad.h parser.h patchlevel.h perl-orig-config.h perl.h perlio.h perlvars.h perly.h pp.h pp_proto.h proto.h regexp.h scope.h spec_config.h sv.h thread.h utf8.h util.h uudmap.h warnings.h
+$(addsuffix $(OBJ), $(basename perly.c)): perly.c EXTERN.h av.h config.h cop.h cv.h embed.h embedvar.h form.h gv.h handy.h hv.h intrpvar.h iperlsys.h mg.h op.h opcode.h opnames.h overload.h pad.h parser.h patchlevel.h perl-orig-config.h perl.h perlio.h perlvars.h perly.h pp.h pp_proto.h proto.h regexp.h scope.h spec_config.h sv.h thread.h utf8.h util.h uudmap.h warnings.h
+$(addsuffix $(OBJ), $(basename pp.c)): pp.c EXTERN.h av.h config.h cop.h cv.h embed.h embedvar.h form.h gv.h handy.h hv.h intrpvar.h iperlsys.h keywords.h mg.h op.h opcode.h opnames.h overload.h pad.h parser.h patchlevel.h perl-orig-config.h perl.h perlio.h perlvars.h perly.h pp.h pp_proto.h proto.h reentr.h regexp.h scope.h spec_config.h specrand/specrand.h sv.h thread.h utf8.h util.h uudmap.h warnings.h
+$(addsuffix $(OBJ), $(basename pp_ctl.c)): pp_ctl.c EXTERN.h av.h config.h cop.h cv.h embed.h embedvar.h form.h gv.h handy.h hv.h intrpvar.h iperlsys.h mg.h op.h opcode.h opnames.h overload.h pad.h parser.h patchlevel.h perl-orig-config.h perl.h perlio.h perlvars.h perly.h pp.h pp_proto.h proto.h regexp.h scope.h spec_config.h sv.h thread.h utf8.h util.h uudmap.h warnings.h
+$(addsuffix $(OBJ), $(basename pp_hot.c)): pp_hot.c EXTERN.h av.h config.h cop.h cv.h embed.h embedvar.h form.h gv.h handy.h hv.h intrpvar.h iperlsys.h mg.h op.h opcode.h opnames.h overload.h pad.h parser.h patchlevel.h perl-orig-config.h perl.h perlio.h perlvars.h perly.h pp.h pp_proto.h proto.h regexp.h scope.h spec_config.h sv.h thread.h utf8.h util.h uudmap.h warnings.h
+$(addsuffix $(OBJ), $(basename pp_pack.c)): pp_pack.c EXTERN.h av.h config.h cop.h cv.h embed.h embedvar.h form.h gv.h handy.h hv.h intrpvar.h iperlsys.h mg.h op.h opcode.h opnames.h overload.h packsizetables.inc pad.h parser.h patchlevel.h perl-orig-config.h perl.h perlio.h perlvars.h perly.h pp.h pp_proto.h proto.h regexp.h scope.h spec_config.h sv.h thread.h utf8.h util.h uudmap.h warnings.h
+$(addsuffix $(OBJ), $(basename pp_sort.c)): pp_sort.c EXTERN.h av.h config.h cop.h cv.h embed.h embedvar.h form.h gv.h handy.h hv.h intrpvar.h iperlsys.h mg.h op.h opcode.h opnames.h overload.h pad.h parser.h patchlevel.h perl-orig-config.h perl.h perlio.h perlvars.h perly.h pp.h pp_proto.h proto.h regexp.h scope.h spec_config.h specrand/specrand.h sv.h thread.h utf8.h util.h uudmap.h warnings.h
+$(addsuffix $(OBJ), $(basename pp_sys.c)): pp_sys.c EXTERN.h av.h config.h cop.h cv.h embed.h embedvar.h form.h gv.h handy.h hv.h intrpvar.h iperlsys.h mg.h op.h opcode.h opnames.h overload.h pad.h parser.h patchlevel.h perl-orig-config.h perl.h perlio.h perlvars.h perly.h pp.h pp_proto.h proto.h reentr.h regexp.h scope.h spec_config.h sv.h thread.h time64.c utf8.h util.h uudmap.h warnings.h
+$(addsuffix $(OBJ), $(basename proto.h)): proto.h pp_proto.h
+$(addsuffix $(OBJ), $(basename reentr.c)): reentr.c EXTERN.h av.h config.h cop.h cv.h embed.h embedvar.h form.h gv.h handy.h hv.h intrpvar.h iperlsys.h mg.h op.h opcode.h opnames.h overload.h pad.h parser.h patchlevel.h perl-orig-config.h perl.h perlio.h perlvars.h perly.h pp.h pp_proto.h proto.h reentr.h regexp.h scope.h spec_config.h sv.h thread.h utf8.h util.h uudmap.h warnings.h
+$(addsuffix $(OBJ), $(basename regcomp.c)): regcomp.c EXTERN.h INTERN.h av.h config.h cop.h cv.h dquote.c embed.h embedvar.h form.h gv.h handy.h hv.h intrpvar.h invlist_inline.h iperlsys.h mg.h op.h opcode.h opnames.h overload.h pad.h parser.h patchlevel.h perl-orig-config.h perl.h perlio.h perlvars.h perly.h pp.h pp_proto.h proto.h regcharclass.h regcomp.h regexp.h regnodes.h scope.h spec_config.h sv.h thread.h utf8.h util.h uudmap.h warnings.h
+$(addsuffix $(OBJ), $(basename regexec.c)): regexec.c EXTERN.h av.h config.h cop.h cv.h embed.h embedvar.h form.h gv.h handy.h hv.h intrpvar.h invlist_inline.h iperlsys.h mg.h op.h opcode.h opnames.h overload.h pad.h parser.h patchlevel.h perl-orig-config.h perl.h perlio.h perlvars.h perly.h pp.h pp_proto.h proto.h regcharclass.h regcomp.h regexp.h regnodes.h scope.h spec_config.h sv.h thread.h utf8.h util.h uudmap.h warnings.h
+$(addsuffix $(OBJ), $(basename run.c)): run.c EXTERN.h av.h config.h cop.h cv.h embed.h embedvar.h form.h gv.h handy.h hv.h intrpvar.h iperlsys.h mg.h op.h opcode.h opnames.h overload.h pad.h parser.h patchlevel.h perl-orig-config.h perl.h perlio.h perlvars.h perly.h pp.h pp_proto.h proto.h regexp.h scope.h spec_config.h sv.h thread.h utf8.h util.h uudmap.h warnings.h
+$(addsuffix $(OBJ), $(basename scope.c)): scope.c EXTERN.h av.h config.h cop.h cv.h embed.h embedvar.h form.h gv.h handy.h hv.h intrpvar.h iperlsys.h mg.h op.h opcode.h opnames.h overload.h pad.h parser.h patchlevel.h perl-orig-config.h perl.h perlio.h perlvars.h perly.h pp.h pp_proto.h proto.h regexp.h scope.h spec_config.h sv.h thread.h utf8.h util.h uudmap.h warnings.h
+$(addsuffix $(OBJ), $(basename sv.c)): sv.c EXTERN.h av.h config.h cop.h cv.h embed.h embedvar.h form.h gv.h handy.h hv.h intrpvar.h iperlsys.h mg.h op.h opcode.h opnames.h overload.h pad.h parser.h patchlevel.h perl-orig-config.h perl.h perlio.h perlvars.h perly.h pp.h pp_proto.h proto.h regcharclass.h regcomp.h regexp.h regnodes.h scope.h spec_config.h sv.h thread.h utf8.h util.h uudmap.h warnings.h
+$(addsuffix $(OBJ), $(basename taint.c)): taint.c EXTERN.h av.h config.h cop.h cv.h embed.h embedvar.h form.h gv.h handy.h hv.h intrpvar.h iperlsys.h mg.h op.h opcode.h opnames.h overload.h pad.h parser.h patchlevel.h perl-orig-config.h perl.h perlio.h perlvars.h perly.h pp.h pp_proto.h proto.h regexp.h scope.h spec_config.h sv.h thread.h utf8.h util.h uudmap.h warnings.h
+$(addsuffix $(OBJ), $(basename toke.c)): toke.c EXTERN.h av.h config.h cop.h cv.h dquote.c embed.h embedvar.h form.h gv.h handy.h hv.h intrpvar.h iperlsys.h keywords.h mg.h op.h opcode.h opnames.h overload.h pad.h parser.h patchlevel.h perl-orig-config.h perl.h perlio.h perlvars.h perly.h pp.h pp_proto.h proto.h regexp.h scope.h spec_config.h sv.h thread.h utf8.h util.h uudmap.h warnings.h
+$(addsuffix $(OBJ), $(basename universal.c)): universal.c EXTERN.h XSUB.h av.h config.h cop.h cv.h embed.h embedvar.h form.h gv.h handy.h hv.h intrpvar.h iperlsys.h mg.h op.h opcode.h opnames.h overload.h pad.h parser.h patchlevel.h perl-orig-config.h perl.h perlapi.h perlio.h perliol.h perlvars.h perly.h pp.h pp_proto.h proto.h regexp.h scope.h spec_config.h sv.h thread.h utf8.h util.h uudmap.h vxs.inc warnings.h
+$(addsuffix $(OBJ), $(basename utf8.c)): utf8.c EXTERN.h av.h config.h cop.h cv.h embed.h embedvar.h form.h gv.h handy.h hv.h intrpvar.h invlist_inline.h iperlsys.h mg.h op.h opcode.h opnames.h overload.h pad.h parser.h patchlevel.h perl-orig-config.h perl.h perlio.h perlvars.h perly.h pp.h pp_proto.h proto.h regexp.h scope.h spec_config.h sv.h thread.h utf8.h util.h uudmap.h warnings.h
+$(addsuffix $(OBJ), $(basename util.c)): util.c EXTERN.h av.h config.h cop.h cv.h embed.h embedvar.h form.h gv.h handy.h hv.h intrpvar.h iperlsys.h mg.h op.h opcode.h opnames.h overload.h pad.h parser.h patchlevel.h perl-orig-config.h perl.h perlio.h perlvars.h perly.h pp.h pp_proto.h proto.h regexp.h scope.h spec_config.h specrand/specrand.h sv.h thread.h utf8.h util.h uudmap.h vutil.c warnings.h
+$(addsuffix $(OBJ), $(basename win32/perllib.c)): win32/perllib.c EXTERN.h XSUB.h av.h config.h cop.h cv.h embed.h embedvar.h form.h gv.h handy.h hv.h intrpvar.h iperlsys.h mg.h op.h opcode.h opnames.h overload.h pad.h parser.h patchlevel.h perl-orig-config.h perl.h perlapi.h perlio.h perlvars.h perly.h pp.h pp_proto.h proto.h regexp.h scope.h spec_config.h sv.h thread.h utf8.h util.h uudmap.h warnings.h
+$(addsuffix $(OBJ), $(basename win32/win32.c)): win32/win32.c EXTERN.h XSUB.h av.h config.h cop.h cv.h embed.h embedvar.h form.h gv.h handy.h hv.h intrpvar.h iperlsys.h mg.h op.h opcode.h opnames.h overload.h pad.h parser.h patchlevel.h perl-orig-config.h perl.h perlapi.h perlio.h perlvars.h perly.h pp.h pp_proto.h proto.h regexp.h scope.h spec_config.h sv.h thread.h utf8.h util.h uudmap.h warnings.h win32/win32iop.h
+$(addsuffix $(OBJ), $(basename win32/win32io.c)): win32/win32io.c EXTERN.h XSUB.h av.h config.h cop.h cv.h embed.h embedvar.h form.h gv.h handy.h hv.h intrpvar.h iperlsys.h mg.h op.h opcode.h opnames.h overload.h pad.h parser.h patchlevel.h perl-orig-config.h perl.h perlapi.h perlio.h perliol.h perlvars.h perly.h pp.h pp_proto.h proto.h regexp.h scope.h spec_config.h sv.h thread.h utf8.h util.h uudmap.h warnings.h
+$(addsuffix $(OBJ), $(basename win32/win32sck.c)): win32/win32sck.c EXTERN.h av.h config.h cop.h cv.h embed.h embedvar.h form.h gv.h handy.h hv.h intrpvar.h iperlsys.h mg.h op.h opcode.h opnames.h overload.h pad.h parser.h patchlevel.h perl-orig-config.h perl.h perlio.h perlvars.h perly.h pp.h pp_proto.h proto.h regexp.h scope.h spec_config.h sv.h thread.h utf8.h util.h uudmap.h warnings.h win32/win32iop.h
+$(addsuffix $(OBJ), $(basename win32/win32thread.c)): win32/win32thread.c EXTERN.h av.h config.h cop.h cv.h embed.h embedvar.h form.h gv.h handy.h hv.h intrpvar.h iperlsys.h mg.h op.h opcode.h opnames.h overload.h pad.h parser.h patchlevel.h perl-orig-config.h perl.h perlio.h perlvars.h perly.h pp.h pp_proto.h proto.h regexp.h scope.h spec_config.h sv.h thread.h utf8.h util.h uudmap.h warnings.h win32/win32.h win32/win32iop.h
+$(addsuffix $(OBJ), $(basename xsutils.c)): xsutils.c EXTERN.h XSUB.h av.h config.h cop.h cv.h embed.h embedvar.h form.h gv.h handy.h hv.h intrpvar.h iperlsys.h mg.h op.h opcode.h opnames.h overload.h pad.h parser.h patchlevel.h perl-orig-config.h perl.h perlapi.h perlio.h perlvars.h perly.h pp.h pp_proto.h proto.h regexp.h scope.h spec_config.h sv.h thread.h utf8.h util.h uudmap.h warnings.h
+Wrote to makefile '/home/tdx/speccpu2017/tmp/CPU2017.013.0/options.500.perlbench_r.base/Makefile.spec':
+TUNE=base
+LABEL=mytest-m64
+NUMBER=500
+NAME=perlbench_r
+SOURCES= av.c caretx.c deb.c doio.c doop.c dump.c globals.c gv.c hv.c \
+	 keywords.c locale.c mg.c numeric.c op.c pad.c perl.c perlapi.c perlio.c \
+	 perlmain.c perly.c pp.c pp_ctl.c pp_hot.c pp_pack.c pp_sort.c pp_sys.c \
+	 regcomp.c regexec.c run.c scope.c sv.c taint.c toke.c universal.c utf8.c \
+	 util.c reentr.c mro_core.c mathoms.c specrand/specrand.c \
+	 dist/PathTools/Cwd.c dist/Data-Dumper/Dumper.c ext/Devel-Peek/Peek.c \
+	 cpan/Digest-MD5/MD5.c cpan/Digest-SHA/SHA.c DynaLoader.c dist/IO/IO.c \
+	 dist/IO/poll.c cpan/MIME-Base64/Base64.c Opcode.c \
+	 dist/Storable/Storable.c ext/Sys-Hostname/Hostname.c \
+	 cpan/Time-HiRes/HiRes.c ext/XS-Typemap/stdio.c \
+	 ext/attributes/attributes.c cpan/HTML-Parser/Parser.c ext/mro/mro.c \
+	 ext/re/re.c ext/re/re_comp.c ext/re/re_exec.c ext/arybase/arybase.c \
+	 ext/PerlIO-scalar/scalar.c ext/PerlIO-via/via.c ext/File-Glob/bsd_glob.c \
+	 ext/File-Glob/Glob.c ext/Hash-Util/Util.c \
+	 ext/Hash-Util-FieldHash/FieldHash.c \
+	 ext/Tie-Hash-NamedCapture/NamedCapture.c \
+	 cpan/Scalar-List-Utils/ListUtil.c
+EXEBASE=perlbench_r
+NEED_MATH=yes
+BENCHLANG=C
+BENCH_FLAGS      = -DPERL_CORE -I. -Idist/IO -Icpan/Time-HiRes -Icpan/HTML-Parser -Iext/re -Ispecrand -DDOUBLE_SLASHES_SPECIAL=0 -DSPEC_AUTO_SUPPRESS_OPENMP -D_LARGE_FILES -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64
+CC               = $(SPECLANG)gcc     -std=c99   -m64
+CC_VERSION_OPTION = --version
+CXX              = $(SPECLANG)g++     -std=c++03 -m64
+CXX_VERSION_OPTION = --version
+EXTRA_CFLAGS     = -fno-strict-aliasing -fno-unsafe-math-optimizations -fno-finite-math-only -fgnu89-inline -fcommon
+EXTRA_PORTABILITY = -DSPEC_LP64
+FC               = $(SPECLANG)gfortran           -m64
+FC_VERSION_OPTION = --version
+OPTIMIZE         = -g -O3 -march=native
+OS               = unix
+PORTABILITY      = -DSPEC_LINUX_X64
+SPECLANG         = /usr/bin/
+absolutely_no_locking = 0
+abstol           = 
+action           = validate
+allow_label_override = 0
+backup_config    = 1
+baseexe          = perlbench_r
+basepeak         = 0
+benchdir         = benchspec
+benchmark        = 500.perlbench_r
+binary           = 
+bindir           = exe
+builddir         = build
+bundleaction     = 
+bundlename       = 
+calctol          = no
+changedhash      = 0
+check_version    = 0
+clean_between_builds = no
+command_add_redirect = 1
+commanderrfile   = speccmds.err
+commandexe       = perlbench_r_base.mytest-m64
+commandfile      = speccmds.cmd
+commandoutfile   = speccmds.out
+commandstdoutfile = speccmds.stdout
+comparedir       = compare
+compareerrfile   = compare.err
+comparefile      = compare.cmd
+compareoutfile   = compare.out
+comparestdoutfile = compare.stdout
+compile_error    = 0
+compwhite        = 
+configdir        = config
+configfile       = tdx2.cfg
+configpath       = /home/tdx/speccpu2017/config/tdx2.cfg
+copies           = 1
+current_range    = 
+datadir          = data
+default_size     = ref
+default_submit   = $command
+delay            = 0
+deletebinaries   = 0
+deletework       = 0
+dependent_workloads = 0
+device           = 
+difflines        = 10
+dirprot          = 511
+discard_power_samples = 0
+enable_monitor   = 1
+endian           = 12345678
+env_vars         = 0
+expand_notes     = 0
+expid            = 
+exthash_bits     = 256
+failflags        = 0
+fake             = 0
+feedback         = 1
+flag_url_base    = https://www.spec.org/auto/cpu2017/Docs/benchmarks/flags/
+floatcompare     = yes
+force_monitor    = 0
+from_runcpu      = 2
+fw_bios          = 
+hostname         = tdx-guest
+http_proxy       = 
+http_timeout     = 30
+hw_avail         = 
+hw_cpu_max_mhz   = 
+hw_cpu_name      = 06/8f
+hw_cpu_nominal_mhz = 
+hw_disk          = 51 GB  add more disk info here
+hw_memory001     = 1.785 GB fixme: If using DDR4, the format is:
+hw_memory002     = 'N GB (N x N GB nRxn PC4-nnnnX-X)'
+hw_model         = 
+hw_nchips        = 1
+hw_ncores        = 
+hw_ncpuorder     = 
+hw_nthreadspercore = 
+hw_ocache        = 
+hw_other         = 
+hw_pcache        = 
+hw_scache        = 
+hw_tcache        = 
+hw_vendor        = My Corporation
+idle_current_range = 
+idledelay        = 10
+idleduration     = 60
+ignore_errors    = 1
+ignore_sigint    = 0
+ignorecase       = 
+info_wrap_columns = 50
+inputdir         = input
+inputgenerrfile  = inputgen.err
+inputgenfile     = inputgen.cmd
+inputgenoutfile  = inputgen.out
+inputgenstdoutfile = inputgen.stdout
+iteration        = -1
+iterations       = 1
+keeptmp          = 0
+label            = mytest-m64
+license_num      = nnn (Your SPEC license number)
+line_width       = 1020
+link_input_files = 1
+locking          = 1
+log              = CPU2017
+log_line_width   = 1020
+log_timestamp    = 0
+logfile          = /home/tdx/speccpu2017/tmp/CPU2017.013/templogs/preenv.intrate.013.0.log
+logname          = /home/tdx/speccpu2017/tmp/CPU2017.013/templogs/preenv.intrate.013.0.log
+lognum           = 013.0
+mail_reports     = all
+mailcompress     = 0
+mailmethod       = smtp
+mailport         = 25
+mailserver       = 127.0.0.1
+mailto           = 
+make             = specmake
+make_no_clobber  = 0
+makefile_template = Makefile.YYYtArGeTYYYspec
+makeflags        = --jobs=8
+max_average_uncertainty = 1
+max_hum_limit    = 0
+max_report_runs  = 3
+max_unknown_uncertainty = 1
+mean_anyway      = 1
+meter_connect_timeout = 30
+meter_errors_default = 5
+meter_errors_percentage = 5
+min_report_runs  = 2
+min_temp_limit   = 20
+minimize_builddirs = 0
+minimize_rundirs = 0
+name             = perlbench_r
+nansupport       = no
+need_math        = yes
+no_input_handler = close
+no_monitor       = 
+noratios         = 0
+note_preenv      = 1
+notes_plat_sysinfo_100 = 
+notes_plat_sysinfo_101 =  Sysinfo program /home/tdx/speccpu2017/bin/sysinfo
+notes_plat_sysinfo_102 =  Rev: r6732 of 2022-11-07 fe91c89b7ed5c36ae2c92cc097bec197
+notes_plat_sysinfo_103 =  running on tdx-guest Thu Oct 24 11:51:02 2024
+notes_plat_sysinfo_104 = 
+notes_plat_sysinfo_105 =  SUT (System Under Test) info as seen by some common utilities.
+notes_plat_sysinfo_107 = 
+notes_plat_sysinfo_108 =  ------------------------------------------------------------
+notes_plat_sysinfo_109 =  Table of contents
+notes_plat_sysinfo_110 =  ------------------------------------------------------------
+notes_plat_sysinfo_111 =   1. uname -a
+notes_plat_sysinfo_112 =   2. w
+notes_plat_sysinfo_113 =   3. Username
+notes_plat_sysinfo_114 =   4. ulimit -a
+notes_plat_sysinfo_115 =   5. sysinfo process ancestry
+notes_plat_sysinfo_116 =   6. /proc/cpuinfo
+notes_plat_sysinfo_117 =   7. lscpu
+notes_plat_sysinfo_118 =   8. numactl --hardware
+notes_plat_sysinfo_119 =   9. /proc/meminfo
+notes_plat_sysinfo_120 =  10. who -r
+notes_plat_sysinfo_121 =  11. Systemd service manager version: systemd 255 (255.4-1ubuntu8.1)
+notes_plat_sysinfo_122 =  12. Services, from systemctl list-unit-files
+notes_plat_sysinfo_123 =  13. Linux kernel boot-time arguments, from /proc/cmdline
+notes_plat_sysinfo_124 =  14. cpupower frequency-info
+notes_plat_sysinfo_125 =  15. sysctl
+notes_plat_sysinfo_126 =  16. /sys/kernel/mm/transparent_hugepage
+notes_plat_sysinfo_127 =  17. /sys/kernel/mm/transparent_hugepage/khugepaged
+notes_plat_sysinfo_128 =  18. OS release
+notes_plat_sysinfo_129 =  19. Disk information
+notes_plat_sysinfo_130 =  20. /sys/devices/virtual/dmi/id
+notes_plat_sysinfo_131 =  21. dmidecode
+notes_plat_sysinfo_132 =  22. BIOS
+notes_plat_sysinfo_133 =  ------------------------------------------------------------
+notes_plat_sysinfo_206 = 
+notes_plat_sysinfo_207 =  ------------------------------------------------------------
+notes_plat_sysinfo_208 =  1. uname -a
+notes_plat_sysinfo_209 =    Linux tdx-guest 6.8.0-35-generic \#35-Ubuntu SMP PREEMPT_DYNAMIC Mon May 20 15:51:52 UTC 2024 x86_64 x86_64
+notes_plat_sysinfo_210 =    x86_64 GNU/Linux
+notes_plat_sysinfo_211 = 
+notes_plat_sysinfo_212 =  ------------------------------------------------------------
+notes_plat_sysinfo_213 =  2. w
+notes_plat_sysinfo_214 =     11:51:02 up 38 min,  1 user,  load average: 0.01, 0.00, 0.00
+notes_plat_sysinfo_215 =    USER     TTY      FROM             LOGIN@   IDLE   JCPU   PCPU WHAT
+notes_plat_sysinfo_216 =    root     hvc0     -                11:12    6.00s  0.55s   ?    tmux
+notes_plat_sysinfo_217 = 
+notes_plat_sysinfo_218 =  ------------------------------------------------------------
+notes_plat_sysinfo_219 =  3. Username
+notes_plat_sysinfo_220 =    From environment variable $USER:  root
+notes_plat_sysinfo_221 = 
+notes_plat_sysinfo_222 =  ------------------------------------------------------------
+notes_plat_sysinfo_223 =  4. ulimit -a
+notes_plat_sysinfo_224 =    time(seconds)        unlimited
+notes_plat_sysinfo_225 =    file(blocks)         unlimited
+notes_plat_sysinfo_226 =    data(kbytes)         unlimited
+notes_plat_sysinfo_227 =    stack(kbytes)        8192
+notes_plat_sysinfo_228 =    coredump(blocks)     0
+notes_plat_sysinfo_229 =    memory(kbytes)       unlimited
+notes_plat_sysinfo_230 =    locked memory(kbytes) 233908
+notes_plat_sysinfo_231 =    process              7107
+notes_plat_sysinfo_232 =    nofiles              1024
+notes_plat_sysinfo_233 =    vmemory(kbytes)      unlimited
+notes_plat_sysinfo_234 =    locks                unlimited
+notes_plat_sysinfo_235 =    rtprio               0
+notes_plat_sysinfo_236 = 
+notes_plat_sysinfo_237 =  ------------------------------------------------------------
+notes_plat_sysinfo_238 =  5. sysinfo process ancestry
+notes_plat_sysinfo_239 =   /sbin/init
+notes_plat_sysinfo_240 =   tmux
+notes_plat_sysinfo_241 =   -bash
+notes_plat_sysinfo_242 =   runcpu --config=tdx2.cfg --tune=base 500.perlbench_r
+notes_plat_sysinfo_243 =   runcpu --configfile tdx2.cfg --tune base --noreportable --nopower --runmode rate --tune base --size refrate
+notes_plat_sysinfo_244 =     500.perlbench_r --nopreenv --note-preenv --logfile $SPEC/tmp/CPU2017.013/templogs/preenv.intrate.013.0.log
+notes_plat_sysinfo_245 =     --lognum 013.0 --from_runcpu 2
+notes_plat_sysinfo_246 =   specperl $SPEC/bin/sysinfo
+notes_plat_sysinfo_247 =  $SPEC = /home/tdx/speccpu2017
+notes_plat_sysinfo_248 = 
+notes_plat_sysinfo_249 =  ------------------------------------------------------------
+notes_plat_sysinfo_250 =  6. /proc/cpuinfo
+notes_plat_sysinfo_251 =      model name      : 06/8f
+notes_plat_sysinfo_252 =      vendor_id       : GenuineIntel
+notes_plat_sysinfo_253 =      cpu family      : 6
+notes_plat_sysinfo_254 =      model           : 143
+notes_plat_sysinfo_255 =      stepping        : 8
+notes_plat_sysinfo_256 =      microcode       : 0x2b0005d1
+notes_plat_sysinfo_257 =      bugs            : spectre_v1 spectre_v2 spec_store_bypass swapgs eibrs_pbrsb bhi
+notes_plat_sysinfo_258 =      cpu cores       : 16
+notes_plat_sysinfo_259 =      siblings        : 16
+notes_plat_sysinfo_260 =      1 physical ids (chips)
+notes_plat_sysinfo_261 =      16 processors (hardware threads)
+notes_plat_sysinfo_262 =      physical id 0: core ids 0-15
+notes_plat_sysinfo_263 =      physical id 0: apicids 0-15
+notes_plat_sysinfo_264 =    Caution: /proc/cpuinfo data regarding chips, cores, and threads is not necessarily reliable, especially for
+notes_plat_sysinfo_265 =    virtualized systems.  Use the above data carefully.
+notes_plat_sysinfo_266 = 
+notes_plat_sysinfo_267 =  ------------------------------------------------------------
+notes_plat_sysinfo_268 =  7. lscpu
+notes_plat_sysinfo_269 = 
+notes_plat_sysinfo_270 =  From lscpu from util-linux 2.39.3:
+notes_plat_sysinfo_271 =    Architecture:                         x86_64
+notes_plat_sysinfo_272 =    CPU op-mode(s):                       32-bit, 64-bit
+notes_plat_sysinfo_273 =    Address sizes:                        52 bits physical, 57 bits virtual
+notes_plat_sysinfo_274 =    Byte Order:                           Little Endian
+notes_plat_sysinfo_275 =    CPU(s):                               16
+notes_plat_sysinfo_276 =    On-line CPU(s) list:                  0-15
+notes_plat_sysinfo_277 =    Vendor ID:                            GenuineIntel
+notes_plat_sysinfo_278 =    BIOS Vendor ID:                       QEMU
+notes_plat_sysinfo_279 =    Model name:                           06/8f
+notes_plat_sysinfo_280 =    BIOS Model name:                      pc-q35-8.2  CPU @ 2.0GHz
+notes_plat_sysinfo_281 =    BIOS CPU family:                      1
+notes_plat_sysinfo_282 =    CPU family:                           6
+notes_plat_sysinfo_283 =    Model:                                143
+notes_plat_sysinfo_284 =    Thread(s) per core:                   1
+notes_plat_sysinfo_285 =    Core(s) per socket:                   16
+notes_plat_sysinfo_286 =    Socket(s):                            1
+notes_plat_sysinfo_287 =    Stepping:                             8
+notes_plat_sysinfo_288 =    BogoMIPS:                             4800.00
+notes_plat_sysinfo_289 =    Flags:                                fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat
+notes_plat_sysinfo_290 =                                          clflush dts mmx fxsr sse sse2 ss ht tm syscall nx pdpe1gb rdtscp lm
+notes_plat_sysinfo_291 =                                          constant_tsc bts rep_good nopl tsc_reliable nonstop_tsc cpuid
+notes_plat_sysinfo_292 =                                          tsc_known_freq pni pclmulqdq dtes64 ds_cpl ssse3 fma cx16 pdcm pcid
+notes_plat_sysinfo_293 =                                          sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx
+notes_plat_sysinfo_294 =                                          f16c rdrand hypervisor lahf_lm abm 3dnowprefetch cpuid_fault ssbd
+notes_plat_sysinfo_295 =                                          ibrs ibpb stibp ibrs_enhanced tdx_guest fsgsbase bmi1 avx2 smep bmi2
+notes_plat_sysinfo_296 =                                          erms invpcid avx512f avx512dq rdseed adx smap avx512ifma clflushopt
+notes_plat_sysinfo_297 =                                          clwb avx512cd sha_ni avx512bw avx512vl xsaveopt xsavec xgetbv1 xsaves
+notes_plat_sysinfo_298 =                                          avx_vnni avx512_bf16 wbnoinvd avx512vbmi umip pku ospke avx512_vbmi2
+notes_plat_sysinfo_299 =                                          gfni vaes vpclmulqdq avx512_vnni avx512_bitalg avx512_vpopcntdq la57
+notes_plat_sysinfo_300 =                                          rdpid bus_lock_detect cldemote movdiri movdir64b fsrm md_clear
+notes_plat_sysinfo_301 =                                          serialize tsxldtrk amx_bf16 avx512_fp16 amx_tile amx_int8 flush_l1d
+notes_plat_sysinfo_302 =                                          arch_capabilities
+notes_plat_sysinfo_303 =    Hypervisor vendor:                    KVM
+notes_plat_sysinfo_304 =    Virtualization type:                  full
+notes_plat_sysinfo_305 =    L1d cache:                            512 KiB (16 instances)
+notes_plat_sysinfo_306 =    L1i cache:                            512 KiB (16 instances)
+notes_plat_sysinfo_307 =    L2 cache:                             64 MiB (16 instances)
+notes_plat_sysinfo_308 =    L3 cache:                             16 MiB (1 instance)
+notes_plat_sysinfo_309 =    NUMA node(s):                         1
+notes_plat_sysinfo_310 =    NUMA node0 CPU(s):                    0-15
+notes_plat_sysinfo_311 =    Vulnerability Gather data sampling:   Not affected
+notes_plat_sysinfo_312 =    Vulnerability Itlb multihit:          Not affected
+notes_plat_sysinfo_313 =    Vulnerability L1tf:                   Not affected
+notes_plat_sysinfo_314 =    Vulnerability Mds:                    Not affected
+notes_plat_sysinfo_315 =    Vulnerability Meltdown:               Not affected
+notes_plat_sysinfo_316 =    Vulnerability Mmio stale data:        Not affected
+notes_plat_sysinfo_317 =    Vulnerability Reg file data sampling: Not affected
+notes_plat_sysinfo_318 =    Vulnerability Retbleed:               Not affected
+notes_plat_sysinfo_319 =    Vulnerability Spec rstack overflow:   Not affected
+notes_plat_sysinfo_320 =    Vulnerability Spec store bypass:      Mitigation; Speculative Store Bypass disabled via prctl
+notes_plat_sysinfo_321 =    Vulnerability Spectre v1:             Mitigation; usercopy/swapgs barriers and __user pointer sanitization
+notes_plat_sysinfo_322 =    Vulnerability Spectre v2:             Mitigation; Enhanced / Automatic IBRS; IBPB conditional; RSB filling;
+notes_plat_sysinfo_323 =                                          PBRSB-eIBRS SW sequence; BHI BHI_DIS_S
+notes_plat_sysinfo_324 =    Vulnerability Srbds:                  Not affected
+notes_plat_sysinfo_325 =    Vulnerability Tsx async abort:        Not affected
+notes_plat_sysinfo_326 = 
+notes_plat_sysinfo_327 =  From lscpu --cache:
+notes_plat_sysinfo_328 =       NAME ONE-SIZE ALL-SIZE WAYS TYPE        LEVEL  SETS PHY-LINE COHERENCY-SIZE
+notes_plat_sysinfo_329 =       L1d       32K     512K    8 Data            1    64        1             64
+notes_plat_sysinfo_330 =       L1i       32K     512K    8 Instruction     1    64        1             64
+notes_plat_sysinfo_331 =       L2         4M      64M   16 Unified         2  4096        1             64
+notes_plat_sysinfo_332 =       L3        16M      16M   16 Unified         3 16384        1             64
+notes_plat_sysinfo_333 = 
+notes_plat_sysinfo_334 =  ------------------------------------------------------------
+notes_plat_sysinfo_335 =  8. numactl --hardware
+notes_plat_sysinfo_336 =  NOTE: a numactl 'node' might or might not correspond to a physical chip.
+notes_plat_sysinfo_337 =    available: 1 nodes (0)
+notes_plat_sysinfo_338 =    node 0 cpus: 0-15
+notes_plat_sysinfo_339 =    node 0 size: 1827 MB
+notes_plat_sysinfo_340 =    node 0 free: 878 MB
+notes_plat_sysinfo_341 =    node distances:
+notes_plat_sysinfo_342 =    node   0
+notes_plat_sysinfo_343 =      0:  10
+notes_plat_sysinfo_344 = 
+notes_plat_sysinfo_345 =  ------------------------------------------------------------
+notes_plat_sysinfo_346 =  9. /proc/meminfo
+notes_plat_sysinfo_347 =     MemTotal:        1871284 kB
+notes_plat_sysinfo_348 = 
+notes_plat_sysinfo_349 =  ------------------------------------------------------------
+notes_plat_sysinfo_350 =  10. who -r
+notes_plat_sysinfo_351 =    run-level 5 Oct 24 11:12
+notes_plat_sysinfo_352 = 
+notes_plat_sysinfo_353 =  ------------------------------------------------------------
+notes_plat_sysinfo_354 =  11. Systemd service manager version: systemd 255 (255.4-1ubuntu8.1)
+notes_plat_sysinfo_355 =    Default Target  Status
+notes_plat_sysinfo_356 =    graphical       running
+notes_plat_sysinfo_357 = 
+notes_plat_sysinfo_358 =  ------------------------------------------------------------
+notes_plat_sysinfo_359 =  12. Services, from systemctl list-unit-files
+notes_plat_sysinfo_360 =    STATE            UNIT FILES
+notes_plat_sysinfo_361 =    enabled          ModemManager apparmor apport blk-availability cloud-config cloud-final cloud-init
+notes_plat_sysinfo_362 =                     cloud-init-local console-setup cron dmesg e2scrub_reap finalrd getty@ grub-common
+notes_plat_sysinfo_363 =                     grub-initrd-fallback keyboard-setup lvm2-monitor multipathd networkd-dispatcher open-iscsi
+notes_plat_sysinfo_364 =                     open-vm-tools rsyslog secureboot-db setvtrgb snapd ssh sysstat systemd-networkd
+notes_plat_sysinfo_365 =                     systemd-networkd-wait-online systemd-pstore systemd-resolved systemd-timesyncd
+notes_plat_sysinfo_366 =                     ua-reboot-cmds ubuntu-advantage udisks2 ufw unattended-upgrades vgauth
+notes_plat_sysinfo_367 =    enabled-runtime  netplan-ovs-cleanup systemd-fsck-root systemd-remount-fs
+notes_plat_sysinfo_368 =    disabled         console-getty debug-shell iscsid nftables rsync systemd-boot-check-no-failures
+notes_plat_sysinfo_369 =                     systemd-confext systemd-network-generator systemd-networkd-wait-online@
+notes_plat_sysinfo_370 =                     systemd-pcrlock-file-system systemd-pcrlock-firmware-code systemd-pcrlock-firmware-config
+notes_plat_sysinfo_371 =                     systemd-pcrlock-machine-id systemd-pcrlock-make-policy
+notes_plat_sysinfo_372 =                     systemd-pcrlock-secureboot-authority systemd-pcrlock-secureboot-policy systemd-sysext
+notes_plat_sysinfo_373 =                     systemd-time-wait-sync
+notes_plat_sysinfo_374 =    indirect         serial-getty@ systemd-sysupdate systemd-sysupdate-reboot uuidd
+notes_plat_sysinfo_375 =    masked           cryptdisks cryptdisks-early hwclock multipath-tools-boot pollinate screen-cleanup sudo
+notes_plat_sysinfo_376 =                     x11-common
+notes_plat_sysinfo_377 = 
+notes_plat_sysinfo_378 =  ------------------------------------------------------------
+notes_plat_sysinfo_379 =  13. Linux kernel boot-time arguments, from /proc/cmdline
+notes_plat_sysinfo_380 =    BOOT_IMAGE=/vmlinuz-6.8.0-35-generic
+notes_plat_sysinfo_381 =    root=UUID=41106c9c-97fc-4396-8622-4f692c8c5bb1
+notes_plat_sysinfo_382 =    ro
+notes_plat_sysinfo_383 =    console=tty1
+notes_plat_sysinfo_384 =    console=ttyS0
+notes_plat_sysinfo_385 = 
+notes_plat_sysinfo_386 =  ------------------------------------------------------------
+notes_plat_sysinfo_387 =  14. cpupower frequency-info
+notes_plat_sysinfo_388 =    analyzing CPU 10:
+notes_plat_sysinfo_389 =      Unable to determine current policy
+notes_plat_sysinfo_390 =      boost state support:
+notes_plat_sysinfo_391 =        Supported: no
+notes_plat_sysinfo_392 =        Active: no
+notes_plat_sysinfo_393 = 
+notes_plat_sysinfo_394 =  ------------------------------------------------------------
+notes_plat_sysinfo_395 =  15. sysctl
+notes_plat_sysinfo_396 =    kernel.numa_balancing               0
+notes_plat_sysinfo_397 =    kernel.randomize_va_space           2
+notes_plat_sysinfo_398 =    vm.compaction_proactiveness        20
+notes_plat_sysinfo_399 =    vm.dirty_background_bytes           0
+notes_plat_sysinfo_400 =    vm.dirty_background_ratio          10
+notes_plat_sysinfo_401 =    vm.dirty_bytes                      0
+notes_plat_sysinfo_402 =    vm.dirty_expire_centisecs        3000
+notes_plat_sysinfo_403 =    vm.dirty_ratio                     20
+notes_plat_sysinfo_404 =    vm.dirty_writeback_centisecs      500
+notes_plat_sysinfo_405 =    vm.dirtytime_expire_seconds     43200
+notes_plat_sysinfo_406 =    vm.extfrag_threshold              500
+notes_plat_sysinfo_407 =    vm.min_unmapped_ratio               1
+notes_plat_sysinfo_408 =    vm.nr_hugepages                     0
+notes_plat_sysinfo_409 =    vm.nr_hugepages_mempolicy           0
+notes_plat_sysinfo_410 =    vm.nr_overcommit_hugepages          0
+notes_plat_sysinfo_411 =    vm.swappiness                      60
+notes_plat_sysinfo_412 =    vm.watermark_boost_factor       15000
+notes_plat_sysinfo_413 =    vm.watermark_scale_factor          10
+notes_plat_sysinfo_414 =    vm.zone_reclaim_mode                0
+notes_plat_sysinfo_415 = 
+notes_plat_sysinfo_416 =  ------------------------------------------------------------
+notes_plat_sysinfo_417 =  16. /sys/kernel/mm/transparent_hugepage
+notes_plat_sysinfo_418 =    defrag          always defer defer+madvise [madvise] never
+notes_plat_sysinfo_419 =    enabled         always [madvise] never
+notes_plat_sysinfo_420 =    hpage_pmd_size  2097152
+notes_plat_sysinfo_421 =    shmem_enabled   always within_size advise [never] deny force
+notes_plat_sysinfo_422 = 
+notes_plat_sysinfo_423 =  ------------------------------------------------------------
+notes_plat_sysinfo_424 =  17. /sys/kernel/mm/transparent_hugepage/khugepaged
+notes_plat_sysinfo_425 =    alloc_sleep_millisecs   60000
+notes_plat_sysinfo_426 =    defrag                      1
+notes_plat_sysinfo_427 =    max_ptes_none             511
+notes_plat_sysinfo_428 =    max_ptes_shared           256
+notes_plat_sysinfo_429 =    max_ptes_swap              64
+notes_plat_sysinfo_430 =    pages_to_scan            4096
+notes_plat_sysinfo_431 =    scan_sleep_millisecs    10000
+notes_plat_sysinfo_432 = 
+notes_plat_sysinfo_433 =  ------------------------------------------------------------
+notes_plat_sysinfo_434 =  18. OS release
+notes_plat_sysinfo_435 =    From /etc/*-release /etc/*-version
+notes_plat_sysinfo_436 =    os-release Ubuntu 24.04 LTS
+notes_plat_sysinfo_437 = 
+notes_plat_sysinfo_438 =  ------------------------------------------------------------
+notes_plat_sysinfo_439 =  19. Disk information
+notes_plat_sysinfo_440 =  SPEC is set to: /home/tdx/speccpu2017
+notes_plat_sysinfo_441 =    Filesystem     Type  Size  Used Avail Use% Mounted on
+notes_plat_sysinfo_442 =    /dev/vda1      ext4   51G   18G   33G  36% /
+notes_plat_sysinfo_443 = 
+notes_plat_sysinfo_444 =  ------------------------------------------------------------
+notes_plat_sysinfo_445 =  20. /sys/devices/virtual/dmi/id
+notes_plat_sysinfo_446 =      Vendor:         QEMU
+notes_plat_sysinfo_447 =      Product:        Standard PC (Q35 + ICH9, 2009)
+notes_plat_sysinfo_448 = 
+notes_plat_sysinfo_449 =  ------------------------------------------------------------
+notes_plat_sysinfo_450 =  21. dmidecode
+notes_plat_sysinfo_451 =    Additional information from dmidecode 3.5 follows.  WARNING: Use caution when you interpret this section.
+notes_plat_sysinfo_452 =    The 'dmidecode' program reads system data which is "intended to allow hardware to be accurately
+notes_plat_sysinfo_453 =    determined", but the intent may not be met, as there are frequent changes to hardware, firmware, and the
+notes_plat_sysinfo_454 =    "DMTF SMBIOS" standard.
+notes_plat_sysinfo_455 =    Memory:
+notes_plat_sysinfo_456 =      1x QEMU Not Specified 2 GB
+notes_plat_sysinfo_457 = 
+notes_plat_sysinfo_458 = 
+notes_plat_sysinfo_459 =  ------------------------------------------------------------
+notes_plat_sysinfo_460 =  22. BIOS
+notes_plat_sysinfo_461 =  (This section combines info from /sys/devices and dmidecode.)
+notes_plat_sysinfo_462 =     BIOS Vendor:       Ubuntu distribution of EDK II
+notes_plat_sysinfo_463 =     BIOS Version:      2024.02-3+tdx1.0
+notes_plat_sysinfo_464 =     BIOS Date:         07/03/2024
+notes_plat_sysinfo_465 =     BIOS Revision:     0.0
+notes_wrap_columns = 0
+notes_wrap_indent =   
+num              = 500
+obiwan           = 
+os_exe_ext       = 
+output_format    = txt,html,cfg,pdf,csv
+output_root      = 
+outputdir        = output
+parallel_test    = 0
+parallel_test_submit = 0
+parallel_test_workloads = 
+path             = /home/tdx/speccpu2017/benchspec/CPU/500.perlbench_r
+plain_train      = 1
+platform         = 
+power            = 0
+power_management = 
+preENV_LD_LIBRARY_PATH = %{gcc_dir}/lib64/:%{gcc_dir}/lib/:/lib64
+preenv           = 0
+prefix           = 
+prepared_by      = root  (is never output, only tags rawfile)
+ranks            = 1
+rawhash_bits     = 256
+rebuild          = 0
+reftime          = reftime
+reltol           = 
+reportable       = 0
+resultdir        = result
+review           = 0
+run              = all
+runcpu           = /home/tdx/speccpu2017/bin/harness/runcpu --configfile tdx2.cfg --tune base --noreportable --nopower --runmode rate --tune base --size refrate 500.perlbench_r --nopreenv --note-preenv --logfile /home/tdx/speccpu2017/tmp/CPU2017.013/templogs/preenv.intrate.013.0.log --lognum 013.0 --from_runcpu 2
+rundir           = run
+runmode          = rate
+safe_eval        = 1
+save_build_files = 
+section_specifier_fatal = 1
+setprocgroup     = 1
+setup_error      = 0
+sigint           = 2
+size             = refrate
+size_class       = ref
+skipabstol       = 
+skipobiwan       = 
+skipreltol       = 
+skiptol          = 
+smarttune        = base
+specdiff         = specdiff
+specrun          = specinvoke
+srcalt           = 
+srcdir           = src
+srcsource        = /home/tdx/speccpu2017/benchspec/CPU/500.perlbench_r/src
+stagger          = 10
+strict_rundir_verify = 1
+sw_avail         = 
+sw_base_ptrsize  = 64-bit
+sw_compiler001   = C/C++/Fortran: Version 10.1.0 of GCC, the
+sw_compiler002   = GNU Compiler Collection
+sw_file          = ext4
+sw_os001         = Ubuntu 24.04 LTS
+sw_os002         = 6.8.0-35-generic
+sw_other         = 
+sw_peak_ptrsize  = 64-bit
+sw_state         = Run level 5 (add definition here)
+sysinfo_hash_bits = 256
+sysinfo_program  = specperl /home/tdx/speccpu2017/bin/sysinfo
+sysinfo_program_hash = sysinfo:SHA:2eb381fc1a58eb8122e4a1b875c1e38b3489dac84088192aa0ec6d157b084d06
+table            = 1
+teeout           = 0
+test_date        = Oct-2024
+test_sponsor     = My Corporation
+tester           = My Corporation
+threads          = 1
+top              = /home/tdx/speccpu2017
+train_single_thread = 0
+train_with       = train
+tune             = base
+uid              = 0
+unbuffer         = 1
+uncertainty_exception = 5
+update           = 0
+update_url       = http://www.spec.org/auto/cpu2017/updates/
+use_submit_for_compare = 0
+use_submit_for_speed = 0
+username         = root
+valid_build      = yes
+verbose          = 5
+verify_binaries  = 1
+version          = 1.000100
+voltage_range    = 
+worklist         = list
+OUTPUT_RMFILES   = diffmail.2.550.15.24.23.100.out perfect.b.3.out scrabbl.out splitmail.535.13.25.24.1091.1.out suns.out validate
+COMP: "/usr/bin/gcc     -std=c99   -m64 -c -o options.o -DSPEC -DNDEBUG -DPERL_CORE -I. -Idist/IO -Icpan/Time-HiRes -Icpan/HTML-Parser -Iext/re -Ispecrand -DDOUBLE_SLASHES_SPECIAL=0 -DSPEC_AUTO_SUPPRESS_OPENMP -D_LARGE_FILES -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64  -g -O3 -march=native        -DSPEC_LINUX_X64  -fno-strict-aliasing -fno-unsafe-math-optimizations -fno-finite-math-only -fgnu89-inline -fcommon     -DSPEC_LP64  <source>"
+C: CC="/usr/bin/gcc     -std=c99   -m64"
+C: COBJOPT="-c -o options"
+P: CPUFLAGS="-DSPEC -DNDEBUG"
+P: BENCH_FLAGS="-DPERL_CORE -I. -Idist/IO -Icpan/Time-HiRes -Icpan/HTML-Parser -Iext/re -Ispecrand -DDOUBLE_SLASHES_SPECIAL=0 -DSPEC_AUTO_SUPPRESS_OPENMP -D_LARGE_FILES -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64"
+P: BENCH_CFLAGS=""
+O: OPTIMIZE="-g -O3 -march=native"
+O: COPTIMIZE=""
+P: PORTABILITY="-DSPEC_LINUX_X64"
+P: CPORTABILITY=""
+O: EXTRA_CFLAGS="-fno-strict-aliasing -fno-unsafe-math-optimizations -fno-finite-math-only -fgnu89-inline -fcommon"
+O: EXTRA_OPTIMIZE=""
+O: EXTRA_COPTIMIZE=""
+P: EXTRA_PORTABILITY="-DSPEC_LP64"
+P: EXTRA_CPORTABILITY=""
+LINK: "/usr/bin/gcc     -std=c99   -m64      -g -O3 -march=native     -DSPEC_LINUX_X64     <objects>   -lm         -o options  "
+C: LD="/usr/bin/gcc     -std=c99   -m64"
+O: OPTIMIZE="-g -O3 -march=native"
+P: PORTABILITY="-DSPEC_LINUX_X64"
+C: MATH_LIBS="-lm"
+C: LDOUT="-o options"
+ CC_VERSION_OPTION:
+gcc (Ubuntu 13.2.0-23ubuntu4) 13.2.0
+Copyright (C) 2023 Free Software Foundation, Inc.
+This is free software; see the source for copying conditions.  There is NO
+warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
+
+Build successes for intrate: 500.perlbench_r(base)
+Build errors for intrate: None
+
+Setting Up Run Directories
+  Setting up 500.perlbench_r refrate (ref) base mytest-m64 (1 copy): run_base_refrate_mytest-m64.0000
+-----------------------------------
+Running Benchmarks
+-----------------------------------
+  Running 500.perlbench_r refrate (ref) base mytest-m64 (1 copy) [2024-10-24 11:51:24]
+OpenMP environment variables removed: None
+OpenMP environment variables in effect:
+	OMP_NUM_THREADS	=> '1'
+	OMP_THREAD_LIMIT	=> '1'
+Pre-run environment changes:
+	'OMP_NUM_THREADS' added: (value now '1')
+	'OMP_THREAD_LIMIT' added: (value now '1')
+Commands to run (specinvoke command file):
+    -r
+    -N C
+    -C /home/tdx/speccpu2017/benchspec/CPU/500.perlbench_r/run/run_base_refrate_mytest-m64.0000
+    -o checkspam.2500.5.25.11.150.1.1.1.1.out -e checkspam.2500.5.25.11.150.1.1.1.1.err ../run_base_refrate_mytest-m64.0000/perlbench_r_base.mytest-m64 -I./lib checkspam.pl 2500 5 25 11 150 1 1 1 1 > checkspam.2500.5.25.11.150.1.1.1.1.out 2>> checkspam.2500.5.25.11.150.1.1.1.1.err (timed)
+    -o diffmail.4.800.10.17.19.300.out -e diffmail.4.800.10.17.19.300.err ../run_base_refrate_mytest-m64.0000/perlbench_r_base.mytest-m64 -I./lib diffmail.pl 4 800 10 17 19 300 > diffmail.4.800.10.17.19.300.out 2>> diffmail.4.800.10.17.19.300.err (timed)
+    -o splitmail.6400.12.26.16.100.0.out -e splitmail.6400.12.26.16.100.0.err ../run_base_refrate_mytest-m64.0000/perlbench_r_base.mytest-m64 -I./lib splitmail.pl 6400 12 26 16 100 0 > splitmail.6400.12.26.16.100.0.out 2>> splitmail.6400.12.26.16.100.0.err (timed)
+Specinvoke: /home/tdx/speccpu2017/bin/specinvoke -d /home/tdx/speccpu2017/benchspec/CPU/500.perlbench_r/run/run_base_refrate_mytest-m64.0000 -f speccmds.cmd -q -e speccmds.err -o speccmds.stdout
+Issuing command '/home/tdx/speccpu2017/bin/specinvoke -d /home/tdx/speccpu2017/benchspec/CPU/500.perlbench_r/run/run_base_refrate_mytest-m64.0000 -f speccmds.cmd -q -e speccmds.err -o speccmds.stdout'
+Start command: 2024-10-24 11:51:25 (1729770685.01056)
+Stop command: 2024-10-24 11:54:48 (1729770888.12701)
+Elapsed time for command: 00:03:23 (203.116449117661)
+Workload elapsed time (copy 0 workload 1) = 94.265261 seconds
+Workload elapsed time (copy 0 workload 2) = 52.022758 seconds
+Workload elapsed time (copy 0 workload 3) = 56.662646 seconds
+Copy 0 of 500.perlbench_r (base refrate) run 1 finished at 2024-10-24 11:54:47.  Total elapsed time: 202.950665
+OpenMP environment variables removed: None
+OpenMP environment variables in effect:
+	OMP_NUM_THREADS	=> '1'
+	OMP_THREAD_LIMIT	=> '1'
+Pre-run environment changes:
+	'OMP_NUM_THREADS' added: (value now '1')
+	'OMP_THREAD_LIMIT' added: (value now '1')
+comparing 'checkspam.2500.5.25.11.150.1.1.1.1.out' with floatcompare=1, nansupport=no
+comparing 'diffmail.4.800.10.17.19.300.out' with floatcompare=1, nansupport=no
+comparing 'splitmail.6400.12.26.16.100.0.out' with floatcompare=1, nansupport=no
+Specinvoke: /home/tdx/speccpu2017/bin/specinvoke -d /home/tdx/speccpu2017/benchspec/CPU/500.perlbench_r/run/run_base_refrate_mytest-m64.0000 -f compare.cmd -E -e compare.err -o compare.stdout
+Issuing command '/home/tdx/speccpu2017/bin/specinvoke -d /home/tdx/speccpu2017/benchspec/CPU/500.perlbench_r/run/run_base_refrate_mytest-m64.0000 -f compare.cmd -E -e compare.err -o compare.stdout'
+Start command: 2024-10-24 11:54:48 (1729770888.25516)
+Stop command: 2024-10-24 11:54:49 (1729770889.34533)
+Elapsed time for command: 00:00:01 (1.09017705917358)
+Benchmark Times:
+  Run Start:    2024-10-24 11:51:25 (1729770685)
+  Rate Start:   2024-10-24 11:51:25 (1729770685.01875)
+  Rate End:     2024-10-24 11:54:47 (1729770887.96956)
+  Run Stop:     2024-10-24 11:54:48 (1729770888)
+  Run Elapsed:  00:03:23 (203)
+  Run Reported: 00:03:22 (202 950803041 202.950803)
+ Success 500.perlbench_r base refrate ratio=7.84, runtime=202.950803, copies=1, threads=1, power=0.00W, temp=0.00 degC, humidity=0.00%
+Success: 1x500.perlbench_r
+Producing Raw Reports
+ label: mytest-m64
+  workload: refrate (ref)
+   benchset: intspeed
+   benchset: intrate
+   metric: SPECrate2017_int_base
+    format: raw -> /home/tdx/speccpu2017/result/CPU2017.013.intrate.refrate.rsf
+Parsing flags for 500.perlbench_r base: done
+Doing flag reduction: done
+    format: flags -> /home/tdx/speccpu2017/result/CPU2017.013.intrate.refrate.flags.html
+    format: cfg -> /home/tdx/speccpu2017/result/CPU2017.013.intrate.refrate.cfg, /home/tdx/speccpu2017/result/CPU2017.013.intrate.refrate.orig.cfg
+    format: CSV -> /home/tdx/speccpu2017/result/CPU2017.013.intrate.refrate.csv
+    format: PDF -> /home/tdx/speccpu2017/result/CPU2017.013.intrate.refrate.pdf
+    format: HTML -> /home/tdx/speccpu2017/result/CPU2017.013.intrate.refrate.html
+    format: Text -> /home/tdx/speccpu2017/result/CPU2017.013.intrate.refrate.txt
+   benchset: fpspeed
+   benchset: fprate
+runcpu finished at 2024-10-24 11:54:54; 233 total seconds elapsed
+Info: file_tail(1511): file '/home/tdx/speccpu2017/tmp/CPU2017.013/templogs/preenv.intrate.013.0.log.debug' was removed and will no longer be followed.  No action is required.
+The log for this run is in /home/tdx/speccpu2017/result/CPU2017.013.log
+
+runcpu finished at 2024-10-24 11:54:54; 234 total seconds elapsed

@@ -1,0 +1,760 @@
+runcpu v6612 started at 2024-10-24 06:03:14 on "tdx-guest"
+runcpu is: /home/tdx/speccpu2017/bin/harness/runcpu
+runcpu: runcpu '--config=tdx.cfg' '--tune=base' '--size=test' all
+toolset: linux-x86_64
+suite: CPU2017 1.1.9
+
+Locating benchmarks...found 47 benchmarks in 73 benchsets.
+Reading config file '/home/tdx/speccpu2017/config/tdx.cfg'
+
+4 configurations selected:
+
+ Action    Run Mode   Workload      Report Type      Benchmarks
+--------   --------   --------   -----------------   --------------------------
+validate   rate       test       SPECrate2017_fp     fprate                    
+validate   speed      test       SPECspeed2017_fp    fpspeed                   
+validate   rate       test       SPECrate2017_int    intrate                   
+validate   speed      test       SPECspeed2017_int   intspeed                  
+-------------------------------------------------------------------------------
+
+Setting up environment for running fprate...
+Starting runcpu for fprate...
+Running "specperl /home/tdx/speccpu2017/bin/sysinfo" to gather system information.
+sysinfo: r6732 of 2022-11-07 (fe91c89b7ed5c36ae2c92cc097bec197)
+sysinfo: ...getting basic information about kernel, users, and limits
+sysinfo: Getting system information for Linux...
+sysinfo: ...getting CPU info
+sysinfo: ...getting info from numactl
+sysinfo: ...getting memory info
+sysinfo: ...getting info from systemd
+sysinfo: ...getting power info
+sysinfo: ...getting system tuning info
+sysinfo: ...getting OS info
+sysinfo: ...getting disk info
+sysinfo: ...getting info from /sys/devices/virtual/dmi/id
+sysinfo: ...getting info from dmidecode
+Read 305 info lines from the sysinfo program:
+  1: notes_plat_sysinfo_100 =  
+  2: notes_plat_sysinfo_101 = Sysinfo program /home/tdx/speccpu2017/bin/sysinfo
+  3: notes_plat_sysinfo_102 = Rev: r6732 of 2022-11-07 fe91c89b7ed5c36ae2c92cc097bec197
+  4: notes_plat_sysinfo_103 = running on tdx-guest Thu Oct 24 06:03:17 2024
+  5: notes_plat_sysinfo_104 =  
+  6: notes_plat_sysinfo_105 = SUT (System Under Test) info as seen by some common utilities.
+  7: notes_plat_sysinfo_107 = 
+  8: notes_plat_sysinfo_108 = ------------------------------------------------------------
+  9: notes_plat_sysinfo_109 = Table of contents
+ 10: notes_plat_sysinfo_110 = ------------------------------------------------------------
+ 11: notes_plat_sysinfo_111 =  1. uname -a
+ 12: notes_plat_sysinfo_112 =  2. w
+ 13: notes_plat_sysinfo_113 =  3. Username
+ 14: notes_plat_sysinfo_114 =  4. ulimit -a
+ 15: notes_plat_sysinfo_115 =  5. sysinfo process ancestry
+ 16: notes_plat_sysinfo_116 =  6. /proc/cpuinfo
+ 17: notes_plat_sysinfo_117 =  7. lscpu
+ 18: notes_plat_sysinfo_118 =  8. numactl --hardware
+ 19: notes_plat_sysinfo_119 =  9. /proc/meminfo
+ 20: notes_plat_sysinfo_120 = 10. who -r
+ 21: notes_plat_sysinfo_121 = 11. Systemd service manager version: systemd 255 (255.4-1ubuntu8.1)
+ 22: notes_plat_sysinfo_122 = 12. Services, from systemctl list-unit-files
+ 23: notes_plat_sysinfo_123 = 13. Linux kernel boot-time arguments, from /proc/cmdline
+ 24: notes_plat_sysinfo_124 = 14. cpupower frequency-info
+ 25: notes_plat_sysinfo_125 = 15. sysctl
+ 26: notes_plat_sysinfo_126 = 16. /sys/kernel/mm/transparent_hugepage
+ 27: notes_plat_sysinfo_127 = 17. /sys/kernel/mm/transparent_hugepage/khugepaged
+ 28: notes_plat_sysinfo_128 = 18. OS release
+ 29: notes_plat_sysinfo_129 = 19. Disk information
+ 30: notes_plat_sysinfo_130 = 20. /sys/devices/virtual/dmi/id
+ 31: notes_plat_sysinfo_131 = 21. dmidecode
+ 32: notes_plat_sysinfo_132 = 22. BIOS
+ 33: notes_plat_sysinfo_133 = ------------------------------------------------------------
+ 34: notes_plat_sysinfo_206 =  
+ 35: notes_plat_sysinfo_207 = ------------------------------------------------------------
+ 36: notes_plat_sysinfo_208 = 1. uname -a
+ 37: notes_plat_sysinfo_209 =   Linux tdx-guest 6.8.0-35-generic #35-Ubuntu SMP PREEMPT_DYNAMIC Mon May 20 15:51:52 UTC 2024 x86_64 x86_64
+ 38: notes_plat_sysinfo_210 =   x86_64 GNU/Linux
+ 39: notes_plat_sysinfo_211 =  
+ 40: notes_plat_sysinfo_212 = ------------------------------------------------------------
+ 41: notes_plat_sysinfo_213 = 2. w
+ 42: notes_plat_sysinfo_214 =    06:03:17 up 18:38,  1 user,  load average: 0.68, 0.17, 0.06
+ 43: notes_plat_sysinfo_215 =   USER     TTY      FROM             LOGIN@   IDLE   JCPU   PCPU WHAT
+ 44: notes_plat_sysinfo_216 =   root     hvc0     -                Wed11    5.00s  2.23s   ?    sh -c w 2>/dev/null
+ 45: notes_plat_sysinfo_217 =  
+ 46: notes_plat_sysinfo_218 = ------------------------------------------------------------
+ 47: notes_plat_sysinfo_219 = 3. Username
+ 48: notes_plat_sysinfo_220 =   From environment variable $USER:  root
+ 49: notes_plat_sysinfo_221 =  
+ 50: notes_plat_sysinfo_222 = ------------------------------------------------------------
+ 51: notes_plat_sysinfo_223 = 4. ulimit -a
+ 52: notes_plat_sysinfo_224 =   time(seconds)        unlimited
+ 53: notes_plat_sysinfo_225 =   file(blocks)         unlimited
+ 54: notes_plat_sysinfo_226 =   data(kbytes)         unlimited
+ 55: notes_plat_sysinfo_227 =   stack(kbytes)        8192
+ 56: notes_plat_sysinfo_228 =   coredump(blocks)     0
+ 57: notes_plat_sysinfo_229 =   memory(kbytes)       unlimited
+ 58: notes_plat_sysinfo_230 =   locked memory(kbytes) 233908
+ 59: notes_plat_sysinfo_231 =   process              7107
+ 60: notes_plat_sysinfo_232 =   nofiles              1024
+ 61: notes_plat_sysinfo_233 =   vmemory(kbytes)      unlimited
+ 62: notes_plat_sysinfo_234 =   locks                unlimited
+ 63: notes_plat_sysinfo_235 =   rtprio               0
+ 64: notes_plat_sysinfo_236 =  
+ 65: notes_plat_sysinfo_237 = ------------------------------------------------------------
+ 66: notes_plat_sysinfo_238 = 5. sysinfo process ancestry
+ 67: notes_plat_sysinfo_239 =  /sbin/init
+ 68: notes_plat_sysinfo_240 =  /bin/login -p --
+ 69: notes_plat_sysinfo_241 =  -bash
+ 70: notes_plat_sysinfo_242 =  runcpu --config=tdx.cfg --tune=base --size=test all
+ 71: notes_plat_sysinfo_243 =  runcpu --configfile tdx.cfg --tune base --size test --noreportable --nopower --runmode rate --tune base
+ 72: notes_plat_sysinfo_244 =    --size test fprate --nopreenv --note-preenv --logfile
+ 73: notes_plat_sysinfo_245 =    $SPEC/tmp/CPU2017.011/templogs/preenv.fprate.011.0.log --lognum 011.0 --from_runcpu 2
+ 74: notes_plat_sysinfo_246 =  specperl $SPEC/bin/sysinfo
+ 75: notes_plat_sysinfo_247 = $SPEC = /home/tdx/speccpu2017
+ 76: notes_plat_sysinfo_248 =  
+ 77: notes_plat_sysinfo_249 = ------------------------------------------------------------
+ 78: notes_plat_sysinfo_250 = 6. /proc/cpuinfo
+ 79: notes_plat_sysinfo_251 =     model name      : 06/8f
+ 80: notes_plat_sysinfo_252 =     vendor_id       : GenuineIntel
+ 81: notes_plat_sysinfo_253 =     cpu family      : 6
+ 82: notes_plat_sysinfo_254 =     model           : 143
+ 83: notes_plat_sysinfo_255 =     stepping        : 8
+ 84: notes_plat_sysinfo_256 =     microcode       : 0x2b0005d1
+ 85: notes_plat_sysinfo_257 =     bugs            : spectre_v1 spectre_v2 spec_store_bypass swapgs eibrs_pbrsb bhi
+ 86: notes_plat_sysinfo_258 =     cpu cores       : 16
+ 87: notes_plat_sysinfo_259 =     siblings        : 16
+ 88: notes_plat_sysinfo_260 =     1 physical ids (chips)
+ 89: notes_plat_sysinfo_261 =     16 processors (hardware threads)
+ 90: notes_plat_sysinfo_262 =     physical id 0: core ids 0-15
+ 91: notes_plat_sysinfo_263 =     physical id 0: apicids 0-15
+ 92: notes_plat_sysinfo_264 =   Caution: /proc/cpuinfo data regarding chips, cores, and threads is not necessarily reliable, especially for
+ 93: notes_plat_sysinfo_265 =   virtualized systems.  Use the above data carefully.
+ 94: notes_plat_sysinfo_266 =  
+ 95: notes_plat_sysinfo_267 = ------------------------------------------------------------
+ 96: notes_plat_sysinfo_268 = 7. lscpu
+ 97: notes_plat_sysinfo_269 =  
+ 98: notes_plat_sysinfo_270 = From lscpu from util-linux 2.39.3:
+ 99: notes_plat_sysinfo_271 =   Architecture:                         x86_64
+100: notes_plat_sysinfo_272 =   CPU op-mode(s):                       32-bit, 64-bit
+101: notes_plat_sysinfo_273 =   Address sizes:                        52 bits physical, 57 bits virtual
+102: notes_plat_sysinfo_274 =   Byte Order:                           Little Endian
+103: notes_plat_sysinfo_275 =   CPU(s):                               16
+104: notes_plat_sysinfo_276 =   On-line CPU(s) list:                  0-15
+105: notes_plat_sysinfo_277 =   Vendor ID:                            GenuineIntel
+106: notes_plat_sysinfo_278 =   BIOS Vendor ID:                       QEMU
+107: notes_plat_sysinfo_279 =   Model name:                           06/8f
+108: notes_plat_sysinfo_280 =   BIOS Model name:                      pc-q35-8.2  CPU @ 2.0GHz
+109: notes_plat_sysinfo_281 =   BIOS CPU family:                      1
+110: notes_plat_sysinfo_282 =   CPU family:                           6
+111: notes_plat_sysinfo_283 =   Model:                                143
+112: notes_plat_sysinfo_284 =   Thread(s) per core:                   1
+113: notes_plat_sysinfo_285 =   Core(s) per socket:                   16
+114: notes_plat_sysinfo_286 =   Socket(s):                            1
+115: notes_plat_sysinfo_287 =   Stepping:                             8
+116: notes_plat_sysinfo_288 =   BogoMIPS:                             4800.00
+117: notes_plat_sysinfo_289 =   Flags:                                fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat
+118: notes_plat_sysinfo_290 =                                         clflush dts mmx fxsr sse sse2 ss ht tm syscall nx pdpe1gb rdtscp lm
+119: notes_plat_sysinfo_291 =                                         constant_tsc bts rep_good nopl tsc_reliable nonstop_tsc cpuid
+120: notes_plat_sysinfo_292 =                                         tsc_known_freq pni pclmulqdq dtes64 ds_cpl ssse3 fma cx16 pdcm pcid
+121: notes_plat_sysinfo_293 =                                         sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx
+122: notes_plat_sysinfo_294 =                                         f16c rdrand hypervisor lahf_lm abm 3dnowprefetch cpuid_fault ssbd
+123: notes_plat_sysinfo_295 =                                         ibrs ibpb stibp ibrs_enhanced tdx_guest fsgsbase bmi1 avx2 smep bmi2
+124: notes_plat_sysinfo_296 =                                         erms invpcid avx512f avx512dq rdseed adx smap avx512ifma clflushopt
+125: notes_plat_sysinfo_297 =                                         clwb avx512cd sha_ni avx512bw avx512vl xsaveopt xsavec xgetbv1 xsaves
+126: notes_plat_sysinfo_298 =                                         avx_vnni avx512_bf16 wbnoinvd avx512vbmi umip pku ospke avx512_vbmi2
+127: notes_plat_sysinfo_299 =                                         gfni vaes vpclmulqdq avx512_vnni avx512_bitalg avx512_vpopcntdq la57
+128: notes_plat_sysinfo_300 =                                         rdpid bus_lock_detect cldemote movdiri movdir64b fsrm md_clear
+129: notes_plat_sysinfo_301 =                                         serialize tsxldtrk amx_bf16 avx512_fp16 amx_tile amx_int8 flush_l1d
+130: notes_plat_sysinfo_302 =                                         arch_capabilities
+131: notes_plat_sysinfo_303 =   Hypervisor vendor:                    KVM
+132: notes_plat_sysinfo_304 =   Virtualization type:                  full
+133: notes_plat_sysinfo_305 =   L1d cache:                            512 KiB (16 instances)
+134: notes_plat_sysinfo_306 =   L1i cache:                            512 KiB (16 instances)
+135: notes_plat_sysinfo_307 =   L2 cache:                             64 MiB (16 instances)
+136: notes_plat_sysinfo_308 =   L3 cache:                             16 MiB (1 instance)
+137: notes_plat_sysinfo_309 =   NUMA node(s):                         1
+138: notes_plat_sysinfo_310 =   NUMA node0 CPU(s):                    0-15
+139: notes_plat_sysinfo_311 =   Vulnerability Gather data sampling:   Not affected
+140: notes_plat_sysinfo_312 =   Vulnerability Itlb multihit:          Not affected
+141: notes_plat_sysinfo_313 =   Vulnerability L1tf:                   Not affected
+142: notes_plat_sysinfo_314 =   Vulnerability Mds:                    Not affected
+143: notes_plat_sysinfo_315 =   Vulnerability Meltdown:               Not affected
+144: notes_plat_sysinfo_316 =   Vulnerability Mmio stale data:        Not affected
+145: notes_plat_sysinfo_317 =   Vulnerability Reg file data sampling: Not affected
+146: notes_plat_sysinfo_318 =   Vulnerability Retbleed:               Not affected
+147: notes_plat_sysinfo_319 =   Vulnerability Spec rstack overflow:   Not affected
+148: notes_plat_sysinfo_320 =   Vulnerability Spec store bypass:      Mitigation; Speculative Store Bypass disabled via prctl
+149: notes_plat_sysinfo_321 =   Vulnerability Spectre v1:             Mitigation; usercopy/swapgs barriers and __user pointer sanitization
+150: notes_plat_sysinfo_322 =   Vulnerability Spectre v2:             Mitigation; Enhanced / Automatic IBRS; IBPB conditional; RSB filling;
+151: notes_plat_sysinfo_323 =                                         PBRSB-eIBRS SW sequence; BHI BHI_DIS_S
+152: notes_plat_sysinfo_324 =   Vulnerability Srbds:                  Not affected
+153: notes_plat_sysinfo_325 =   Vulnerability Tsx async abort:        Not affected
+154: notes_plat_sysinfo_326 =  
+155: notes_plat_sysinfo_327 = From lscpu --cache:
+156: notes_plat_sysinfo_328 =      NAME ONE-SIZE ALL-SIZE WAYS TYPE        LEVEL  SETS PHY-LINE COHERENCY-SIZE
+157: notes_plat_sysinfo_329 =      L1d       32K     512K    8 Data            1    64        1             64
+158: notes_plat_sysinfo_330 =      L1i       32K     512K    8 Instruction     1    64        1             64
+159: notes_plat_sysinfo_331 =      L2         4M      64M   16 Unified         2  4096        1             64
+160: notes_plat_sysinfo_332 =      L3        16M      16M   16 Unified         3 16384        1             64
+161: notes_plat_sysinfo_333 =  
+162: notes_plat_sysinfo_334 = ------------------------------------------------------------
+163: notes_plat_sysinfo_335 = 8. numactl --hardware
+164: notes_plat_sysinfo_336 = NOTE: a numactl 'node' might or might not correspond to a physical chip.
+165: notes_plat_sysinfo_337 =   available: 1 nodes (0)
+166: notes_plat_sysinfo_338 =   node 0 cpus: 0-15
+167: notes_plat_sysinfo_339 =   node 0 size: 1827 MB
+168: notes_plat_sysinfo_340 =   node 0 free: 87 MB
+169: notes_plat_sysinfo_341 =   node distances:
+170: notes_plat_sysinfo_342 =   node   0
+171: notes_plat_sysinfo_343 =     0:  10
+172: notes_plat_sysinfo_344 =  
+173: notes_plat_sysinfo_345 = ------------------------------------------------------------
+174: notes_plat_sysinfo_346 = 9. /proc/meminfo
+175: notes_plat_sysinfo_347 =    MemTotal:        1871284 kB
+176: notes_plat_sysinfo_348 =  
+177: notes_plat_sysinfo_349 = ------------------------------------------------------------
+178: notes_plat_sysinfo_350 = 10. who -r
+179: notes_plat_sysinfo_351 =   run-level 5 Oct 23 11:24
+180: notes_plat_sysinfo_352 =  
+181: notes_plat_sysinfo_353 = ------------------------------------------------------------
+182: notes_plat_sysinfo_354 = 11. Systemd service manager version: systemd 255 (255.4-1ubuntu8.1)
+183: notes_plat_sysinfo_355 =   Default Target  Status
+184: notes_plat_sysinfo_356 =   graphical       running
+185: notes_plat_sysinfo_357 =  
+186: notes_plat_sysinfo_358 = ------------------------------------------------------------
+187: notes_plat_sysinfo_359 = 12. Services, from systemctl list-unit-files
+188: notes_plat_sysinfo_360 =   STATE            UNIT FILES
+189: notes_plat_sysinfo_361 =   enabled          ModemManager apparmor apport blk-availability cloud-config cloud-final cloud-init
+190: notes_plat_sysinfo_362 =                    cloud-init-local console-setup cron dmesg e2scrub_reap finalrd getty@ grub-common
+191: notes_plat_sysinfo_363 =                    grub-initrd-fallback keyboard-setup lvm2-monitor multipathd networkd-dispatcher open-iscsi
+192: notes_plat_sysinfo_364 =                    open-vm-tools rsyslog secureboot-db setvtrgb snapd ssh sysstat systemd-networkd
+193: notes_plat_sysinfo_365 =                    systemd-networkd-wait-online systemd-pstore systemd-resolved systemd-timesyncd
+194: notes_plat_sysinfo_366 =                    ua-reboot-cmds ubuntu-advantage udisks2 ufw unattended-upgrades vgauth
+195: notes_plat_sysinfo_367 =   enabled-runtime  netplan-ovs-cleanup systemd-fsck-root systemd-remount-fs
+196: notes_plat_sysinfo_368 =   disabled         console-getty debug-shell iscsid nftables rsync systemd-boot-check-no-failures
+197: notes_plat_sysinfo_369 =                    systemd-confext systemd-network-generator systemd-networkd-wait-online@
+198: notes_plat_sysinfo_370 =                    systemd-pcrlock-file-system systemd-pcrlock-firmware-code systemd-pcrlock-firmware-config
+199: notes_plat_sysinfo_371 =                    systemd-pcrlock-machine-id systemd-pcrlock-make-policy
+200: notes_plat_sysinfo_372 =                    systemd-pcrlock-secureboot-authority systemd-pcrlock-secureboot-policy systemd-sysext
+201: notes_plat_sysinfo_373 =                    systemd-time-wait-sync
+202: notes_plat_sysinfo_374 =   indirect         serial-getty@ systemd-sysupdate systemd-sysupdate-reboot uuidd
+203: notes_plat_sysinfo_375 =   masked           cryptdisks cryptdisks-early hwclock multipath-tools-boot pollinate screen-cleanup sudo
+204: notes_plat_sysinfo_376 =                    x11-common
+205: notes_plat_sysinfo_377 =  
+206: notes_plat_sysinfo_378 = ------------------------------------------------------------
+207: notes_plat_sysinfo_379 = 13. Linux kernel boot-time arguments, from /proc/cmdline
+208: notes_plat_sysinfo_380 =   BOOT_IMAGE=/vmlinuz-6.8.0-35-generic
+209: notes_plat_sysinfo_381 =   root=UUID=41106c9c-97fc-4396-8622-4f692c8c5bb1
+210: notes_plat_sysinfo_382 =   ro
+211: notes_plat_sysinfo_383 =   console=tty1
+212: notes_plat_sysinfo_384 =   console=ttyS0
+213: notes_plat_sysinfo_385 =  
+214: notes_plat_sysinfo_386 = ------------------------------------------------------------
+215: notes_plat_sysinfo_387 = 14. cpupower frequency-info
+216: notes_plat_sysinfo_388 =   analyzing CPU 12:
+217: notes_plat_sysinfo_389 =     Unable to determine current policy
+218: notes_plat_sysinfo_390 =     boost state support:
+219: notes_plat_sysinfo_391 =       Supported: no
+220: notes_plat_sysinfo_392 =       Active: no
+221: notes_plat_sysinfo_393 =  
+222: notes_plat_sysinfo_394 = ------------------------------------------------------------
+223: notes_plat_sysinfo_395 = 15. sysctl
+224: notes_plat_sysinfo_396 =   kernel.numa_balancing               0
+225: notes_plat_sysinfo_397 =   kernel.randomize_va_space           2
+226: notes_plat_sysinfo_398 =   vm.compaction_proactiveness        20
+227: notes_plat_sysinfo_399 =   vm.dirty_background_bytes           0
+228: notes_plat_sysinfo_400 =   vm.dirty_background_ratio          10
+229: notes_plat_sysinfo_401 =   vm.dirty_bytes                      0
+230: notes_plat_sysinfo_402 =   vm.dirty_expire_centisecs        3000
+231: notes_plat_sysinfo_403 =   vm.dirty_ratio                     20
+232: notes_plat_sysinfo_404 =   vm.dirty_writeback_centisecs      500
+233: notes_plat_sysinfo_405 =   vm.dirtytime_expire_seconds     43200
+234: notes_plat_sysinfo_406 =   vm.extfrag_threshold              500
+235: notes_plat_sysinfo_407 =   vm.min_unmapped_ratio               1
+236: notes_plat_sysinfo_408 =   vm.nr_hugepages                     0
+237: notes_plat_sysinfo_409 =   vm.nr_hugepages_mempolicy           0
+238: notes_plat_sysinfo_410 =   vm.nr_overcommit_hugepages          0
+239: notes_plat_sysinfo_411 =   vm.swappiness                      60
+240: notes_plat_sysinfo_412 =   vm.watermark_boost_factor       15000
+241: notes_plat_sysinfo_413 =   vm.watermark_scale_factor          10
+242: notes_plat_sysinfo_414 =   vm.zone_reclaim_mode                0
+243: notes_plat_sysinfo_415 =  
+244: notes_plat_sysinfo_416 = ------------------------------------------------------------
+245: notes_plat_sysinfo_417 = 16. /sys/kernel/mm/transparent_hugepage
+246: notes_plat_sysinfo_418 =   defrag          always defer defer+madvise [madvise] never
+247: notes_plat_sysinfo_419 =   enabled         always [madvise] never
+248: notes_plat_sysinfo_420 =   hpage_pmd_size  2097152
+249: notes_plat_sysinfo_421 =   shmem_enabled   always within_size advise [never] deny force
+250: notes_plat_sysinfo_422 =  
+251: notes_plat_sysinfo_423 = ------------------------------------------------------------
+252: notes_plat_sysinfo_424 = 17. /sys/kernel/mm/transparent_hugepage/khugepaged
+253: notes_plat_sysinfo_425 =   alloc_sleep_millisecs   60000
+254: notes_plat_sysinfo_426 =   defrag                      1
+255: notes_plat_sysinfo_427 =   max_ptes_none             511
+256: notes_plat_sysinfo_428 =   max_ptes_shared           256
+257: notes_plat_sysinfo_429 =   max_ptes_swap              64
+258: notes_plat_sysinfo_430 =   pages_to_scan            4096
+259: notes_plat_sysinfo_431 =   scan_sleep_millisecs    10000
+260: notes_plat_sysinfo_432 =  
+261: notes_plat_sysinfo_433 = ------------------------------------------------------------
+262: notes_plat_sysinfo_434 = 18. OS release
+263: notes_plat_sysinfo_435 =   From /etc/*-release /etc/*-version
+264: notes_plat_sysinfo_436 =   os-release Ubuntu 24.04 LTS
+265: notes_plat_sysinfo_437 =  
+266: notes_plat_sysinfo_438 = ------------------------------------------------------------
+267: notes_plat_sysinfo_439 = 19. Disk information
+268: notes_plat_sysinfo_440 = SPEC is set to: /home/tdx/speccpu2017
+269: notes_plat_sysinfo_441 =   Filesystem     Type  Size  Used Avail Use% Mounted on
+270: notes_plat_sysinfo_442 =   /dev/vda1      ext4   51G   18G   34G  35% /
+271: notes_plat_sysinfo_443 =  
+272: notes_plat_sysinfo_444 = ------------------------------------------------------------
+273: notes_plat_sysinfo_445 = 20. /sys/devices/virtual/dmi/id
+274: notes_plat_sysinfo_446 =     Vendor:         QEMU
+275: notes_plat_sysinfo_447 =     Product:        Standard PC (Q35 + ICH9, 2009)
+276: notes_plat_sysinfo_448 =  
+277: notes_plat_sysinfo_449 = ------------------------------------------------------------
+278: notes_plat_sysinfo_450 = 21. dmidecode
+279: notes_plat_sysinfo_451 =   Additional information from dmidecode 3.5 follows.  WARNING: Use caution when you interpret this section.
+280: notes_plat_sysinfo_452 =   The 'dmidecode' program reads system data which is "intended to allow hardware to be accurately
+281: notes_plat_sysinfo_453 =   determined", but the intent may not be met, as there are frequent changes to hardware, firmware, and the
+282: notes_plat_sysinfo_454 =   "DMTF SMBIOS" standard.
+283: notes_plat_sysinfo_455 =   Memory:
+284: notes_plat_sysinfo_456 =     1x QEMU Not Specified 2 GB
+285: notes_plat_sysinfo_457 =  
+286: notes_plat_sysinfo_458 =  
+287: notes_plat_sysinfo_459 = ------------------------------------------------------------
+288: notes_plat_sysinfo_460 = 22. BIOS
+289: notes_plat_sysinfo_461 = (This section combines info from /sys/devices and dmidecode.)
+290: notes_plat_sysinfo_462 =    BIOS Vendor:       Ubuntu distribution of EDK II
+291: notes_plat_sysinfo_463 =    BIOS Version:      2024.02-3+tdx1.0
+292: notes_plat_sysinfo_464 =    BIOS Date:         07/03/2024
+293: notes_plat_sysinfo_465 =    BIOS Revision:     0.0
+294: hw_cpu_name        = 06/8f
+295: hw_disk            = 51 GB  add more disk info here
+296: hw_memory001       = 1.785 GB fixme: If using DDR4, the format is:
+297: hw_memory002       = 'N GB (N x N GB nRxn PC4-nnnnX-X)'
+298: hw_nchips          = 1
+299: hw_ncores          = 16
+300: hw_nthreadspercore = 1
+301: prepared_by        = root  (is never output, only tags rawfile)
+302: sw_file            = ext4
+303: sw_os001           = Ubuntu 24.04 LTS
+304: sw_os002           = 6.8.0-35-generic
+305: sw_state           = Run level 5 (add definition here)
+
+Retrieving flags file (/home/tdx/speccpu2017/config/flags/gcc.xml)...
+Verbosity = 5
+Action    = validate
+Tune      = base
+Label     = mytest-m64
+Size      = test
+benchmarks= 503.bwaves_r,507.cactuBSSN_r,508.namd_r,510.parest_r,511.povray_r,519.lbm_r,521.wrf_r,526.blender_r,527.cam4_r,538.imagick_r,544.nab_r,549.fotonik3d_r,554.roms_r,997.specrand_fr
+outputs   = txt,html,cfg,pdf,csv
+username  = root
+Environment settings:
+LD_LIBRARY_PATH = "%{gcc_dir}/lib64/:%{gcc_dir}/lib/:/lib64"
+
+Benchmarks selected: 503.bwaves_r, 507.cactuBSSN_r, 508.namd_r, 510.parest_r, 511.povray_r, 519.lbm_r, 521.wrf_r, 526.blender_r, 527.cam4_r, 538.imagick_r, 544.nab_r, 549.fotonik3d_r, 554.roms_r, 997.specrand_fr
+When checking executables (/home/tdx/speccpu2017/benchspec/CPU/507.cactuBSSN_r/exe/cactusBSSN_r_base.mytest-m64), no checksums were
+  found in the config file.  They will be installed after build.
+When checking executables (/home/tdx/speccpu2017/benchspec/CPU/510.parest_r/exe/parest_r_base.mytest-m64), no checksums were
+  found in the config file.  They will be installed after build.
+When checking executables (/home/tdx/speccpu2017/benchspec/CPU/521.wrf_r/exe/diffwrf_521_base.mytest-m64,/home/tdx/speccpu2017/benchspec/CPU/521.wrf_r/exe/wrf_r_base.mytest-m64), no checksums were
+  found in the config file.  They will be installed after build.
+When checking executables (/home/tdx/speccpu2017/benchspec/CPU/507.cactuBSSN_r/exe/cactusBSSN_r_base.mytest-m64), no checksums were
+  found in the config file.  They will be installed after build.
+When checking executables (/home/tdx/speccpu2017/benchspec/CPU/510.parest_r/exe/parest_r_base.mytest-m64), no checksums were
+  found in the config file.  They will be installed after build.
+When checking executables (/home/tdx/speccpu2017/benchspec/CPU/521.wrf_r/exe/diffwrf_521_base.mytest-m64,/home/tdx/speccpu2017/benchspec/CPU/521.wrf_r/exe/wrf_r_base.mytest-m64), no checksums were
+  found in the config file.  They will be installed after build.
+Compiling Binaries
+------------------------------------------------------------------------
+FPP: "specpp -DSPEC -DNDEBUG -w -DSPEC_AUTO_SUPPRESS_OPENMP -DSPEC_LP64 <source> -o <source>.fppized.f9x"
+P: CPUFLAGS="-DSPEC -DNDEBUG"
+P: BENCH_FPPFLAGS="-w -DSPEC_AUTO_SUPPRESS_OPENMP"
+O: OPTIMIZE=""
+O: EXTRA_OPTIMIZE=""
+O: FPPOPTIMIZE=""
+O: EXTRA_FPPOPTIMIZE=""
+O: FOPTIMIZE=""
+O: EXTRA_FOPTIMIZE=""
+P: PORTABILITY=""
+P: EXTRA_PORTABILITY="-DSPEC_LP64"
+P: FPORTABILITY=""
+P: EXTRA_FPORTABILITY=""
+COMP: "/usr/bin/gfortran           -m64 -c -o options.o -g -O3 -march=native -fallow-argument-mismatch <source>"
+C: FC="/usr/bin/gfortran           -m64"
+C: FOBJOPT="-c -o options"
+P: CPUFLAGS="-DSPEC -DNDEBUG"
+P: BENCH_FLAGS=""
+P: BENCH_FFLAGS=""
+O: OPTIMIZE="-g -O3 -march=native"
+O: FOPTIMIZE=""
+P: PORTABILITY=""
+P: FPORTABILITY=""
+O: EXTRA_FFLAGS="-fallow-argument-mismatch"
+O: EXTRA_OPTIMIZE=""
+O: EXTRA_FOPTIMIZE=""
+P: EXTRA_PORTABILITY="-DSPEC_LP64"
+P: EXTRA_FPORTABILITY=""
+LINK: "/usr/bin/gfortran           -m64      -g -O3 -march=native          <objects>            -o options  "
+C: LD="/usr/bin/gfortran           -m64"
+O: OPTIMIZE="-g -O3 -march=native"
+C: LDOUT="-o options"
+ FC_VERSION_OPTION:
+GNU Fortran (Ubuntu 13.2.0-23ubuntu4) 13.2.0
+Copyright (C) 2023 Free Software Foundation, Inc.
+This is free software; see the source for copying conditions.  There is NO
+warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
+  Up to date 503.bwaves_r base mytest-m64
+------------------------------------------------------------------------
+When checking options for /home/tdx/speccpu2017/benchspec/CPU/507.cactuBSSN_r/exe/cactusBSSN_r_base.mytest-m64, no checksums were
+  found in the config file.  They will be installed after build.
+When checking executables (/home/tdx/speccpu2017/benchspec/CPU/507.cactuBSSN_r/exe/cactusBSSN_r_base.mytest-m64), no checksums were
+  found in the config file.  They will be installed after build.
+  Building 507.cactuBSSN_r base mytest-m64: (build_base_mytest-m64.0004) [2024-10-24 06:03:20]
+  Compile for '507.cactuBSSN_r' started at: 2024-10-24 06:03:22 (1729749802)
+Issuing make.clean command 'specmake --output-sync --jobs=8 clean'
+Start make.clean command: 2024-10-24 06:03:22 (1729749802.53602)
+rm -rf *.o  gxx.xl gxy.xl spec_train.out
+find . \( -name \*.o -o -name '*.fppized.f*' -o -name '*.i' -o -name '*.mod' \) -print | xargs rm -rf
+rm -rf cactusBSSN_r
+rm -rf cactusBSSN_r.exe
+rm -rf core
+Stop make.clean command: 2024-10-24 06:03:22 (1729749802.74597)
+Elapsed time for make.clean command: 00:00:00 (0.2099449634552)
+Issuing make command 'specmake --output-sync --jobs=8 build'
+Start make command: 2024-10-24 06:03:22 (1729749802.74978)
+/usr/bin/gcc     -std=c99   -m64 -c -o gnu/getopt.o -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP -Iinclude -DCCODE -g -O3 -march=native          -fno-strict-aliasing     -DSPEC_LP64  gnu/getopt.c
+/usr/bin/gcc     -std=c99   -m64 -c -o gnu/getopt1.o -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP -Iinclude -DCCODE -g -O3 -march=native          -fno-strict-aliasing     -DSPEC_LP64  gnu/getopt1.c
+/usr/bin/gcc     -std=c99   -m64 -c -o ADMBase/cctk_Bindings/cctk_ThornBindings.o -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP -Iinclude -DCCODE -g -O3 -march=native          -fno-strict-aliasing     -DSPEC_LP64  ADMBase/cctk_Bindings/cctk_ThornBindings.c
+/usr/bin/gcc     -std=c99   -m64 -c -o ADMBase/ParamCheck.o -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP -Iinclude -DCCODE -g -O3 -march=native          -fno-strict-aliasing     -DSPEC_LP64  ADMBase/ParamCheck.c
+/usr/bin/gcc     -std=c99   -m64 -c -o ADMCoupling/cctk_Bindings/cctk_ThornBindings.o -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP -Iinclude -DCCODE -g -O3 -march=native          -fno-strict-aliasing     -DSPEC_LP64  ADMCoupling/cctk_Bindings/cctk_ThornBindings.c
+/usr/bin/gcc     -std=c99   -m64 -c -o ADMMacros/cctk_Bindings/cctk_ThornBindings.o -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP -Iinclude -DCCODE -g -O3 -march=native          -fno-strict-aliasing     -DSPEC_LP64  ADMMacros/cctk_Bindings/cctk_ThornBindings.c
+/usr/bin/gcc     -std=c99   -m64 -c -o ADMMacros/SetLocalSpatialOrder.o -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP -Iinclude -DCCODE -g -O3 -march=native          -fno-strict-aliasing     -DSPEC_LP64  ADMMacros/SetLocalSpatialOrder.c
+/usr/bin/gcc     -std=c99   -m64 -c -o Boundary/Check.o -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP -Iinclude -DCCODE -g -O3 -march=native          -fno-strict-aliasing     -DSPEC_LP64  Boundary/Check.c
+/usr/bin/gcc     -std=c99   -m64 -c -o ADMBase/InitSymBound.o -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP -Iinclude -DCCODE -g -O3 -march=native          -fno-strict-aliasing     -DSPEC_LP64  ADMBase/InitSymBound.c
+/usr/bin/gcc     -std=c99   -m64 -c -o ADMBase/Static.o -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP -Iinclude -DCCODE -g -O3 -march=native          -fno-strict-aliasing     -DSPEC_LP64  ADMBase/Static.c
+/usr/bin/gcc     -std=c99   -m64 -c -o Boundary/NoneBoundary.o -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP -Iinclude -DCCODE -g -O3 -march=native          -fno-strict-aliasing     -DSPEC_LP64  Boundary/NoneBoundary.c
+/usr/bin/gcc     -std=c99   -m64 -c -o Boundary/Register.o -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP -Iinclude -DCCODE -g -O3 -march=native          -fno-strict-aliasing     -DSPEC_LP64  Boundary/Register.c
+/usr/bin/gcc     -std=c99   -m64 -c -o Boundary/Boundary.o -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP -Iinclude -DCCODE -g -O3 -march=native          -fno-strict-aliasing     -DSPEC_LP64  Boundary/Boundary.c
+/usr/bin/gcc     -std=c99   -m64 -c -o ADMBase/Initialisation.o -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP -Iinclude -DCCODE -g -O3 -march=native          -fno-strict-aliasing     -DSPEC_LP64  ADMBase/Initialisation.c
+/usr/bin/gcc     -std=c99   -m64 -c -o Boundary/FlatBoundary.o -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP -Iinclude -DCCODE -g -O3 -march=native          -fno-strict-aliasing     -DSPEC_LP64  Boundary/FlatBoundary.c
+/usr/bin/gcc     -std=c99   -m64 -c -o Boundary/cctk_Bindings/cctk_ThornBindings.o -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP -Iinclude -DCCODE -g -O3 -march=native          -fno-strict-aliasing     -DSPEC_LP64  Boundary/cctk_Bindings/cctk_ThornBindings.c
+/usr/bin/gcc     -std=c99   -m64 -c -o Boundary/CopyBoundary.o -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP -Iinclude -DCCODE -g -O3 -march=native          -fno-strict-aliasing     -DSPEC_LP64  Boundary/CopyBoundary.c
+/usr/bin/gcc     -std=c99   -m64 -c -o Cactus/IO/FortranBindingsIO.o -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP -Iinclude -DCCODE -g -O3 -march=native          -fno-strict-aliasing     -DSPEC_LP64  Cactus/IO/FortranBindingsIO.c
+/usr/bin/gcc     -std=c99   -m64 -c -o Cactus/cctk_Bindings/cctk_ThornBindings.o -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP -Iinclude -DCCODE -g -O3 -march=native          -fno-strict-aliasing     -DSPEC_LP64  Cactus/cctk_Bindings/cctk_ThornBindings.c
+/usr/bin/gcc     -std=c99   -m64 -c -o Cactus/IO/OverloadIO.o -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP -Iinclude -DCCODE -g -O3 -march=native          -fno-strict-aliasing     -DSPEC_LP64  Cactus/IO/OverloadIO.c
+/usr/bin/gcc     -std=c99   -m64 -c -o Cactus/IO/IOMethods.o -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP -Iinclude -DCCODE -g -O3 -march=native          -fno-strict-aliasing     -DSPEC_LP64  Cactus/IO/IOMethods.c
+/usr/bin/gcc     -std=c99   -m64 -c -o Boundary/StaticBoundary.o -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP -Iinclude -DCCODE -g -O3 -march=native          -fno-strict-aliasing     -DSPEC_LP64  Boundary/StaticBoundary.c
+/usr/bin/gcc     -std=c99   -m64 -c -o Cactus/comm/CactusSync.o -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP -Iinclude -DCCODE -g -O3 -march=native          -fno-strict-aliasing     -DSPEC_LP64  Cactus/comm/CactusSync.c
+/usr/bin/gcc     -std=c99   -m64 -c -o Cactus/comm/Interp.o -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP -Iinclude -DCCODE -g -O3 -march=native          -fno-strict-aliasing     -DSPEC_LP64  Cactus/comm/Interp.c
+/usr/bin/gcc     -std=c99   -m64 -c -o Cactus/comm/CactusDefaultComm.o -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP -Iinclude -DCCODE -g -O3 -march=native          -fno-strict-aliasing     -DSPEC_LP64  Cactus/comm/CactusDefaultComm.c
+/usr/bin/gcc     -std=c99   -m64 -c -o Cactus/main/Banner.o -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP -Iinclude -DCCODE -g -O3 -march=native          -fno-strict-aliasing     -DSPEC_LP64  Cactus/main/Banner.c
+/usr/bin/gcc     -std=c99   -m64 -c -o Cactus/comm/OverloadComm.o -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP -Iinclude -DCCODE -g -O3 -march=native          -fno-strict-aliasing     -DSPEC_LP64  Cactus/comm/OverloadComm.c
+/usr/bin/gcc     -std=c99   -m64 -c -o Cactus/main/CactusDefaultEvolve.o -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP -Iinclude -DCCODE -g -O3 -march=native          -fno-strict-aliasing     -DSPEC_LP64  Cactus/main/CactusDefaultEvolve.c
+/usr/bin/gcc     -std=c99   -m64 -c -o Cactus/main/CactusDefaultInitialise.o -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP -Iinclude -DCCODE -g -O3 -march=native          -fno-strict-aliasing     -DSPEC_LP64  Cactus/main/CactusDefaultInitialise.c
+/usr/bin/gcc     -std=c99   -m64 -c -o Cactus/main/CactusDefaultMainLoopIndex.o -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP -Iinclude -DCCODE -g -O3 -march=native          -fno-strict-aliasing     -DSPEC_LP64  Cactus/main/CactusDefaultMainLoopIndex.c
+/usr/bin/gcc     -std=c99   -m64 -c -o Cactus/comm/Reduction.o -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP -Iinclude -DCCODE -g -O3 -march=native          -fno-strict-aliasing     -DSPEC_LP64  Cactus/comm/Reduction.c
+/usr/bin/gcc     -std=c99   -m64 -c -o Cactus/main/CactusDefaultShutdown.o -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP -Iinclude -DCCODE -g -O3 -march=native          -fno-strict-aliasing     -DSPEC_LP64  Cactus/main/CactusDefaultShutdown.c
+/usr/bin/gcc     -std=c99   -m64 -c -o Cactus/main/ActiveThorns.o -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP -Iinclude -DCCODE -g -O3 -march=native          -fno-strict-aliasing     -DSPEC_LP64  Cactus/main/ActiveThorns.c
+/usr/bin/gcc     -std=c99   -m64 -c -o Cactus/main/CallStartupFunctions.o -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP -Iinclude -DCCODE -g -O3 -march=native          -fno-strict-aliasing     -DSPEC_LP64  Cactus/main/CallStartupFunctions.c
+/usr/bin/gcc     -std=c99   -m64 -c -o Cactus/main/ConfigData.o -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP -Iinclude -DCCODE -g -O3 -march=native          -fno-strict-aliasing     -DSPEC_LP64  Cactus/main/ConfigData.c
+/usr/bin/gcc     -std=c99   -m64 -c -o Boundary/RobinBoundary.o -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP -Iinclude -DCCODE -g -O3 -march=native          -fno-strict-aliasing     -DSPEC_LP64  Boundary/RobinBoundary.c
+/usr/bin/gcc     -std=c99   -m64 -c -o Cactus/main/Complex.o -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP -Iinclude -DCCODE -g -O3 -march=native          -fno-strict-aliasing     -DSPEC_LP64  Cactus/main/Complex.c
+/usr/bin/gcc     -std=c99   -m64 -c -o Cactus/main/DebugDefines.o -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP -Iinclude -DCCODE -g -O3 -march=native          -fno-strict-aliasing     -DSPEC_LP64  Cactus/main/DebugDefines.c
+/usr/bin/gcc     -std=c99   -m64 -c -o Cactus/main/DefaultTimers.o -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP -Iinclude -DCCODE -g -O3 -march=native          -fno-strict-aliasing     -DSPEC_LP64  Cactus/main/DefaultTimers.c
+/usr/bin/gcc     -std=c99   -m64 -c -o Cactus/main/FortranWrappers.o -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP -Iinclude -DCCODE -g -O3 -march=native          -fno-strict-aliasing     -DSPEC_LP64  Cactus/main/FortranWrappers.c
+/usr/bin/gcc     -std=c99   -m64 -c -o Cactus/main/Dummies.o -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP -Iinclude -DCCODE -g -O3 -march=native          -fno-strict-aliasing     -DSPEC_LP64  Cactus/main/Dummies.c
+/usr/bin/gcc     -std=c99   -m64 -c -o Cactus/main/CommandLine.o -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP -Iinclude -DCCODE -g -O3 -march=native          -fno-strict-aliasing     -DSPEC_LP64  Cactus/main/CommandLine.c
+/usr/bin/gcc     -std=c99   -m64 -c -o Boundary/ScalarBoundary.o -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP -Iinclude -DCCODE -g -O3 -march=native          -fno-strict-aliasing     -DSPEC_LP64  Boundary/ScalarBoundary.c
+/usr/bin/gcc     -std=c99   -m64 -c -o Cactus/main/InitialiseDataStructures.o -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP -Iinclude -DCCODE -g -O3 -march=native          -fno-strict-aliasing     -DSPEC_LP64  Cactus/main/InitialiseDataStructures.c
+/usr/bin/gcc     -std=c99   -m64 -c -o Cactus/main/InitialiseCactus.o -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP -Iinclude -DCCODE -g -O3 -march=native          -fno-strict-aliasing     -DSPEC_LP64  Cactus/main/InitialiseCactus.c
+/usr/bin/gcc     -std=c99   -m64 -c -o Cactus/main/GHExtensions.o -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP -Iinclude -DCCODE -g -O3 -march=native          -fno-strict-aliasing     -DSPEC_LP64  Cactus/main/GHExtensions.c
+/usr/bin/gcc     -std=c99   -m64 -c -o Cactus/main/MainUtils.o -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP -Iinclude -DCCODE -g -O3 -march=native          -fno-strict-aliasing     -DSPEC_LP64  Cactus/main/MainUtils.c
+/usr/bin/gcc     -std=c99   -m64 -c -o Cactus/main/Coord.o -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP -Iinclude -DCCODE -g -O3 -march=native          -fno-strict-aliasing     -DSPEC_LP64  Cactus/main/Coord.c
+/usr/bin/gcc     -std=c99   -m64 -c -o Cactus/main/OverloadMain.o -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP -Iinclude -DCCODE -g -O3 -march=native          -fno-strict-aliasing     -DSPEC_LP64  Cactus/main/OverloadMain.c
+/usr/bin/gcc     -std=c99   -m64 -c -o Cactus/main/Names.o -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP -Iinclude -DCCODE -g -O3 -march=native          -fno-strict-aliasing     -DSPEC_LP64  Cactus/main/Names.c
+/usr/bin/gcc     -std=c99   -m64 -c -o Cactus/main/ProcessCommandLine.o -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP -Iinclude -DCCODE -g -O3 -march=native          -fno-strict-aliasing     -DSPEC_LP64  Cactus/main/ProcessCommandLine.c
+/usr/bin/gcc     -std=c99   -m64 -c -o Cactus/main/ProcessEnvironment.o -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP -Iinclude -DCCODE -g -O3 -march=native          -fno-strict-aliasing     -DSPEC_LP64  Cactus/main/ProcessEnvironment.c
+/usr/bin/gcc     -std=c99   -m64 -c -o Cactus/main/ProcessParameterDatabase.o -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP -Iinclude -DCCODE -g -O3 -march=native          -fno-strict-aliasing     -DSPEC_LP64  Cactus/main/ProcessParameterDatabase.c
+/usr/bin/gcc     -std=c99   -m64 -c -o Cactus/main/SetupCache.o -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP -Iinclude -DCCODE -g -O3 -march=native          -fno-strict-aliasing     -DSPEC_LP64  Cactus/main/SetupCache.c
+/usr/bin/gcc     -std=c99   -m64 -c -o Cactus/main/SetParams.o -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP -Iinclude -DCCODE -g -O3 -march=native          -fno-strict-aliasing     -DSPEC_LP64  Cactus/main/SetParams.c
+/usr/bin/gcc     -std=c99   -m64 -c -o Cactus/main/ShutdownCactus.o -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP -Iinclude -DCCODE -g -O3 -march=native          -fno-strict-aliasing     -DSPEC_LP64  Cactus/main/ShutdownCactus.c
+/usr/bin/gcc     -std=c99   -m64 -c -o Cactus/main/Subsystems.o -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP -Iinclude -DCCODE -g -O3 -march=native          -fno-strict-aliasing     -DSPEC_LP64  Cactus/main/Subsystems.c
+/usr/bin/gcc     -std=c99   -m64 -c -o Cactus/main/Termination.o -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP -Iinclude -DCCODE -g -O3 -march=native          -fno-strict-aliasing     -DSPEC_LP64  Cactus/main/Termination.c
+/usr/bin/gcc     -std=c99   -m64 -c -o Cactus/main/Traverse.o -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP -Iinclude -DCCODE -g -O3 -march=native          -fno-strict-aliasing     -DSPEC_LP64  Cactus/main/Traverse.c
+/usr/bin/gcc     -std=c99   -m64 -c -o Cactus/main/Groups.o -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP -Iinclude -DCCODE -g -O3 -march=native          -fno-strict-aliasing     -DSPEC_LP64  Cactus/main/Groups.c
+/usr/bin/gcc     -std=c99   -m64 -c -o Cactus/main/Parameters.o -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP -Iinclude -DCCODE -g -O3 -march=native          -fno-strict-aliasing     -DSPEC_LP64  Cactus/main/Parameters.c
+/usr/bin/gcc     -std=c99   -m64 -c -o gnu/regex.o -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP -Iinclude -DCCODE -g -O3 -march=native          -fno-strict-aliasing     -DSPEC_LP64  gnu/regex.c
+/usr/bin/gcc     -std=c99   -m64 -c -o Cactus/main/GroupsOnGH.o -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP -Iinclude -DCCODE -g -O3 -march=native          -fno-strict-aliasing     -DSPEC_LP64  Cactus/main/GroupsOnGH.c
+/usr/bin/gcc     -std=c99   -m64 -c -o Cactus/main/WarnLevel.o -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP -Iinclude -DCCODE -g -O3 -march=native          -fno-strict-aliasing     -DSPEC_LP64  Cactus/main/WarnLevel.c
+/usr/bin/gcc     -std=c99   -m64 -c -o Cactus/main/ScheduleInterface.o -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP -Iinclude -DCCODE -g -O3 -march=native          -fno-strict-aliasing     -DSPEC_LP64  Cactus/main/ScheduleInterface.c
+/usr/bin/gcc     -std=c99   -m64 -c -o Boundary/RadiationBoundary.o -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP -Iinclude -DCCODE -g -O3 -march=native          -fno-strict-aliasing     -DSPEC_LP64  Boundary/RadiationBoundary.c
+Boundary/RadiationBoundary.c: In function 'ApplyBndRadiative':
+Boundary/RadiationBoundary.c:1527:36: warning: '%d' directive writing between 1 and 11 bytes into a region of size 6 [-Wformat-overflow=]
+ 1527 |   sprintf (coord_system_name, "cart%dd", gdim);
+      |                                    ^~
+Boundary/RadiationBoundary.c:1527:31: note: directive argument in the range [-2147483648, 3]
+ 1527 |   sprintf (coord_system_name, "cart%dd", gdim);
+      |                               ^~~~~~~~~
+In file included from /usr/include/stdio.h:980,
+                 from Boundary/RadiationBoundary.c:68:
+In function 'sprintf',
+    inlined from 'ApplyBndRadiative' at Boundary/RadiationBoundary.c:1527:3:
+/usr/include/x86_64-linux-gnu/bits/stdio2.h:30:10: note: '__builtin___sprintf_chk' output between 7 and 17 bytes into a destination of size 10
+   30 |   return __builtin___sprintf_chk (__s, __USE_FORTIFY_LEVEL - 1,
+      |          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   31 |                                   __glibc_objsize (__s), __fmt,
+      |                                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   32 |                                   __va_arg_pack ());
+      |                                   ~~~~~~~~~~~~~~~~~
+Boundary/RadiationBoundary.c: In function 'ApplyBndRadiative':
+Boundary/RadiationBoundary.c:1550:37: warning: '%d' directive writing between 1 and 11 bytes into a region of size 5 [-Wformat-overflow=]
+ 1550 |   sprintf (coord_system_name, "spher%dd", gdim);
+      |                                     ^~
+Boundary/RadiationBoundary.c:1550:31: note: directive argument in the range [-2147483648, 3]
+ 1550 |   sprintf (coord_system_name, "spher%dd", gdim);
+      |                               ^~~~~~~~~~
+In function 'sprintf',
+    inlined from 'ApplyBndRadiative' at Boundary/RadiationBoundary.c:1550:3:
+/usr/include/x86_64-linux-gnu/bits/stdio2.h:30:10: note: '__builtin___sprintf_chk' output between 8 and 18 bytes into a destination of size 10
+   30 |   return __builtin___sprintf_chk (__s, __USE_FORTIFY_LEVEL - 1,
+      |          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   31 |                                   __glibc_objsize (__s), __fmt,
+      |                                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   32 |                                   __va_arg_pack ());
+      |                                   ~~~~~~~~~~~~~~~~~
+/usr/bin/g++     -std=c++03 -m64 -c -o Cactus/main/flesh.o -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP -Iinclude -DCCODE -DCCTK_DISABLE_RESTRICT=1 -g -O3 -march=native         -DSPEC_LP64  Cactus/main/flesh.cc
+/usr/bin/g++     -std=c++03 -m64 -c -o Cactus/piraha/Boundary.o -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP -Iinclude -DCCODE -DCCTK_DISABLE_RESTRICT=1 -g -O3 -march=native         -DSPEC_LP64  Cactus/piraha/Boundary.cc
+/usr/bin/g++     -std=c++03 -m64 -c -o Cactus/piraha/Dot.o -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP -Iinclude -DCCODE -DCCTK_DISABLE_RESTRICT=1 -g -O3 -march=native         -DSPEC_LP64  Cactus/piraha/Dot.cc
+/usr/bin/g++     -std=c++03 -m64 -c -o Cactus/piraha/End.o -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP -Iinclude -DCCODE -DCCTK_DISABLE_RESTRICT=1 -g -O3 -march=native         -DSPEC_LP64  Cactus/piraha/End.cc
+/usr/bin/g++     -std=c++03 -m64 -c -o Cactus/piraha/Literal.o -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP -Iinclude -DCCODE -DCCTK_DISABLE_RESTRICT=1 -g -O3 -march=native         -DSPEC_LP64  Cactus/piraha/Literal.cc
+/usr/bin/g++     -std=c++03 -m64 -c -o Cactus/piraha/Bracket.o -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP -Iinclude -DCCODE -DCCTK_DISABLE_RESTRICT=1 -g -O3 -march=native         -DSPEC_LP64  Cactus/piraha/Bracket.cc
+/usr/bin/g++     -std=c++03 -m64 -c -o Cactus/piraha/ILiteral.o -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP -Iinclude -DCCODE -DCCTK_DISABLE_RESTRICT=1 -g -O3 -march=native         -DSPEC_LP64  Cactus/piraha/ILiteral.cc
+/usr/bin/g++     -std=c++03 -m64 -c -o Cactus/piraha/NegLookAhead.o -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP -Iinclude -DCCODE -DCCTK_DISABLE_RESTRICT=1 -g -O3 -march=native         -DSPEC_LP64  Cactus/piraha/NegLookAhead.cc
+/usr/bin/g++     -std=c++03 -m64 -c -o Cactus/piraha/Multi.o -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP -Iinclude -DCCODE -DCCTK_DISABLE_RESTRICT=1 -g -O3 -march=native         -DSPEC_LP64  Cactus/piraha/Multi.cc
+/usr/bin/g++     -std=c++03 -m64 -c -o Cactus/piraha/Lookup.o -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP -Iinclude -DCCODE -DCCTK_DISABLE_RESTRICT=1 -g -O3 -march=native         -DSPEC_LP64  Cactus/piraha/Lookup.cc
+/usr/bin/g++     -std=c++03 -m64 -c -o Cactus/piraha/Grammar.o -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP -Iinclude -DCCODE -DCCTK_DISABLE_RESTRICT=1 -g -O3 -march=native         -DSPEC_LP64  Cactus/piraha/Grammar.cc
+/usr/bin/g++     -std=c++03 -m64 -c -o Cactus/piraha/Matcher.o -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP -Iinclude -DCCODE -DCCTK_DISABLE_RESTRICT=1 -g -O3 -march=native         -DSPEC_LP64  Cactus/piraha/Matcher.cc
+/usr/bin/g++     -std=c++03 -m64 -c -o Cactus/piraha/Start.o -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP -Iinclude -DCCODE -DCCTK_DISABLE_RESTRICT=1 -g -O3 -march=native         -DSPEC_LP64  Cactus/piraha/Start.cc
+/usr/bin/g++     -std=c++03 -m64 -c -o Cactus/piraha/smart_ptr.o -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP -Iinclude -DCCODE -DCCTK_DISABLE_RESTRICT=1 -g -O3 -march=native         -DSPEC_LP64  Cactus/piraha/smart_ptr.cc
+/usr/bin/g++     -std=c++03 -m64 -c -o Cactus/piraha/Seq.o -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP -Iinclude -DCCODE -DCCTK_DISABLE_RESTRICT=1 -g -O3 -march=native         -DSPEC_LP64  Cactus/piraha/Seq.cc
+/usr/bin/gcc     -std=c99   -m64 -c -o Cactus/schedule/ScheduleSorter.o -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP -Iinclude -DCCODE -g -O3 -march=native          -fno-strict-aliasing     -DSPEC_LP64  Cactus/schedule/ScheduleSorter.c
+/usr/bin/gcc     -std=c99   -m64 -c -o Cactus/schedule/ScheduleCreater.o -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP -Iinclude -DCCODE -g -O3 -march=native          -fno-strict-aliasing     -DSPEC_LP64  Cactus/schedule/ScheduleCreater.c
+/usr/bin/g++     -std=c++03 -m64 -c -o Cactus/piraha/Or.o -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP -Iinclude -DCCODE -DCCTK_DISABLE_RESTRICT=1 -g -O3 -march=native         -DSPEC_LP64  Cactus/piraha/Or.cc
+/usr/bin/gcc     -std=c99   -m64 -c -o Cactus/schedule/ScheduleTraverse.o -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP -Iinclude -DCCODE -g -O3 -march=native          -fno-strict-aliasing     -DSPEC_LP64  Cactus/schedule/ScheduleTraverse.c
+/usr/bin/gcc     -std=c99   -m64 -c -o Cactus/util/Cache.o -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP -Iinclude -DCCODE -g -O3 -march=native          -fno-strict-aliasing     -DSPEC_LP64  Cactus/util/Cache.c
+/usr/bin/gcc     -std=c99   -m64 -c -o Cactus/util/File.o -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP -Iinclude -DCCODE -g -O3 -march=native          -fno-strict-aliasing     -DSPEC_LP64  Cactus/util/File.c
+/usr/bin/gcc     -std=c99   -m64 -c -o Cactus/util/Malloc.o -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP -Iinclude -DCCODE -g -O3 -march=native          -fno-strict-aliasing     -DSPEC_LP64  Cactus/util/Malloc.c
+/usr/bin/gcc     -std=c99   -m64 -c -o Cactus/util/Hash.o -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP -Iinclude -DCCODE -g -O3 -march=native          -fno-strict-aliasing     -DSPEC_LP64  Cactus/util/Hash.c
+/usr/bin/gcc     -std=c99   -m64 -c -o Cactus/util/Math.o -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP -Iinclude -DCCODE -g -O3 -march=native          -fno-strict-aliasing     -DSPEC_LP64  Cactus/util/Math.c
+/usr/bin/gcc     -std=c99   -m64 -c -o Cactus/util/CactusTimers.o -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP -Iinclude -DCCODE -g -O3 -march=native          -fno-strict-aliasing     -DSPEC_LP64  Cactus/util/CactusTimers.c
+/usr/bin/gcc     -std=c99   -m64 -c -o Cactus/util/Network.o -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP -Iinclude -DCCODE -g -O3 -march=native          -fno-strict-aliasing     -DSPEC_LP64  Cactus/util/Network.c
+/usr/bin/gcc     -std=c99   -m64 -c -o Cactus/util/RegisterKeyedFunction.o -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP -Iinclude -DCCODE -g -O3 -march=native          -fno-strict-aliasing     -DSPEC_LP64  Cactus/util/RegisterKeyedFunction.c
+/usr/bin/gcc     -std=c99   -m64 -c -o Cactus/util/Expression.o -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP -Iinclude -DCCODE -g -O3 -march=native          -fno-strict-aliasing     -DSPEC_LP64  Cactus/util/Expression.c
+/usr/bin/gcc     -std=c99   -m64 -c -o Cactus/util/ParseFile.o -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP -Iinclude -DCCODE -g -O3 -march=native          -fno-strict-aliasing     -DSPEC_LP64  Cactus/util/ParseFile.c
+Cactus/util/ParseFile.c: In function 'ReadFile':
+Cactus/util/ParseFile.c:354:3: warning: ignoring return value of 'fread' declared with attribute 'warn_unused_result' [-Wunused-result]
+  354 |   fread(buffer, *filesize, 1, file);
+      |   ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+/usr/bin/gcc     -std=c99   -m64 -c -o Cactus/util/SKBinTree.o -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP -Iinclude -DCCODE -g -O3 -march=native          -fno-strict-aliasing     -DSPEC_LP64  Cactus/util/SKBinTree.c
+/usr/bin/gcc     -std=c99   -m64 -c -o Cactus/util/StoreHandledData.o -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP -Iinclude -DCCODE -g -O3 -march=native          -fno-strict-aliasing     -DSPEC_LP64  Cactus/util/StoreHandledData.c
+/usr/bin/gcc     -std=c99   -m64 -c -o Cactus/util/StoreKeyedData.o -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP -Iinclude -DCCODE -g -O3 -march=native          -fno-strict-aliasing     -DSPEC_LP64  Cactus/util/StoreKeyedData.c
+/usr/bin/gcc     -std=c99   -m64 -c -o Cactus/util/Misc.o -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP -Iinclude -DCCODE -g -O3 -march=native          -fno-strict-aliasing     -DSPEC_LP64  Cactus/util/Misc.c
+/usr/bin/gcc     -std=c99   -m64 -c -o Cactus/util/StoreNamedData.o -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP -Iinclude -DCCODE -g -O3 -march=native          -fno-strict-aliasing     -DSPEC_LP64  Cactus/util/StoreNamedData.c
+/usr/bin/gcc     -std=c99   -m64 -c -o Cactus/util/StringList.o -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP -Iinclude -DCCODE -g -O3 -march=native          -fno-strict-aliasing     -DSPEC_LP64  Cactus/util/StringList.c
+/usr/bin/gcc     -std=c99   -m64 -c -o Cactus/util/String.o -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP -Iinclude -DCCODE -g -O3 -march=native          -fno-strict-aliasing     -DSPEC_LP64  Cactus/util/String.c
+/usr/bin/gcc     -std=c99   -m64 -c -o Cactus/util/Time.o -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP -Iinclude -DCCODE -g -O3 -march=native          -fno-strict-aliasing     -DSPEC_LP64  Cactus/util/Time.c
+/usr/bin/gcc     -std=c99   -m64 -c -o CactusBindings/Functions/ADMBase_Functions.o -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP -Iinclude -DCCODE -g -O3 -march=native          -fno-strict-aliasing     -DSPEC_LP64  CactusBindings/Functions/ADMBase_Functions.c
+/usr/bin/gcc     -std=c99   -m64 -c -o CactusBindings/Functions/Boundary_Functions.o -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP -Iinclude -DCCODE -g -O3 -march=native          -fno-strict-aliasing     -DSPEC_LP64  CactusBindings/Functions/Boundary_Functions.c
+/usr/bin/gcc     -std=c99   -m64 -c -o CactusBindings/Functions/CartGrid3D_Functions.o -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP -Iinclude -DCCODE -g -O3 -march=native          -fno-strict-aliasing     -DSPEC_LP64  CactusBindings/Functions/CartGrid3D_Functions.c
+/usr/bin/gcc     -std=c99   -m64 -c -o CactusBindings/Functions/CoordBase_Functions.o -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP -Iinclude -DCCODE -g -O3 -march=native          -fno-strict-aliasing     -DSPEC_LP64  CactusBindings/Functions/CoordBase_Functions.c
+/usr/bin/gcc     -std=c99   -m64 -c -o Cactus/util/snprintf.o -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP -Iinclude -DCCODE -g -O3 -march=native          -fno-strict-aliasing     -DSPEC_LP64  Cactus/util/snprintf.c
+/usr/bin/gcc     -std=c99   -m64 -c -o CactusBindings/Functions/GaugeWave_Functions.o -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP -Iinclude -DCCODE -g -O3 -march=native          -fno-strict-aliasing     -DSPEC_LP64  CactusBindings/Functions/GaugeWave_Functions.c
+/usr/bin/gcc     -std=c99   -m64 -c -o CactusBindings/Functions/GenericFD_Functions.o -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP -Iinclude -DCCODE -g -O3 -march=native          -fno-strict-aliasing     -DSPEC_LP64  CactusBindings/Functions/GenericFD_Functions.c
+/usr/bin/gcc     -std=c99   -m64 -c -o CactusBindings/Functions/IOASCII_Functions.o -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP -Iinclude -DCCODE -g -O3 -march=native          -fno-strict-aliasing     -DSPEC_LP64  CactusBindings/Functions/IOASCII_Functions.c
+/usr/bin/gcc     -std=c99   -m64 -c -o CactusBindings/Functions/IOUtil_Functions.o -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP -Iinclude -DCCODE -g -O3 -march=native          -fno-strict-aliasing     -DSPEC_LP64  CactusBindings/Functions/IOUtil_Functions.c
+/usr/bin/gcc     -std=c99   -m64 -c -o CactusBindings/Functions/IOBasic_Functions.o -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP -Iinclude -DCCODE -g -O3 -march=native          -fno-strict-aliasing     -DSPEC_LP64  CactusBindings/Functions/IOBasic_Functions.c
+/usr/bin/gcc     -std=c99   -m64 -c -o CactusBindings/Functions/ML_BSSN_Functions.o -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP -Iinclude -DCCODE -g -O3 -march=native          -fno-strict-aliasing     -DSPEC_LP64  CactusBindings/Functions/ML_BSSN_Functions.c
+/usr/bin/gcc     -std=c99   -m64 -c -o CactusBindings/Functions/IsFunctionAliased.o -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP -Iinclude -DCCODE -g -O3 -march=native          -fno-strict-aliasing     -DSPEC_LP64  CactusBindings/Functions/IsFunctionAliased.c
+/usr/bin/gcc     -std=c99   -m64 -c -o CactusBindings/Functions/ML_BSSN_Helper_Functions.o -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP -Iinclude -DCCODE -g -O3 -march=native          -fno-strict-aliasing     -DSPEC_LP64  CactusBindings/Functions/ML_BSSN_Helper_Functions.c
+/usr/bin/gcc     -std=c99   -m64 -c -o CactusBindings/Functions/MoL_Functions.o -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP -Iinclude -DCCODE -g -O3 -march=native          -fno-strict-aliasing     -DSPEC_LP64  CactusBindings/Functions/MoL_Functions.c
+/usr/bin/gcc     -std=c99   -m64 -c -o CactusBindings/Functions/PUGHInterp_Functions.o -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP -Iinclude -DCCODE -g -O3 -march=native          -fno-strict-aliasing     -DSPEC_LP64  CactusBindings/Functions/PUGHInterp_Functions.c
+/usr/bin/gcc     -std=c99   -m64 -c -o CactusBindings/Functions/PUGHSlab_Functions.o -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP -Iinclude -DCCODE -g -O3 -march=native          -fno-strict-aliasing     -DSPEC_LP64  CactusBindings/Functions/PUGHSlab_Functions.c
+/usr/bin/gcc     -std=c99   -m64 -c -o CactusBindings/Functions/RegisterThornFunctions.o -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP -Iinclude -DCCODE -g -O3 -march=native          -fno-strict-aliasing     -DSPEC_LP64  CactusBindings/Functions/RegisterThornFunctions.c
+/usr/bin/g++     -std=c++03 -m64 -c -o Cactus/piraha/Call.o -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP -Iinclude -DCCODE -DCCTK_DISABLE_RESTRICT=1 -g -O3 -march=native         -DSPEC_LP64  Cactus/piraha/Call.cc
+/usr/bin/gcc     -std=c99   -m64 -c -o CactusBindings/Functions/StaticConformal_Functions.o -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP -Iinclude -DCCODE -g -O3 -march=native          -fno-strict-aliasing     -DSPEC_LP64  CactusBindings/Functions/StaticConformal_Functions.c
+/usr/bin/gcc     -std=c99   -m64 -c -o CactusBindings/Implementations/ImplementationBindings.o -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP -Iinclude -DCCODE -g -O3 -march=native          -fno-strict-aliasing     -DSPEC_LP64  CactusBindings/Implementations/ImplementationBindings.c
+/usr/bin/g++     -std=c++03 -m64 -c -o Cactus/piraha/ReParse.o -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP -Iinclude -DCCODE -DCCTK_DISABLE_RESTRICT=1 -g -O3 -march=native         -DSPEC_LP64  Cactus/piraha/ReParse.cc
+/usr/bin/gcc     -std=c99   -m64 -c -o CactusBindings/Parameters/ADMCoupling_Parameters.o -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP -Iinclude -DCCODE -g -O3 -march=native          -fno-strict-aliasing     -DSPEC_LP64  CactusBindings/Parameters/ADMCoupling_Parameters.c
+/usr/bin/gcc     -std=c99   -m64 -c -o CactusBindings/Parameters/ADMBase_Parameters.o -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP -Iinclude -DCCODE -g -O3 -march=native          -fno-strict-aliasing     -DSPEC_LP64  CactusBindings/Parameters/ADMBase_Parameters.c
+/usr/bin/gcc     -std=c99   -m64 -c -o CactusBindings/Functions/SymBase_Functions.o -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP -Iinclude -DCCODE -g -O3 -march=native          -fno-strict-aliasing     -DSPEC_LP64  CactusBindings/Functions/SymBase_Functions.c
+/usr/bin/gcc     -std=c99   -m64 -c -o CactusBindings/Parameters/BindingsParameters.o -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP -Iinclude -DCCODE -g -O3 -march=native          -fno-strict-aliasing     -DSPEC_LP64  CactusBindings/Parameters/BindingsParameters.c
+/usr/bin/gcc     -std=c99   -m64 -c -o CactusBindings/Parameters/ADMMacros_Parameters.o -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP -Iinclude -DCCODE -g -O3 -march=native          -fno-strict-aliasing     -DSPEC_LP64  CactusBindings/Parameters/ADMMacros_Parameters.c
+/usr/bin/gcc     -std=c99   -m64 -c -o CactusBindings/Parameters/Boundary_Parameters.o -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP -Iinclude -DCCODE -g -O3 -march=native          -fno-strict-aliasing     -DSPEC_LP64  CactusBindings/Parameters/Boundary_Parameters.c
+/usr/bin/g++     -std=c++03 -m64 -c -o Cactus/piraha/Group.o -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP -Iinclude -DCCODE -DCCTK_DISABLE_RESTRICT=1 -g -O3 -march=native         -DSPEC_LP64  Cactus/piraha/Group.cc
+/usr/bin/gcc     -std=c99   -m64 -c -o CactusBindings/Parameters/Cactus_Parameters.o -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP -Iinclude -DCCODE -g -O3 -march=native          -fno-strict-aliasing     -DSPEC_LP64  CactusBindings/Parameters/Cactus_Parameters.c
+/usr/bin/gcc     -std=c99   -m64 -c -o CactusBindings/Parameters/CoordGauge_Parameters.o -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP -Iinclude -DCCODE -g -O3 -march=native          -fno-strict-aliasing     -DSPEC_LP64  CactusBindings/Parameters/CoordGauge_Parameters.c
+/usr/bin/gcc     -std=c99   -m64 -c -o CactusBindings/Parameters/CoordBase_Parameters.o -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP -Iinclude -DCCODE -g -O3 -march=native          -fno-strict-aliasing     -DSPEC_LP64  CactusBindings/Parameters/CoordBase_Parameters.c
+/usr/bin/gcc     -std=c99   -m64 -c -o CactusBindings/Functions/AliasedFunctions.o -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP -Iinclude -DCCODE -g -O3 -march=native          -fno-strict-aliasing     -DSPEC_LP64  CactusBindings/Functions/AliasedFunctions.c
+/usr/bin/gcc     -std=c99   -m64 -c -o CactusBindings/Parameters/Global.o -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP -Iinclude -DCCODE -g -O3 -march=native          -fno-strict-aliasing     -DSPEC_LP64  CactusBindings/Parameters/Global.c
+/usr/bin/gcc     -std=c99   -m64 -c -o CactusBindings/Parameters/CartGrid3D_Parameters.o -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP -Iinclude -DCCODE -g -O3 -march=native          -fno-strict-aliasing     -DSPEC_LP64  CactusBindings/Parameters/CartGrid3D_Parameters.c
+/usr/bin/gcc     -std=c99   -m64 -c -o CactusBindings/Parameters/Fortran_Parameters.o -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP -Iinclude -DCCODE -g -O3 -march=native          -fno-strict-aliasing     -DSPEC_LP64  CactusBindings/Parameters/Fortran_Parameters.c
+/usr/bin/gcc     -std=c99   -m64 -c -o CactusBindings/Parameters/GenericFD_Parameters.o -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP -Iinclude -DCCODE -g -O3 -march=native          -fno-strict-aliasing     -DSPEC_LP64  CactusBindings/Parameters/GenericFD_Parameters.c
+/usr/bin/gcc     -std=c99   -m64 -c -o CactusBindings/Parameters/GaugeWave_Parameters.o -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP -Iinclude -DCCODE -g -O3 -march=native          -fno-strict-aliasing     -DSPEC_LP64  CactusBindings/Parameters/GaugeWave_Parameters.c
+/usr/bin/gcc     -std=c99   -m64 -c -o CactusBindings/Parameters/ML_BSSN_Helper_Parameters.o -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP -Iinclude -DCCODE -g -O3 -march=native          -fno-strict-aliasing     -DSPEC_LP64  CactusBindings/Parameters/ML_BSSN_Helper_Parameters.c
+/usr/bin/gcc     -std=c99   -m64 -c -o CactusBindings/Parameters/LocalReduce_Parameters.o -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP -Iinclude -DCCODE -g -O3 -march=native          -fno-strict-aliasing     -DSPEC_LP64  CactusBindings/Parameters/LocalReduce_Parameters.c
+/usr/bin/gcc     -std=c99   -m64 -c -o CactusBindings/Parameters/IOBasic_Parameters.o -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP -Iinclude -DCCODE -g -O3 -march=native          -fno-strict-aliasing     -DSPEC_LP64  CactusBindings/Parameters/IOBasic_Parameters.c
+/usr/bin/gcc     -std=c99   -m64 -c -o CactusBindings/Parameters/IOASCII_Parameters.o -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP -Iinclude -DCCODE -g -O3 -march=native          -fno-strict-aliasing     -DSPEC_LP64  CactusBindings/Parameters/IOASCII_Parameters.c
+/usr/bin/gcc     -std=c99   -m64 -c -o CactusBindings/Parameters/IOUtil_Parameters.o -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP -Iinclude -DCCODE -g -O3 -march=native          -fno-strict-aliasing     -DSPEC_LP64  CactusBindings/Parameters/IOUtil_Parameters.c
+/usr/bin/gcc     -std=c99   -m64 -c -o CactusBindings/Parameters/PUGHInterp_Parameters.o -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP -Iinclude -DCCODE -g -O3 -march=native          -fno-strict-aliasing     -DSPEC_LP64  CactusBindings/Parameters/PUGHInterp_Parameters.c
+/usr/bin/gcc     -std=c99   -m64 -c -o CactusBindings/Parameters/PUGHReduce_Parameters.o -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP -Iinclude -DCCODE -g -O3 -march=native          -fno-strict-aliasing     -DSPEC_LP64  CactusBindings/Parameters/PUGHReduce_Parameters.c
+/usr/bin/gcc     -std=c99   -m64 -c -o CactusBindings/Parameters/PUGHSlab_Parameters.o -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP -Iinclude -DCCODE -g -O3 -march=native          -fno-strict-aliasing     -DSPEC_LP64  CactusBindings/Parameters/PUGHSlab_Parameters.c
+/usr/bin/gcc     -std=c99   -m64 -c -o CactusBindings/Parameters/StaticConformal_Parameters.o -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP -Iinclude -DCCODE -g -O3 -march=native          -fno-strict-aliasing     -DSPEC_LP64  CactusBindings/Parameters/StaticConformal_Parameters.c
+/usr/bin/gcc     -std=c99   -m64 -c -o CactusBindings/Parameters/SymBase_Parameters.o -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP -Iinclude -DCCODE -g -O3 -march=native          -fno-strict-aliasing     -DSPEC_LP64  CactusBindings/Parameters/SymBase_Parameters.c
+/usr/bin/gcc     -std=c99   -m64 -c -o CactusBindings/Parameters/MoL_Parameters.o -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP -Iinclude -DCCODE -g -O3 -march=native          -fno-strict-aliasing     -DSPEC_LP64  CactusBindings/Parameters/MoL_Parameters.c
+/usr/bin/gcc     -std=c99   -m64 -c -o CactusBindings/Parameters/Time_Parameters.o -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP -Iinclude -DCCODE -g -O3 -march=native          -fno-strict-aliasing     -DSPEC_LP64  CactusBindings/Parameters/Time_Parameters.c
+/usr/bin/gcc     -std=c99   -m64 -c -o CactusBindings/Parameters/PUGH_Parameters.o -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP -Iinclude -DCCODE -g -O3 -march=native          -fno-strict-aliasing     -DSPEC_LP64  CactusBindings/Parameters/PUGH_Parameters.c
+/usr/bin/gcc     -std=c99   -m64 -c -o CactusBindings/Schedule/BindingsParameterRecovery.o -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP -Iinclude -DCCODE -g -O3 -march=native          -fno-strict-aliasing     -DSPEC_LP64  CactusBindings/Schedule/BindingsParameterRecovery.c
+/usr/bin/gcc     -std=c99   -m64 -c -o CactusBindings/Parameters/TmunuBase_Parameters.o -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP -Iinclude -DCCODE -g -O3 -march=native          -fno-strict-aliasing     -DSPEC_LP64  CactusBindings/Parameters/TmunuBase_Parameters.c
+/usr/bin/gcc     -std=c99   -m64 -c -o CactusBindings/Schedule/BindingsSchedule.o -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP -Iinclude -DCCODE -g -O3 -march=native          -fno-strict-aliasing     -DSPEC_LP64  CactusBindings/Schedule/BindingsSchedule.c
+/usr/bin/gcc     -std=c99   -m64 -c -o CactusBindings/Schedule/ScheduleADMCoupling.o -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP -Iinclude -DCCODE -g -O3 -march=native          -fno-strict-aliasing     -DSPEC_LP64  CactusBindings/Schedule/ScheduleADMCoupling.c
+/usr/bin/gcc     -std=c99   -m64 -c -o CactusBindings/Schedule/ScheduleADMMacros.o -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP -Iinclude -DCCODE -g -O3 -march=native          -fno-strict-aliasing     -DSPEC_LP64  CactusBindings/Schedule/ScheduleADMMacros.c
+/usr/bin/gcc     -std=c99   -m64 -c -o CactusBindings/Schedule/ScheduleCactus.o -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP -Iinclude -DCCODE -g -O3 -march=native          -fno-strict-aliasing     -DSPEC_LP64  CactusBindings/Schedule/ScheduleCactus.c
+/usr/bin/gcc     -std=c99   -m64 -c -o CactusBindings/Schedule/ScheduleBoundary.o -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP -Iinclude -DCCODE -g -O3 -march=native          -fno-strict-aliasing     -DSPEC_LP64  CactusBindings/Schedule/ScheduleBoundary.c
+/usr/bin/gcc     -std=c99   -m64 -c -o CactusBindings/Schedule/ScheduleADMBase.o -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP -Iinclude -DCCODE -g -O3 -march=native          -fno-strict-aliasing     -DSPEC_LP64  CactusBindings/Schedule/ScheduleADMBase.c
+/usr/bin/gcc     -std=c99   -m64 -c -o CactusBindings/Schedule/ScheduleCoordBase.o -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP -Iinclude -DCCODE -g -O3 -march=native          -fno-strict-aliasing     -DSPEC_LP64  CactusBindings/Schedule/ScheduleCoordBase.c
+/usr/bin/gcc     -std=c99   -m64 -c -o CactusBindings/Schedule/ScheduleFortran.o -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP -Iinclude -DCCODE -g -O3 -march=native          -fno-strict-aliasing     -DSPEC_LP64  CactusBindings/Schedule/ScheduleFortran.c
+/usr/bin/gcc     -std=c99   -m64 -c -o CactusBindings/Schedule/ScheduleCoordGauge.o -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP -Iinclude -DCCODE -g -O3 -march=native          -fno-strict-aliasing     -DSPEC_LP64  CactusBindings/Schedule/ScheduleCoordGauge.c
+/usr/bin/gcc     -std=c99   -m64 -c -o CactusBindings/Schedule/ScheduleCartGrid3D.o -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP -Iinclude -DCCODE -g -O3 -march=native          -fno-strict-aliasing     -DSPEC_LP64  CactusBindings/Schedule/ScheduleCartGrid3D.c
+/usr/bin/gcc     -std=c99   -m64 -c -o CactusBindings/Schedule/ScheduleGenericFD.o -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP -Iinclude -DCCODE -g -O3 -march=native          -fno-strict-aliasing     -DSPEC_LP64  CactusBindings/Schedule/ScheduleGenericFD.c
+/usr/bin/gcc     -std=c99   -m64 -c -o CactusBindings/Parameters/ML_BSSN_Parameters.o -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP -Iinclude -DCCODE -g -O3 -march=native          -fno-strict-aliasing     -DSPEC_LP64  CactusBindings/Parameters/ML_BSSN_Parameters.c
+/usr/bin/g++     -std=c++03 -m64 -c -o Cactus/piraha/AutoGrammar.o -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP -Iinclude -DCCODE -DCCTK_DISABLE_RESTRICT=1 -g -O3 -march=native         -DSPEC_LP64  Cactus/piraha/AutoGrammar.cc
+/usr/bin/gcc     -std=c99   -m64 -c -o CactusBindings/Schedule/ScheduleGaugeWave.o -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP -Iinclude -DCCODE -g -O3 -march=native          -fno-strict-aliasing     -DSPEC_LP64  CactusBindings/Schedule/ScheduleGaugeWave.c
+/usr/bin/gcc     -std=c99   -m64 -c -o CactusBindings/Schedule/ScheduleLocalReduce.o -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP -Iinclude -DCCODE -g -O3 -march=native          -fno-strict-aliasing     -DSPEC_LP64  CactusBindings/Schedule/ScheduleLocalReduce.c
+/usr/bin/gcc     -std=c99   -m64 -c -o CactusBindings/Schedule/ScheduleIOBasic.o -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP -Iinclude -DCCODE -g -O3 -march=native          -fno-strict-aliasing     -DSPEC_LP64  CactusBindings/Schedule/ScheduleIOBasic.c
+/usr/bin/gcc     -std=c99   -m64 -c -o CactusBindings/Schedule/ScheduleIOASCII.o -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP -Iinclude -DCCODE -g -O3 -march=native          -fno-strict-aliasing     -DSPEC_LP64  CactusBindings/Schedule/ScheduleIOASCII.c
+/usr/bin/gcc     -std=c99   -m64 -c -o CactusBindings/Schedule/ScheduleIOUtil.o -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP -Iinclude -DCCODE -g -O3 -march=native          -fno-strict-aliasing     -DSPEC_LP64  CactusBindings/Schedule/ScheduleIOUtil.c
+/usr/bin/gcc     -std=c99   -m64 -c -o CactusBindings/Schedule/SchedulePUGHInterp.o -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP -Iinclude -DCCODE -g -O3 -march=native          -fno-strict-aliasing     -DSPEC_LP64  CactusBindings/Schedule/SchedulePUGHInterp.c
+/usr/bin/gcc     -std=c99   -m64 -c -o CactusBindings/Schedule/SchedulePUGHReduce.o -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP -Iinclude -DCCODE -g -O3 -march=native          -fno-strict-aliasing     -DSPEC_LP64  CactusBindings/Schedule/SchedulePUGHReduce.c
+/usr/bin/gcc     -std=c99   -m64 -c -o CactusBindings/Schedule/SchedulePUGH.o -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP -Iinclude -DCCODE -g -O3 -march=native          -fno-strict-aliasing     -DSPEC_LP64  CactusBindings/Schedule/SchedulePUGH.c
+/usr/bin/gcc     -std=c99   -m64 -c -o CactusBindings/Schedule/SchedulePUGHSlab.o -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP -Iinclude -DCCODE -g -O3 -march=native          -fno-strict-aliasing     -DSPEC_LP64  CactusBindings/Schedule/SchedulePUGHSlab.c
+/usr/bin/gcc     -std=c99   -m64 -c -o CactusBindings/Schedule/ScheduleML_BSSN_Helper.o -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP -Iinclude -DCCODE -g -O3 -march=native          -fno-strict-aliasing     -DSPEC_LP64  CactusBindings/Schedule/ScheduleML_BSSN_Helper.c
+/usr/bin/gcc     -std=c99   -m64 -c -o CactusBindings/Schedule/ScheduleSymBase.o -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP -Iinclude -DCCODE -g -O3 -march=native          -fno-strict-aliasing     -DSPEC_LP64  CactusBindings/Schedule/ScheduleSymBase.c
+/usr/bin/gcc     -std=c99   -m64 -c -o CactusBindings/Schedule/ScheduleTime.o -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP -Iinclude -DCCODE -g -O3 -march=native          -fno-strict-aliasing     -DSPEC_LP64  CactusBindings/Schedule/ScheduleTime.c
+/usr/bin/gcc     -std=c99   -m64 -c -o CactusBindings/Schedule/ScheduleStaticConformal.o -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP -Iinclude -DCCODE -g -O3 -march=native          -fno-strict-aliasing     -DSPEC_LP64  CactusBindings/Schedule/ScheduleStaticConformal.c
+/usr/bin/gcc     -std=c99   -m64 -c -o CactusBindings/Schedule/ScheduleTmunuBase.o -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP -Iinclude -DCCODE -g -O3 -march=native          -fno-strict-aliasing     -DSPEC_LP64  CactusBindings/Schedule/ScheduleTmunuBase.c
+/usr/bin/gcc     -std=c99   -m64 -c -o CactusBindings/Variables/BindingsVariables.o -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP -Iinclude -DCCODE -g -O3 -march=native          -fno-strict-aliasing     -DSPEC_LP64  CactusBindings/Variables/BindingsVariables.c
+/usr/bin/gcc     -std=c99   -m64 -c -o CactusBindings/Variables/Boundary.o -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP -Iinclude -DCCODE -g -O3 -march=native          -fno-strict-aliasing     -DSPEC_LP64  CactusBindings/Variables/Boundary.c
+/usr/bin/gcc     -std=c99   -m64 -c -o CactusBindings/Variables/ADMMacros.o -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP -Iinclude -DCCODE -g -O3 -march=native          -fno-strict-aliasing     -DSPEC_LP64  CactusBindings/Variables/ADMMacros.c
+/usr/bin/gcc     -std=c99   -m64 -c -o CactusBindings/Variables/ADMCoupling.o -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP -Iinclude -DCCODE -g -O3 -march=native          -fno-strict-aliasing     -DSPEC_LP64  CactusBindings/Variables/ADMCoupling.c
+/usr/bin/gcc     -std=c99   -m64 -c -o CactusBindings/Schedule/ScheduleMoL.o -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP -Iinclude -DCCODE -g -O3 -march=native          -fno-strict-aliasing     -DSPEC_LP64  CactusBindings/Schedule/ScheduleMoL.c
+/usr/bin/gcc     -std=c99   -m64 -c -o CactusBindings/Variables/Cactus.o -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP -Iinclude -DCCODE -g -O3 -march=native          -fno-strict-aliasing     -DSPEC_LP64  CactusBindings/Variables/Cactus.c
+/usr/bin/gcc     -std=c99   -m64 -c -o CactusBindings/Schedule/ScheduleML_BSSN.o -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP -Iinclude -DCCODE -g -O3 -march=native          -fno-strict-aliasing     -DSPEC_LP64  CactusBindings/Schedule/ScheduleML_BSSN.c
+/usr/bin/gcc     -std=c99   -m64 -c -o CactusBindings/Variables/CoordBase.o -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP -Iinclude -DCCODE -g -O3 -march=native          -fno-strict-aliasing     -DSPEC_LP64  CactusBindings/Variables/CoordBase.c
+/usr/bin/gcc     -std=c99   -m64 -c -o CactusBindings/Variables/CartGrid3D.o -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP -Iinclude -DCCODE -g -O3 -march=native          -fno-strict-aliasing     -DSPEC_LP64  CactusBindings/Variables/CartGrid3D.c
+/usr/bin/gcc     -std=c99   -m64 -c -o CactusBindings/Variables/ADMBase.o -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP -Iinclude -DCCODE -g -O3 -march=native          -fno-strict-aliasing     -DSPEC_LP64  CactusBindings/Variables/ADMBase.c
+/usr/bin/gcc     -std=c99   -m64 -c -o CactusBindings/Variables/CoordGauge.o -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP -Iinclude -DCCODE -g -O3 -march=native          -fno-strict-aliasing     -DSPEC_LP64  CactusBindings/Variables/CoordGauge.c
+/usr/bin/gcc     -std=c99   -m64 -c -o CactusBindings/Variables/Fortran.o -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP -Iinclude -DCCODE -g -O3 -march=native          -fno-strict-aliasing     -DSPEC_LP64  CactusBindings/Variables/Fortran.c
+/usr/bin/gcc     -std=c99   -m64 -c -o CactusBindings/Variables/IOASCII.o -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP -Iinclude -DCCODE -g -O3 -march=native          -fno-strict-aliasing     -DSPEC_LP64  CactusBindings/Variables/IOASCII.c
+/usr/bin/gcc     -std=c99   -m64 -c -o CactusBindings/Variables/IOBasic.o -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP -Iinclude -DCCODE -g -O3 -march=native          -fno-strict-aliasing     -DSPEC_LP64  CactusBindings/Variables/IOBasic.c
+/usr/bin/gcc     -std=c99   -m64 -c -o CactusBindings/Variables/IOUtil.o -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP -Iinclude -DCCODE -g -O3 -march=native          -fno-strict-aliasing     -DSPEC_LP64  CactusBindings/Variables/IOUtil.c
+/usr/bin/gcc     -std=c99   -m64 -c -o CactusBindings/Variables/LocalReduce.o -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP -Iinclude -DCCODE -g -O3 -march=native          -fno-strict-aliasing     -DSPEC_LP64  CactusBindings/Variables/LocalReduce.c
+/usr/bin/gcc     -std=c99   -m64 -c -o Cactus/util/Table.o -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP -Iinclude -DCCODE -g -O3 -march=native          -fno-strict-aliasing     -DSPEC_LP64  Cactus/util/Table.c
+/usr/bin/gcc     -std=c99   -m64 -c -o CactusBindings/Variables/GenericFD.o -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP -Iinclude -DCCODE -g -O3 -march=native          -fno-strict-aliasing     -DSPEC_LP64  CactusBindings/Variables/GenericFD.c
+/usr/bin/gcc     -std=c99   -m64 -c -o CactusBindings/Variables/PUGHInterp.o -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP -Iinclude -DCCODE -g -O3 -march=native          -fno-strict-aliasing     -DSPEC_LP64  CactusBindings/Variables/PUGHInterp.c
+/usr/bin/gcc     -std=c99   -m64 -c -o CactusBindings/Variables/PUGH.o -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP -Iinclude -DCCODE -g -O3 -march=native          -fno-strict-aliasing     -DSPEC_LP64  CactusBindings/Variables/PUGH.c
+/usr/bin/gcc     -std=c99   -m64 -c -o CactusBindings/Variables/GaugeWave.o -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP -Iinclude -DCCODE -g -O3 -march=native          -fno-strict-aliasing     -DSPEC_LP64  CactusBindings/Variables/GaugeWave.c
+/usr/bin/gcc     -std=c99   -m64 -c -o CactusBindings/Variables/PUGHReduce.o -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP -Iinclude -DCCODE -g -O3 -march=native          -fno-strict-aliasing     -DSPEC_LP64  CactusBindings/Variables/PUGHReduce.c
+/usr/bin/gcc     -std=c99   -m64 -c -o CactusBindings/Variables/PUGHSlab.o -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP -Iinclude -DCCODE -g -O3 -march=native          -fno-strict-aliasing     -DSPEC_LP64  CactusBindings/Variables/PUGHSlab.c
+/usr/bin/gcc     -std=c99   -m64 -c -o CactusBindings/Variables/MoL.o -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP -Iinclude -DCCODE -g -O3 -march=native          -fno-strict-aliasing     -DSPEC_LP64  CactusBindings/Variables/MoL.c
+/usr/bin/gcc     -std=c99   -m64 -c -o CactusBindings/Variables/SymBase.o -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP -Iinclude -DCCODE -g -O3 -march=native          -fno-strict-aliasing     -DSPEC_LP64  CactusBindings/Variables/SymBase.c
+/usr/bin/gcc     -std=c99   -m64 -c -o CactusBindings/Variables/Time.o -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP -Iinclude -DCCODE -g -O3 -march=native          -fno-strict-aliasing     -DSPEC_LP64  CactusBindings/Variables/Time.c
+/usr/bin/gcc     -std=c99   -m64 -c -o CactusBindings/Variables/StaticConformal.o -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP -Iinclude -DCCODE -g -O3 -march=native          -fno-strict-aliasing     -DSPEC_LP64  CactusBindings/Variables/StaticConformal.c
+/usr/bin/gcc     -std=c99   -m64 -c -o CartGrid3D/DecodeSymParameters.o -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP -Iinclude -DCCODE -g -O3 -march=native          -fno-strict-aliasing     -DSPEC_LP64  CartGrid3D/DecodeSymParameters.c
+/usr/bin/gcc     -std=c99   -m64 -c -o CartGrid3D/GetSymmetry.o -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP -Iinclude -DCCODE -g -O3 -march=native          -fno-strict-aliasing     -DSPEC_LP64  CartGrid3D/GetSymmetry.c
+/usr/bin/gcc     -std=c99   -m64 -c -o CartGrid3D/ParamCheck.o -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP -Iinclude -DCCODE -g -O3 -march=native          -fno-strict-aliasing     -DSPEC_LP64  CartGrid3D/ParamCheck.c
+/usr/bin/gcc     -std=c99   -m64 -c -o CartGrid3D/RegisterSymmetries.o -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP -Iinclude -DCCODE -g -O3 -march=native          -fno-strict-aliasing     -DSPEC_LP64  CartGrid3D/RegisterSymmetries.c
+/usr/bin/gcc     -std=c99   -m64 -c -o CartGrid3D/SetSymmetry.o -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP -Iinclude -DCCODE -g -O3 -march=native          -fno-strict-aliasing     -DSPEC_LP64  CartGrid3D/SetSymmetry.c
+/usr/bin/gcc     -std=c99   -m64 -c -o CartGrid3D/cctk_Bindings/cctk_ThornBindings.o -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP -Iinclude -DCCODE -g -O3 -march=native          -fno-strict-aliasing     -DSPEC_LP64  CartGrid3D/cctk_Bindings/cctk_ThornBindings.c
+/usr/bin/gcc     -std=c99   -m64 -c -o CartGrid3D/Startup.o -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP -Iinclude -DCCODE -g -O3 -march=native          -fno-strict-aliasing     -DSPEC_LP64  CartGrid3D/Startup.c
+/usr/bin/gcc     -std=c99   -m64 -c -o CactusBindings/Variables/ML_BSSN_Helper.o -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP -Iinclude -DCCODE -g -O3 -march=native          -fno-strict-aliasing     -DSPEC_LP64  CactusBindings/Variables/ML_BSSN_Helper.c
+/usr/bin/gcc     -std=c99   -m64 -c -o CartGrid3D/CartGrid3D.o -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP -Iinclude -DCCODE -g -O3 -march=native          -fno-strict-aliasing     -DSPEC_LP64  CartGrid3D/CartGrid3D.c
+/usr/bin/gcc     -std=c99   -m64 -c -o CactusBindings/Variables/ML_BSSN.o -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP -Iinclude -DCCODE -g -O3 -march=native          -fno-strict-aliasing     -DSPEC_LP64  CactusBindings/Variables/ML_BSSN.c
+/usr/bin/gcc     -std=c99   -m64 -c -o CactusBindings/Variables/TmunuBase.o -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP -Iinclude -DCCODE -g -O3 -march=native          -fno-strict-aliasing     -DSPEC_LP64  CactusBindings/Variables/TmunuBase.c
+/usr/bin/gcc     -std=c99   -m64 -c -o CoordBase/cctk_Bindings/cctk_ThornBindings.o -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP -Iinclude -DCCODE -g -O3 -march=native          -fno-strict-aliasing     -DSPEC_LP64  CoordBase/cctk_Bindings/cctk_ThornBindings.c
+/usr/bin/gcc     -std=c99   -m64 -c -o CoordBase/GHExtension.o -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP -Iinclude -DCCODE -g -O3 -march=native          -fno-strict-aliasing     -DSPEC_LP64  CoordBase/GHExtension.c
+/usr/bin/gcc     -std=c99   -m64 -c -o CoordGauge/cctk_Bindings/cctk_ThornBindings.o -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP -Iinclude -DCCODE -g -O3 -march=native          -fno-strict-aliasing     -DSPEC_LP64  CoordGauge/cctk_Bindings/cctk_ThornBindings.c
+/usr/bin/gfortran           -m64 -c -o Fortran/cctk_Banner.o -Iinclude -g -O3 -march=native -fallow-argument-mismatch Fortran/cctk_Banner.f90
+/usr/bin/gfortran           -m64 -c -o Fortran/cctk_Cache.o -Iinclude -g -O3 -march=native -fallow-argument-mismatch Fortran/cctk_Cache.f90
+/usr/bin/gfortran           -m64 -c -o Fortran/cctk_ActiveThorns.o -Iinclude -g -O3 -march=native -fallow-argument-mismatch Fortran/cctk_ActiveThorns.f90
+/usr/bin/gfortran           -m64 -c -o Fortran/cctk_Comm.o -Iinclude -g -O3 -march=native -fallow-argument-mismatch Fortran/cctk_Comm.f90
+/usr/bin/gcc     -std=c99   -m64 -c -o CoordGauge/Slicing.o -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP -Iinclude -DCCODE -g -O3 -march=native          -fno-strict-aliasing     -DSPEC_LP64  CoordGauge/Slicing.c
+/usr/bin/gcc     -std=c99   -m64 -c -o CoordBase/CoordBase.o -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP -Iinclude -DCCODE -g -O3 -march=native          -fno-strict-aliasing     -DSPEC_LP64  CoordBase/CoordBase.c
+/usr/bin/gfortran           -m64 -c -o Fortran/cctk_CommandLine.o -Iinclude -g -O3 -march=native -fallow-argument-mismatch Fortran/cctk_CommandLine.f90
+/usr/bin/gfortran           -m64 -c -o Fortran/cctk_Complex.o -Iinclude -g -O3 -march=native -fallow-argument-mismatch Fortran/cctk_Complex.f90
+/usr/bin/gfortran           -m64 -c -o Fortran/cctk_DebugDefines.o -Iinclude -g -O3 -march=native -fallow-argument-mismatch Fortran/cctk_DebugDefines.f90
+/usr/bin/gfortran           -m64 -c -o Fortran/cctk_Coord.o -Iinclude -g -O3 -march=native -fallow-argument-mismatch Fortran/cctk_Coord.f90
+/usr/bin/gfortran           -m64 -c -o Fortran/cctk_Constants.o -Iinclude -g -O3 -march=native -fallow-argument-mismatch Fortran/cctk_Constants.f90
+/usr/bin/gfortran           -m64 -c -o Fortran/cctk_File.o -Iinclude -g -O3 -march=native -fallow-argument-mismatch Fortran/cctk_File.f90
+/usr/bin/gfortran           -m64 -c -o Fortran/cctk_FortranString1.o -Iinclude -g -O3 -march=native -fallow-argument-mismatch Fortran/cctk_FortranString1.f90
+/usr/bin/gfortran           -m64 -c -o Fortran/cctk_Faces.o -Iinclude -g -O3 -march=native -fallow-argument-mismatch Fortran/cctk_Faces.f90
+/usr/bin/gfortran           -m64 -c -o Fortran/cctk_GHExtensions.o -Iinclude -g -O3 -march=native -fallow-argument-mismatch Fortran/cctk_GHExtensions.f90
+/usr/bin/gfortran           -m64 -c -o Fortran/cctk_GNU.o -Iinclude -g -O3 -march=native -fallow-argument-mismatch Fortran/cctk_GNU.f90
+/usr/bin/gfortran           -m64 -c -o Fortran/cctk_FortranWrappers.o -Iinclude -g -O3 -march=native -fallow-argument-mismatch Fortran/cctk_FortranWrappers.f90
+/usr/bin/gfortran           -m64 -c -o Fortran/cctk_Flesh.o -Iinclude -g -O3 -march=native -fallow-argument-mismatch Fortran/cctk_Flesh.f90
+/usr/bin/gfortran           -m64 -c -o Fortran/cctk_Groups.o -Iinclude -g -O3 -march=native -fallow-argument-mismatch Fortran/cctk_Groups.f90
+/usr/bin/gcc     -std=c99   -m64 -c -o CoordBase/Domain.o -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP -Iinclude -DCCODE -g -O3 -march=native          -fno-strict-aliasing     -DSPEC_LP64  CoordBase/Domain.c
+/usr/bin/gfortran           -m64 -c -o Fortran/cctk_Malloc1.o -Iinclude -g -O3 -march=native -fallow-argument-mismatch Fortran/cctk_Malloc1.f90
+/usr/bin/gfortran           -m64 -c -o Fortran/cctk_IO.o -Iinclude -g -O3 -march=native -fallow-argument-mismatch Fortran/cctk_IO.f90
+/usr/bin/gfortran           -m64 -c -o Fortran/cctk_Interp.o -Iinclude -g -O3 -march=native -fallow-argument-mismatch Fortran/cctk_Interp.f90
+/usr/bin/gfortran           -m64 -c -o Fortran/cctk_GroupsOnGH.o -Iinclude -g -O3 -march=native -fallow-argument-mismatch Fortran/cctk_GroupsOnGH.f90
+/usr/bin/gfortran           -m64 -c -o Fortran/cctk_Main.o -Iinclude -g -O3 -march=native -fallow-argument-mismatch Fortran/cctk_Main.f90
+/usr/bin/gfortran           -m64 -c -o Fortran/cctk_IOMethods.o -Iinclude -g -O3 -march=native -fallow-argument-mismatch Fortran/cctk_IOMethods.f90
+/usr/bin/gfortran           -m64 -c -o Fortran/cctk_MemAlloc.o -Iinclude -g -O3 -march=native -fallow-argument-mismatch Fortran/cctk_MemAlloc.f90
+/usr/bin/gfortran           -m64 -c -o Fortran/cctk_Misc.o -Iinclude -g -O3 -march=native -fallow-argument-mismatch Fortran/cctk_Misc.f90
+/usr/bin/gfortran           -m64 -c -o Fortran/cctk_ParamCheck.o -Iinclude -g -O3 -march=native -fallow-argument-mismatch Fortran/cctk_ParamCheck.f90
+/usr/bin/gfortran           -m64 -c -o Fortran/cctk_Parameter.o -Iinclude -g -O3 -march=native -fallow-argument-mismatch Fortran/cctk_Parameter.f90
+/usr/bin/gfortran           -m64 -c -o Fortran/cctk_Math.o -Iinclude -g -O3 -march=native -fallow-argument-mismatch Fortran/cctk_Math.f90
+/usr/bin/gfortran           -m64 -c -o Fortran/cctk_Termination.o -Iinclude -g -O3 -march=native -fallow-argument-mismatch Fortran/cctk_Termination.f90
+/usr/bin/gfortran           -m64 -c -o Fortran/cctk_Reduction.o -Iinclude -g -O3 -march=native -fallow-argument-mismatch Fortran/cctk_Reduction.f90
+/usr/bin/gfortran           -m64 -c -o Fortran/cctk_Timers.o -Iinclude -g -O3 -march=native -fallow-argument-mismatch Fortran/cctk_Timers.f90
+/usr/bin/gfortran           -m64 -c -o Fortran/cctk_Schedule.o -Iinclude -g -O3 -march=native -fallow-argument-mismatch Fortran/cctk_Schedule.f90
+/usr/bin/gfortran           -m64 -c -o Fortran/cctk_Sync.o -Iinclude -g -O3 -march=native -fallow-argument-mismatch Fortran/cctk_Sync.f90
+/usr/bin/gfortran           -m64 -c -o Fortran/cctk_Types.o -Iinclude -g -O3 -march=native -fallow-argument-mismatch Fortran/cctk_Types.f90
+/usr/bin/gfortran           -m64 -c -o Fortran/cctk_WarnLevel.o -Iinclude -g -O3 -march=native -fallow-argument-mismatch Fortran/cctk_WarnLevel.f90
+/usr/bin/gfortran           -m64 -c -o Fortran/cctk_Version.o -Iinclude -g -O3 -march=native -fallow-argument-mismatch Fortran/cctk_Version.f90
+/usr/bin/gfortran           -m64 -c -o Fortran/paramcheck.o -Iinclude -g -O3 -march=native -fallow-argument-mismatch Fortran/paramcheck.f90
+/usr/bin/gcc     -std=c99   -m64 -c -o Fortran/cctk_Bindings/cctk_ThornBindings.o -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP -Iinclude -DCCODE -g -O3 -march=native          -fno-strict-aliasing     -DSPEC_LP64  Fortran/cctk_Bindings/cctk_ThornBindings.c
+/usr/bin/gfortran           -m64 -c -o Fortran/util_Table.o -Iinclude -g -O3 -march=native -fallow-argument-mismatch Fortran/util_Table.f90
+/usr/bin/g++     -std=c++03 -m64 -c -o GaugeWave/RegisterMoL.o -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP -Iinclude -DCCODE -DCCTK_DISABLE_RESTRICT=1 -g -O3 -march=native         -DSPEC_LP64  GaugeWave/RegisterMoL.cc
+/usr/bin/g++     -std=c++03 -m64 -c -o GaugeWave/Boundaries.o -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP -Iinclude -DCCODE -DCCTK_DISABLE_RESTRICT=1 -g -O3 -march=native         -DSPEC_LP64  GaugeWave/Boundaries.cc
+/usr/bin/g++     -std=c++03 -m64 -c -o GaugeWave/Startup.o -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP -Iinclude -DCCODE -DCCTK_DISABLE_RESTRICT=1 -g -O3 -march=native         -DSPEC_LP64  GaugeWave/Startup.cc
+/usr/bin/g++     -std=c++03 -m64 -c -o GaugeWave/ParamCheck.o -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP -Iinclude -DCCODE -DCCTK_DISABLE_RESTRICT=1 -g -O3 -march=native         -DSPEC_LP64  GaugeWave/ParamCheck.cc
+/usr/bin/g++     -std=c++03 -m64 -c -o GaugeWave/RegisterSymmetries.o -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP -Iinclude -DCCODE -DCCTK_DISABLE_RESTRICT=1 -g -O3 -march=native         -DSPEC_LP64  GaugeWave/RegisterSymmetries.cc
+/usr/bin/gcc     -std=c99   -m64 -c -o GaugeWave/cctk_Bindings/cctk_ThornBindings.o -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP -Iinclude -DCCODE -g -O3 -march=native          -fno-strict-aliasing     -DSPEC_LP64  GaugeWave/cctk_Bindings/cctk_ThornBindings.c
+/usr/bin/gcc     -std=c99   -m64 -c -o GenericFD/cctk_Bindings/cctk_ThornBindings.o -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP -Iinclude -DCCODE -g -O3 -march=native          -fno-strict-aliasing     -DSPEC_LP64  GenericFD/cctk_Bindings/cctk_ThornBindings.c
+/usr/bin/gcc     -std=c99   -m64 -c -o IOASCII/ChooseOutput.o -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP -Iinclude -DCCODE -g -O3 -march=native          -fno-strict-aliasing     -DSPEC_LP64  IOASCII/ChooseOutput.c
+/usr/bin/gcc     -std=c99   -m64 -c -o IOASCII/Output1D.o -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP -Iinclude -DCCODE -g -O3 -march=native          -fno-strict-aliasing     -DSPEC_LP64  IOASCII/Output1D.c
+/usr/bin/gcc     -std=c99   -m64 -c -o IOASCII/Output2D.o -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP -Iinclude -DCCODE -g -O3 -march=native          -fno-strict-aliasing     -DSPEC_LP64  IOASCII/Output2D.c
+/usr/bin/gcc     -std=c99   -m64 -c -o IOASCII/Output3D.o -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP -Iinclude -DCCODE -g -O3 -march=native          -fno-strict-aliasing     -DSPEC_LP64  IOASCII/Output3D.c
+/usr/bin/gcc     -std=c99   -m64 -c -o IOASCII/Startup.o -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP -Iinclude -DCCODE -g -O3 -march=native          -fno-strict-aliasing     -DSPEC_LP64  IOASCII/Startup.c
+/usr/bin/gcc     -std=c99   -m64 -c -o IOASCII/cctk_Bindings/cctk_ThornBindings.o -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP -Iinclude -DCCODE -g -O3 -march=native          -fno-strict-aliasing     -DSPEC_LP64  IOASCII/cctk_Bindings/cctk_ThornBindings.c
+/usr/bin/gcc     -std=c99   -m64 -c -o GenericFD/GenericFD.o -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP -Iinclude -DCCODE -g -O3 -march=native          -fno-strict-aliasing     -DSPEC_LP64  GenericFD/GenericFD.c
+/usr/bin/gcc     -std=c99   -m64 -c -o IOBasic/OutputInfo.o -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP -Iinclude -DCCODE -g -O3 -march=native          -fno-strict-aliasing     -DSPEC_LP64  IOBasic/OutputInfo.c
+/usr/bin/gcc     -std=c99   -m64 -c -o IOBasic/OutputScalar.o -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP -Iinclude -DCCODE -g -O3 -march=native          -fno-strict-aliasing     -DSPEC_LP64  IOBasic/OutputScalar.c
+/usr/bin/gcc     -std=c99   -m64 -c -o IOBasic/WriteInfo.o -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP -Iinclude -DCCODE -g -O3 -march=native          -fno-strict-aliasing     -DSPEC_LP64  IOBasic/WriteInfo.c
+/usr/bin/gcc     -std=c99   -m64 -c -o IOASCII/Write3D.o -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP -Iinclude -DCCODE -g -O3 -march=native          -fno-strict-aliasing     -DSPEC_LP64  IOASCII/Write3D.c
+/usr/bin/gcc     -std=c99   -m64 -c -o IOASCII/Write2D.o -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP -Iinclude -DCCODE -g -O3 -march=native          -fno-strict-aliasing     -DSPEC_LP64  IOASCII/Write2D.c
+/usr/bin/gcc     -std=c99   -m64 -c -o IOBasic/Startup.o -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP -Iinclude -DCCODE -g -O3 -march=native          -fno-strict-aliasing     -DSPEC_LP64  IOBasic/Startup.c
+/usr/bin/gcc     -std=c99   -m64 -c -o IOUtil/AdvertisedFiles.o -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP -Iinclude -DCCODE -g -O3 -march=native          -fno-strict-aliasing     -DSPEC_LP64  IOUtil/AdvertisedFiles.c
+/usr/bin/gcc     -std=c99   -m64 -c -o IOBasic/cctk_Bindings/cctk_ThornBindings.o -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP -Iinclude -DCCODE -g -O3 -march=native          -fno-strict-aliasing     -DSPEC_LP64  IOBasic/cctk_Bindings/cctk_ThornBindings.c
+/usr/bin/gcc     -std=c99   -m64 -c -o IOASCII/Write1D.o -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP -Iinclude -DCCODE -g -O3 -march=native          -fno-strict-aliasing     -DSPEC_LP64  IOASCII/Write1D.c
+/usr/bin/g++     -std=c++03 -m64 -c -o GaugeWave/GaugeWave_always.o -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP -Iinclude -DCCODE -DCCTK_DISABLE_RESTRICT=1 -g -O3 -march=native         -DSPEC_LP64  GaugeWave/GaugeWave_always.cc
+/usr/bin/gcc     -std=c99   -m64 -c -o IOUtil/cctk_Bindings/cctk_ThornBindings.o -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP -Iinclude -DCCODE -g -O3 -march=native          -fno-strict-aliasing     -DSPEC_LP64  IOUtil/cctk_Bindings/cctk_ThornBindings.c
+/usr/bin/gcc     -std=c99   -m64 -c -o IOBasic/WriteScalar.o -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP -Iinclude -DCCODE -g -O3 -march=native          -fno-strict-aliasing     -DSPEC_LP64  IOBasic/WriteScalar.c
+/usr/bin/g++     -std=c++03 -m64 -c -o GaugeWave/GaugeWave_initial.o -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP -Iinclude -DCCODE -DCCTK_DISABLE_RESTRICT=1 -g -O3 -march=native         -DSPEC_LP64  GaugeWave/GaugeWave_initial.cc
+/usr/bin/gcc     -std=c99   -m64 -c -o IOUtil/Startup.o -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP -Iinclude -DCCODE -g -O3 -march=native          -fno-strict-aliasing     -DSPEC_LP64  IOUtil/Startup.c
+/usr/bin/gcc     -std=c99   -m64 -c -o IOUtil/CheckpointRecovery.o -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP -Iinclude -DCCODE -g -O3 -march=native          -fno-strict-aliasing     -DSPEC_LP64  IOUtil/CheckpointRecovery.c
+/usr/bin/gcc     -std=c99   -m64 -c -o IOUtil/Utils.o -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP -Iinclude -DCCODE -g -O3 -march=native          -fno-strict-aliasing     -DSPEC_LP64  IOUtil/Utils.c
+/usr/bin/gcc     -std=c99   -m64 -c -o CartGrid3D/Symmetry.o -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP -Iinclude -DCCODE -g -O3 -march=native          -fno-strict-aliasing     -DSPEC_LP64  CartGrid3D/Symmetry.c
