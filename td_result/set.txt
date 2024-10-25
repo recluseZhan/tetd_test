@@ -1,3 +1,6 @@
 virt-copy-out -d zjx_td3 /home/tdx/lmbench/results/****.out ./
 
 virt-copy_in -d zjx_td3 ./*** /home/tdx
+
+
+gcc xxx.c -mavx512f -maes -O3
