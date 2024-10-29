@@ -1,0 +1,21 @@
+runcpu v6612 started at 2024-10-29 02:03:21 on "tdx-guest"
+runcpu is: /home/tdx/speccpu2017/bin/harness/runcpu
+runcpu: runcpu '--config=tdx2.cfg' '--tune=base' '--size=ref' '--threads=15' -I int
+toolset: linux-x86_64
+suite: CPU2017 1.1.9
+
+Locating benchmarks...found 47 benchmarks in 73 benchsets.
+Reading config file '/home/tdx/speccpu2017/config/tdx2.cfg'
+
+Can't find benchmark 'int'
+WARNING: Can't parse 'int' into a single benchmark name, benchset name,
+	or metric name.
+No benchmark suite selected!  Expected one or more of 'fprate', 'fpspeed', 'intrate', 'intspeed' or 'all'.
+The log for this run is in /home/tdx/speccpu2017/result/CPU2017.017.log
+The debug log for this run is in /home/tdx/speccpu2017/result/CPU2017.017.log.debug
+*
+* Temporary files were NOT deleted; keeping temporaries such as
+* /home/tdx/speccpu2017/result/CPU2017.017.log.debug
+* (These may be large!)
+*
+runcpu finished at 2024-10-29 02:03:22; 0 total seconds elapsed
