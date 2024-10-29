@@ -2,20 +2,32 @@
 #   INVALID RUN -- INVALID RUN -- INVALID RUN -- INVALID RUN -- INVALID RUN                                                      #
 #                                                                                                                                #
 # 'reportable' flag not set during run                                                                                           #
-# 525.x264_r (base) did not have enough runs!                                                                                    #
-# 557.xz_r (base) did not have enough runs!                                                                                      #
-# 548.exchange2_r (base) did not have enough runs!                                                                               #
-# 502.gcc_r (base) did not have enough runs!                                                                                     #
-# 523.xalancbmk_r (base) did not have enough runs!                                                                               #
-# 500.perlbench_r (base) did not have enough runs!                                                                               #
-# 541.leela_r (base) did not have enough runs!                                                                                   #
-# 505.mcf_r (base) did not have enough runs!                                                                                     #
-# 531.deepsjeng_r (base) did not have enough runs!                                                                               #
-# 520.omnetpp_r (base) did not have enough runs!                                                                                 #
+# 657.xz_s (base) did not have enough runs!                                                                                      #
+# 602.gcc_s (base) did not have enough runs!                                                                                     #
+# 641.leela_s (base) did not have enough runs!                                                                                   #
+# 605.mcf_s (base) did not have enough runs!                                                                                     #
+# 623.xalancbmk_s (base) did not have enough runs!                                                                               #
+# 631.deepsjeng_s (base) did not have enough runs!                                                                               #
+# 625.x264_s (base) did not have enough runs!                                                                                    #
+# 600.perlbench_s (base) did not have enough runs!                                                                               #
+# 620.omnetpp_s (base) did not have enough runs!                                                                                 #
+# 648.exchange2_s (base) did not have enough runs!                                                                               #
+# 657.xz_s (base) had invalid runs!                                                                                              #
+# 602.gcc_s (base) had invalid runs!                                                                                             #
+# 605.mcf_s (base) had invalid runs!                                                                                             #
+# 631.deepsjeng_s (base) had invalid runs!                                                                                       #
+# Run of 602.gcc_s (base) was not valid; status is CE                                                                            #
+# Run of 605.mcf_s (base) was not valid; status is RE                                                                            #
+# Run of 631.deepsjeng_s (base) was not valid; status is RE                                                                      #
+# Run of 657.xz_s (base) was not valid; status is RE                                                                             #
+# Error 602.gcc_s: Error with make!                                                                                              #
+# Error 605.mcf_s: copy 0 non-zero return code (exit code=255, signal=0)                                                         #
+# Error 631.deepsjeng_s: copy 0 non-zero return code (exit code=1, signal=0)                                                     #
+# Error 657.xz_s: copy 0 non-zero return code (exit code=1, signal=0)                                                            #
 #                                                                                                                                #
 #   INVALID RUN -- INVALID RUN -- INVALID RUN -- INVALID RUN -- INVALID RUN                                                      #
 ##################################################################################################################################
-                                               SPEC CPU(R)2017 Integer Rate Result
+                                               SPEC CPU(R)2017 Integer Speed Result
                                                          My Corporation 
 
                            CPU2017 License: nnn (Your SPEC license number)          Test date: Oct-2024
@@ -24,31 +36,31 @@
 
                        Estimated                       Estimated
                  Base     Base        Base        Peak     Peak        Peak
-Benchmarks       Copies  Run Time     Rate        Copies  Run Time     Rate 
+Benchmarks      Threads  Run Time     Ratio      Threads  Run Time     Ratio
 --------------- -------  ---------  ---------    -------  ---------  ---------
-500.perlbench_r       1        203       7.84  *
-502.gcc_r                                     NR
-505.mcf_r                                     NR
-520.omnetpp_r                                 NR
-523.xalancbmk_r                               NR
-525.x264_r                                    NR
-531.deepsjeng_r                               NR
-541.leela_r                                   NR
-548.exchange2_r                               NR
-557.xz_r                                      NR
+600.perlbench_s       4  215             8.26  *
+602.gcc_s             1         --            CE
+605.mcf_s             4   32.8                RE
+620.omnetpp_s         4  273             5.98  *
+623.xalancbmk_s       4  194             7.32  *
+625.x264_s            4  138            12.8   *
+631.deepsjeng_s       4    0.00430            RE
+641.leela_s           4  351             4.86  *
+648.exchange2_s       4  128            23.0   *
+657.xz_s              4    0.0120             RE
 =================================================================================
-500.perlbench_r       1        203       7.84  *
-502.gcc_r                                     NR
-505.mcf_r                                     NR
-520.omnetpp_r                                 NR
-523.xalancbmk_r                               NR
-525.x264_r                                    NR
-531.deepsjeng_r                               NR
-541.leela_r                                   NR
-548.exchange2_r                               NR
-557.xz_r                                      NR
- Est. SPECrate(R)2017_int_base           7.84
- Est. SPECrate(R)2017_int_peak                                         Not Run
+600.perlbench_s       4  215             8.26  *
+602.gcc_s                                     NR
+605.mcf_s                                     NR
+620.omnetpp_s         4  273             5.98  *
+623.xalancbmk_s       4  194             7.32  *
+625.x264_s            4  138            12.8   *
+631.deepsjeng_s                               NR
+641.leela_s           4  351             4.86  *
+648.exchange2_s       4  128            23.0   *
+657.xz_s                                      NR
+ Est. SPECspeed(R)2017_int_base          8.96
+ Est. SPECspeed(R)2017_int_peak                                        Not Run
 
 
                                                              HARDWARE
@@ -74,7 +86,7 @@ Benchmarks       Copies  Run Time     Rate        Copies  Run Time     Rate
                       6.8.0-35-generic
             Compiler: C/C++/Fortran: Version 10.1.0 of GCC, the
                       GNU Compiler Collection
-            Parallel: No
+            Parallel: Yes
             Firmware:  
          File System: ext4
         System State: Run level 5 (add definition here)
@@ -95,7 +107,7 @@ Benchmarks       Copies  Run Time     Rate        Copies  Run Time     Rate
     
      Sysinfo program /home/tdx/speccpu2017/bin/sysinfo
      Rev: r6732 of 2022-11-07 fe91c89b7ed5c36ae2c92cc097bec197
-     running on tdx-guest Thu Oct 24 11:51:02 2024
+     running on tdx-guest Tue Oct 29 08:33:34 2024
     
      SUT (System Under Test) info as seen by some common utilities.
     
@@ -113,17 +125,18 @@ Benchmarks       Copies  Run Time     Rate        Copies  Run Time     Rate
       9. /proc/meminfo
      10. who -r
      11. Systemd service manager version: systemd 255 (255.4-1ubuntu8.1)
-     12. Services, from systemctl list-unit-files
-     13. Linux kernel boot-time arguments, from /proc/cmdline
-     14. cpupower frequency-info
-     15. sysctl
-     16. /sys/kernel/mm/transparent_hugepage
-     17. /sys/kernel/mm/transparent_hugepage/khugepaged
-     18. OS release
-     19. Disk information
-     20. /sys/devices/virtual/dmi/id
-     21. dmidecode
-     22. BIOS
+     12. Failed units, from systemctl list-units --state=failed
+     13. Services, from systemctl list-unit-files
+     14. Linux kernel boot-time arguments, from /proc/cmdline
+     15. cpupower frequency-info
+     16. sysctl
+     17. /sys/kernel/mm/transparent_hugepage
+     18. /sys/kernel/mm/transparent_hugepage/khugepaged
+     19. OS release
+     20. Disk information
+     21. /sys/devices/virtual/dmi/id
+     22. dmidecode
+     23. BIOS
      ------------------------------------------------------------
     
      ------------------------------------------------------------
@@ -133,9 +146,9 @@ Benchmarks       Copies  Run Time     Rate        Copies  Run Time     Rate
     
      ------------------------------------------------------------
      2. w
-        11:51:02 up 38 min,  1 user,  load average: 0.01, 0.00, 0.00
+        08:33:34 up  2:36,  1 user,  load average: 8.41, 5.43, 6.39
        USER     TTY      FROM             LOGIN@   IDLE   JCPU   PCPU WHAT
-       root     hvc0     -                11:12    6.00s  0.55s   ?    tmux
+       root     hvc0     -                05:57   46:28   6:22    ?    sh -c w 2>/dev/null
     
      ------------------------------------------------------------
      3. Username
@@ -159,12 +172,12 @@ Benchmarks       Copies  Run Time     Rate        Copies  Run Time     Rate
      ------------------------------------------------------------
      5. sysinfo process ancestry
       /sbin/init
-      tmux
+      /bin/login -p --
       -bash
-      runcpu --config=tdx2.cfg --tune=base 500.perlbench_r
-      runcpu --configfile tdx2.cfg --tune base --noreportable --nopower --runmode rate --tune base --size refrate
-        500.perlbench_r --nopreenv --note-preenv --logfile $SPEC/tmp/CPU2017.013/templogs/preenv.intrate.013.0.log
-        --lognum 013.0 --from_runcpu 2
+      runcpu --config=tdx2.cfg --tune=base --size=ref all --copies=15
+      runcpu --configfile tdx2.cfg --tune base --size ref --copies 15 --noreportable --nopower --runmode speed
+        --tune base --size refspeed intspeed --nopreenv --note-preenv --logfile
+        $SPEC/tmp/CPU2017.026/templogs/preenv.intspeed.026.3.log --lognum 026.3 --from_runcpu 2
       specperl $SPEC/bin/sysinfo
      $SPEC = /home/tdx/speccpu2017
     
@@ -259,7 +272,7 @@ Benchmarks       Copies  Run Time     Rate        Copies  Run Time     Rate
        available: 1 nodes (0)
        node 0 cpus: 0-15
        node 0 size: 1827 MB
-       node 0 free: 878 MB
+       node 0 free: 74 MB
        node distances:
        node   0
          0:  10
@@ -270,15 +283,24 @@ Benchmarks       Copies  Run Time     Rate        Copies  Run Time     Rate
     
      ------------------------------------------------------------
      10. who -r
-       run-level 5 Oct 24 11:12
+       run-level 5 Oct 29 05:57
     
      ------------------------------------------------------------
      11. Systemd service manager version: systemd 255 (255.4-1ubuntu8.1)
        Default Target  Status
-       graphical       running
+       graphical       degraded
     
      ------------------------------------------------------------
-     12. Services, from systemctl list-unit-files
+     12. Failed units, from systemctl list-units --state=failed
+         UNIT           LOAD   ACTIVE SUB    DESCRIPTION
+       * user@0.service loaded failed failed User Manager for UID 0
+       Legend: LOAD   -> Reflects whether the unit definition was properly loaded.
+               ACTIVE -> The high-level unit activation state, i.e. generalization of SUB.
+               SUB    -> The low-level unit activation state, values depend on unit type.
+       1 loaded units listed.
+    
+     ------------------------------------------------------------
+     13. Services, from systemctl list-unit-files
        STATE            UNIT FILES
        enabled          ModemManager apparmor apport blk-availability cloud-config cloud-final cloud-init
                         cloud-init-local console-setup cron dmesg e2scrub_reap finalrd getty@ grub-common
@@ -298,7 +320,7 @@ Benchmarks       Copies  Run Time     Rate        Copies  Run Time     Rate
                         x11-common
     
      ------------------------------------------------------------
-     13. Linux kernel boot-time arguments, from /proc/cmdline
+     14. Linux kernel boot-time arguments, from /proc/cmdline
        BOOT_IMAGE=/vmlinuz-6.8.0-35-generic
        root=UUID=41106c9c-97fc-4396-8622-4f692c8c5bb1
        ro
@@ -306,15 +328,15 @@ Benchmarks       Copies  Run Time     Rate        Copies  Run Time     Rate
        console=ttyS0
     
      ------------------------------------------------------------
-     14. cpupower frequency-info
-       analyzing CPU 10:
+     15. cpupower frequency-info
+       analyzing CPU 1:
          Unable to determine current policy
          boost state support:
            Supported: no
            Active: no
     
      ------------------------------------------------------------
-     15. sysctl
+     16. sysctl
        kernel.numa_balancing               0
        kernel.randomize_va_space           2
        vm.compaction_proactiveness        20
@@ -336,14 +358,14 @@ Benchmarks       Copies  Run Time     Rate        Copies  Run Time     Rate
        vm.zone_reclaim_mode                0
     
      ------------------------------------------------------------
-     16. /sys/kernel/mm/transparent_hugepage
+     17. /sys/kernel/mm/transparent_hugepage
        defrag          always defer defer+madvise [madvise] never
        enabled         always [madvise] never
        hpage_pmd_size  2097152
        shmem_enabled   always within_size advise [never] deny force
     
      ------------------------------------------------------------
-     17. /sys/kernel/mm/transparent_hugepage/khugepaged
+     18. /sys/kernel/mm/transparent_hugepage/khugepaged
        alloc_sleep_millisecs   60000
        defrag                      1
        max_ptes_none             511
@@ -353,23 +375,23 @@ Benchmarks       Copies  Run Time     Rate        Copies  Run Time     Rate
        scan_sleep_millisecs    10000
     
      ------------------------------------------------------------
-     18. OS release
+     19. OS release
        From /etc/*-release /etc/*-version
        os-release Ubuntu 24.04 LTS
     
      ------------------------------------------------------------
-     19. Disk information
+     20. Disk information
      SPEC is set to: /home/tdx/speccpu2017
        Filesystem     Type  Size  Used Avail Use% Mounted on
-       /dev/vda1      ext4   51G   18G   33G  36% /
+       /dev/vda1      ext4   51G   32G   20G  63% /
     
      ------------------------------------------------------------
-     20. /sys/devices/virtual/dmi/id
+     21. /sys/devices/virtual/dmi/id
          Vendor:         QEMU
          Product:        Standard PC (Q35 + ICH9, 2009)
     
      ------------------------------------------------------------
-     21. dmidecode
+     22. dmidecode
        Additional information from dmidecode 3.5 follows.  WARNING: Use caution when you interpret this section.
        The 'dmidecode' program reads system data which is "intended to allow hardware to be accurately
        determined", but the intent may not be met, as there are frequent changes to hardware, firmware, and the
@@ -379,7 +401,7 @@ Benchmarks       Copies  Run Time     Rate        Copies  Run Time     Rate
     
     
      ------------------------------------------------------------
-     22. BIOS
+     23. BIOS
      (This section combines info from /sys/devices and dmidecode.)
         BIOS Vendor:       Ubuntu distribution of EDK II
         BIOS Version:      2024.02-3+tdx1.0
@@ -389,64 +411,111 @@ Benchmarks       Copies  Run Time     Rate        Copies  Run Time     Rate
                                                       Compiler Version Notes
                                                       ----------------------
     ============================================================================================================
-    C | 500.perlbench_r(base)
+    C       | 600.perlbench_s(base) 605.mcf_s(base) 625.x264_s(base) 657.xz_s(base)
     ------------------------------------------------------------------------------------------------------------
     gcc (Ubuntu 13.2.0-23ubuntu4) 13.2.0
     Copyright (C) 2023 Free Software Foundation, Inc.
     This is free software; see the source for copying conditions.  There is NO
     warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
     ------------------------------------------------------------------------------------------------------------
-
-                                                     Base Runtime Environment
-                                                     ------------------------
-C benchmarks:
-
- 500.perlbench_r: No flags used
-
+    
+    ============================================================================================================
+    C++     | 620.omnetpp_s(base) 623.xalancbmk_s(base) 631.deepsjeng_s(base) 641.leela_s(base)
+    ------------------------------------------------------------------------------------------------------------
+    g++ (Ubuntu 13.2.0-23ubuntu4) 13.2.0
+    Copyright (C) 2023 Free Software Foundation, Inc.
+    This is free software; see the source for copying conditions.  There is NO
+    warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+    ------------------------------------------------------------------------------------------------------------
+    
+    ============================================================================================================
+    Fortran | 648.exchange2_s(base)
+    ------------------------------------------------------------------------------------------------------------
+    GNU Fortran (Ubuntu 13.2.0-23ubuntu4) 13.2.0
+    Copyright (C) 2023 Free Software Foundation, Inc.
+    This is free software; see the source for copying conditions.  There is NO
+    warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+    ------------------------------------------------------------------------------------------------------------
 
                                                      Base Compiler Invocation
                                                      ------------------------
-C benchmarks:
+C benchmarks (except as noted below): 
+     gcc
 
- 500.perlbench_r: gcc
+C++ benchmarks: 
+     g++
+
+Fortran benchmarks: 
+     gfortran
 
 
                                                       Base Portability Flags
                                                       ----------------------
- 500.perlbench_r: -DSPEC_LINUX_X64 -DSPEC_LP64
+ 600.perlbench_s: -DSPEC_LINUX_X64 -DSPEC_LP64
+       605.mcf_s: -DSPEC_LP64
+   620.omnetpp_s: -DSPEC_LP64
+ 623.xalancbmk_s: -DSPEC_LINUX -DSPEC_LP64
+      625.x264_s: -DSPEC_LP64
+ 631.deepsjeng_s: -DSPEC_LP64
+     641.leela_s: -DSPEC_LP64
+ 648.exchange2_s: -DSPEC_LP64
+        657.xz_s: -DSPEC_LP64
 
 
                                                      Base Optimization Flags
                                                      -----------------------
 C benchmarks:
 
- 500.perlbench_r: -m64 -std=c99 -g -O3 -march=native -fno-strict-aliasing -fno-unsafe-math-optimizations -fno-finite-math-only
-                  -fgnu89-inline
+ 600.perlbench_s: -m64 -std=c99 -g -O3 -march=native -fno-strict-aliasing -fno-unsafe-math-optimizations -fno-finite-math-only
+                  -fgnu89-inline -fopenmp -DSPEC_OPENMP
+
+       605.mcf_s: Same as 600.perlbench_s
+
+      625.x264_s: Same as 600.perlbench_s
+
+        657.xz_s: Same as 600.perlbench_s
+
+C++ benchmarks: 
+     -m64 -std=c++03 -g -O3 -march=native -fopenmp -DSPEC_OPENMP
+
+Fortran benchmarks: 
+     -m64 -g -O3 -march=native -DSPEC_OPENMP -fopenmp
 
 
                                                          Base Other Flags
                                                          ----------------
-C benchmarks:
+C benchmarks (except as noted below): 
+     -fcommon
 
- 500.perlbench_r: -fcommon
 
-
-  SPEC CPU and SPECrate are registered trademarks of the Standard Performance Evaluation Corporation.  All other brand and
+  SPEC CPU and SPECspeed are registered trademarks of the Standard Performance Evaluation Corporation.  All other brand and
     product names appearing in this result are trademarks or registered trademarks of their respective holders.
 ##################################################################################################################################
 #   INVALID RUN -- INVALID RUN -- INVALID RUN -- INVALID RUN -- INVALID RUN                                                      #
 #                                                                                                                                #
 # 'reportable' flag not set during run                                                                                           #
-# 525.x264_r (base) did not have enough runs!                                                                                    #
-# 557.xz_r (base) did not have enough runs!                                                                                      #
-# 548.exchange2_r (base) did not have enough runs!                                                                               #
-# 502.gcc_r (base) did not have enough runs!                                                                                     #
-# 523.xalancbmk_r (base) did not have enough runs!                                                                               #
-# 500.perlbench_r (base) did not have enough runs!                                                                               #
-# 541.leela_r (base) did not have enough runs!                                                                                   #
-# 505.mcf_r (base) did not have enough runs!                                                                                     #
-# 531.deepsjeng_r (base) did not have enough runs!                                                                               #
-# 520.omnetpp_r (base) did not have enough runs!                                                                                 #
+# 657.xz_s (base) did not have enough runs!                                                                                      #
+# 602.gcc_s (base) did not have enough runs!                                                                                     #
+# 641.leela_s (base) did not have enough runs!                                                                                   #
+# 605.mcf_s (base) did not have enough runs!                                                                                     #
+# 623.xalancbmk_s (base) did not have enough runs!                                                                               #
+# 631.deepsjeng_s (base) did not have enough runs!                                                                               #
+# 625.x264_s (base) did not have enough runs!                                                                                    #
+# 600.perlbench_s (base) did not have enough runs!                                                                               #
+# 620.omnetpp_s (base) did not have enough runs!                                                                                 #
+# 648.exchange2_s (base) did not have enough runs!                                                                               #
+# 657.xz_s (base) had invalid runs!                                                                                              #
+# 602.gcc_s (base) had invalid runs!                                                                                             #
+# 605.mcf_s (base) had invalid runs!                                                                                             #
+# 631.deepsjeng_s (base) had invalid runs!                                                                                       #
+# Run of 602.gcc_s (base) was not valid; status is CE                                                                            #
+# Run of 605.mcf_s (base) was not valid; status is RE                                                                            #
+# Run of 631.deepsjeng_s (base) was not valid; status is RE                                                                      #
+# Run of 657.xz_s (base) was not valid; status is RE                                                                             #
+# Error 602.gcc_s: Error with make!                                                                                              #
+# Error 605.mcf_s: copy 0 non-zero return code (exit code=255, signal=0)                                                         #
+# Error 631.deepsjeng_s: copy 0 non-zero return code (exit code=1, signal=0)                                                     #
+# Error 657.xz_s: copy 0 non-zero return code (exit code=1, signal=0)                                                            #
 #                                                                                                                                #
 #   INVALID RUN -- INVALID RUN -- INVALID RUN -- INVALID RUN -- INVALID RUN                                                      #
 ##################################################################################################################################
@@ -454,5 +523,5 @@ C benchmarks:
 For questions about this result, please contact the tester.
 For other inquiries, please contact info@spec.org.
 Copyright 2017-2024 Standard Performance Evaluation Corporation
-Tested with SPEC CPU(R)2017 v1.1.9 on 2024-10-24 11:51:01+0000.
-Report generated on 2024-10-24 11:54:53 by CPU2017 text formatter v6255.
+Tested with SPEC CPU(R)2017 v1.1.9 on 2024-10-29 08:32:37+0000.
+Report generated on 2024-10-29 09:06:15 by CPU2017 text formatter v6255.

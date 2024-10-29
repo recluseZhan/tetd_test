@@ -1,0 +1,26 @@
+runcpu v6612 started at 2024-10-29 04:03:56 on "tdx-guest"
+runcpu is: /home/tdx/speccpu2017/bin/harness/runcpu
+runcpu: runcpu '--config=tdx2.cfg' '--tune=base' '--size=ref' '--threads=15' -I intrate --action=run --copies=15
+toolset: linux-x86_64
+suite: CPU2017 1.1.9
+
+Locating benchmarks...found 47 benchmarks in 73 benchsets.
+Reading config file '/home/tdx/speccpu2017/config/tdx2.cfg'
+
+1 configuration selected:
+
+ Action    Run Mode   Workload     Report Type      Benchmarks
+--------   --------   --------   ----------------   ---------------------------
+validate   rate       refrate    SPECrate2017_int   intrate                    
+-------------------------------------------------------------------------------
+
+Setting up environment for running intrate...
+Starting runcpu for intrate...
+Running "specperl /home/tdx/speccpu2017/bin/sysinfo" to gather system information.
+sysinfo: r6732 of 2022-11-07 (fe91c89b7ed5c36ae2c92cc097bec197)
+sysinfo: ...getting basic information about kernel, users, and limits
+sysinfo: Getting system information for Linux...
+sysinfo: ...getting CPU info
+sysinfo: ...getting info from numactl
+sysinfo: ...getting memory info
+sysinfo: ...getting info from systemd

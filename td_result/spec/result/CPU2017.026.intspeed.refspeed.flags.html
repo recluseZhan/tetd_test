@@ -1208,30 +1208,47 @@ a {
 <hr />
 
 <div class="compilerflags">
-<h2>Compiler Invocation</h2>
-<h3><a name="CC_FCALLcompiler">Benchmarks using both Fortran and C</a></h3>
-<h4><a name="compiler628.pop2_sALL">628.pop2_s</a></h4>
+<h2>Base Compiler Invocation</h2>
+<h3><a name="CCbasecompiler">C benchmarks (except as noted below)</a></h3>
 <ul class="flagDescList">
 <li>
 <div class="flagDesc">
 <ul class="flagDesc">
-<li class="flagName"><a name="user_ALLCC_FC_gfortran" id="user_ALLCC_FC_gfortran">gfortran</a></li>
+<li class="flagName"><a name="user_CCbase_gcc" id="user_CCbase_gcc">gcc</a></li>
 <li class="flagOrigin"><a href="#userOrigin"><img src="https://www.spec.org/auto/cpu2017/images/user.png" alt="[user]" /></a></li>
-<li class="flagVar">FC, LD</li>
+<li class="flagVar">CC, LD</li>
 <li class="descText">
-<p>Invokes the GNU Fortran compiler.</p>
+<p>Invokes the GNU C compiler.  </p>
 </li>
 </ul>
 </div>
 </li>
+</ul>
+<h3><a name="CXXbasecompiler">C++ benchmarks</a></h3>
+<ul class="flagDescList">
 <li>
 <div class="flagDesc">
 <ul class="flagDesc">
-<li class="flagName"><a name="user_ALLCC_FC_gcc" id="user_ALLCC_FC_gcc">gcc</a></li>
+<li class="flagName"><a name="user_CXXbase_gxx" id="user_CXXbase_gxx">g++</a></li>
 <li class="flagOrigin"><a href="#userOrigin"><img src="https://www.spec.org/auto/cpu2017/images/user.png" alt="[user]" /></a></li>
-<li class="flagVar">CC</li>
+<li class="flagVar">CXX, LD</li>
 <li class="descText">
-<p>Invokes the GNU C compiler.  </p>
+<p>Invokes the GNU C++ compiler.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+<h3><a name="FCbasecompiler">Fortran benchmarks</a></h3>
+<ul class="flagDescList">
+<li>
+<div class="flagDesc">
+<ul class="flagDesc">
+<li class="flagName"><a name="user_FCbase_gfortran" id="user_FCbase_gfortran">gfortran</a></li>
+<li class="flagOrigin"><a href="#userOrigin"><img src="https://www.spec.org/auto/cpu2017/images/user.png" alt="[user]" /></a></li>
+<li class="flagVar">FC, LD</li>
+<li class="descText">
+<p>Invokes the GNU Fortran compiler.</p>
 </li>
 </ul>
 </div>
@@ -1242,39 +1259,70 @@ a {
 
 <div class="portabilityflags">
 <h2>Base Portability Flags</h2>
-<h4><a name="portability628.pop2_sbase">628.pop2_s</a></h4>
+<h4><a name="portability600.perlbench_sbase">600.perlbench_s</a></h4>
 <ul class="flagDescList">
 <li>
 <div class="flagDesc">
 <ul class="flagDesc">
-<li class="flagName"><a name="b628.pop2_s_baseCPORTABILITY_DSPEC_CASE_FLAG" id="b628.pop2_s_baseCPORTABILITY_DSPEC_CASE_FLAG">-DSPEC_CASE_FLAG</a></li>
+<li class="flagName"><a name="b600.perlbench_s_basePORTABILITY_DSPEC_LINUX_X64" id="b600.perlbench_s_basePORTABILITY_DSPEC_LINUX_X64">-DSPEC_LINUX_X64</a></li>
 <li class="flagOrigin"><a href="#benchmarkOrigin"><img src="https://www.spec.org/auto/cpu2017/images/benchmark.png" alt="[benchmark]" /></a></li>
-<li class="flagVar">CPORTABILITY</li>
+<li class="flagVar">PORTABILITY</li>
 <li class="descText">
 <p>
-For netcdf, if defined uses Fortran symbol names ABC as abc_
+This macro indicates that the benchmark is being compiled on an AMD64-compatible
+system running the Linux operating system.
 </p>
 </li>
+<li class="flagDescInc"><span class="flagDescInc">Includes:</span>
+ <ul class="flagTOC">
+  <li><a href="https://www.spec.org/auto/cpu2017/Docs/benchmarks/flags/600.perlbench_s.flags.html#b600.perlbench_s_DSPEC_LINUX">-DSPEC_LINUX</a>
+   <ul class="SubMenu">
+    <li><a href="https://www.spec.org/auto/cpu2017/Docs/benchmarks/flags/600.perlbench_s.flags.html#b600.perlbench_s_DI_TIME">-DI_TIME</a></li>
+   </ul>
+  </li>
+  <li><a href="https://www.spec.org/auto/cpu2017/Docs/benchmarks/flags/600.perlbench_s.flags.html#b600.perlbench_s_DSPEC_X64">-DSPEC_X64</a>
+   <ul class="SubMenu">
+    <li><a href="https://www.spec.org/auto/cpu2017/Docs/benchmarks/flags/600.perlbench_s.flags.html#b600.perlbench_s_DSPEC_LITTLEENDIAN">-DSPEC_LITTLEENDIAN</a></li>
+    <li><a href="https://www.spec.org/auto/cpu2017/Docs/benchmarks/flags/600.perlbench_s.flags.html#b600.perlbench_s_DMYSWAP">-DMYSWAP</a></li>
+    <li><a href="https://www.spec.org/auto/cpu2017/Docs/benchmarks/flags/600.perlbench_s.flags.html#b600.perlbench_s_DNEED_VA_COPY">-DNEED_VA_COPY</a></li>
+    <li><a href="https://www.spec.org/auto/cpu2017/Docs/benchmarks/flags/600.perlbench_s.flags.html#b600.perlbench_s_DSPEC_NO_NV_PRESERVES_UV">-DSPEC_NO_NV_PRESERVES_UV</a></li>
+   </ul>
+  </li>
+ </ul>
+<div class="clear"></div>
+</li>
 </ul>
 </div>
 </li>
 <li>
 <div class="flagDesc">
 <ul class="flagDesc">
-<li class="flagName"><a name="user_baseFPORTABILITY628_pop2_s_F-fconvert:big-endian" id="user_baseFPORTABILITY628_pop2_s_F-fconvert:big-endian">-fconvert=big-endian</a></li>
-<li class="flagOrigin"><a href="#userOrigin"><img src="https://www.spec.org/auto/cpu2017/images/user.png" alt="[user]" /></a></li>
-<li class="flagVar">FPORTABILITY</li>
+<li class="flagName"><a name="b600.perlbench_s_baseEXTRA_PORTABILITY_DSPEC_LP64" id="b600.perlbench_s_baseEXTRA_PORTABILITY_DSPEC_LP64">-DSPEC_LP64</a></li>
+<li class="flagOrigin"><a href="#benchmarkOrigin"><img src="https://www.spec.org/auto/cpu2017/images/benchmark.png" alt="[benchmark]" /></a></li>
+<li class="flagVar">EXTRA_PORTABILITY</li>
 <li class="descText">
-<p>Use big-endian representation for unformatted files.  This is important when reading 521.wrf_r, 621.wrf_s, and 628.pop2_s
-      data files that were originally generated in big-endian format.</p>
+<p>
+This macro specifies that the target system uses the LP64 data model;
+specifically, that integers are 32 bits, while longs and pointers are 64 bits.
+</p>
+</li>
+<li class="flagDescInc"><span class="flagDescInc">Includes:</span>
+ <ul class="flagTOC">
+  <li><a href="https://www.spec.org/auto/cpu2017/Docs/benchmarks/flags/600.perlbench_s.flags.html#b600.perlbench_s_SPEC_INT32_T">-DSPEC_INT32_T=XXX</a></li>
+  <li><a href="https://www.spec.org/auto/cpu2017/Docs/benchmarks/flags/600.perlbench_s.flags.html#b600.perlbench_s_DUSE_64_BIT_INT">-DUSE_64_BIT_INT</a></li>
+ </ul>
+<div class="clear"></div>
 </li>
 </ul>
 </div>
 </li>
+</ul>
+<h4><a name="portability605.mcf_sbase">605.mcf_s</a></h4>
+<ul class="flagDescList">
 <li>
 <div class="flagDesc">
 <ul class="flagDesc">
-<li class="flagName"><a name="suite_baseEXTRA_PORTABILITY628_pop2_s_DSPEC_LP64" id="suite_baseEXTRA_PORTABILITY628_pop2_s_DSPEC_LP64">-DSPEC_LP64</a></li>
+<li class="flagName"><a name="suite_baseEXTRA_PORTABILITY605_mcf_s_DSPEC_LP64" id="suite_baseEXTRA_PORTABILITY605_mcf_s_DSPEC_LP64">-DSPEC_LP64</a></li>
 <li class="flagOrigin"><a href="#suiteOrigin"><img src="https://www.spec.org/auto/cpu2017/images/suite.png" alt="[suite]" /></a></li>
 <li class="flagVar">EXTRA_PORTABILITY</li>
 <li class="descText">
@@ -1290,22 +1338,38 @@ for those benchmarks that do not recognize this macro.
 </div>
 </li>
 </ul>
-</div>
-<hr />
-
-<div class="portabilityflags">
-<h2>Peak Portability Flags</h2>
-<h4><a name="portability628.pop2_speak">628.pop2_s</a></h4>
+<h4><a name="portability620.omnetpp_sbase">620.omnetpp_s</a></h4>
 <ul class="flagDescList">
 <li>
 <div class="flagDesc">
 <ul class="flagDesc">
-<li class="flagName"><a name="b628.pop2_s_peakCPORTABILITY_DSPEC_CASE_FLAG" id="b628.pop2_s_peakCPORTABILITY_DSPEC_CASE_FLAG">-DSPEC_CASE_FLAG</a></li>
-<li class="flagOrigin"><a href="#benchmarkOrigin"><img src="https://www.spec.org/auto/cpu2017/images/benchmark.png" alt="[benchmark]" /></a></li>
-<li class="flagVar">CPORTABILITY</li>
+<li class="flagName"><a name="suite_baseEXTRA_PORTABILITY620_omnetpp_s_DSPEC_LP64" id="suite_baseEXTRA_PORTABILITY620_omnetpp_s_DSPEC_LP64">-DSPEC_LP64</a></li>
+<li class="flagOrigin"><a href="#suiteOrigin"><img src="https://www.spec.org/auto/cpu2017/images/suite.png" alt="[suite]" /></a></li>
+<li class="flagVar">EXTRA_PORTABILITY</li>
 <li class="descText">
 <p>
-For netcdf, if defined uses Fortran symbol names ABC as abc_
+This option is used to indicate that the host system's integers are 32-bits
+wide, and longs and pointers are 64-bits wide.  Not all benchmarks
+recognize this macro, but the preferred practice for data model selection
+applies the flags to all benchmarks; this flag description is a placeholder
+for those benchmarks that do not recognize this macro.
+</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+<h4><a name="portability623.xalancbmk_sbase">623.xalancbmk_s</a></h4>
+<ul class="flagDescList">
+<li>
+<div class="flagDesc">
+<ul class="flagDesc">
+<li class="flagName"><a name="b623.xalancbmk_s_basePORTABILITY_DSPEC_LINUX" id="b623.xalancbmk_s_basePORTABILITY_DSPEC_LINUX">-DSPEC_LINUX</a></li>
+<li class="flagOrigin"><a href="#benchmarkOrigin"><img src="https://www.spec.org/auto/cpu2017/images/benchmark.png" alt="[benchmark]" /></a></li>
+<li class="flagVar">PORTABILITY</li>
+<li class="descText">
+<p>
+This flag can be set for SPEC compilation for LINUX using default compiler.
 </p>
 </li>
 </ul>
@@ -1314,20 +1378,112 @@ For netcdf, if defined uses Fortran symbol names ABC as abc_
 <li>
 <div class="flagDesc">
 <ul class="flagDesc">
-<li class="flagName"><a name="user_peakFPORTABILITY628_pop2_s_F-fconvert:big-endian" id="user_peakFPORTABILITY628_pop2_s_F-fconvert:big-endian">-fconvert=big-endian</a></li>
-<li class="flagOrigin"><a href="#userOrigin"><img src="https://www.spec.org/auto/cpu2017/images/user.png" alt="[user]" /></a></li>
-<li class="flagVar">FPORTABILITY</li>
+<li class="flagName"><a name="suite_baseEXTRA_PORTABILITY623_xalancbmk_s_DSPEC_LP64" id="suite_baseEXTRA_PORTABILITY623_xalancbmk_s_DSPEC_LP64">-DSPEC_LP64</a></li>
+<li class="flagOrigin"><a href="#suiteOrigin"><img src="https://www.spec.org/auto/cpu2017/images/suite.png" alt="[suite]" /></a></li>
+<li class="flagVar">EXTRA_PORTABILITY</li>
 <li class="descText">
-<p>Use big-endian representation for unformatted files.  This is important when reading 521.wrf_r, 621.wrf_s, and 628.pop2_s
-      data files that were originally generated in big-endian format.</p>
+<p>
+This option is used to indicate that the host system's integers are 32-bits
+wide, and longs and pointers are 64-bits wide.  Not all benchmarks
+recognize this macro, but the preferred practice for data model selection
+applies the flags to all benchmarks; this flag description is a placeholder
+for those benchmarks that do not recognize this macro.
+</p>
 </li>
 </ul>
 </div>
 </li>
+</ul>
+<h4><a name="portability625.x264_sbase">625.x264_s</a></h4>
+<ul class="flagDescList">
 <li>
 <div class="flagDesc">
 <ul class="flagDesc">
-<li class="flagName"><a name="suite_peakEXTRA_PORTABILITY628_pop2_s_DSPEC_LP64" id="suite_peakEXTRA_PORTABILITY628_pop2_s_DSPEC_LP64">-DSPEC_LP64</a></li>
+<li class="flagName"><a name="suite_baseEXTRA_PORTABILITY625_x264_s_DSPEC_LP64" id="suite_baseEXTRA_PORTABILITY625_x264_s_DSPEC_LP64">-DSPEC_LP64</a></li>
+<li class="flagOrigin"><a href="#suiteOrigin"><img src="https://www.spec.org/auto/cpu2017/images/suite.png" alt="[suite]" /></a></li>
+<li class="flagVar">EXTRA_PORTABILITY</li>
+<li class="descText">
+<p>
+This option is used to indicate that the host system's integers are 32-bits
+wide, and longs and pointers are 64-bits wide.  Not all benchmarks
+recognize this macro, but the preferred practice for data model selection
+applies the flags to all benchmarks; this flag description is a placeholder
+for those benchmarks that do not recognize this macro.
+</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+<h4><a name="portability631.deepsjeng_sbase">631.deepsjeng_s</a></h4>
+<ul class="flagDescList">
+<li>
+<div class="flagDesc">
+<ul class="flagDesc">
+<li class="flagName"><a name="suite_baseEXTRA_PORTABILITY631_deepsjeng_s_DSPEC_LP64" id="suite_baseEXTRA_PORTABILITY631_deepsjeng_s_DSPEC_LP64">-DSPEC_LP64</a></li>
+<li class="flagOrigin"><a href="#suiteOrigin"><img src="https://www.spec.org/auto/cpu2017/images/suite.png" alt="[suite]" /></a></li>
+<li class="flagVar">EXTRA_PORTABILITY</li>
+<li class="descText">
+<p>
+This option is used to indicate that the host system's integers are 32-bits
+wide, and longs and pointers are 64-bits wide.  Not all benchmarks
+recognize this macro, but the preferred practice for data model selection
+applies the flags to all benchmarks; this flag description is a placeholder
+for those benchmarks that do not recognize this macro.
+</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+<h4><a name="portability641.leela_sbase">641.leela_s</a></h4>
+<ul class="flagDescList">
+<li>
+<div class="flagDesc">
+<ul class="flagDesc">
+<li class="flagName"><a name="suite_baseEXTRA_PORTABILITY641_leela_s_DSPEC_LP64" id="suite_baseEXTRA_PORTABILITY641_leela_s_DSPEC_LP64">-DSPEC_LP64</a></li>
+<li class="flagOrigin"><a href="#suiteOrigin"><img src="https://www.spec.org/auto/cpu2017/images/suite.png" alt="[suite]" /></a></li>
+<li class="flagVar">EXTRA_PORTABILITY</li>
+<li class="descText">
+<p>
+This option is used to indicate that the host system's integers are 32-bits
+wide, and longs and pointers are 64-bits wide.  Not all benchmarks
+recognize this macro, but the preferred practice for data model selection
+applies the flags to all benchmarks; this flag description is a placeholder
+for those benchmarks that do not recognize this macro.
+</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+<h4><a name="portability648.exchange2_sbase">648.exchange2_s</a></h4>
+<ul class="flagDescList">
+<li>
+<div class="flagDesc">
+<ul class="flagDesc">
+<li class="flagName"><a name="suite_baseEXTRA_PORTABILITY648_exchange2_s_DSPEC_LP64" id="suite_baseEXTRA_PORTABILITY648_exchange2_s_DSPEC_LP64">-DSPEC_LP64</a></li>
+<li class="flagOrigin"><a href="#suiteOrigin"><img src="https://www.spec.org/auto/cpu2017/images/suite.png" alt="[suite]" /></a></li>
+<li class="flagVar">EXTRA_PORTABILITY</li>
+<li class="descText">
+<p>
+This option is used to indicate that the host system's integers are 32-bits
+wide, and longs and pointers are 64-bits wide.  Not all benchmarks
+recognize this macro, but the preferred practice for data model selection
+applies the flags to all benchmarks; this flag description is a placeholder
+for those benchmarks that do not recognize this macro.
+</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+<h4><a name="portability657.xz_sbase">657.xz_s</a></h4>
+<ul class="flagDescList">
+<li>
+<div class="flagDesc">
+<ul class="flagDesc">
+<li class="flagName"><a name="suite_baseEXTRA_PORTABILITY657_xz_s_DSPEC_LP64" id="suite_baseEXTRA_PORTABILITY657_xz_s_DSPEC_LP64">-DSPEC_LP64</a></li>
 <li class="flagOrigin"><a href="#suiteOrigin"><img src="https://www.spec.org/auto/cpu2017/images/suite.png" alt="[suite]" /></a></li>
 <li class="flagVar">EXTRA_PORTABILITY</li>
 <li class="descText">
@@ -1348,16 +1504,16 @@ for those benchmarks that do not recognize this macro.
 
 <div class="optimizationflags">
 <h2>Base Optimization Flags</h2>
-<h3><a name="CC_FCbaseoptimization">Benchmarks using both Fortran and C</a></h3>
-<h4><a name="optimization628.pop2_sbase">628.pop2_s</a></h4>
+<h3><a name="CCbaseoptimization">C benchmarks</a></h3>
+<h4><a name="optimization600.perlbench_sbase">600.perlbench_s</a></h4>
 <ul class="flagDescList">
 <li>
 <div class="flagDesc">
 <ul class="flagDesc">
-<li class="flagName"><a name="user_baseCCFCLD628_pop2_s_m64-gcc" id="user_baseCCFCLD628_pop2_s_m64-gcc">-m64</a></li>
+<li class="flagName"><a name="user_baseCCLD600_perlbench_s_m64-gcc" id="user_baseCCLD600_perlbench_s_m64-gcc">-m64</a></li>
 <li class="flagOrigin"><a href="#userOrigin"><img src="https://www.spec.org/auto/cpu2017/images/user.png" alt="[user]" /></a></li>
 <li class="flagDescCompiler">gcc,gfortran,gxx</li>
-<li class="flagVar">CC, FC, LD</li>
+<li class="flagVar">CC, LD</li>
 <li class="descText">
 <p>
       Compiles for a 64-bit (LP64) data model.
@@ -1369,10 +1525,10 @@ for those benchmarks that do not recognize this macro.
 <li>
 <div class="flagDesc">
 <ul class="flagDesc">
-<li class="flagName"><a name="user_baseCC628_pop2_s_std-c99-gcc_b483f20141260605300df3a95df05c104fc3b8b9e7126624f06b7a673b28c400f0009b411e0a9f72a46bab5fa1d96dd55e2b47e35e742f19a92c2442f3891f52" id="user_baseCC628_pop2_s_std-c99-gcc_b483f20141260605300df3a95df05c104fc3b8b9e7126624f06b7a673b28c400f0009b411e0a9f72a46bab5fa1d96dd55e2b47e35e742f19a92c2442f3891f52">-std=c99</a></li>
+<li class="flagName"><a name="user_baseCCLD600_perlbench_s_std-c99-gcc_b483f20141260605300df3a95df05c104fc3b8b9e7126624f06b7a673b28c400f0009b411e0a9f72a46bab5fa1d96dd55e2b47e35e742f19a92c2442f3891f52" id="user_baseCCLD600_perlbench_s_std-c99-gcc_b483f20141260605300df3a95df05c104fc3b8b9e7126624f06b7a673b28c400f0009b411e0a9f72a46bab5fa1d96dd55e2b47e35e742f19a92c2442f3891f52">-std=c99</a></li>
 <li class="flagOrigin"><a href="#userOrigin"><img src="https://www.spec.org/auto/cpu2017/images/user.png" alt="[user]" /></a></li>
 <li class="flagDescCompiler">gcc</li>
-<li class="flagVar">CC</li>
+<li class="flagVar">CC, LD</li>
 <li class="descText">
 <p>
       Sets the language dialect to include syntax from the C99 standard, such as <samp>bool</samp> and other features used in CPU 2017
@@ -1385,7 +1541,7 @@ for those benchmarks that do not recognize this macro.
 <li>
 <div class="flagDesc">
 <ul class="flagDesc">
-<li class="flagName"><a name="user_baseOPTIMIZE628_pop2_s_g-gcc" id="user_baseOPTIMIZE628_pop2_s_g-gcc">-g</a></li>
+<li class="flagName"><a name="user_baseOPTIMIZE600_perlbench_s_g-gcc" id="user_baseOPTIMIZE600_perlbench_s_g-gcc">-g</a></li>
 <li class="flagOrigin"><a href="#userOrigin"><img src="https://www.spec.org/auto/cpu2017/images/user.png" alt="[user]" /></a></li>
 <li class="flagDescCompiler">gcc,gfortran,gxx</li>
 <li class="flagVar">OPTIMIZE</li>
@@ -1400,7 +1556,7 @@ Produce debugging information.
 <li>
 <div class="flagDesc">
 <ul class="flagDesc">
-<li class="flagName"><a name="user_baseOPTIMIZE628_pop2_s_Olevel-gcc_2a8c613e11e2962ae78d693398304d6f1c12fa10320380cff05dd109643c60bb04214353a55f02d8022371d19f6dd940085da69c3a4516b2b7029e64f867e782" id="user_baseOPTIMIZE628_pop2_s_Olevel-gcc_2a8c613e11e2962ae78d693398304d6f1c12fa10320380cff05dd109643c60bb04214353a55f02d8022371d19f6dd940085da69c3a4516b2b7029e64f867e782">-O3</a></li>
+<li class="flagName"><a name="user_baseOPTIMIZE600_perlbench_s_Olevel-gcc_2a8c613e11e2962ae78d693398304d6f1c12fa10320380cff05dd109643c60bb04214353a55f02d8022371d19f6dd940085da69c3a4516b2b7029e64f867e782" id="user_baseOPTIMIZE600_perlbench_s_Olevel-gcc_2a8c613e11e2962ae78d693398304d6f1c12fa10320380cff05dd109643c60bb04214353a55f02d8022371d19f6dd940085da69c3a4516b2b7029e64f867e782">-O3</a></li>
 <li class="flagOrigin"><a href="#userOrigin"><img src="https://www.spec.org/auto/cpu2017/images/user.png" alt="[user]" /></a></li>
 <li class="flagDescCompiler">gcc,gfortran,gxx</li>
 <li class="flagVar">OPTIMIZE</li>
@@ -1420,7 +1576,7 @@ Produce debugging information.
 <li>
 <div class="flagDesc">
 <ul class="flagDesc">
-<li class="flagName"><a name="user_baseOPTIMIZE628_pop2_s_march_c2171bb4a5a1a6034a83235920481e6cc9a3b391f591f6c4354377443c09830b875c7a135058311d9007c3370214bd57a0f1df04369f95c526636a592dda339c" id="user_baseOPTIMIZE628_pop2_s_march_c2171bb4a5a1a6034a83235920481e6cc9a3b391f591f6c4354377443c09830b875c7a135058311d9007c3370214bd57a0f1df04369f95c526636a592dda339c">-march=native</a></li>
+<li class="flagName"><a name="user_baseOPTIMIZE600_perlbench_s_march_c2171bb4a5a1a6034a83235920481e6cc9a3b391f591f6c4354377443c09830b875c7a135058311d9007c3370214bd57a0f1df04369f95c526636a592dda339c" id="user_baseOPTIMIZE600_perlbench_s_march_c2171bb4a5a1a6034a83235920481e6cc9a3b391f591f6c4354377443c09830b875c7a135058311d9007c3370214bd57a0f1df04369f95c526636a592dda339c">-march=native</a></li>
 <li class="flagOrigin"><a href="#userOrigin"><img src="https://www.spec.org/auto/cpu2017/images/user.png" alt="[user]" /></a></li>
 <li class="flagVar">OPTIMIZE</li>
 <li class="descText">
@@ -1436,7 +1592,7 @@ Produce debugging information.
 <li>
 <div class="flagDesc">
 <ul class="flagDesc">
-<li class="flagName"><a name="user_baseEXTRA_CFLAGS628_pop2_s_F-fno-strict-aliasing" id="user_baseEXTRA_CFLAGS628_pop2_s_F-fno-strict-aliasing">-fno-strict-aliasing</a></li>
+<li class="flagName"><a name="user_baseEXTRA_CFLAGS600_perlbench_s_F-fno-strict-aliasing" id="user_baseEXTRA_CFLAGS600_perlbench_s_F-fno-strict-aliasing">-fno-strict-aliasing</a></li>
 <li class="flagOrigin"><a href="#userOrigin"><img src="https://www.spec.org/auto/cpu2017/images/user.png" alt="[user]" /></a></li>
 <li class="flagVar">EXTRA_CFLAGS</li>
 <li class="descText">
@@ -1465,7 +1621,310 @@ Produce debugging information.
 <li>
 <div class="flagDesc">
 <ul class="flagDesc">
-<li class="flagName"><a name="suite_baseEXTRA_OPTIMIZE628_pop2_s_DSPEC_OPENMP" id="suite_baseEXTRA_OPTIMIZE628_pop2_s_DSPEC_OPENMP">-DSPEC_OPENMP</a></li>
+<li class="flagName"><a name="user_baseEXTRA_CFLAGS600_perlbench_s_F-fno-unsafe-math-optimizations" id="user_baseEXTRA_CFLAGS600_perlbench_s_F-fno-unsafe-math-optimizations">-fno-unsafe-math-optimizations</a></li>
+<li class="flagOrigin"><a href="#userOrigin"><img src="https://www.spec.org/auto/cpu2017/images/user.png" alt="[user]" /></a></li>
+<li class="flagVar">EXTRA_CFLAGS</li>
+<li class="descText">
+<p>The switch <samp>-funsafe-math-optimizations</samp> allows the compiler to make certain(*) aggressive assumptions, such as
+         disregarding the programmer's intended order of operations. The run rules allow such re-ordering <a
+            href="https://www.spec.org/cpu2017/Docs/runrules.html#reordering">
+            https://www.spec.org/cpu2017/Docs/runrules.html#reordering</a>.  The rules also point out that you must get answers
+         that pass SPEC's validation requirements.  In some cases, that will mean that some optimizations must be turned off.
+      </p>
+      <p><samp>-fno-unsafe-math-optimizations</samp> turns off these(*) optimizations.  You may need to use this flag in order to get
+         certain benchmarks to validate.  Note that this is an <i>optimization</i> switch, not a portability switch.  If it is
+         needed, then in base you will need to use it consistently.  See: <a
+            href="https://www.spec.org/cpu2017/Docs/runrules.html#BaseFlags">
+            https://www.spec.org/cpu2017/Docs/runrules.html#BaseFlags</a> and <a
+            href="https://www.spec.org/cpu2017/Docs/runrules.html#MustValidate">
+            https://www.spec.org/cpu2017/Docs/runrules.html#MustValidate</a>.  </p>
+      <p style="margin-left:2em;">(*) Much more detail about which optimizations is <a href="#gnote">available</a>.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<div class="flagDesc">
+<ul class="flagDesc">
+<li class="flagName"><a name="user_baseEXTRA_CFLAGS600_perlbench_s_ffinite-math-only_5563be24828ae4680b159e62eb3d0e55dfff81b3e17d2d2a6d7994a396b867c1c81b511c442cd5b3cb35a57251029a5b8a92fb06dd34f9ef06b6d1afc29e7b8d" id="user_baseEXTRA_CFLAGS600_perlbench_s_ffinite-math-only_5563be24828ae4680b159e62eb3d0e55dfff81b3e17d2d2a6d7994a396b867c1c81b511c442cd5b3cb35a57251029a5b8a92fb06dd34f9ef06b6d1afc29e7b8d">-fno-finite-math-only</a></li>
+<li class="flagOrigin"><a href="#userOrigin"><img src="https://www.spec.org/auto/cpu2017/images/user.png" alt="[user]" /></a></li>
+<li class="flagVar">EXTRA_CFLAGS</li>
+<li class="descText">
+<p><kbd>ffinite-math-only</kbd>, which is implied by <kbd>-fast-math</kbd> and <kbd>-Ofast</kbd>, allows 
+      optimizations for floating-point arithmetic that assume that arguments and results are not NaNs or +-Infs.
+      Setting <kbd>-fno-finite-math-only</kbd> does the opposite: the compiler must prepare for the possible presence of 
+      NaNs and infinities.
+   </p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<div class="flagDesc">
+<ul class="flagDesc">
+<li class="flagName"><a name="user_baseEXTRA_CFLAGS600_perlbench_s_F-fgnu89-inline" id="user_baseEXTRA_CFLAGS600_perlbench_s_F-fgnu89-inline">-fgnu89-inline</a></li>
+<li class="flagOrigin"><a href="#userOrigin"><img src="https://www.spec.org/auto/cpu2017/images/user.png" alt="[user]" /></a></li>
+<li class="flagVar">EXTRA_CFLAGS</li>
+<li class="descText">
+<p> Tells GCC to use the GNU semantics for "inline" functions, that is, the behavior prior to the C99 standard.
+      This switch may resolve duplicate symbol errors, as noted in the <a
+         href="https://www.spec.org/cpu2017/Docs/benchmarks/502.gcc_r.html#inline">502.gcc_r benchmark description</a>.
+   </p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<div class="flagDesc">
+<ul class="flagDesc">
+<li class="flagName"><a name="user_baseEXTRA_OPTIMIZE600_perlbench_s_F-fopenmp" id="user_baseEXTRA_OPTIMIZE600_perlbench_s_F-fopenmp">-fopenmp</a></li>
+<li class="flagOrigin"><a href="#userOrigin"><img src="https://www.spec.org/auto/cpu2017/images/user.png" alt="[user]" /></a></li>
+<li class="flagDescParallel"><span class="tt">Yes</span></li>
+<li class="flagVar">EXTRA_OPTIMIZE</li>
+<li class="descText">
+<p>
+Enable handling of OpenMP directives and generate parallel code.
+</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<div class="flagDesc">
+<ul class="flagDesc">
+<li class="flagName"><a name="suite_baseEXTRA_OPTIMIZE600_perlbench_s_DSPEC_OPENMP" id="suite_baseEXTRA_OPTIMIZE600_perlbench_s_DSPEC_OPENMP">-DSPEC_OPENMP</a></li>
+<li class="flagOrigin"><a href="#suiteOrigin"><img src="https://www.spec.org/auto/cpu2017/images/suite.png" alt="[suite]" /></a></li>
+<li class="flagVar">EXTRA_OPTIMIZE</li>
+<li class="descText">
+<p>
+Definition of this macro indicates that compilation for parallel operation
+  is enabled, and that any OpenMP directives or pragmas will be visible to
+  the compiler.  The behavior of this macro is overridden if
+  -DSPEC_SUPPRESS_OPENMP also appears in the list of compilation flags.
+</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+<h4><a name="optimization605.mcf_sbase">605.mcf_s</a></h4>
+<ul class="flagDescList">
+<li>
+<div class="flagDesc">
+<ul class="flagDesc">
+<li class="flagName"><a name="suite_base605_mcf_s_identical_1c39472e4be3de2f0dfc238441df93185bb3aebe51604873f21623ba8539c457ecc2b0b20a5cb0a0d4563d96a4c96f1d28b4c16b65feed9d0f00374e7b94d91a" id="suite_base605_mcf_s_identical_1c39472e4be3de2f0dfc238441df93185bb3aebe51604873f21623ba8539c457ecc2b0b20a5cb0a0d4563d96a4c96f1d28b4c16b65feed9d0f00374e7b94d91a">Same as 600.perlbench_s</a></li>
+</ul>
+</div>
+</li>
+</ul>
+<h4><a name="optimization625.x264_sbase">625.x264_s</a></h4>
+<ul class="flagDescList">
+<li>
+<div class="flagDesc">
+<ul class="flagDesc">
+<li class="flagName"><a name="suite_base625_x264_s_identical_1c39472e4be3de2f0dfc238441df93185bb3aebe51604873f21623ba8539c457ecc2b0b20a5cb0a0d4563d96a4c96f1d28b4c16b65feed9d0f00374e7b94d91a" id="suite_base625_x264_s_identical_1c39472e4be3de2f0dfc238441df93185bb3aebe51604873f21623ba8539c457ecc2b0b20a5cb0a0d4563d96a4c96f1d28b4c16b65feed9d0f00374e7b94d91a">Same as 600.perlbench_s</a></li>
+</ul>
+</div>
+</li>
+</ul>
+<h4><a name="optimization657.xz_sbase">657.xz_s</a></h4>
+<ul class="flagDescList">
+<li>
+<div class="flagDesc">
+<ul class="flagDesc">
+<li class="flagName"><a name="suite_base657_xz_s_identical_1c39472e4be3de2f0dfc238441df93185bb3aebe51604873f21623ba8539c457ecc2b0b20a5cb0a0d4563d96a4c96f1d28b4c16b65feed9d0f00374e7b94d91a" id="suite_base657_xz_s_identical_1c39472e4be3de2f0dfc238441df93185bb3aebe51604873f21623ba8539c457ecc2b0b20a5cb0a0d4563d96a4c96f1d28b4c16b65feed9d0f00374e7b94d91a">Same as 600.perlbench_s</a></li>
+</ul>
+</div>
+</li>
+</ul>
+<h3><a name="CXXbaseoptimization">C++ benchmarks</a></h3>
+<ul class="flagDescList">
+<li>
+<div class="flagDesc">
+<ul class="flagDesc">
+<li class="flagName"><a name="user_CXXbase_m64-gcc" id="user_CXXbase_m64-gcc">-m64</a></li>
+<li class="flagOrigin"><a href="#userOrigin"><img src="https://www.spec.org/auto/cpu2017/images/user.png" alt="[user]" /></a></li>
+<li class="flagDescCompiler">gcc,gfortran,gxx</li>
+<li class="flagVar">CXX, LD</li>
+<li class="descText">
+<p>
+      Compiles for a 64-bit (LP64) data model.
+   </p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<div class="flagDesc">
+<ul class="flagDesc">
+<li class="flagName"><a name="user_CXXbase_std-cxx03-gcc" id="user_CXXbase_std-cxx03-gcc">-std=c++03</a></li>
+<li class="flagOrigin"><a href="#userOrigin"><img src="https://www.spec.org/auto/cpu2017/images/user.png" alt="[user]" /></a></li>
+<li class="flagDescCompiler">gxx</li>
+<li class="flagVar">CXX, LD</li>
+<li class="descText">
+<p>
+      Sets the language dialect to include syntax from the 1998 ISO C++ standard plus the 2003 technical corrigendum.
+   </p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<div class="flagDesc">
+<ul class="flagDesc">
+<li class="flagName"><a name="user_CXXbase_g-gcc" id="user_CXXbase_g-gcc">-g</a></li>
+<li class="flagOrigin"><a href="#userOrigin"><img src="https://www.spec.org/auto/cpu2017/images/user.png" alt="[user]" /></a></li>
+<li class="flagDescCompiler">gcc,gfortran,gxx</li>
+<li class="flagVar">OPTIMIZE</li>
+<li class="descText">
+<p>
+Produce debugging information.
+</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<div class="flagDesc">
+<ul class="flagDesc">
+<li class="flagName"><a name="user_CXXbase_Olevel-gcc_2a8c613e11e2962ae78d693398304d6f1c12fa10320380cff05dd109643c60bb04214353a55f02d8022371d19f6dd940085da69c3a4516b2b7029e64f867e782" id="user_CXXbase_Olevel-gcc_2a8c613e11e2962ae78d693398304d6f1c12fa10320380cff05dd109643c60bb04214353a55f02d8022371d19f6dd940085da69c3a4516b2b7029e64f867e782">-O3</a></li>
+<li class="flagOrigin"><a href="#userOrigin"><img src="https://www.spec.org/auto/cpu2017/images/user.png" alt="[user]" /></a></li>
+<li class="flagDescCompiler">gcc,gfortran,gxx</li>
+<li class="flagVar">OPTIMIZE</li>
+<li class="descText">
+<p>
+      Increases optimization levels: the higher the number, the more optimization is done.  Higher levels of optimization may
+      require additional compilation time, in the hopes of reducing execution time.  At -O, basic optimizations are performed, 
+      such as constant merging and elimination of dead code.  At -O2, additional optimizations are added, such as common
+      subexpression elimination and strict aliasing.  At -O3, even more optimizations are performed, such as function inlining and
+      vectorization.
+      <br /><a href="#gnote">Many more details are available</a>.
+   </p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<div class="flagDesc">
+<ul class="flagDesc">
+<li class="flagName"><a name="user_CXXbase_march_c2171bb4a5a1a6034a83235920481e6cc9a3b391f591f6c4354377443c09830b875c7a135058311d9007c3370214bd57a0f1df04369f95c526636a592dda339c" id="user_CXXbase_march_c2171bb4a5a1a6034a83235920481e6cc9a3b391f591f6c4354377443c09830b875c7a135058311d9007c3370214bd57a0f1df04369f95c526636a592dda339c">-march=native</a></li>
+<li class="flagOrigin"><a href="#userOrigin"><img src="https://www.spec.org/auto/cpu2017/images/user.png" alt="[user]" /></a></li>
+<li class="flagVar">OPTIMIZE</li>
+<li class="descText">
+<p>
+      On x86 systems, allows use of instructions that require the listed architecture.</p>
+   <p>On Arm systems, specifies the name of the target architecture and, optionally, one or more feature modifiers.
+      This option has the form <kbd>-march=arch{+[no]feature}</kbd>
+   </p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<div class="flagDesc">
+<ul class="flagDesc">
+<li class="flagName"><a name="user_CXXbase_F-fopenmp" id="user_CXXbase_F-fopenmp">-fopenmp</a></li>
+<li class="flagOrigin"><a href="#userOrigin"><img src="https://www.spec.org/auto/cpu2017/images/user.png" alt="[user]" /></a></li>
+<li class="flagDescParallel"><span class="tt">Yes</span></li>
+<li class="flagVar">EXTRA_OPTIMIZE</li>
+<li class="descText">
+<p>
+Enable handling of OpenMP directives and generate parallel code.
+</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<div class="flagDesc">
+<ul class="flagDesc">
+<li class="flagName"><a name="suite_CXXbase_DSPEC_OPENMP" id="suite_CXXbase_DSPEC_OPENMP">-DSPEC_OPENMP</a></li>
+<li class="flagOrigin"><a href="#suiteOrigin"><img src="https://www.spec.org/auto/cpu2017/images/suite.png" alt="[suite]" /></a></li>
+<li class="flagVar">EXTRA_OPTIMIZE</li>
+<li class="descText">
+<p>
+Definition of this macro indicates that compilation for parallel operation
+  is enabled, and that any OpenMP directives or pragmas will be visible to
+  the compiler.  The behavior of this macro is overridden if
+  -DSPEC_SUPPRESS_OPENMP also appears in the list of compilation flags.
+</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+<h3><a name="FCbaseoptimization">Fortran benchmarks</a></h3>
+<ul class="flagDescList">
+<li>
+<div class="flagDesc">
+<ul class="flagDesc">
+<li class="flagName"><a name="user_FCbase_m64-gcc" id="user_FCbase_m64-gcc">-m64</a></li>
+<li class="flagOrigin"><a href="#userOrigin"><img src="https://www.spec.org/auto/cpu2017/images/user.png" alt="[user]" /></a></li>
+<li class="flagDescCompiler">gcc,gfortran,gxx</li>
+<li class="flagVar">FC, LD</li>
+<li class="descText">
+<p>
+      Compiles for a 64-bit (LP64) data model.
+   </p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<div class="flagDesc">
+<ul class="flagDesc">
+<li class="flagName"><a name="user_FCbase_g-gcc" id="user_FCbase_g-gcc">-g</a></li>
+<li class="flagOrigin"><a href="#userOrigin"><img src="https://www.spec.org/auto/cpu2017/images/user.png" alt="[user]" /></a></li>
+<li class="flagDescCompiler">gcc,gfortran,gxx</li>
+<li class="flagVar">OPTIMIZE</li>
+<li class="descText">
+<p>
+Produce debugging information.
+</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<div class="flagDesc">
+<ul class="flagDesc">
+<li class="flagName"><a name="user_FCbase_Olevel-gcc_2a8c613e11e2962ae78d693398304d6f1c12fa10320380cff05dd109643c60bb04214353a55f02d8022371d19f6dd940085da69c3a4516b2b7029e64f867e782" id="user_FCbase_Olevel-gcc_2a8c613e11e2962ae78d693398304d6f1c12fa10320380cff05dd109643c60bb04214353a55f02d8022371d19f6dd940085da69c3a4516b2b7029e64f867e782">-O3</a></li>
+<li class="flagOrigin"><a href="#userOrigin"><img src="https://www.spec.org/auto/cpu2017/images/user.png" alt="[user]" /></a></li>
+<li class="flagDescCompiler">gcc,gfortran,gxx</li>
+<li class="flagVar">OPTIMIZE</li>
+<li class="descText">
+<p>
+      Increases optimization levels: the higher the number, the more optimization is done.  Higher levels of optimization may
+      require additional compilation time, in the hopes of reducing execution time.  At -O, basic optimizations are performed, 
+      such as constant merging and elimination of dead code.  At -O2, additional optimizations are added, such as common
+      subexpression elimination and strict aliasing.  At -O3, even more optimizations are performed, such as function inlining and
+      vectorization.
+      <br /><a href="#gnote">Many more details are available</a>.
+   </p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<div class="flagDesc">
+<ul class="flagDesc">
+<li class="flagName"><a name="user_FCbase_march_c2171bb4a5a1a6034a83235920481e6cc9a3b391f591f6c4354377443c09830b875c7a135058311d9007c3370214bd57a0f1df04369f95c526636a592dda339c" id="user_FCbase_march_c2171bb4a5a1a6034a83235920481e6cc9a3b391f591f6c4354377443c09830b875c7a135058311d9007c3370214bd57a0f1df04369f95c526636a592dda339c">-march=native</a></li>
+<li class="flagOrigin"><a href="#userOrigin"><img src="https://www.spec.org/auto/cpu2017/images/user.png" alt="[user]" /></a></li>
+<li class="flagVar">OPTIMIZE</li>
+<li class="descText">
+<p>
+      On x86 systems, allows use of instructions that require the listed architecture.</p>
+   <p>On Arm systems, specifies the name of the target architecture and, optionally, one or more feature modifiers.
+      This option has the form <kbd>-march=arch{+[no]feature}</kbd>
+   </p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<div class="flagDesc">
+<ul class="flagDesc">
+<li class="flagName"><a name="suite_FCbase_DSPEC_OPENMP" id="suite_FCbase_DSPEC_OPENMP">-DSPEC_OPENMP</a></li>
 <li class="flagOrigin"><a href="#suiteOrigin"><img src="https://www.spec.org/auto/cpu2017/images/suite.png" alt="[suite]" /></a></li>
 <li class="flagVar">EXTRA_OPTIMIZE</li>
 <li class="descText">
@@ -1482,7 +1941,7 @@ Definition of this macro indicates that compilation for parallel operation
 <li>
 <div class="flagDesc">
 <ul class="flagDesc">
-<li class="flagName"><a name="user_baseEXTRA_OPTIMIZE628_pop2_s_F-fopenmp" id="user_baseEXTRA_OPTIMIZE628_pop2_s_F-fopenmp">-fopenmp</a></li>
+<li class="flagName"><a name="user_FCbase_F-fopenmp" id="user_FCbase_F-fopenmp">-fopenmp</a></li>
 <li class="flagOrigin"><a href="#userOrigin"><img src="https://www.spec.org/auto/cpu2017/images/user.png" alt="[user]" /></a></li>
 <li class="flagDescParallel"><span class="tt">Yes</span></li>
 <li class="flagVar">EXTRA_OPTIMIZE</li>
@@ -1498,36 +1957,19 @@ Enable handling of OpenMP directives and generate parallel code.
 </div>
 <hr />
 
-<div class="optimizationflags">
-<h2>Peak Optimization Flags</h2>
-<h3><a name="CC_FCpeakoptimization">Benchmarks using both Fortran and C</a></h3>
-<h4><a name="optimization628.pop2_speak">628.pop2_s</a></h4>
-<ul class="flagDescList">
-<li>
-<div class="flagDesc">
-<ul class="flagDesc">
-<li class="flagName"><a name="suite_peak628_pop2_s_basepeak_e330a87a19b07b1fe2d7c547ba0a59b13ae7be00dcdecdbd276a53e4c442a316c053ca98a553c617ab33ce06d70ede0c7f509bab9a5476da20dc6ca60ef38682" id="suite_peak628_pop2_s_basepeak_e330a87a19b07b1fe2d7c547ba0a59b13ae7be00dcdecdbd276a53e4c442a316c053ca98a553c617ab33ce06d70ede0c7f509bab9a5476da20dc6ca60ef38682">basepeak = yes</a></li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-<hr />
-
 <div class="otherflags">
-<h2>Other Flags</h2>
-<h3><a name="CC_FCALLother">Benchmarks using both Fortran and C</a></h3>
-<h4><a name="other628.pop2_sALL">628.pop2_s</a></h4>
+<h2>Base Other Flags</h2>
+<h3><a name="CCbaseother">C benchmarks (except as noted below)</a></h3>
 <ul class="flagDescList">
 <li>
 <div class="flagDesc">
 <ul class="flagDesc">
-<li class="flagName"><a name="user_ALLCC_FC_F-fallow-argument-mismatch" id="user_ALLCC_FC_F-fallow-argument-mismatch">-fallow-argument-mismatch</a></li>
+<li class="flagName"><a name="user_CCbase_F-fcommon" id="user_CCbase_F-fcommon">-fcommon</a></li>
 <li class="flagOrigin"><a href="#userOrigin"><img src="https://www.spec.org/auto/cpu2017/images/user.png" alt="[user]" /></a></li>
-<li class="flagVar">EXTRA_FFLAGS</li>
+<li class="flagVar">EXTRA_CFLAGS</li>
 <li class="descText">
-<p>Warn, rather than generating a fatal error, when calls to external procedures have mismatches vs. the procedure definition.
-   See also 
+<p>Place uninitialized global variables in a common block.  This allows the linker to resolve all tentative definitions of the same
+   variable in different compilation units to the same object.  See also 
    <a href="https://gcc.gnu.org/gcc-10/porting_to.html">https://gcc.gnu.org/gcc-10/porting_to.html</a>.</p>
 </li>
 </ul>
@@ -1642,6 +2084,6 @@ Enable handling of OpenMP directives and generate parallel code.
 For other inquiries, please contact <a href="mailto:info@spec.org">info@spec.org</a><br />
 Copyright 2017-2024 Standard Performance Evaluation Corporation<br />
 Tested with SPEC CPU2017 v1.1.9.<br />
-Report generated on 2024-10-24 08:37:57 by SPEC CPU2017 flags formatter v5178.</p>
+Report generated on 2024-10-29 09:06:14 by SPEC CPU2017 flags formatter v5178.</p>
 </body>
 </html>

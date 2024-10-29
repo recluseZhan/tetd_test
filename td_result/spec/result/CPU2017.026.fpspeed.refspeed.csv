@@ -1,40 +1,40 @@
 valid,0
 
-"SPEC CPU2017 Integer Rate Result"
+"SPEC CPU2017 Floating Point Speed Result"
 
 "Full Results Table"
 
-Benchmark,"Base # Copies","Est. Base Run Time","Est. Base Rate","Base Selected","Base Status","Peak # Copies","Est. Peak Run Time","Est. Peak Rate","Peak Selected","Peak Status",Description
-500.perlbench_r,1,202.950803,7.844266,1,S,,,,,,"refrate(ref) iteration #1"
-502.gcc_r,,,,,NR,,,,,NR
-505.mcf_r,,,,,NR,,,,,NR
-520.omnetpp_r,,,,,NR,,,,,NR
-523.xalancbmk_r,,,,,NR,,,,,NR
-525.x264_r,,,,,NR,,,,,NR
-531.deepsjeng_r,,,,,NR,,,,,NR
-541.leela_r,,,,,NR,,,,,NR
-548.exchange2_r,,,,,NR,,,,,NR
-557.xz_r,,,,,NR,,,,,NR
+Benchmark,"Base # Threads","Est. Base Run Time","Est. Base Ratio","Base Selected","Base Status","Peak # Threads","Est. Peak Run Time","Est. Peak Ratio","Peak Selected","Peak Status",Description
+603.bwaves_s,4,1.470719,40115.072968,0,RE,,,,,,"refspeed(ref) iteration #1"
+607.cactuBSSN_s,1,--,--,0,CE,,,,,,"refspeed(ref) iteration #1"
+619.lbm_s,4,0.438516,11944.832116,0,RE,,,,,,"refspeed(ref) iteration #1"
+621.wrf_s,1,--,--,0,CE,,,,,,"refspeed(ref) iteration #1"
+627.cam4_s,4,3.007311,2947.151126,0,RE,,,,,,"refspeed(ref) iteration #1"
+628.pop2_s,4,3.777044,3143.463513,0,RE,,,,,,"refspeed(ref) iteration #1"
+638.imagick_s,4,2.126689,6783.314345,0,RE,,,,,,"refspeed(ref) iteration #1"
+644.nab_s,4,594.685633,29.380229,1,S,,,,,,"refspeed(ref) iteration #1"
+649.fotonik3d_s,4,18.116336,503.192257,0,RE,,,,,,"refspeed(ref) iteration #1"
+654.roms_s,4,0.058169,270676.820987,0,RE,,,,,,"refspeed(ref) iteration #1"
 
 "Selected Results Table"
 
-Benchmark,"Base # Copies","Est. Base Run Time","Est. Base Rate","Base Selected","Base Status","Peak # Copies","Est. Peak Run Time","Est. Peak Rate","Peak Selected","Peak Status",Description
-500.perlbench_r,1,202.950803,7.844266,1,S,,,,,NR,"SelectedIteration (base #1; peak NR)"
-502.gcc_r,,,,,NR,,,,,NR
-505.mcf_r,,,,,NR,,,,,NR
-520.omnetpp_r,,,,,NR,,,,,NR
-523.xalancbmk_r,,,,,NR,,,,,NR
-525.x264_r,,,,,NR,,,,,NR
-531.deepsjeng_r,,,,,NR,,,,,NR
-541.leela_r,,,,,NR,,,,,NR
-548.exchange2_r,,,,,NR,,,,,NR
-557.xz_r,,,,,NR,,,,,NR
+Benchmark,"Base # Threads","Est. Base Run Time","Est. Base Ratio","Base Selected","Base Status","Peak # Threads","Est. Peak Run Time","Est. Peak Ratio","Peak Selected","Peak Status",Description
+603.bwaves_s,,,,,NR,,,,,NR
+607.cactuBSSN_s,,,,,NR,,,,,NR
+619.lbm_s,,,,,NR,,,,,NR
+621.wrf_s,,,,,NR,,,,,NR
+627.cam4_s,,,,,NR,,,,,NR
+628.pop2_s,,,,,NR,,,,,NR
+638.imagick_s,,,,,NR,,,,,NR
+644.nab_s,4,594.685633,29.380229,1,S,,,,,NR,"SelectedIteration (base #1; peak NR)"
+649.fotonik3d_s,,,,,NR,,,,,NR
+654.roms_s,,,,,NR,,,,,NR
 
-SPECrate2017_int_base,7.844266,,7.844266
-SPECrate2017_int_peak,"Not Run",,,,,,,"Not Run"
+SPECspeed2017_fp_base,29.380229,,29.380229
+SPECspeed2017_fp_peak,"Not Run",,,,,,,"Not Run"
 
-"Run number:",013.0
-"runcpu command:","/home/tdx/speccpu2017/bin/harness/runcpu --configfile tdx2.cfg --tune base --noreportable --nopower --runmode rate --tune base --size refrate 500.perlbench_r"
+"Run number:",026.1
+"runcpu command:","/home/tdx/speccpu2017/bin/harness/runcpu --configfile tdx2.cfg --tune base --size ref --copies 15 --noreportable --nopower --runmode speed --tune base --size refspeed fpspeed"
 "output root:","not used"
 
 "Hardware Vendor:","My Corporation"
@@ -69,7 +69,7 @@ OS,"Ubuntu 24.04 LTS"
 ,6.8.0-35-generic
 Compiler,"C/C++/Fortran: Version 10.1.0 of GCC, the"
 ,"GNU Compiler Collection"
-Parallel,No
+Parallel,Yes
 Firmware," "
 "File System",ext4
 "System State","Run level 5 (add definition here)"
@@ -82,6 +82,7 @@ Other," "
 
 "Environment variables set by runcpu before the start of the run:"
 "LD_LIBRARY_PATH = ""/usr/lib64/:/usr/lib/:/lib64"""
+"OMP_STACKSIZE = ""120M"""
 
 
 "Platform Notes"
@@ -89,7 +90,7 @@ Other," "
 
 " Sysinfo program /home/tdx/speccpu2017/bin/sysinfo"
 " Rev: r6732 of 2022-11-07 fe91c89b7ed5c36ae2c92cc097bec197"
-" running on tdx-guest Thu Oct 24 11:51:02 2024"
+" running on tdx-guest Tue Oct 29 08:05:12 2024"
 
 " SUT (System Under Test) info as seen by some common utilities."
 
@@ -107,17 +108,18 @@ Other," "
 "  9. /proc/meminfo"
 " 10. who -r"
 " 11. Systemd service manager version: systemd 255 (255.4-1ubuntu8.1)"
-" 12. Services, from systemctl list-unit-files"
-" 13. Linux kernel boot-time arguments, from /proc/cmdline"
-" 14. cpupower frequency-info"
-" 15. sysctl"
-" 16. /sys/kernel/mm/transparent_hugepage"
-" 17. /sys/kernel/mm/transparent_hugepage/khugepaged"
-" 18. OS release"
-" 19. Disk information"
-" 20. /sys/devices/virtual/dmi/id"
-" 21. dmidecode"
-" 22. BIOS"
+" 12. Failed units, from systemctl list-units --state=failed"
+" 13. Services, from systemctl list-unit-files"
+" 14. Linux kernel boot-time arguments, from /proc/cmdline"
+" 15. cpupower frequency-info"
+" 16. sysctl"
+" 17. /sys/kernel/mm/transparent_hugepage"
+" 18. /sys/kernel/mm/transparent_hugepage/khugepaged"
+" 19. OS release"
+" 20. Disk information"
+" 21. /sys/devices/virtual/dmi/id"
+" 22. dmidecode"
+" 23. BIOS"
 " ------------------------------------------------------------"
 
 " ------------------------------------------------------------"
@@ -127,9 +129,9 @@ Other," "
 
 " ------------------------------------------------------------"
 " 2. w"
-"    11:51:02 up 38 min,  1 user,  load average: 0.01, 0.00, 0.00"
+"    08:05:12 up  2:07,  1 user,  load average: 5.46, 7.85, 7.31"
 "   USER     TTY      FROM             LOGIN@   IDLE   JCPU   PCPU WHAT"
-"   root     hvc0     -                11:12    6.00s  0.55s   ?    tmux"
+"   root     hvc0     -                05:57   18:06  11.41s   ?    sh -c w 2>/dev/null"
 
 " ------------------------------------------------------------"
 " 3. Username"
@@ -153,12 +155,12 @@ Other," "
 " ------------------------------------------------------------"
 " 5. sysinfo process ancestry"
 "  /sbin/init"
-"  tmux"
+"  /bin/login -p --"
 "  -bash"
-"  runcpu --config=tdx2.cfg --tune=base 500.perlbench_r"
-"  runcpu --configfile tdx2.cfg --tune base --noreportable --nopower --runmode rate --tune base --size refrate"
-"    500.perlbench_r --nopreenv --note-preenv --logfile $SPEC/tmp/CPU2017.013/templogs/preenv.intrate.013.0.log"
-"    --lognum 013.0 --from_runcpu 2"
+"  runcpu --config=tdx2.cfg --tune=base --size=ref all --copies=15"
+"  runcpu --configfile tdx2.cfg --tune base --size ref --copies 15 --noreportable --nopower --runmode speed"
+"    --tune base --size refspeed fpspeed --nopreenv --note-preenv --logfile"
+"    $SPEC/tmp/CPU2017.026/templogs/preenv.fpspeed.026.1.log --lognum 026.1 --from_runcpu 2"
 "  specperl $SPEC/bin/sysinfo"
 " $SPEC = /home/tdx/speccpu2017"
 
@@ -253,7 +255,7 @@ Other," "
 "   available: 1 nodes (0)"
 "   node 0 cpus: 0-15"
 "   node 0 size: 1827 MB"
-"   node 0 free: 878 MB"
+"   node 0 free: 422 MB"
 "   node distances:"
 "   node   0"
 "     0:  10"
@@ -264,15 +266,24 @@ Other," "
 
 " ------------------------------------------------------------"
 " 10. who -r"
-"   run-level 5 Oct 24 11:12"
+"   run-level 5 Oct 29 05:57"
 
 " ------------------------------------------------------------"
 " 11. Systemd service manager version: systemd 255 (255.4-1ubuntu8.1)"
 "   Default Target  Status"
-"   graphical       running"
+"   graphical       degraded"
 
 " ------------------------------------------------------------"
-" 12. Services, from systemctl list-unit-files"
+" 12. Failed units, from systemctl list-units --state=failed"
+"     UNIT           LOAD   ACTIVE SUB    DESCRIPTION"
+"   * user@0.service loaded failed failed User Manager for UID 0"
+"   Legend: LOAD   -> Reflects whether the unit definition was properly loaded."
+"           ACTIVE -> The high-level unit activation state, i.e. generalization of SUB."
+"           SUB    -> The low-level unit activation state, values depend on unit type."
+"   1 loaded units listed."
+
+" ------------------------------------------------------------"
+" 13. Services, from systemctl list-unit-files"
 "   STATE            UNIT FILES"
 "   enabled          ModemManager apparmor apport blk-availability cloud-config cloud-final cloud-init"
 "                    cloud-init-local console-setup cron dmesg e2scrub_reap finalrd getty@ grub-common"
@@ -292,7 +303,7 @@ Other," "
 "                    x11-common"
 
 " ------------------------------------------------------------"
-" 13. Linux kernel boot-time arguments, from /proc/cmdline"
+" 14. Linux kernel boot-time arguments, from /proc/cmdline"
 "   BOOT_IMAGE=/vmlinuz-6.8.0-35-generic"
 "   root=UUID=41106c9c-97fc-4396-8622-4f692c8c5bb1"
 "   ro"
@@ -300,15 +311,15 @@ Other," "
 "   console=ttyS0"
 
 " ------------------------------------------------------------"
-" 14. cpupower frequency-info"
-"   analyzing CPU 10:"
+" 15. cpupower frequency-info"
+"   analyzing CPU 9:"
 "     Unable to determine current policy"
 "     boost state support:"
 "       Supported: no"
 "       Active: no"
 
 " ------------------------------------------------------------"
-" 15. sysctl"
+" 16. sysctl"
 "   kernel.numa_balancing               0"
 "   kernel.randomize_va_space           2"
 "   vm.compaction_proactiveness        20"
@@ -330,14 +341,14 @@ Other," "
 "   vm.zone_reclaim_mode                0"
 
 " ------------------------------------------------------------"
-" 16. /sys/kernel/mm/transparent_hugepage"
+" 17. /sys/kernel/mm/transparent_hugepage"
 "   defrag          always defer defer+madvise [madvise] never"
 "   enabled         always [madvise] never"
 "   hpage_pmd_size  2097152"
 "   shmem_enabled   always within_size advise [never] deny force"
 
 " ------------------------------------------------------------"
-" 17. /sys/kernel/mm/transparent_hugepage/khugepaged"
+" 18. /sys/kernel/mm/transparent_hugepage/khugepaged"
 "   alloc_sleep_millisecs   60000"
 "   defrag                      1"
 "   max_ptes_none             511"
@@ -347,23 +358,23 @@ Other," "
 "   scan_sleep_millisecs    10000"
 
 " ------------------------------------------------------------"
-" 18. OS release"
+" 19. OS release"
 "   From /etc/*-release /etc/*-version"
 "   os-release Ubuntu 24.04 LTS"
 
 " ------------------------------------------------------------"
-" 19. Disk information"
+" 20. Disk information"
 " SPEC is set to: /home/tdx/speccpu2017"
 "   Filesystem     Type  Size  Used Avail Use% Mounted on"
-"   /dev/vda1      ext4   51G   18G   33G  36% /"
+"   /dev/vda1      ext4   51G   30G   22G  59% /"
 
 " ------------------------------------------------------------"
-" 20. /sys/devices/virtual/dmi/id"
+" 21. /sys/devices/virtual/dmi/id"
 "     Vendor:         QEMU"
 "     Product:        Standard PC (Q35 + ICH9, 2009)"
 
 " ------------------------------------------------------------"
-" 21. dmidecode"
+" 22. dmidecode"
 "   Additional information from dmidecode 3.5 follows.  WARNING: Use caution when you interpret this section."
 "   The 'dmidecode' program reads system data which is ""intended to allow hardware to be accurately"
 "   determined"", but the intent may not be met, as there are frequent changes to hardware, firmware, and the"
@@ -373,7 +384,7 @@ Other," "
 
 
 " ------------------------------------------------------------"
-" 22. BIOS"
+" 23. BIOS"
 " (This section combines info from /sys/devices and dmidecode.)"
 "    BIOS Vendor:       Ubuntu distribution of EDK II"
 "    BIOS Version:      2024.02-3+tdx1.0"
@@ -383,7 +394,7 @@ Other," "
 "Compiler Version Notes"
 
 ============================================================================================================
-"C | 500.perlbench_r(base)"
+"C          | 619.lbm_s(base) 638.imagick_s(base) 644.nab_s(base)"
 ------------------------------------------------------------------------------------------------------------
 "gcc (Ubuntu 13.2.0-23ubuntu4) 13.2.0"
 "Copyright (C) 2023 Free Software Foundation, Inc."
@@ -391,173 +402,195 @@ Other," "
 "warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE."
 ------------------------------------------------------------------------------------------------------------
 
+============================================================================================================
+"Fortran    | 603.bwaves_s(base) 649.fotonik3d_s(base) 654.roms_s(base)"
+------------------------------------------------------------------------------------------------------------
+"GNU Fortran (Ubuntu 13.2.0-23ubuntu4) 13.2.0"
+"Copyright (C) 2023 Free Software Foundation, Inc."
+"This is free software; see the source for copying conditions.  There is NO"
+"warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE."
+------------------------------------------------------------------------------------------------------------
+
+============================================================================================================
+"Fortran, C | 627.cam4_s(base) 628.pop2_s(base)"
+------------------------------------------------------------------------------------------------------------
+"GNU Fortran (Ubuntu 13.2.0-23ubuntu4) 13.2.0"
+"Copyright (C) 2023 Free Software Foundation, Inc."
+"This is free software; see the source for copying conditions.  There is NO"
+"warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE."
+"gcc (Ubuntu 13.2.0-23ubuntu4) 13.2.0"
+"Copyright (C) 2023 Free Software Foundation, Inc."
+"This is free software; see the source for copying conditions.  There is NO"
+"warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE."
+------------------------------------------------------------------------------------------------------------
+
 "Base Runtime Environment"
-500.perlbench_r," No flags used"
-502.gcc_r
-505.mcf_r
-520.omnetpp_r
-523.xalancbmk_r
-525.x264_r
-531.deepsjeng_r
-541.leela_r
-548.exchange2_r
-557.xz_r
+603.bwaves_s," No flags used"
+607.cactuBSSN_s
+619.lbm_s," No flags used"
+621.wrf_s
+627.cam4_s," No flags used"
+628.pop2_s," No flags used"
+638.imagick_s," No flags used"
+644.nab_s," No flags used"
+649.fotonik3d_s," No flags used"
+654.roms_s," No flags used"
 
 "Base Compiler Invocation"
-500.perlbench_r," gcc"," gcc"
-502.gcc_r
-505.mcf_r
-520.omnetpp_r
-523.xalancbmk_r
-525.x264_r
-531.deepsjeng_r
-541.leela_r
-548.exchange2_r
-557.xz_r
+603.bwaves_s," gfortran"," gfortran"
+607.cactuBSSN_s
+619.lbm_s," gcc"," gcc"
+621.wrf_s
+627.cam4_s," gfortran"," gcc"," gfortran"
+628.pop2_s," gfortran"," gcc"," gfortran"
+638.imagick_s," gcc"," gcc"
+644.nab_s," gcc"," gcc"
+649.fotonik3d_s," gfortran"," gfortran"
+654.roms_s," gfortran"," gfortran"
 
 "Base Portability Flags"
-500.perlbench_r," -DSPEC_LINUX_X64"," -DSPEC_LP64"
-502.gcc_r
-505.mcf_r
-520.omnetpp_r
-523.xalancbmk_r
-525.x264_r
-531.deepsjeng_r
-541.leela_r
-548.exchange2_r
-557.xz_r
+603.bwaves_s," -DSPEC_LP64"
+607.cactuBSSN_s
+619.lbm_s," -DSPEC_LP64"
+621.wrf_s
+627.cam4_s," -DSPEC_CASE_FLAG"," -DSPEC_LP64"
+628.pop2_s," -DSPEC_CASE_FLAG"," -fconvert=big-endian"," -DSPEC_LP64"
+638.imagick_s," -DSPEC_LP64"
+644.nab_s," -DSPEC_LP64"
+649.fotonik3d_s," -DSPEC_LP64"
+654.roms_s," -DSPEC_LP64"
 
 "Base Optimization Flags"
-500.perlbench_r," -m64"," -std=c99"," -std=c99"," -m64"," -g"," -O3"," -march=native"," -fno-strict-aliasing"," -fno-unsafe-math-optimizations"," -fno-finite-math-only"," -fgnu89-inline"
-502.gcc_r
-505.mcf_r
-520.omnetpp_r
-523.xalancbmk_r
-525.x264_r
-531.deepsjeng_r
-541.leela_r
-548.exchange2_r
-557.xz_r
+603.bwaves_s," -m64"," -m64"," -g"," -O3"," -march=native"," -DSPEC_OPENMP"," -fopenmp"
+607.cactuBSSN_s
+619.lbm_s," -m64"," -std=c99"," -std=c99"," -m64"," -g"," -O3"," -march=native"," -fno-strict-aliasing"," -fopenmp"," -DSPEC_OPENMP"
+621.wrf_s
+627.cam4_s," -m64"," -std=c99"," -m64"," -m64"," -g"," -O3"," -march=native"," -fno-strict-aliasing"," -DSPEC_OPENMP"," -fopenmp"
+628.pop2_s," -m64"," -std=c99"," -m64"," -m64"," -g"," -O3"," -march=native"," -fno-strict-aliasing"," -DSPEC_OPENMP"," -fopenmp"
+638.imagick_s," -m64"," -std=c99"," -std=c99"," -m64"," -g"," -O3"," -march=native"," -fno-strict-aliasing"," -fopenmp"," -DSPEC_OPENMP"
+644.nab_s," -m64"," -std=c99"," -std=c99"," -m64"," -g"," -O3"," -march=native"," -fno-strict-aliasing"," -fopenmp"," -DSPEC_OPENMP"
+649.fotonik3d_s," -m64"," -m64"," -g"," -O3"," -march=native"," -DSPEC_OPENMP"," -fopenmp"
+654.roms_s," -m64"," -m64"," -g"," -O3"," -march=native"," -DSPEC_OPENMP"," -fopenmp"
 
 "Base Other Flags"
-500.perlbench_r," -fcommon"
-502.gcc_r
-505.mcf_r
-520.omnetpp_r
-523.xalancbmk_r
-525.x264_r
-531.deepsjeng_r
-541.leela_r
-548.exchange2_r
-557.xz_r
+603.bwaves_s," -fallow-argument-mismatch"
+607.cactuBSSN_s
+619.lbm_s," No flags used"
+621.wrf_s
+627.cam4_s," -fallow-argument-mismatch"
+628.pop2_s," -fallow-argument-mismatch"
+638.imagick_s," No flags used"
+644.nab_s," No flags used"
+649.fotonik3d_s," -fallow-argument-mismatch"
+654.roms_s," -fallow-argument-mismatch"
 
 "Base Forbidden Flags"
-500.perlbench_r
-502.gcc_r
-505.mcf_r
-520.omnetpp_r
-523.xalancbmk_r
-525.x264_r
-531.deepsjeng_r
-541.leela_r
-548.exchange2_r
-557.xz_r
+603.bwaves_s
+607.cactuBSSN_s
+619.lbm_s
+621.wrf_s
+627.cam4_s
+628.pop2_s
+638.imagick_s
+644.nab_s
+649.fotonik3d_s
+654.roms_s
 
 "Base Unknown Flags"
-500.perlbench_r
-502.gcc_r
-505.mcf_r
-520.omnetpp_r
-523.xalancbmk_r
-525.x264_r
-531.deepsjeng_r
-541.leela_r
-548.exchange2_r
-557.xz_r
+603.bwaves_s
+607.cactuBSSN_s
+619.lbm_s
+621.wrf_s
+627.cam4_s
+628.pop2_s
+638.imagick_s
+644.nab_s
+649.fotonik3d_s
+654.roms_s
 
 "Peak Runtime Environment"
-500.perlbench_r
-502.gcc_r
-505.mcf_r
-520.omnetpp_r
-523.xalancbmk_r
-525.x264_r
-531.deepsjeng_r
-541.leela_r
-548.exchange2_r
-557.xz_r
+603.bwaves_s
+607.cactuBSSN_s
+619.lbm_s
+621.wrf_s
+627.cam4_s
+628.pop2_s
+638.imagick_s
+644.nab_s
+649.fotonik3d_s
+654.roms_s
 
 "Peak Compiler Invocation"
-500.perlbench_r
-502.gcc_r
-505.mcf_r
-520.omnetpp_r
-523.xalancbmk_r
-525.x264_r
-531.deepsjeng_r
-541.leela_r
-548.exchange2_r
-557.xz_r
+603.bwaves_s
+607.cactuBSSN_s
+619.lbm_s
+621.wrf_s
+627.cam4_s
+628.pop2_s
+638.imagick_s
+644.nab_s
+649.fotonik3d_s
+654.roms_s
 
 "Peak Portability Flags"
-500.perlbench_r
-502.gcc_r
-505.mcf_r
-520.omnetpp_r
-523.xalancbmk_r
-525.x264_r
-531.deepsjeng_r
-541.leela_r
-548.exchange2_r
-557.xz_r
+603.bwaves_s
+607.cactuBSSN_s
+619.lbm_s
+621.wrf_s
+627.cam4_s
+628.pop2_s
+638.imagick_s
+644.nab_s
+649.fotonik3d_s
+654.roms_s
 
 "Peak Optimization Flags"
-500.perlbench_r
-502.gcc_r
-505.mcf_r
-520.omnetpp_r
-523.xalancbmk_r
-525.x264_r
-531.deepsjeng_r
-541.leela_r
-548.exchange2_r
-557.xz_r
+603.bwaves_s
+607.cactuBSSN_s
+619.lbm_s
+621.wrf_s
+627.cam4_s
+628.pop2_s
+638.imagick_s
+644.nab_s
+649.fotonik3d_s
+654.roms_s
 
 "Peak Other Flags"
-500.perlbench_r
-502.gcc_r
-505.mcf_r
-520.omnetpp_r
-523.xalancbmk_r
-525.x264_r
-531.deepsjeng_r
-541.leela_r
-548.exchange2_r
-557.xz_r
+603.bwaves_s
+607.cactuBSSN_s
+619.lbm_s
+621.wrf_s
+627.cam4_s
+628.pop2_s
+638.imagick_s
+644.nab_s
+649.fotonik3d_s
+654.roms_s
 
 "Peak Forbidden Flags"
-500.perlbench_r
-502.gcc_r
-505.mcf_r
-520.omnetpp_r
-523.xalancbmk_r
-525.x264_r
-531.deepsjeng_r
-541.leela_r
-548.exchange2_r
-557.xz_r
+603.bwaves_s
+607.cactuBSSN_s
+619.lbm_s
+621.wrf_s
+627.cam4_s
+628.pop2_s
+638.imagick_s
+644.nab_s
+649.fotonik3d_s
+654.roms_s
 
 "Peak Unknown Flags"
-500.perlbench_r
-502.gcc_r
-505.mcf_r
-520.omnetpp_r
-523.xalancbmk_r
-525.x264_r
-531.deepsjeng_r
-541.leela_r
-548.exchange2_r
-557.xz_r
+603.bwaves_s
+607.cactuBSSN_s
+619.lbm_s
+621.wrf_s
+627.cam4_s
+628.pop2_s
+638.imagick_s
+644.nab_s
+649.fotonik3d_s
+654.roms_s
 
 ERRORS
 
@@ -565,16 +598,43 @@ ERRORS
 "#   INVALID RUN INVALID RUN INVALID RUN INVALID RUN INVALID RUN INVALID RUN  #"
 "#                                                                            #"
 "# 'reportable' flag not set during run                                       #"
-"# 525.x264_r (base) did not have enough runs!                                #"
-"# 557.xz_r (base) did not have enough runs!                                  #"
-"# 548.exchange2_r (base) did not have enough runs!                           #"
-"# 502.gcc_r (base) did not have enough runs!                                 #"
-"# 523.xalancbmk_r (base) did not have enough runs!                           #"
-"# 500.perlbench_r (base) did not have enough runs!                           #"
-"# 541.leela_r (base) did not have enough runs!                               #"
-"# 505.mcf_r (base) did not have enough runs!                                 #"
-"# 531.deepsjeng_r (base) did not have enough runs!                           #"
-"# 520.omnetpp_r (base) did not have enough runs!                             #"
+"# 627.cam4_s (base) did not have enough runs!                                #"
+"# 654.roms_s (base) did not have enough runs!                                #"
+"# 649.fotonik3d_s (base) did not have enough runs!                           #"
+"# 603.bwaves_s (base) did not have enough runs!                              #"
+"# 628.pop2_s (base) did not have enough runs!                                #"
+"# 621.wrf_s (base) did not have enough runs!                                 #"
+"# 619.lbm_s (base) did not have enough runs!                                 #"
+"# 644.nab_s (base) did not have enough runs!                                 #"
+"# 638.imagick_s (base) did not have enough runs!                             #"
+"# 607.cactuBSSN_s (base) did not have enough runs!                           #"
+"# 627.cam4_s (base) had invalid runs!                                        #"
+"# 654.roms_s (base) had invalid runs!                                        #"
+"# 649.fotonik3d_s (base) had invalid runs!                                   #"
+"# 603.bwaves_s (base) had invalid runs!                                      #"
+"# 628.pop2_s (base) had invalid runs!                                        #"
+"# 621.wrf_s (base) had invalid runs!                                         #"
+"# 619.lbm_s (base) had invalid runs!                                         #"
+"# 638.imagick_s (base) had invalid runs!                                     #"
+"# 607.cactuBSSN_s (base) had invalid runs!                                   #"
+"# Run of 603.bwaves_s (base) was not valid; status is RE                     #"
+"# Run of 607.cactuBSSN_s (base) was not valid; status is CE                  #"
+"# Run of 619.lbm_s (base) was not valid; status is RE                        #"
+"# Run of 621.wrf_s (base) was not valid; status is CE                        #"
+"# Run of 627.cam4_s (base) was not valid; status is RE                       #"
+"# Run of 628.pop2_s (base) was not valid; status is RE                       #"
+"# Run of 638.imagick_s (base) was not valid; status is RE                    #"
+"# Run of 649.fotonik3d_s (base) was not valid; status is RE                  #"
+"# Run of 654.roms_s (base) was not valid; status is RE                       #"
+"# Error 603.bwaves_s: copy 0 non-zero return code (exit code=137, signal=0)  #"
+"# Error 607.cactuBSSN_s: Error with make!                                    #"
+"# Error 619.lbm_s: copy 0 non-zero return code (exit code=137, signal=0)     #"
+"# Error 621.wrf_s: Error with make!                                          #"
+"# Error 627.cam4_s: copy 0 non-zero return code (exit code=139, signal=0)    #"
+"# Error 628.pop2_s: copy 0 non-zero return code (exit code=137, signal=0)    #"
+"# Error 638.imagick_s: copy 0 non-zero return code (exit code=137, signal=0) #"
+"# Error 649.fotonik3d_s: copy 0 non-zero return code (exit code=137, signal=0) #"
+"# Error 654.roms_s: copy 0 non-zero return code (exit code=1, signal=0)      #"
 "#                                                                            #"
 "#   INVALID RUN INVALID RUN INVALID RUN INVALID RUN INVALID RUN INVALID RUN  #"
 ##############################################################################
@@ -583,5 +643,5 @@ ERRORS
 "For other inquiries,","please contact",info@spec.org.,
 "Copyright 2017-2024 Standard","Performance Evaluation",Corporation,
 "Tested with SPEC CPU2017",v1.1.9.
-"Result run on","2024-10-24 11:51:01+0000."
-"Report generated on","2024-10-24 11:54:53","by SPEC CPU2017 CSV","formatter v6253."
+"Result run on","2024-10-29 08:05:10+0000."
+"Report generated on","2024-10-29 08:31:54","by SPEC CPU2017 CSV","formatter v6253."

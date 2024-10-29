@@ -1,0 +1,888 @@
+==============================================================================
+Debug log for CPU2017.  This file contains very detailed debugging
+output from the CPU2017 tools (as if "--verbose 99" had been specified) and is
+typically useful only to developers of the CPU2017 toolset.
+
+For a successful run, this debug log will be removed automatically, unless you
+specify "--keeptmp" on the command line, or "keeptmp=1" in your config file.
+
+If you file a support request with cpu2017support@spec.org, you may be
+asked to submit this file.
+------------------------------------------------------------------------------
+
+Environment variables that may have been set or changed by shrc:
+SPEC: /home/tdx/speccpu2017
+PATH: /home/tdx/speccpu2017/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
+SPECPERLLIB: /home/tdx/speccpu2017/bin/lib:/home/tdx/speccpu2017/bin
+LD_LIBRARY_PATH: 
+DYLD_LIBRARY_PATH: 
+LC_ALL: C
+LC_LANG: C
+SPECDB_PWD: /home/tdx/speccpu2017
+------------------------------------------------------------------------------
+
+Runcpu's verbose version output:
+                 This is the SPEC CPU2017 benchmark tools suite.
+
+Version summary:
+    CPU2017 version: 1.1.9
+ Benchmarks version: 1.1.8
+      Tools version: 1.1.9
+     runcpu version: v6612 ($Id: runcpu 6612 2021-03-08 17:54:05Z CloyceS $)
+
+Tools information:
+ Tools package installed: linux-x86_64
+ File locking method: fcntl(2) (probably network-safe)
+Mode |  UID  |  GID  |   Size  |   Modification Time  | Name
+0755 | 22631 | 116   | 2097095 |  2016-09-14 22:10:26 | specperl
+0755 | 22631 | 116   |  208608 |  2016-09-14 22:10:26 | specmake
+0755 | 22631 | 116   |   32976 |  2016-09-14 22:10:27 | specinvoke
+0755 | 22631 | 116   |  250560 |  2016-09-14 22:10:26 | specrxp
+0775 | 0     | 116   |    1589 |  2020-08-13 13:48:55 | runcpu
+0775 | 0     | 116   |  179073 |  2021-03-08 17:54:05 | harness/runcpu
+0775 | 0     | 116   |    1589 |  2020-08-13 13:48:55 | specpp
+0775 | 0     | 116   |   89925 |  2019-01-17 23:54:21 | harness/specpp
+0775 | 0     | 116   |    1589 |  2020-08-13 13:48:55 | specdiff
+0775 | 0     | 116   |    9806 |  2016-06-09 19:50:26 | harness/specdiff
+0755 | 22631 | 116   |  224728 |  2016-09-14 22:10:26 | specxz
+0755 | 22631 | 116   |   73192 |  2016-09-14 22:10:27 | specsha512sum
+
+Version info for specperl (specperl): This is specperl 5, version 24, subversion 0 (v5.24.0) built for x86_64-linux
+                                      Compiled at Sep 14 2016 14:45:53
+                                      For more detail on specperl, say 'specperl -V'
+Version info for specmake (specmake): GNU Make 4.2.1
+Version info for specinvoke (specinvoke): specinvoke r4356 (OS implementation r4356)
+Version info for specrxp ($SPEC/bin/specrxp): RXP 1.5.0 Copyright Richard Tobin, LTG, HCRC, University of Edinburgh
+                                              Modified for use in SPEC benchmarks - 14 April 2011
+Version info for specpp ($SPEC/bin/specpp): specpp version 1.8.0SPEC
+Version info for specxz ($SPEC/bin/specxz): xz (XZ Utils) 5.2.2
+Version info for specsha512sum ($SPEC/bin/specsha512sum): sha512sum (specsum) 1.3
+
+==============================================================================
+
+1730174637.59: runcpu v6612 started at 2024-10-29 04:03:56 on "tdx-guest"
+1730174637.59: runcpu is: /home/tdx/speccpu2017/bin/harness/runcpu
+1730174637.59: runcpu: runcpu '--config=tdx2.cfg' '--tune=base' '--size=ref' '--threads=15' -I intrate --action=run --copies=15
+1730174637.59: toolset: linux-x86_64
+1730174637.59: suite: CPU2017 1.1.9
+
+1730174637.59(0.02s): Locating benchmarks...Created default regexp '(?:^|(?<=\s))[-/]DSPEC(?:\([^\)]+\))?(?:=\S*)?(?=\s|$)' for DSPEC in /home/tdx/speccpu2017/benchspec/flags-mandatory.xml
+1730174637.61: Created default regexp '(?:^|(?<=\s))[-/]USPEC(?:\([^\)]+\))?(?:=\S*)?(?=\s|$)' for USPEC in /home/tdx/speccpu2017/benchspec/flags-mandatory.xml
+1730174637.61: Created default regexp '(?:^|(?<=\s))[-/]DSPEC_CPU(?:\([^\)]+\))?(?:=\S*)?(?=\s|$)' for DSPEC_CPU in /home/tdx/speccpu2017/benchspec/flags-mandatory.xml
+1730174637.61: Created default regexp '(?:^|(?<=\s))[-/]DNDEBUG(?:\([^\)]+\))?(?:=\S*)?(?=\s|$)' for DNDEBUG in /home/tdx/speccpu2017/benchspec/flags-mandatory.xml
+1730174637.61: Created default regexp '(?:^|(?<=\s))[-/]UNDEBUG(?:\([^\)]+\))?(?:=\S*)?(?=\s|$)' for UNDEBUG in /home/tdx/speccpu2017/benchspec/flags-mandatory.xml
+1730174637.61: Created default regexp '(?:^|(?<=\s))[-/]DSPEC_WINDOWS(?:\([^\)]+\))?(?:=\S*)?(?=\s|$)' for DSPEC_WINDOWS in /home/tdx/speccpu2017/benchspec/flags-mandatory.xml
+1730174637.61: Created default regexp '(?:^|(?<=\s))[-/]DSPEC_MEM_IO(?:\([^\)]+\))?(?:=\S*)?(?=\s|$)' for DSPEC_MEM_IO in /home/tdx/speccpu2017/benchspec/flags-mandatory.xml
+1730174637.61: Created default regexp '(?:^|(?<=\s))[-/]DSPEC_ILP32(?:\([^\)]+\))?(?:=\S*)?(?=\s|$)' for DSPEC_ILP32 in /home/tdx/speccpu2017/benchspec/flags-mandatory.xml
+1730174637.61: Created default regexp '(?:^|(?<=\s))[-/]DSPEC_P64(?:\([^\)]+\))?(?:=\S*)?(?=\s|$)' for DSPEC_P64 in /home/tdx/speccpu2017/benchspec/flags-mandatory.xml
+1730174637.61: Created default regexp '(?:^|(?<=\s))[-/]DSPEC_LP64(?:\([^\)]+\))?(?:=\S*)?(?=\s|$)' for DSPEC_LP64 in /home/tdx/speccpu2017/benchspec/flags-mandatory.xml
+1730174637.61: Created default regexp '(?:^|(?<=\s))[-/]DSPEC_ILP64(?:\([^\)]+\))?(?:=\S*)?(?=\s|$)' for DSPEC_ILP64 in /home/tdx/speccpu2017/benchspec/flags-mandatory.xml
+1730174637.61: Created default regexp '(?:^|(?<=\s))[-/]DSPEC_SUPPRESS_OPENMP(?:\([^\)]+\))?(?:=\S*)?(?=\s|$)' for DSPEC_SUPPRESS_OPENMP in /home/tdx/speccpu2017/benchspec/flags-mandatory.xml
+1730174637.61: Created default regexp '(?:^|(?<=\s))[-/]DSPEC_AUTO_SUPPRESS_OPENMP(?:\([^\)]+\))?(?:=\S*)?(?=\s|$)' for DSPEC_AUTO_SUPPRESS_OPENMP in /home/tdx/speccpu2017/benchspec/flags-mandatory.xml
+1730174637.61: Created default regexp '(?:^|(?<=\s))[-/]DSPEC_OPENMP(?:\([^\)]+\))?(?:=\S*)?(?=\s|$)' for DSPEC_OPENMP in /home/tdx/speccpu2017/benchspec/flags-mandatory.xml
+1730174637.61: Created default regexp '(?:^|(?<=\s))[-/]DSPEC_NO_AUTO_BYTEORDER(?:\([^\)]+\))?(?:=\S*)?(?=\s|$)' for DSPEC_NO_AUTO_BYTEORDER in /home/tdx/speccpu2017/benchspec/flags-mandatory.xml
+1730174637.61: Reading suite directory for 'flags-mandatory.xml', '/home/tdx/speccpu2017/benchspec'
+1730174637.61: Reading suite directory for 'CPU', '/home/tdx/speccpu2017/benchspec'
+1730174637.61:   Reading benchmark directory for '/home/tdx/speccpu2017/benchspec/CPU', '/home/tdx/speccpu2017/benchspec', 'pure_c.bset'
+1730174637.61:   Reading benchmark directory for '/home/tdx/speccpu2017/benchspec/CPU', '/home/tdx/speccpu2017/benchspec', 'intrate_pure_c.bset'
+1730174637.61:   Reading benchmark directory for '/home/tdx/speccpu2017/benchspec/CPU', '/home/tdx/speccpu2017/benchspec', '510.parest_r'
+1730174637.61:     Evaluated /home/tdx/speccpu2017/benchspec/CPU/510.parest_r/Spec/object.pm in 0.000616074s
+1730174637.61:     Instantiated Spec::Benchmark::parest_r510 in 0.000354052s
+1730174637.61:     Finding src.alts took 0.000030041s
+1730174637.61:   Setting up parest_r took 0.001174927s
+
+1730174637.61:   Reading benchmark directory for '/home/tdx/speccpu2017/benchspec/CPU', '/home/tdx/speccpu2017/benchspec', 'fpspeed_pure_c.bset'
+1730174637.61:   Reading benchmark directory for '/home/tdx/speccpu2017/benchspec/CPU', '/home/tdx/speccpu2017/benchspec', 'intrate_no_mixed.bset'
+1730174637.61:   Reading benchmark directory for '/home/tdx/speccpu2017/benchspec/CPU', '/home/tdx/speccpu2017/benchspec', 'mixed.bset'
+1730174637.61:   Reading benchmark directory for '/home/tdx/speccpu2017/benchspec/CPU', '/home/tdx/speccpu2017/benchspec', '527.cam4_r'
+1730174637.62:     Evaluated /home/tdx/speccpu2017/benchspec/CPU/527.cam4_r/Spec/object.pm in 0.004665136s
+1730174637.62:     Instantiated Spec::Benchmark::cam4_r527 in 0.000458956s
+1730174637.62:     Finding src.alts took 0.000037909s
+1730174637.62:   Setting up cam4_r took 0.005395889s
+
+1730174637.62:   Reading benchmark directory for '/home/tdx/speccpu2017/benchspec/CPU', '/home/tdx/speccpu2017/benchspec', '554.roms_r'
+1730174637.62:     Evaluated /home/tdx/speccpu2017/benchspec/CPU/554.roms_r/Spec/object.pm in 0.001118898s
+1730174637.62:     Instantiated Spec::Benchmark::roms_r554 in 0.000221968s
+1730174637.62:     Finding src.alts took 0.000020981s
+1730174637.62:   Setting up roms_r took 0.001550913s
+
+1730174637.62:   Reading benchmark directory for '/home/tdx/speccpu2017/benchspec/CPU', '/home/tdx/speccpu2017/benchspec', 'pure_cpp.bset'
+1730174637.62:   Reading benchmark directory for '/home/tdx/speccpu2017/benchspec/CPU', '/home/tdx/speccpu2017/benchspec', '525.x264_r'
+1730174637.62:     Evaluated /home/tdx/speccpu2017/benchspec/CPU/525.x264_r/Spec/object.pm in 0.000917912s
+1730174637.62:     Instantiated Spec::Benchmark::x264_r525 in 0.000200987s
+1730174637.62:     Finding src.alts took 0.000022888s
+1730174637.62:   Setting up x264_r took 0.001306057s
+
+1730174637.62:   Reading benchmark directory for '/home/tdx/speccpu2017/benchspec/CPU', '/home/tdx/speccpu2017/benchspec', 'intrate_no_c.bset'
+1730174637.62:   Reading benchmark directory for '/home/tdx/speccpu2017/benchspec/CPU', '/home/tdx/speccpu2017/benchspec', 'fpspeed_any_cpp.bset'
+1730174637.63:   Reading benchmark directory for '/home/tdx/speccpu2017/benchspec/CPU', '/home/tdx/speccpu2017/benchspec', '997.specrand_fr'
+1730174637.63:     Evaluated /home/tdx/speccpu2017/benchspec/CPU/997.specrand_fr/Spec/object.pm in 0.000295877s
+1730174637.63:     Instantiated Spec::Benchmark::specrand_fr997 in 0.000161171s
+1730174637.63:     Finding src.alts took 0.000019073s
+1730174637.63:   Setting up specrand_fr took 0.000656843s
+
+1730174637.63:   Reading benchmark directory for '/home/tdx/speccpu2017/benchspec/CPU', '/home/tdx/speccpu2017/benchspec', '503.bwaves_r'
+1730174637.63:     Evaluated /home/tdx/speccpu2017/benchspec/CPU/503.bwaves_r/Spec/object.pm in 0.000283003s
+1730174637.63:     Instantiated Spec::Benchmark::bwaves_r503 in 0.000187874s
+1730174637.63:     Finding src.alts took 0.000017166s
+1730174637.63:   Setting up bwaves_r took 0.000630856s
+
+1730174637.63:   Reading benchmark directory for '/home/tdx/speccpu2017/benchspec/CPU', '/home/tdx/speccpu2017/benchspec', '654.roms_s'
+1730174637.63:     Evaluated /home/tdx/speccpu2017/benchspec/CPU/654.roms_s/Spec/object.pm in 0.000747204s
+1730174637.63:     Instantiated Spec::Benchmark::roms_s654 in 0.000151873s
+1730174637.63:     Finding src.alts took 0.000017881s
+1730174637.63:   Setting up roms_s took 0.001062870s
+
+1730174637.63:   Reading benchmark directory for '/home/tdx/speccpu2017/benchspec/CPU', '/home/tdx/speccpu2017/benchspec', '603.bwaves_s'
+1730174637.63:     Evaluated /home/tdx/speccpu2017/benchspec/CPU/603.bwaves_s/Spec/object.pm in 0.000362873s
+1730174637.63:     Instantiated Spec::Benchmark::bwaves_s603 in 0.000168085s
+1730174637.63:     Finding src.alts took 0.000014782s
+1730174637.63:   Setting up bwaves_s took 0.000682116s
+
+1730174637.63:   Reading benchmark directory for '/home/tdx/speccpu2017/benchspec/CPU', '/home/tdx/speccpu2017/benchspec', 'fpspeed_pure_fortran.bset'
+1730174637.63:   Reading benchmark directory for '/home/tdx/speccpu2017/benchspec/CPU', '/home/tdx/speccpu2017/benchspec', 'fprate_mixed_fortran.bset'
+1730174637.63:   Reading benchmark directory for '/home/tdx/speccpu2017/benchspec/CPU', '/home/tdx/speccpu2017/benchspec', 'fpspeed_no_c.bset'
+1730174637.63:   Reading benchmark directory for '/home/tdx/speccpu2017/benchspec/CPU', '/home/tdx/speccpu2017/benchspec', 'intspeed_pure_fortran.bset'
+1730174637.63:   Reading benchmark directory for '/home/tdx/speccpu2017/benchspec/CPU', '/home/tdx/speccpu2017/benchspec', 'intspeed_no_fortran.bset'
+1730174637.63:   Reading benchmark directory for '/home/tdx/speccpu2017/benchspec/CPU', '/home/tdx/speccpu2017/benchspec', 'fpspeed.bset'
+1730174637.63:   Reading benchmark directory for '/home/tdx/speccpu2017/benchspec/CPU', '/home/tdx/speccpu2017/benchspec', 'any_fortran.bset'
+1730174637.63:   Reading benchmark directory for '/home/tdx/speccpu2017/benchspec/CPU', '/home/tdx/speccpu2017/benchspec', '557.xz_r'
+1730174637.64:     Evaluated /home/tdx/speccpu2017/benchspec/CPU/557.xz_r/Spec/object.pm in 0.001816034s
+1730174637.64:     Instantiated Spec::Benchmark::xz_r557 in 0.000283003s
+1730174637.64:     Finding src.alts took 0.000029087s
+1730174637.64:   Setting up xz_r took 0.002312183s
+
+1730174637.64:   Reading benchmark directory for '/home/tdx/speccpu2017/benchspec/CPU', '/home/tdx/speccpu2017/benchspec', '544.nab_r'
+1730174637.64:     Evaluated /home/tdx/speccpu2017/benchspec/CPU/544.nab_r/Spec/object.pm in 0.000365019s
+1730174637.64:     Instantiated Spec::Benchmark::nab_r544 in 0.000154972s
+1730174637.64:     Finding src.alts took 0.000015020s
+1730174637.64:   Setting up nab_r took 0.000671148s
+
+1730174637.64:   Reading benchmark directory for '/home/tdx/speccpu2017/benchspec/CPU', '/home/tdx/speccpu2017/benchspec', '638.imagick_s'
+1730174637.64:     Evaluated /home/tdx/speccpu2017/benchspec/CPU/638.imagick_s/Spec/object.pm in 0.000514984s
+1730174637.64:     Instantiated Spec::Benchmark::imagick_s638 in 0.000157118s
+1730174637.64:     Finding src.alts took 0.000018120s
+1730174637.64:   Setting up imagick_s took 0.000840902s
+
+1730174637.64:   Reading benchmark directory for '/home/tdx/speccpu2017/benchspec/CPU', '/home/tdx/speccpu2017/benchspec', 'fprate_pure_c.bset'
+1730174637.64:   Reading benchmark directory for '/home/tdx/speccpu2017/benchspec/CPU', '/home/tdx/speccpu2017/benchspec', 'fprate_no_cpp.bset'
+1730174637.64:   Reading benchmark directory for '/home/tdx/speccpu2017/benchspec/CPU', '/home/tdx/speccpu2017/benchspec', 'intspeed_no_cpp.bset'
+1730174637.64:   Reading benchmark directory for '/home/tdx/speccpu2017/benchspec/CPU', '/home/tdx/speccpu2017/benchspec', 'mixed_c.bset'
+1730174637.64:   Reading benchmark directory for '/home/tdx/speccpu2017/benchspec/CPU', '/home/tdx/speccpu2017/benchspec', '549.fotonik3d_r'
+1730174637.64:     Evaluated /home/tdx/speccpu2017/benchspec/CPU/549.fotonik3d_r/Spec/object.pm in 0.000432014s
+1730174637.64:     Instantiated Spec::Benchmark::fotonik3d_r549 in 0.000171900s
+1730174637.64:     Finding src.alts took 0.000021935s
+1730174637.64:   Setting up fotonik3d_r took 0.000782967s
+
+1730174637.64:   Reading benchmark directory for '/home/tdx/speccpu2017/benchspec/CPU', '/home/tdx/speccpu2017/benchspec', 'specrate.bset'
+1730174637.64:   Reading benchmark directory for '/home/tdx/speccpu2017/benchspec/CPU', '/home/tdx/speccpu2017/benchspec', 'fprate_pure_fortran.bset'
+1730174637.64:   Reading benchmark directory for '/home/tdx/speccpu2017/benchspec/CPU', '/home/tdx/speccpu2017/benchspec', 'intspeed_pure_c.bset'
+1730174637.64:   Reading benchmark directory for '/home/tdx/speccpu2017/benchspec/CPU', '/home/tdx/speccpu2017/benchspec', 'no_mixed.bset'
+1730174637.65:   Reading benchmark directory for '/home/tdx/speccpu2017/benchspec/CPU', '/home/tdx/speccpu2017/benchspec', '500.perlbench_r'
+1730174637.65:     Evaluated /home/tdx/speccpu2017/benchspec/CPU/500.perlbench_r/Spec/object.pm in 0.001327038s
+1730174637.65:     Instantiated Spec::Benchmark::perlbench_r500 in 0.000281811s
+1730174637.65:     Finding src.alts took 0.000028849s
+1730174637.65:   Setting up perlbench_r took 0.001825809s
+
+1730174637.65:   Reading benchmark directory for '/home/tdx/speccpu2017/benchspec/CPU', '/home/tdx/speccpu2017/benchspec', 'any_c.bset'
+1730174637.65:   Reading benchmark directory for '/home/tdx/speccpu2017/benchspec/CPU', '/home/tdx/speccpu2017/benchspec', '999.specrand_ir'
+1730174637.65:     Evaluated /home/tdx/speccpu2017/benchspec/CPU/999.specrand_ir/Spec/object.pm in 0.000315905s
+1730174637.65:     Instantiated Spec::Benchmark::specrand_ir999 in 0.000164986s
+1730174637.65:     Finding src.alts took 0.000018835s
+1730174637.65:   Setting up specrand_ir took 0.000651836s
+
+1730174637.65:   Reading benchmark directory for '/home/tdx/speccpu2017/benchspec/CPU', '/home/tdx/speccpu2017/benchspec', 'intspeed_any_fortran.bset'
+1730174637.65:   Reading benchmark directory for '/home/tdx/speccpu2017/benchspec/CPU', '/home/tdx/speccpu2017/benchspec', '649.fotonik3d_s'
+1730174637.65:     Evaluated /home/tdx/speccpu2017/benchspec/CPU/649.fotonik3d_s/Spec/object.pm in 0.000325918s
+1730174637.65:     Instantiated Spec::Benchmark::fotonik3d_s649 in 0.000153780s
+1730174637.65:     Finding src.alts took 0.000017881s
+1730174637.65:   Setting up fotonik3d_s took 0.000642061s
+
+1730174637.65:   Reading benchmark directory for '/home/tdx/speccpu2017/benchspec/CPU', '/home/tdx/speccpu2017/benchspec', 'openmp.bset'
+1730174637.65:   Reading benchmark directory for '/home/tdx/speccpu2017/benchspec/CPU', '/home/tdx/speccpu2017/benchspec', '619.lbm_s'
+1730174637.65:     Evaluated /home/tdx/speccpu2017/benchspec/CPU/619.lbm_s/Spec/object.pm in 0.000266075s
+1730174637.65:     Instantiated Spec::Benchmark::lbm_s619 in 0.000163078s
+1730174637.65:     Finding src.alts took 0.000018120s
+1730174637.65:   Setting up lbm_s took 0.000596046s
+
+1730174637.65:   Reading benchmark directory for '/home/tdx/speccpu2017/benchspec/CPU', '/home/tdx/speccpu2017/benchspec', '548.exchange2_r'
+1730174637.65:     Evaluated /home/tdx/speccpu2017/benchspec/CPU/548.exchange2_r/Spec/object.pm in 0.000300884s
+1730174637.65:     Instantiated Spec::Benchmark::exchange2_r548 in 0.000143051s
+1730174637.65:     Finding src.alts took 0.000015020s
+1730174637.65:   Setting up exchange2_r took 0.000591993s
+
+1730174637.65:   Reading benchmark directory for '/home/tdx/speccpu2017/benchspec/CPU', '/home/tdx/speccpu2017/benchspec', '607.cactuBSSN_s'
+1730174637.65:     Evaluated /home/tdx/speccpu2017/benchspec/CPU/607.cactuBSSN_s/Spec/object.pm in 0.000274897s
+1730174637.65:     Instantiated Spec::Benchmark::cactuBSSN_s607 in 0.000198126s
+1730174637.65:     Finding src.alts took 0.000013828s
+1730174637.65:   Setting up cactuBSSN_s took 0.000615120s
+
+1730174637.65:   Reading benchmark directory for '/home/tdx/speccpu2017/benchspec/CPU', '/home/tdx/speccpu2017/benchspec', 'intrate.bset'
+1730174637.66:   Reading benchmark directory for '/home/tdx/speccpu2017/benchspec/CPU', '/home/tdx/speccpu2017/benchspec', '523.xalancbmk_r'
+1730174637.66:     Evaluated /home/tdx/speccpu2017/benchspec/CPU/523.xalancbmk_r/Spec/object.pm in 0.001027107s
+1730174637.66:     Instantiated Spec::Benchmark::xalancbmk_r523 in 0.000209093s
+1730174637.66:     Finding src.alts took 0.000026941s
+1730174637.66:   Setting up xalancbmk_r took 0.001447916s
+
+1730174637.66:   Reading benchmark directory for '/home/tdx/speccpu2017/benchspec/CPU', '/home/tdx/speccpu2017/benchspec', 'intspeed.bset'
+1730174637.66:   Reading benchmark directory for '/home/tdx/speccpu2017/benchspec/CPU', '/home/tdx/speccpu2017/benchspec', 'fprate_mixed.bset'
+1730174637.66:   Reading benchmark directory for '/home/tdx/speccpu2017/benchspec/CPU', '/home/tdx/speccpu2017/benchspec', 'fpopenmp.bset'
+1730174637.66:   Reading benchmark directory for '/home/tdx/speccpu2017/benchspec/CPU', '/home/tdx/speccpu2017/benchspec', 'serial_speed.bset'
+1730174637.66:   Reading benchmark directory for '/home/tdx/speccpu2017/benchspec/CPU', '/home/tdx/speccpu2017/benchspec', 'intspeed_any_c.bset'
+1730174637.66:   Reading benchmark directory for '/home/tdx/speccpu2017/benchspec/CPU', '/home/tdx/speccpu2017/benchspec', 'intrate_any_c.bset'
+1730174637.66:   Reading benchmark directory for '/home/tdx/speccpu2017/benchspec/CPU', '/home/tdx/speccpu2017/benchspec', 'any_cpp.bset'
+1730174637.66:   Reading benchmark directory for '/home/tdx/speccpu2017/benchspec/CPU', '/home/tdx/speccpu2017/benchspec', 'intrate_pure_fortran.bset'
+1730174637.67:   Reading benchmark directory for '/home/tdx/speccpu2017/benchspec/CPU', '/home/tdx/speccpu2017/benchspec', '505.mcf_r'
+1730174637.67:     Evaluated /home/tdx/speccpu2017/benchspec/CPU/505.mcf_r/Spec/object.pm in 0.000386000s
+1730174637.67:     Instantiated Spec::Benchmark::mcf_r505 in 0.000180960s
+1730174637.67:     Finding src.alts took 0.000022888s
+1730174637.67:   Setting up mcf_r took 0.000747919s
+
+1730174637.67:   Reading benchmark directory for '/home/tdx/speccpu2017/benchspec/CPU', '/home/tdx/speccpu2017/benchspec', '648.exchange2_s'
+1730174637.67:     Evaluated /home/tdx/speccpu2017/benchspec/CPU/648.exchange2_s/Spec/object.pm in 0.000247002s
+1730174637.67:     Instantiated Spec::Benchmark::exchange2_s648 in 0.000142097s
+1730174637.67:     Finding src.alts took 0.000015020s
+1730174637.67:   Setting up exchange2_s took 0.000592947s
+
+1730174637.67:   Reading benchmark directory for '/home/tdx/speccpu2017/benchspec/CPU', '/home/tdx/speccpu2017/benchspec', 'no_fortran.bset'
+1730174637.67:   Reading benchmark directory for '/home/tdx/speccpu2017/benchspec/CPU', '/home/tdx/speccpu2017/benchspec', '625.x264_s'
+1730174637.67:     Evaluated /home/tdx/speccpu2017/benchspec/CPU/625.x264_s/Spec/object.pm in 0.000807047s
+1730174637.67:     Instantiated Spec::Benchmark::x264_s625 in 0.000190020s
+1730174637.67:     Finding src.alts took 0.000022888s
+1730174637.67:   Setting up x264_s took 0.001182079s
+
+1730174637.67:   Reading benchmark directory for '/home/tdx/speccpu2017/benchspec/CPU', '/home/tdx/speccpu2017/benchspec', 'fprate_no_mixed.bset'
+1730174637.67:   Reading benchmark directory for '/home/tdx/speccpu2017/benchspec/CPU', '/home/tdx/speccpu2017/benchspec', 'no_c.bset'
+1730174637.67:   Reading benchmark directory for '/home/tdx/speccpu2017/benchspec/CPU', '/home/tdx/speccpu2017/benchspec', 'fpspeed_no_mixed.bset'
+1730174637.67:   Reading benchmark directory for '/home/tdx/speccpu2017/benchspec/CPU', '/home/tdx/speccpu2017/benchspec', 'intspeed_no_c.bset'
+1730174637.67:   Reading benchmark directory for '/home/tdx/speccpu2017/benchspec/CPU', '/home/tdx/speccpu2017/benchspec', '620.omnetpp_s'
+1730174637.67:     Evaluated /home/tdx/speccpu2017/benchspec/CPU/620.omnetpp_s/Spec/object.pm in 0.000329971s
+1730174637.67:     Instantiated Spec::Benchmark::omnetpp_s620 in 0.000171900s
+1730174637.67:     Finding src.alts took 0.000058889s
+1730174637.67:   Setting up omnetpp_s took 0.000732899s
+
+1730174637.67:   Reading benchmark directory for '/home/tdx/speccpu2017/benchspec/CPU', '/home/tdx/speccpu2017/benchspec', 'intspeed_any_cpp.bset'
+1730174637.67:   Reading benchmark directory for '/home/tdx/speccpu2017/benchspec/CPU', '/home/tdx/speccpu2017/benchspec', '657.xz_s'
+1730174637.67:     Evaluated /home/tdx/speccpu2017/benchspec/CPU/657.xz_s/Spec/object.pm in 0.000478029s
+1730174637.67:     Instantiated Spec::Benchmark::xz_s657 in 0.000170946s
+1730174637.67:     Finding src.alts took 0.000020981s
+1730174637.67:   Setting up xz_s took 0.000822783s
+
+1730174637.67:   Reading benchmark directory for '/home/tdx/speccpu2017/benchspec/CPU', '/home/tdx/speccpu2017/benchspec', '600.perlbench_s'
+1730174637.68:     Evaluated /home/tdx/speccpu2017/benchspec/CPU/600.perlbench_s/Spec/object.pm in 0.000539780s
+1730174637.68:     Instantiated Spec::Benchmark::perlbench_s600 in 0.000147104s
+1730174637.68:     Finding src.alts took 0.000016928s
+1730174637.68:   Setting up perlbench_s took 0.000843048s
+
+1730174637.68:   Reading benchmark directory for '/home/tdx/speccpu2017/benchspec/CPU', '/home/tdx/speccpu2017/benchspec', 'fpspeed_mixed.bset'
+1730174637.68:   Reading benchmark directory for '/home/tdx/speccpu2017/benchspec/CPU', '/home/tdx/speccpu2017/benchspec', 'fpspeed_mixed_c.bset'
+1730174637.68:   Reading benchmark directory for '/home/tdx/speccpu2017/benchspec/CPU', '/home/tdx/speccpu2017/benchspec', '998.specrand_is'
+1730174637.68:     Evaluated /home/tdx/speccpu2017/benchspec/CPU/998.specrand_is/Spec/object.pm in 0.000313997s
+1730174637.68:     Instantiated Spec::Benchmark::specrand_is998 in 0.000163078s
+1730174637.68:     Finding src.alts took 0.000020981s
+1730174637.68:   Setting up specrand_is took 0.000646114s
+
+1730174637.68:   Reading benchmark directory for '/home/tdx/speccpu2017/benchspec/CPU', '/home/tdx/speccpu2017/benchspec', 'fpspeed_no_fortran.bset'
+1730174637.68:   Reading benchmark directory for '/home/tdx/speccpu2017/benchspec/CPU', '/home/tdx/speccpu2017/benchspec', '541.leela_r'
+1730174637.68:     Evaluated /home/tdx/speccpu2017/benchspec/CPU/541.leela_r/Spec/object.pm in 0.000320196s
+1730174637.68:     Instantiated Spec::Benchmark::leela_r541 in 0.000159025s
+1730174637.68:     Finding src.alts took 0.000018120s
+1730174637.68:   Setting up leela_r took 0.000633955s
+
+1730174637.68:   Reading benchmark directory for '/home/tdx/speccpu2017/benchspec/CPU', '/home/tdx/speccpu2017/benchspec', 'fprate_pure_cpp.bset'
+1730174637.68:   Reading benchmark directory for '/home/tdx/speccpu2017/benchspec/CPU', '/home/tdx/speccpu2017/benchspec', 'fprate_no_c.bset'
+1730174637.68:   Reading benchmark directory for '/home/tdx/speccpu2017/benchspec/CPU', '/home/tdx/speccpu2017/benchspec', '531.deepsjeng_r'
+1730174637.68:     Evaluated /home/tdx/speccpu2017/benchspec/CPU/531.deepsjeng_r/Spec/object.pm in 0.000284910s
+1730174637.68:     Instantiated Spec::Benchmark::deepsjeng_r531 in 0.000162125s
+1730174637.68:     Finding src.alts took 0.000890017s
+1730174637.68:   Setting up deepsjeng_r took 0.001661062s
+
+1730174637.68:   Reading benchmark directory for '/home/tdx/speccpu2017/benchspec/CPU', '/home/tdx/speccpu2017/benchspec', '502.gcc_r'
+1730174637.70:     Evaluated /home/tdx/speccpu2017/benchspec/CPU/502.gcc_r/Spec/object.pm in 0.016616106s
+1730174637.70:     Instantiated Spec::Benchmark::gcc_r502 in 0.000417948s
+1730174637.70:     Finding src.alts took 0.001102924s
+1730174637.70:   Setting up gcc_r took 0.019297123s
+
+1730174637.70:   Reading benchmark directory for '/home/tdx/speccpu2017/benchspec/CPU', '/home/tdx/speccpu2017/benchspec', '521.wrf_r'
+1730174637.71:     Evaluated /home/tdx/speccpu2017/benchspec/CPU/521.wrf_r/Spec/object.pm in 0.003556967s
+1730174637.71:     Instantiated Spec::Benchmark::wrf_r521 in 0.000288963s
+1730174637.71:     Finding src.alts took 0.000746012s
+1730174637.71:   Setting up wrf_r took 0.006437063s
+
+1730174637.71:   Reading benchmark directory for '/home/tdx/speccpu2017/benchspec/CPU', '/home/tdx/speccpu2017/benchspec', '508.namd_r'
+1730174637.71:     Evaluated /home/tdx/speccpu2017/benchspec/CPU/508.namd_r/Spec/object.pm in 0.001486063s
+1730174637.71:     Instantiated Spec::Benchmark::namd_r508 in 0.000209093s
+1730174637.71:     Finding src.alts took 0.000447989s
+1730174637.71:   Setting up namd_r took 0.003633976s
+
+1730174637.71:   Reading benchmark directory for '/home/tdx/speccpu2017/benchspec/CPU', '/home/tdx/speccpu2017/benchspec', '627.cam4_s'
+1730174637.71:     Evaluated /home/tdx/speccpu2017/benchspec/CPU/627.cam4_s/Spec/object.pm in 0.001709938s
+1730174637.72:     Instantiated Spec::Benchmark::cam4_s627 in 0.000217915s
+1730174637.72:     Finding src.alts took 0.000036001s
+1730174637.72:   Setting up cam4_s took 0.003227949s
+
+1730174637.72:   Reading benchmark directory for '/home/tdx/speccpu2017/benchspec/CPU', '/home/tdx/speccpu2017/benchspec', '507.cactuBSSN_r'
+1730174637.72:     Evaluated /home/tdx/speccpu2017/benchspec/CPU/507.cactuBSSN_r/Spec/object.pm in 0.002170086s
+1730174637.72:     Instantiated Spec::Benchmark::cactuBSSN_r507 in 0.000307083s
+1730174637.72:     Finding src.alts took 0.000349998s
+1730174637.72:   Setting up cactuBSSN_r took 0.003906012s
+
+1730174637.72:   Reading benchmark directory for '/home/tdx/speccpu2017/benchspec/CPU', '/home/tdx/speccpu2017/benchspec', '538.imagick_r'
+1730174637.72:     Evaluated /home/tdx/speccpu2017/benchspec/CPU/538.imagick_r/Spec/object.pm in 0.001260996s
+1730174637.72:     Instantiated Spec::Benchmark::imagick_r538 in 0.000202894s
+1730174637.72:     Finding src.alts took 0.000383139s
+1730174637.72:   Setting up imagick_r took 0.002567053s
+
+1730174637.72:   Reading benchmark directory for '/home/tdx/speccpu2017/benchspec/CPU', '/home/tdx/speccpu2017/benchspec', '605.mcf_s'
+1730174637.73:     Evaluated /home/tdx/speccpu2017/benchspec/CPU/605.mcf_s/Spec/object.pm in 0.002146006s
+1730174637.73:     Instantiated Spec::Benchmark::mcf_s605 in 0.000214100s
+1730174637.73:     Finding src.alts took 0.000036001s
+1730174637.73:   Setting up mcf_s took 0.003574848s
+
+1730174637.73:   Reading benchmark directory for '/home/tdx/speccpu2017/benchspec/CPU', '/home/tdx/speccpu2017/benchspec', 'intrate_any_fortran.bset'
+1730174637.73:   Reading benchmark directory for '/home/tdx/speccpu2017/benchspec/CPU', '/home/tdx/speccpu2017/benchspec', 'fpspeed_any_fortran.bset'
+1730174637.73:   Reading benchmark directory for '/home/tdx/speccpu2017/benchspec/CPU', '/home/tdx/speccpu2017/benchspec', 'mixed_cpp.bset'
+1730174637.73:   Reading benchmark directory for '/home/tdx/speccpu2017/benchspec/CPU', '/home/tdx/speccpu2017/benchspec', 'intrate_no_fortran.bset'
+1730174637.73:   Reading benchmark directory for '/home/tdx/speccpu2017/benchspec/CPU', '/home/tdx/speccpu2017/benchspec', '644.nab_s'
+1730174637.74:     Evaluated /home/tdx/speccpu2017/benchspec/CPU/644.nab_s/Spec/object.pm in 0.002128124s
+1730174637.74:     Instantiated Spec::Benchmark::nab_s644 in 0.000211000s
+1730174637.74:     Finding src.alts took 0.000035048s
+1730174637.74:   Setting up nab_s took 0.004174948s
+
+1730174637.74:   Reading benchmark directory for '/home/tdx/speccpu2017/benchspec/CPU', '/home/tdx/speccpu2017/benchspec', 'fpspeed_mixed_cpp.bset'
+1730174637.74:   Reading benchmark directory for '/home/tdx/speccpu2017/benchspec/CPU', '/home/tdx/speccpu2017/benchspec', 'fpspeed_mixed_fortran.bset'
+1730174637.74:   Reading benchmark directory for '/home/tdx/speccpu2017/benchspec/CPU', '/home/tdx/speccpu2017/benchspec', 'fpspeed_no_cpp.bset'
+1730174637.74:   Reading benchmark directory for '/home/tdx/speccpu2017/benchspec/CPU', '/home/tdx/speccpu2017/benchspec', '621.wrf_s'
+1730174637.75:     Evaluated /home/tdx/speccpu2017/benchspec/CPU/621.wrf_s/Spec/object.pm in 0.004095793s
+1730174637.75:     Instantiated Spec::Benchmark::wrf_s621 in 0.000277996s
+1730174637.75:     Finding src.alts took 0.000039101s
+1730174637.75:   Setting up wrf_s took 0.006094933s
+
+1730174637.75:   Reading benchmark directory for '/home/tdx/speccpu2017/benchspec/CPU', '/home/tdx/speccpu2017/benchspec', '602.gcc_s'
+1730174637.75:     Evaluated /home/tdx/speccpu2017/benchspec/CPU/602.gcc_s/Spec/object.pm in 0.002058029s
+1730174637.75:     Instantiated Spec::Benchmark::gcc_s602 in 0.000204802s
+1730174637.75:     Finding src.alts took 0.000034809s
+1730174637.75:   Setting up gcc_s took 0.004120111s
+
+1730174637.75:   Reading benchmark directory for '/home/tdx/speccpu2017/benchspec/CPU', '/home/tdx/speccpu2017/benchspec', '526.blender_r'
+1730174637.76:     Evaluated /home/tdx/speccpu2017/benchspec/CPU/526.blender_r/Spec/object.pm in 0.004227877s
+1730174637.76:     Instantiated Spec::Benchmark::blender_r526 in 0.000282049s
+1730174637.76:     Finding src.alts took 0.000571012s
+1730174637.76:   Setting up blender_r took 0.006776810s
+
+1730174637.76:   Reading benchmark directory for '/home/tdx/speccpu2017/benchspec/CPU', '/home/tdx/speccpu2017/benchspec', 'intspeed_no_mixed.bset'
+1730174637.76:   Reading benchmark directory for '/home/tdx/speccpu2017/benchspec/CPU', '/home/tdx/speccpu2017/benchspec', 'no_cpp.bset'
+1730174637.76:   Reading benchmark directory for '/home/tdx/speccpu2017/benchspec/CPU', '/home/tdx/speccpu2017/benchspec', 'pure_fortran.bset'
+1730174637.77:   Reading benchmark directory for '/home/tdx/speccpu2017/benchspec/CPU', '/home/tdx/speccpu2017/benchspec', 'fprate_any_fortran.bset'
+1730174637.77:   Reading benchmark directory for '/home/tdx/speccpu2017/benchspec/CPU', '/home/tdx/speccpu2017/benchspec', '519.lbm_r'
+1730174637.77:     Evaluated /home/tdx/speccpu2017/benchspec/CPU/519.lbm_r/Spec/object.pm in 0.001863003s
+1730174637.77:     Instantiated Spec::Benchmark::lbm_r519 in 0.000252008s
+1730174637.77:     Finding src.alts took 0.000820160s
+1730174637.77:   Setting up lbm_r took 0.005336046s
+
+1730174637.77:   Reading benchmark directory for '/home/tdx/speccpu2017/benchspec/CPU', '/home/tdx/speccpu2017/benchspec', '628.pop2_s'
+1730174637.78:     Evaluated /home/tdx/speccpu2017/benchspec/CPU/628.pop2_s/Spec/object.pm in 0.005321026s
+1730174637.78:     Instantiated Spec::Benchmark::pop2_s628 in 0.000323057s
+1730174637.78:     Finding src.alts took 0.001619101s
+1730174637.78:   Setting up pop2_s took 0.008978844s
+
+1730174637.78:   Reading benchmark directory for '/home/tdx/speccpu2017/benchspec/CPU', '/home/tdx/speccpu2017/benchspec', 'CPU.bset'
+1730174637.78:   Reading benchmark directory for '/home/tdx/speccpu2017/benchspec/CPU', '/home/tdx/speccpu2017/benchspec', 'specspeed.bset'
+1730174637.79:   Reading benchmark directory for '/home/tdx/speccpu2017/benchspec/CPU', '/home/tdx/speccpu2017/benchspec', 'fprate_any_cpp.bset'
+1730174637.79:   Reading benchmark directory for '/home/tdx/speccpu2017/benchspec/CPU', '/home/tdx/speccpu2017/benchspec', 'intrate_any_cpp.bset'
+1730174637.79:   Reading benchmark directory for '/home/tdx/speccpu2017/benchspec/CPU', '/home/tdx/speccpu2017/benchspec', '996.specrand_fs'
+1730174637.79:     Evaluated /home/tdx/speccpu2017/benchspec/CPU/996.specrand_fs/Spec/object.pm in 0.001928806s
+1730174637.79:     Instantiated Spec::Benchmark::specrand_fs996 in 0.000217915s
+1730174637.79:     Finding src.alts took 0.000034094s
+1730174637.79:   Setting up specrand_fs took 0.003656149s
+
+1730174637.79:   Reading benchmark directory for '/home/tdx/speccpu2017/benchspec/CPU', '/home/tdx/speccpu2017/benchspec', '623.xalancbmk_s'
+1730174637.80:     Evaluated /home/tdx/speccpu2017/benchspec/CPU/623.xalancbmk_s/Spec/object.pm in 0.001589060s
+1730174637.80:     Instantiated Spec::Benchmark::xalancbmk_s623 in 0.000206947s
+1730174637.80:     Finding src.alts took 0.000033140s
+1730174637.80:   Setting up xalancbmk_s took 0.003742933s
+
+1730174637.80:   Reading benchmark directory for '/home/tdx/speccpu2017/benchspec/CPU', '/home/tdx/speccpu2017/benchspec', 'fprate_any_c.bset'
+1730174637.80:   Reading benchmark directory for '/home/tdx/speccpu2017/benchspec/CPU', '/home/tdx/speccpu2017/benchspec', 'intrate_pure_cpp.bset'
+1730174637.80:   Reading benchmark directory for '/home/tdx/speccpu2017/benchspec/CPU', '/home/tdx/speccpu2017/benchspec', '520.omnetpp_r'
+1730174637.80:     Evaluated /home/tdx/speccpu2017/benchspec/CPU/520.omnetpp_r/Spec/object.pm in 0.002099991s
+1730174637.80:     Instantiated Spec::Benchmark::omnetpp_r520 in 0.000218153s
+1730174637.81:     Finding src.alts took 0.000729084s
+1730174637.81:   Setting up omnetpp_r took 0.004887819s
+
+1730174637.81:   Reading benchmark directory for '/home/tdx/speccpu2017/benchspec/CPU', '/home/tdx/speccpu2017/benchspec', '511.povray_r'
+1730174637.81:     Evaluated /home/tdx/speccpu2017/benchspec/CPU/511.povray_r/Spec/object.pm in 0.002323866s
+1730174637.81:     Instantiated Spec::Benchmark::povray_r511 in 0.000216961s
+1730174637.81:     Finding src.alts took 0.000958920s
+1730174637.81:   Setting up povray_r took 0.005403996s
+
+1730174637.81:   Reading benchmark directory for '/home/tdx/speccpu2017/benchspec/CPU', '/home/tdx/speccpu2017/benchspec', '641.leela_s'
+1730174637.81:     Evaluated /home/tdx/speccpu2017/benchspec/CPU/641.leela_s/Spec/object.pm in 0.001301050s
+1730174637.81:     Instantiated Spec::Benchmark::leela_s641 in 0.000219822s
+1730174637.81:     Finding src.alts took 0.000115156s
+1730174637.81:   Setting up leela_s took 0.002981901s
+
+1730174637.81:   Reading benchmark directory for '/home/tdx/speccpu2017/benchspec/CPU', '/home/tdx/speccpu2017/benchspec', 'mixed_fortran.bset'
+1730174637.82:   Reading benchmark directory for '/home/tdx/speccpu2017/benchspec/CPU', '/home/tdx/speccpu2017/benchspec', 'fpspeed_any_c.bset'
+1730174637.82:   Reading benchmark directory for '/home/tdx/speccpu2017/benchspec/CPU', '/home/tdx/speccpu2017/benchspec', 'fprate_no_fortran.bset'
+1730174637.82:   Reading benchmark directory for '/home/tdx/speccpu2017/benchspec/CPU', '/home/tdx/speccpu2017/benchspec', 'intspeed_pure_cpp.bset'
+1730174637.82:   Reading benchmark directory for '/home/tdx/speccpu2017/benchspec/CPU', '/home/tdx/speccpu2017/benchspec', 'fprate_mixed_c.bset'
+1730174637.82:   Reading benchmark directory for '/home/tdx/speccpu2017/benchspec/CPU', '/home/tdx/speccpu2017/benchspec', 'serial.bset'
+1730174637.83:   Reading benchmark directory for '/home/tdx/speccpu2017/benchspec/CPU', '/home/tdx/speccpu2017/benchspec', 'fprate.bset'
+1730174637.83:   Reading benchmark directory for '/home/tdx/speccpu2017/benchspec/CPU', '/home/tdx/speccpu2017/benchspec', '631.deepsjeng_s'
+1730174637.83:     Evaluated /home/tdx/speccpu2017/benchspec/CPU/631.deepsjeng_s/Spec/object.pm in 0.002109051s
+1730174637.83:     Instantiated Spec::Benchmark::deepsjeng_s631 in 0.000216961s
+1730174637.83:     Finding src.alts took 0.000036955s
+1730174637.83:   Setting up deepsjeng_s took 0.004048109s
+
+1730174637.83:   Reading benchmark directory for '/home/tdx/speccpu2017/benchspec/CPU', '/home/tdx/speccpu2017/benchspec', 'intopenmp.bset'
+1730174637.83:   Reading benchmark directory for '/home/tdx/speccpu2017/benchspec/CPU', '/home/tdx/speccpu2017/benchspec', 'fprate_mixed_cpp.bset'
+1730174637.84:   Reading benchmark directory for '/home/tdx/speccpu2017/benchspec/CPU', '/home/tdx/speccpu2017/benchspec', 'intrate_no_cpp.bset'
+1730174637.84: Setting up suite took 0.229205847s
+1730174637.84: Reading suite directory for 'version.txt', '/home/tdx/speccpu2017/benchspec'
+1730174637.84: Reading suite directory for 'Makefile.defaults', '/home/tdx/speccpu2017/benchspec'
+1730174637.84: found 47 benchmarks in 73 benchsets.
+1730174637.85: Reading config file '/home/tdx/speccpu2017/config/tdx2.cfg'
+1730174637.86: NOTICE: Expression evaluation for 'label' on line 58 of
+1730174637.86:         /home/tdx/speccpu2017/config/tdx2.cfg succeeded.
+1730174637.86:         Expression:     '"mytest"'
+1730174637.86:         Returned value: 'mytest'
+1730174637.86: NOTICE: Skipping expression evaluation for 'bits' on line 64 of
+1730174637.86:         /home/tdx/speccpu2017/config/tdx2.cfg
+1730174637.86: NOTICE: Skipping expression evaluation for 'build_ncpus' on line 68 of
+1730174637.86:         /home/tdx/speccpu2017/config/tdx2.cfg
+1730174637.86: NOTICE: Expression evaluation for 'model' on line 73 of
+1730174637.86:         /home/tdx/speccpu2017/config/tdx2.cfg succeeded.
+1730174637.86:         Expression:     '-m64'
+1730174637.86:         Returned value: '-m64'
+1730174637.86: NOTICE: Expression evaluation for 'gcc_dir' on line 154 of
+1730174637.86:         /home/tdx/speccpu2017/config/tdx2.cfg succeeded.
+1730174637.86:         Expression:     '"/usr"'
+1730174637.86:         Returned value: '/usr'
+1730174637.87: NOTICE: Skipping expression evaluation for 'suffix' on line 204 of
+1730174637.87:         /home/tdx/speccpu2017/config/tdx2.cfg
+
+1730174637.97:   '500.perlbench_r' added
+1730174637.97:   '502.gcc_r' added
+1730174637.97:   '505.mcf_r' added
+1730174637.97:   '520.omnetpp_r' added
+1730174637.97:   '523.xalancbmk_r' added
+1730174637.97:   '525.x264_r' added
+1730174637.97:   '531.deepsjeng_r' added
+1730174637.97:   '541.leela_r' added
+1730174637.97:   '548.exchange2_r' added
+1730174637.97:   '557.xz_r' added
+1730174637.97:   '999.specrand_ir' added
+1730174637.97: 1 configuration selected:
+
+1730174637.97:  Action    Run Mode   Workload     Report Type      Benchmarks
+1730174637.97: --------   --------   --------   ----------------   ---------------------------
+1730174637.97: validate   rate       refrate    SPECrate2017_int   intrate                    
+1730174637.98: -------------------------------------------------------------------------------
+1730174637.98: 
+1730174637.98: Setting up environment for running intrate...
+1730174637.98: Setting LD_LIBRARY_PATH = "/usr/lib64/:/usr/lib/:/lib64"
+1730174637.98: Starting runcpu for intrate...
+1730174637.98:    /home/tdx/speccpu2017/bin/specperl /home/tdx/speccpu2017/bin/harness/runcpu --configfile tdx2.cfg --tune base --size ref --threads 15 --ignore_errors --action run --copies 15 --noreportable --nopower --runmode rate --tune base --size refrate intrate
+1730174638.69: Created default regexp '(?:^|(?<=\s))[-/]DSPEC(?:\([^\)]+\))?(?:=\S*)?(?=\s|$)' for DSPEC in /home/tdx/speccpu2017/benchspec/flags-mandatory.xml
+1730174638.69: Created default regexp '(?:^|(?<=\s))[-/]USPEC(?:\([^\)]+\))?(?:=\S*)?(?=\s|$)' for USPEC in /home/tdx/speccpu2017/benchspec/flags-mandatory.xml
+1730174638.69: Created default regexp '(?:^|(?<=\s))[-/]DSPEC_CPU(?:\([^\)]+\))?(?:=\S*)?(?=\s|$)' for DSPEC_CPU in /home/tdx/speccpu2017/benchspec/flags-mandatory.xml
+1730174638.69: Created default regexp '(?:^|(?<=\s))[-/]DNDEBUG(?:\([^\)]+\))?(?:=\S*)?(?=\s|$)' for DNDEBUG in /home/tdx/speccpu2017/benchspec/flags-mandatory.xml
+1730174638.69: Created default regexp '(?:^|(?<=\s))[-/]UNDEBUG(?:\([^\)]+\))?(?:=\S*)?(?=\s|$)' for UNDEBUG in /home/tdx/speccpu2017/benchspec/flags-mandatory.xml
+1730174638.69: Created default regexp '(?:^|(?<=\s))[-/]DSPEC_WINDOWS(?:\([^\)]+\))?(?:=\S*)?(?=\s|$)' for DSPEC_WINDOWS in /home/tdx/speccpu2017/benchspec/flags-mandatory.xml
+1730174638.69: Created default regexp '(?:^|(?<=\s))[-/]DSPEC_MEM_IO(?:\([^\)]+\))?(?:=\S*)?(?=\s|$)' for DSPEC_MEM_IO in /home/tdx/speccpu2017/benchspec/flags-mandatory.xml
+1730174638.69: Created default regexp '(?:^|(?<=\s))[-/]DSPEC_ILP32(?:\([^\)]+\))?(?:=\S*)?(?=\s|$)' for DSPEC_ILP32 in /home/tdx/speccpu2017/benchspec/flags-mandatory.xml
+1730174638.69: Created default regexp '(?:^|(?<=\s))[-/]DSPEC_P64(?:\([^\)]+\))?(?:=\S*)?(?=\s|$)' for DSPEC_P64 in /home/tdx/speccpu2017/benchspec/flags-mandatory.xml
+1730174638.69: Created default regexp '(?:^|(?<=\s))[-/]DSPEC_LP64(?:\([^\)]+\))?(?:=\S*)?(?=\s|$)' for DSPEC_LP64 in /home/tdx/speccpu2017/benchspec/flags-mandatory.xml
+1730174638.69: Created default regexp '(?:^|(?<=\s))[-/]DSPEC_ILP64(?:\([^\)]+\))?(?:=\S*)?(?=\s|$)' for DSPEC_ILP64 in /home/tdx/speccpu2017/benchspec/flags-mandatory.xml
+1730174638.69: Created default regexp '(?:^|(?<=\s))[-/]DSPEC_SUPPRESS_OPENMP(?:\([^\)]+\))?(?:=\S*)?(?=\s|$)' for DSPEC_SUPPRESS_OPENMP in /home/tdx/speccpu2017/benchspec/flags-mandatory.xml
+1730174638.69: Created default regexp '(?:^|(?<=\s))[-/]DSPEC_AUTO_SUPPRESS_OPENMP(?:\([^\)]+\))?(?:=\S*)?(?=\s|$)' for DSPEC_AUTO_SUPPRESS_OPENMP in /home/tdx/speccpu2017/benchspec/flags-mandatory.xml
+1730174638.69: Created default regexp '(?:^|(?<=\s))[-/]DSPEC_OPENMP(?:\([^\)]+\))?(?:=\S*)?(?=\s|$)' for DSPEC_OPENMP in /home/tdx/speccpu2017/benchspec/flags-mandatory.xml
+1730174638.69: Created default regexp '(?:^|(?<=\s))[-/]DSPEC_NO_AUTO_BYTEORDER(?:\([^\)]+\))?(?:=\S*)?(?=\s|$)' for DSPEC_NO_AUTO_BYTEORDER in /home/tdx/speccpu2017/benchspec/flags-mandatory.xml
+1730174638.69: Reading suite directory for 'flags-mandatory.xml', '/home/tdx/speccpu2017/benchspec'
+1730174638.69: Reading suite directory for 'CPU', '/home/tdx/speccpu2017/benchspec'
+1730174638.69:   Reading benchmark directory for '/home/tdx/speccpu2017/benchspec/CPU', '/home/tdx/speccpu2017/benchspec', 'pure_c.bset'
+1730174638.70:   Reading benchmark directory for '/home/tdx/speccpu2017/benchspec/CPU', '/home/tdx/speccpu2017/benchspec', 'intrate_pure_c.bset'
+1730174638.70:   Reading benchmark directory for '/home/tdx/speccpu2017/benchspec/CPU', '/home/tdx/speccpu2017/benchspec', '510.parest_r'
+1730174638.70:     Evaluated /home/tdx/speccpu2017/benchspec/CPU/510.parest_r/Spec/object.pm in 0.000678778s
+1730174638.70:     Instantiated Spec::Benchmark::parest_r510 in 0.000313044s
+1730174638.70:     Finding src.alts took 0.000027895s
+1730174638.70:   Setting up parest_r took 0.001195192s
+
+1730174638.70:   Reading benchmark directory for '/home/tdx/speccpu2017/benchspec/CPU', '/home/tdx/speccpu2017/benchspec', 'fpspeed_pure_c.bset'
+1730174638.70:   Reading benchmark directory for '/home/tdx/speccpu2017/benchspec/CPU', '/home/tdx/speccpu2017/benchspec', 'intrate_no_mixed.bset'
+1730174638.70:   Reading benchmark directory for '/home/tdx/speccpu2017/benchspec/CPU', '/home/tdx/speccpu2017/benchspec', 'mixed.bset'
+1730174638.70:   Reading benchmark directory for '/home/tdx/speccpu2017/benchspec/CPU', '/home/tdx/speccpu2017/benchspec', '527.cam4_r'
+1730174638.70:     Evaluated /home/tdx/speccpu2017/benchspec/CPU/527.cam4_r/Spec/object.pm in 0.004698038s
+1730174638.70:     Instantiated Spec::Benchmark::cam4_r527 in 0.000468969s
+1730174638.70:     Finding src.alts took 0.000039101s
+1730174638.71:   Setting up cam4_r took 0.005450964s
+
+1730174638.71:   Reading benchmark directory for '/home/tdx/speccpu2017/benchspec/CPU', '/home/tdx/speccpu2017/benchspec', '554.roms_r'
+1730174638.71:     Evaluated /home/tdx/speccpu2017/benchspec/CPU/554.roms_r/Spec/object.pm in 0.001128912s
+1730174638.71:     Instantiated Spec::Benchmark::roms_r554 in 0.000228882s
+1730174638.71:     Finding src.alts took 0.000020981s
+1730174638.71:   Setting up roms_r took 0.001546144s
+
+1730174638.71:   Reading benchmark directory for '/home/tdx/speccpu2017/benchspec/CPU', '/home/tdx/speccpu2017/benchspec', 'pure_cpp.bset'
+1730174638.71:   Reading benchmark directory for '/home/tdx/speccpu2017/benchspec/CPU', '/home/tdx/speccpu2017/benchspec', '525.x264_r'
+1730174638.71:     Evaluated /home/tdx/speccpu2017/benchspec/CPU/525.x264_r/Spec/object.pm in 0.000908852s
+1730174638.71:     Instantiated Spec::Benchmark::x264_r525 in 0.000240088s
+1730174638.71:     Finding src.alts took 0.000021935s
+1730174638.71:   Setting up x264_r took 0.001325846s
+
+1730174638.71:   Reading benchmark directory for '/home/tdx/speccpu2017/benchspec/CPU', '/home/tdx/speccpu2017/benchspec', 'intrate_no_c.bset'
+1730174638.71:   Reading benchmark directory for '/home/tdx/speccpu2017/benchspec/CPU', '/home/tdx/speccpu2017/benchspec', 'fpspeed_any_cpp.bset'
+1730174638.71:   Reading benchmark directory for '/home/tdx/speccpu2017/benchspec/CPU', '/home/tdx/speccpu2017/benchspec', '997.specrand_fr'
+1730174638.71:     Evaluated /home/tdx/speccpu2017/benchspec/CPU/997.specrand_fr/Spec/object.pm in 0.000348091s
+1730174638.71:     Instantiated Spec::Benchmark::specrand_fr997 in 0.000180006s
+1730174638.71:     Finding src.alts took 0.000023127s
+1730174638.71:   Setting up specrand_fr took 0.000707150s
+
+1730174638.71:   Reading benchmark directory for '/home/tdx/speccpu2017/benchspec/CPU', '/home/tdx/speccpu2017/benchspec', '503.bwaves_r'
+1730174638.71:     Evaluated /home/tdx/speccpu2017/benchspec/CPU/503.bwaves_r/Spec/object.pm in 0.000293016s
+1730174638.71:     Instantiated Spec::Benchmark::bwaves_r503 in 0.000226974s
+1730174638.71:     Finding src.alts took 0.000015020s
+1730174638.71:   Setting up bwaves_r took 0.000669956s
+
+1730174638.71:   Reading benchmark directory for '/home/tdx/speccpu2017/benchspec/CPU', '/home/tdx/speccpu2017/benchspec', '654.roms_s'
+1730174638.71:     Evaluated /home/tdx/speccpu2017/benchspec/CPU/654.roms_s/Spec/object.pm in 0.000736952s
+1730174638.71:     Instantiated Spec::Benchmark::roms_s654 in 0.000164986s
+1730174638.71:     Finding src.alts took 0.000019073s
+1730174638.71:   Setting up roms_s took 0.001093149s
+
+1730174638.71:   Reading benchmark directory for '/home/tdx/speccpu2017/benchspec/CPU', '/home/tdx/speccpu2017/benchspec', '603.bwaves_s'
+1730174638.71:     Evaluated /home/tdx/speccpu2017/benchspec/CPU/603.bwaves_s/Spec/object.pm in 0.000319004s
+1730174638.71:     Instantiated Spec::Benchmark::bwaves_s603 in 0.000169992s
+1730174638.71:     Finding src.alts took 0.000042915s
+1730174638.71:   Setting up bwaves_s took 0.000708103s
+
+1730174638.71:   Reading benchmark directory for '/home/tdx/speccpu2017/benchspec/CPU', '/home/tdx/speccpu2017/benchspec', 'fpspeed_pure_fortran.bset'
+1730174638.71:   Reading benchmark directory for '/home/tdx/speccpu2017/benchspec/CPU', '/home/tdx/speccpu2017/benchspec', 'fprate_mixed_fortran.bset'
+1730174638.72:   Reading benchmark directory for '/home/tdx/speccpu2017/benchspec/CPU', '/home/tdx/speccpu2017/benchspec', 'fpspeed_no_c.bset'
+1730174638.72:   Reading benchmark directory for '/home/tdx/speccpu2017/benchspec/CPU', '/home/tdx/speccpu2017/benchspec', 'intspeed_pure_fortran.bset'
+1730174638.72:   Reading benchmark directory for '/home/tdx/speccpu2017/benchspec/CPU', '/home/tdx/speccpu2017/benchspec', 'intspeed_no_fortran.bset'
+1730174638.72:   Reading benchmark directory for '/home/tdx/speccpu2017/benchspec/CPU', '/home/tdx/speccpu2017/benchspec', 'fpspeed.bset'
+1730174638.72:   Reading benchmark directory for '/home/tdx/speccpu2017/benchspec/CPU', '/home/tdx/speccpu2017/benchspec', 'any_fortran.bset'
+1730174638.72:   Reading benchmark directory for '/home/tdx/speccpu2017/benchspec/CPU', '/home/tdx/speccpu2017/benchspec', '557.xz_r'
+1730174638.72:     Evaluated /home/tdx/speccpu2017/benchspec/CPU/557.xz_r/Spec/object.pm in 0.001819134s
+1730174638.72:     Instantiated Spec::Benchmark::xz_r557 in 0.000226974s
+1730174638.72:     Finding src.alts took 0.000029802s
+1730174638.72:   Setting up xz_r took 0.002257109s
+
+1730174638.72:   Reading benchmark directory for '/home/tdx/speccpu2017/benchspec/CPU', '/home/tdx/speccpu2017/benchspec', '544.nab_r'
+1730174638.72:     Evaluated /home/tdx/speccpu2017/benchspec/CPU/544.nab_r/Spec/object.pm in 0.000405073s
+1730174638.72:     Instantiated Spec::Benchmark::nab_r544 in 0.000162125s
+1730174638.72:     Finding src.alts took 0.000015974s
+1730174638.72:   Setting up nab_r took 0.000735044s
+
+1730174638.72:   Reading benchmark directory for '/home/tdx/speccpu2017/benchspec/CPU', '/home/tdx/speccpu2017/benchspec', '638.imagick_s'
+1730174638.72:     Evaluated /home/tdx/speccpu2017/benchspec/CPU/638.imagick_s/Spec/object.pm in 0.000538826s
+1730174638.72:     Instantiated Spec::Benchmark::imagick_s638 in 0.000145912s
+1730174638.72:     Finding src.alts took 0.000015020s
+1730174638.72:   Setting up imagick_s took 0.000860214s
+
+1730174638.72:   Reading benchmark directory for '/home/tdx/speccpu2017/benchspec/CPU', '/home/tdx/speccpu2017/benchspec', 'fprate_pure_c.bset'
+1730174638.72:   Reading benchmark directory for '/home/tdx/speccpu2017/benchspec/CPU', '/home/tdx/speccpu2017/benchspec', 'fprate_no_cpp.bset'
+1730174638.73:   Reading benchmark directory for '/home/tdx/speccpu2017/benchspec/CPU', '/home/tdx/speccpu2017/benchspec', 'intspeed_no_cpp.bset'
+1730174638.73:   Reading benchmark directory for '/home/tdx/speccpu2017/benchspec/CPU', '/home/tdx/speccpu2017/benchspec', 'mixed_c.bset'
+1730174638.73:   Reading benchmark directory for '/home/tdx/speccpu2017/benchspec/CPU', '/home/tdx/speccpu2017/benchspec', '549.fotonik3d_r'
+1730174638.73:     Evaluated /home/tdx/speccpu2017/benchspec/CPU/549.fotonik3d_r/Spec/object.pm in 0.000377893s
+1730174638.73:     Instantiated Spec::Benchmark::fotonik3d_r549 in 0.000164986s
+1730174638.73:     Finding src.alts took 0.000020981s
+1730174638.73:   Setting up fotonik3d_r took 0.000711918s
+
+1730174638.73:   Reading benchmark directory for '/home/tdx/speccpu2017/benchspec/CPU', '/home/tdx/speccpu2017/benchspec', 'specrate.bset'
+1730174638.73:   Reading benchmark directory for '/home/tdx/speccpu2017/benchspec/CPU', '/home/tdx/speccpu2017/benchspec', 'fprate_pure_fortran.bset'
+1730174638.73:   Reading benchmark directory for '/home/tdx/speccpu2017/benchspec/CPU', '/home/tdx/speccpu2017/benchspec', 'intspeed_pure_c.bset'
+1730174638.73:   Reading benchmark directory for '/home/tdx/speccpu2017/benchspec/CPU', '/home/tdx/speccpu2017/benchspec', 'no_mixed.bset'
+1730174638.73:   Reading benchmark directory for '/home/tdx/speccpu2017/benchspec/CPU', '/home/tdx/speccpu2017/benchspec', '500.perlbench_r'
+1730174638.73:     Evaluated /home/tdx/speccpu2017/benchspec/CPU/500.perlbench_r/Spec/object.pm in 0.001404047s
+1730174638.73:     Instantiated Spec::Benchmark::perlbench_r500 in 0.000226021s
+1730174638.73:     Finding src.alts took 0.000027895s
+1730174638.73:   Setting up perlbench_r took 0.001838923s
+
+1730174638.73:   Reading benchmark directory for '/home/tdx/speccpu2017/benchspec/CPU', '/home/tdx/speccpu2017/benchspec', 'any_c.bset'
+1730174638.73:   Reading benchmark directory for '/home/tdx/speccpu2017/benchspec/CPU', '/home/tdx/speccpu2017/benchspec', '999.specrand_ir'
+1730174638.73:     Evaluated /home/tdx/speccpu2017/benchspec/CPU/999.specrand_ir/Spec/object.pm in 0.000313997s
+1730174638.73:     Instantiated Spec::Benchmark::specrand_ir999 in 0.000190973s
+1730174638.73:     Finding src.alts took 0.000018835s
+1730174638.73:   Setting up specrand_ir took 0.000684977s
+
+1730174638.73:   Reading benchmark directory for '/home/tdx/speccpu2017/benchspec/CPU', '/home/tdx/speccpu2017/benchspec', 'intspeed_any_fortran.bset'
+1730174638.73:   Reading benchmark directory for '/home/tdx/speccpu2017/benchspec/CPU', '/home/tdx/speccpu2017/benchspec', '649.fotonik3d_s'
+1730174638.73:     Evaluated /home/tdx/speccpu2017/benchspec/CPU/649.fotonik3d_s/Spec/object.pm in 0.000304937s
+1730174638.74:     Instantiated Spec::Benchmark::fotonik3d_s649 in 0.000149012s
+1730174638.74:     Finding src.alts took 0.000016928s
+1730174638.74:   Setting up fotonik3d_s took 0.000616074s
+
+1730174638.74:   Reading benchmark directory for '/home/tdx/speccpu2017/benchspec/CPU', '/home/tdx/speccpu2017/benchspec', 'openmp.bset'
+1730174638.74:   Reading benchmark directory for '/home/tdx/speccpu2017/benchspec/CPU', '/home/tdx/speccpu2017/benchspec', '619.lbm_s'
+1730174638.74:     Evaluated /home/tdx/speccpu2017/benchspec/CPU/619.lbm_s/Spec/object.pm in 0.000264883s
+1730174638.74:     Instantiated Spec::Benchmark::lbm_s619 in 0.000148058s
+1730174638.74:     Finding src.alts took 0.000017166s
+1730174638.74:   Setting up lbm_s took 0.000578165s
+
+1730174638.74:   Reading benchmark directory for '/home/tdx/speccpu2017/benchspec/CPU', '/home/tdx/speccpu2017/benchspec', '548.exchange2_r'
+1730174638.74:     Evaluated /home/tdx/speccpu2017/benchspec/CPU/548.exchange2_r/Spec/object.pm in 0.000251055s
+1730174638.74:     Instantiated Spec::Benchmark::exchange2_r548 in 0.000141859s
+1730174638.74:     Finding src.alts took 0.000014067s
+1730174638.74:   Setting up exchange2_r took 0.000556946s
+
+1730174638.74:   Reading benchmark directory for '/home/tdx/speccpu2017/benchspec/CPU', '/home/tdx/speccpu2017/benchspec', '607.cactuBSSN_s'
+1730174638.74:     Evaluated /home/tdx/speccpu2017/benchspec/CPU/607.cactuBSSN_s/Spec/object.pm in 0.000333071s
+1730174638.74:     Instantiated Spec::Benchmark::cactuBSSN_s607 in 0.000158072s
+1730174638.74:     Finding src.alts took 0.000017881s
+1730174638.74:   Setting up cactuBSSN_s took 0.000666142s
+
+1730174638.74:   Reading benchmark directory for '/home/tdx/speccpu2017/benchspec/CPU', '/home/tdx/speccpu2017/benchspec', 'intrate.bset'
+1730174638.74:   Reading benchmark directory for '/home/tdx/speccpu2017/benchspec/CPU', '/home/tdx/speccpu2017/benchspec', '523.xalancbmk_r'
+1730174638.74:     Evaluated /home/tdx/speccpu2017/benchspec/CPU/523.xalancbmk_r/Spec/object.pm in 0.001085997s
+1730174638.74:     Instantiated Spec::Benchmark::xalancbmk_r523 in 0.000226021s
+1730174638.74:     Finding src.alts took 0.000022888s
+1730174638.74:   Setting up xalancbmk_r took 0.001519918s
+
+1730174638.74:   Reading benchmark directory for '/home/tdx/speccpu2017/benchspec/CPU', '/home/tdx/speccpu2017/benchspec', 'intspeed.bset'
+1730174638.75:   Reading benchmark directory for '/home/tdx/speccpu2017/benchspec/CPU', '/home/tdx/speccpu2017/benchspec', 'fprate_mixed.bset'
+1730174638.75:   Reading benchmark directory for '/home/tdx/speccpu2017/benchspec/CPU', '/home/tdx/speccpu2017/benchspec', 'fpopenmp.bset'
+1730174638.75:   Reading benchmark directory for '/home/tdx/speccpu2017/benchspec/CPU', '/home/tdx/speccpu2017/benchspec', 'serial_speed.bset'
+1730174638.75:   Reading benchmark directory for '/home/tdx/speccpu2017/benchspec/CPU', '/home/tdx/speccpu2017/benchspec', 'intspeed_any_c.bset'
+1730174638.75:   Reading benchmark directory for '/home/tdx/speccpu2017/benchspec/CPU', '/home/tdx/speccpu2017/benchspec', 'intrate_any_c.bset'
+1730174638.75:   Reading benchmark directory for '/home/tdx/speccpu2017/benchspec/CPU', '/home/tdx/speccpu2017/benchspec', 'any_cpp.bset'
+1730174638.75:   Reading benchmark directory for '/home/tdx/speccpu2017/benchspec/CPU', '/home/tdx/speccpu2017/benchspec', 'intrate_pure_fortran.bset'
+1730174638.75:   Reading benchmark directory for '/home/tdx/speccpu2017/benchspec/CPU', '/home/tdx/speccpu2017/benchspec', '505.mcf_r'
+1730174638.75:     Evaluated /home/tdx/speccpu2017/benchspec/CPU/505.mcf_r/Spec/object.pm in 0.000317097s
+1730174638.75:     Instantiated Spec::Benchmark::mcf_r505 in 0.000178099s
+1730174638.75:     Finding src.alts took 0.000020981s
+1730174638.75:   Setting up mcf_r took 0.000664949s
+
+1730174638.75:   Reading benchmark directory for '/home/tdx/speccpu2017/benchspec/CPU', '/home/tdx/speccpu2017/benchspec', '648.exchange2_s'
+1730174638.75:     Evaluated /home/tdx/speccpu2017/benchspec/CPU/648.exchange2_s/Spec/object.pm in 0.000320196s
+1730174638.75:     Instantiated Spec::Benchmark::exchange2_s648 in 0.000137091s
+1730174638.75:     Finding src.alts took 0.000015020s
+1730174638.75:   Setting up exchange2_s took 0.000606060s
+
+1730174638.75:   Reading benchmark directory for '/home/tdx/speccpu2017/benchspec/CPU', '/home/tdx/speccpu2017/benchspec', 'no_fortran.bset'
+1730174638.75:   Reading benchmark directory for '/home/tdx/speccpu2017/benchspec/CPU', '/home/tdx/speccpu2017/benchspec', '625.x264_s'
+1730174638.75:     Evaluated /home/tdx/speccpu2017/benchspec/CPU/625.x264_s/Spec/object.pm in 0.000811100s
+1730174638.75:     Instantiated Spec::Benchmark::x264_s625 in 0.000181198s
+1730174638.75:     Finding src.alts took 0.000021935s
+1730174638.75:   Setting up x264_s took 0.001173973s
+
+1730174638.75:   Reading benchmark directory for '/home/tdx/speccpu2017/benchspec/CPU', '/home/tdx/speccpu2017/benchspec', 'fprate_no_mixed.bset'
+1730174638.76:   Reading benchmark directory for '/home/tdx/speccpu2017/benchspec/CPU', '/home/tdx/speccpu2017/benchspec', 'no_c.bset'
+1730174638.76:   Reading benchmark directory for '/home/tdx/speccpu2017/benchspec/CPU', '/home/tdx/speccpu2017/benchspec', 'fpspeed_no_mixed.bset'
+1730174638.76:   Reading benchmark directory for '/home/tdx/speccpu2017/benchspec/CPU', '/home/tdx/speccpu2017/benchspec', 'intspeed_no_c.bset'
+1730174638.76:   Reading benchmark directory for '/home/tdx/speccpu2017/benchspec/CPU', '/home/tdx/speccpu2017/benchspec', '620.omnetpp_s'
+1730174638.76:     Evaluated /home/tdx/speccpu2017/benchspec/CPU/620.omnetpp_s/Spec/object.pm in 0.000329018s
+1730174638.76:     Instantiated Spec::Benchmark::omnetpp_s620 in 0.000226021s
+1730174638.76:     Finding src.alts took 0.000021935s
+1730174638.76:   Setting up omnetpp_s took 0.000729084s
+
+1730174638.76:   Reading benchmark directory for '/home/tdx/speccpu2017/benchspec/CPU', '/home/tdx/speccpu2017/benchspec', 'intspeed_any_cpp.bset'
+1730174638.76:   Reading benchmark directory for '/home/tdx/speccpu2017/benchspec/CPU', '/home/tdx/speccpu2017/benchspec', '657.xz_s'
+1730174638.76:     Evaluated /home/tdx/speccpu2017/benchspec/CPU/657.xz_s/Spec/object.pm in 0.000421047s
+1730174638.76:     Instantiated Spec::Benchmark::xz_s657 in 0.000166893s
+1730174638.76:     Finding src.alts took 0.000020027s
+1730174638.76:   Setting up xz_s took 0.000763178s
+
+1730174638.76:   Reading benchmark directory for '/home/tdx/speccpu2017/benchspec/CPU', '/home/tdx/speccpu2017/benchspec', '600.perlbench_s'
+1730174638.76:     Evaluated /home/tdx/speccpu2017/benchspec/CPU/600.perlbench_s/Spec/object.pm in 0.000545025s
+1730174638.76:     Instantiated Spec::Benchmark::perlbench_s600 in 0.000142097s
+1730174638.76:     Finding src.alts took 0.000015974s
+1730174638.76:   Setting up perlbench_s took 0.000842094s
+
+1730174638.76:   Reading benchmark directory for '/home/tdx/speccpu2017/benchspec/CPU', '/home/tdx/speccpu2017/benchspec', 'fpspeed_mixed.bset'
+1730174638.76:   Reading benchmark directory for '/home/tdx/speccpu2017/benchspec/CPU', '/home/tdx/speccpu2017/benchspec', 'fpspeed_mixed_c.bset'
+1730174638.76:   Reading benchmark directory for '/home/tdx/speccpu2017/benchspec/CPU', '/home/tdx/speccpu2017/benchspec', '998.specrand_is'
+1730174638.76:     Evaluated /home/tdx/speccpu2017/benchspec/CPU/998.specrand_is/Spec/object.pm in 0.000303030s
+1730174638.76:     Instantiated Spec::Benchmark::specrand_is998 in 0.000163794s
+1730174638.76:     Finding src.alts took 0.000020027s
+1730174638.76:   Setting up specrand_is took 0.000669003s
+
+1730174638.76:   Reading benchmark directory for '/home/tdx/speccpu2017/benchspec/CPU', '/home/tdx/speccpu2017/benchspec', 'fpspeed_no_fortran.bset'
+1730174638.76:   Reading benchmark directory for '/home/tdx/speccpu2017/benchspec/CPU', '/home/tdx/speccpu2017/benchspec', '541.leela_r'
+1730174638.76:     Evaluated /home/tdx/speccpu2017/benchspec/CPU/541.leela_r/Spec/object.pm in 0.000324965s
+1730174638.76:     Instantiated Spec::Benchmark::leela_r541 in 0.000155926s
+1730174638.76:     Finding src.alts took 0.000018120s
+1730174638.76:   Setting up leela_r took 0.000638008s
+
+1730174638.76:   Reading benchmark directory for '/home/tdx/speccpu2017/benchspec/CPU', '/home/tdx/speccpu2017/benchspec', 'fprate_pure_cpp.bset'
+1730174638.77:   Reading benchmark directory for '/home/tdx/speccpu2017/benchspec/CPU', '/home/tdx/speccpu2017/benchspec', 'fprate_no_c.bset'
+1730174638.77:   Reading benchmark directory for '/home/tdx/speccpu2017/benchspec/CPU', '/home/tdx/speccpu2017/benchspec', '531.deepsjeng_r'
+1730174638.77:     Evaluated /home/tdx/speccpu2017/benchspec/CPU/531.deepsjeng_r/Spec/object.pm in 0.000263929s
+1730174638.77:     Instantiated Spec::Benchmark::deepsjeng_r531 in 0.000159025s
+1730174638.77:     Finding src.alts took 0.000020027s
+1730174638.77:   Setting up deepsjeng_r took 0.000587940s
+
+1730174638.77:   Reading benchmark directory for '/home/tdx/speccpu2017/benchspec/CPU', '/home/tdx/speccpu2017/benchspec', '502.gcc_r'
+1730174638.78:     Evaluated /home/tdx/speccpu2017/benchspec/CPU/502.gcc_r/Spec/object.pm in 0.017792940s
+1730174638.78:     Instantiated Spec::Benchmark::gcc_r502 in 0.000468016s
+1730174638.78:     Finding src.alts took 0.000036955s
+1730174638.78:   Setting up gcc_r took 0.018520832s
+
+1730174638.78:   Reading benchmark directory for '/home/tdx/speccpu2017/benchspec/CPU', '/home/tdx/speccpu2017/benchspec', '521.wrf_r'
+1730174638.79:     Evaluated /home/tdx/speccpu2017/benchspec/CPU/521.wrf_r/Spec/object.pm in 0.002148867s
+1730174638.79:     Instantiated Spec::Benchmark::wrf_r521 in 0.000262022s
+1730174638.79:     Finding src.alts took 0.000025988s
+1730174638.79:   Setting up wrf_r took 0.002606153s
+
+1730174638.79:   Reading benchmark directory for '/home/tdx/speccpu2017/benchspec/CPU', '/home/tdx/speccpu2017/benchspec', '508.namd_r'
+1730174638.79:     Evaluated /home/tdx/speccpu2017/benchspec/CPU/508.namd_r/Spec/object.pm in 0.000307798s
+1730174638.79:     Instantiated Spec::Benchmark::namd_r508 in 0.000151157s
+1730174638.79:     Finding src.alts took 0.000015020s
+1730174638.79:   Setting up namd_r took 0.000612974s
+
+1730174638.79:   Reading benchmark directory for '/home/tdx/speccpu2017/benchspec/CPU', '/home/tdx/speccpu2017/benchspec', '627.cam4_s'
+1730174638.79:     Evaluated /home/tdx/speccpu2017/benchspec/CPU/627.cam4_s/Spec/object.pm in 0.000386953s
+1730174638.79:     Instantiated Spec::Benchmark::cam4_s627 in 0.000150919s
+1730174638.79:     Finding src.alts took 0.000014067s
+1730174638.79:   Setting up cam4_s took 0.000687838s
+
+1730174638.79:   Reading benchmark directory for '/home/tdx/speccpu2017/benchspec/CPU', '/home/tdx/speccpu2017/benchspec', '507.cactuBSSN_r'
+1730174638.79:     Evaluated /home/tdx/speccpu2017/benchspec/CPU/507.cactuBSSN_r/Spec/object.pm in 0.000578880s
+1730174638.79:     Instantiated Spec::Benchmark::cactuBSSN_r507 in 0.000167847s
+1730174638.79:     Finding src.alts took 0.000018120s
+1730174638.79:   Setting up cactuBSSN_r took 0.000933170s
+
+1730174638.79:   Reading benchmark directory for '/home/tdx/speccpu2017/benchspec/CPU', '/home/tdx/speccpu2017/benchspec', '538.imagick_r'
+1730174638.79:     Evaluated /home/tdx/speccpu2017/benchspec/CPU/538.imagick_r/Spec/object.pm in 0.000635147s
+1730174638.79:     Instantiated Spec::Benchmark::imagick_r538 in 0.000145912s
+1730174638.79:     Finding src.alts took 0.000016928s
+1730174638.79:   Setting up imagick_r took 0.000937939s
+
+1730174638.79:   Reading benchmark directory for '/home/tdx/speccpu2017/benchspec/CPU', '/home/tdx/speccpu2017/benchspec', '605.mcf_s'
+1730174638.79:     Evaluated /home/tdx/speccpu2017/benchspec/CPU/605.mcf_s/Spec/object.pm in 0.000246048s
+1730174638.79:     Instantiated Spec::Benchmark::mcf_s605 in 0.000141144s
+1730174638.79:     Finding src.alts took 0.000013828s
+1730174638.79:   Setting up mcf_s took 0.000566006s
+
+1730174638.79:   Reading benchmark directory for '/home/tdx/speccpu2017/benchspec/CPU', '/home/tdx/speccpu2017/benchspec', 'intrate_any_fortran.bset'
+1730174638.79:   Reading benchmark directory for '/home/tdx/speccpu2017/benchspec/CPU', '/home/tdx/speccpu2017/benchspec', 'fpspeed_any_fortran.bset'
+1730174638.79:   Reading benchmark directory for '/home/tdx/speccpu2017/benchspec/CPU', '/home/tdx/speccpu2017/benchspec', 'mixed_cpp.bset'
+1730174638.79:   Reading benchmark directory for '/home/tdx/speccpu2017/benchspec/CPU', '/home/tdx/speccpu2017/benchspec', 'intrate_no_fortran.bset'
+1730174638.79:   Reading benchmark directory for '/home/tdx/speccpu2017/benchspec/CPU', '/home/tdx/speccpu2017/benchspec', '644.nab_s'
+1730174638.80:     Evaluated /home/tdx/speccpu2017/benchspec/CPU/644.nab_s/Spec/object.pm in 0.000349998s
+1730174638.80:     Instantiated Spec::Benchmark::nab_s644 in 0.000174046s
+1730174638.80:     Finding src.alts took 0.000021935s
+1730174638.80:   Setting up nab_s took 0.000698090s
+
+1730174638.80:   Reading benchmark directory for '/home/tdx/speccpu2017/benchspec/CPU', '/home/tdx/speccpu2017/benchspec', 'fpspeed_mixed_cpp.bset'
+1730174638.80:   Reading benchmark directory for '/home/tdx/speccpu2017/benchspec/CPU', '/home/tdx/speccpu2017/benchspec', 'fpspeed_mixed_fortran.bset'
+1730174638.80:   Reading benchmark directory for '/home/tdx/speccpu2017/benchspec/CPU', '/home/tdx/speccpu2017/benchspec', 'fpspeed_no_cpp.bset'
+1730174638.80:   Reading benchmark directory for '/home/tdx/speccpu2017/benchspec/CPU', '/home/tdx/speccpu2017/benchspec', '621.wrf_s'
+1730174638.80:     Evaluated /home/tdx/speccpu2017/benchspec/CPU/621.wrf_s/Spec/object.pm in 0.001694918s
+1730174638.80:     Instantiated Spec::Benchmark::wrf_s621 in 0.000260830s
+1730174638.80:     Finding src.alts took 0.000027180s
+1730174638.80:   Setting up wrf_s took 0.002161980s
+
+1730174638.80:   Reading benchmark directory for '/home/tdx/speccpu2017/benchspec/CPU', '/home/tdx/speccpu2017/benchspec', '602.gcc_s'
+1730174638.80:     Evaluated /home/tdx/speccpu2017/benchspec/CPU/602.gcc_s/Spec/object.pm in 0.000376940s
+1730174638.80:     Instantiated Spec::Benchmark::gcc_s602 in 0.000140905s
+1730174638.80:     Finding src.alts took 0.000015974s
+1730174638.80:   Setting up gcc_s took 0.000689030s
+
+1730174638.80:   Reading benchmark directory for '/home/tdx/speccpu2017/benchspec/CPU', '/home/tdx/speccpu2017/benchspec', '526.blender_r'
+1730174638.80:     Evaluated /home/tdx/speccpu2017/benchspec/CPU/526.blender_r/Spec/object.pm in 0.001778126s
+1730174638.80:     Instantiated Spec::Benchmark::blender_r526 in 0.000195026s
+1730174638.80:     Finding src.alts took 0.000026941s
+1730174638.80:   Setting up blender_r took 0.002172947s
+
+1730174638.80:   Reading benchmark directory for '/home/tdx/speccpu2017/benchspec/CPU', '/home/tdx/speccpu2017/benchspec', 'intspeed_no_mixed.bset'
+1730174638.80:   Reading benchmark directory for '/home/tdx/speccpu2017/benchspec/CPU', '/home/tdx/speccpu2017/benchspec', 'no_cpp.bset'
+1730174638.80:   Reading benchmark directory for '/home/tdx/speccpu2017/benchspec/CPU', '/home/tdx/speccpu2017/benchspec', 'pure_fortran.bset'
+1730174638.81:   Reading benchmark directory for '/home/tdx/speccpu2017/benchspec/CPU', '/home/tdx/speccpu2017/benchspec', 'fprate_any_fortran.bset'
+1730174638.81:   Reading benchmark directory for '/home/tdx/speccpu2017/benchspec/CPU', '/home/tdx/speccpu2017/benchspec', '519.lbm_r'
+1730174638.81:     Evaluated /home/tdx/speccpu2017/benchspec/CPU/519.lbm_r/Spec/object.pm in 0.000276804s
+1730174638.81:     Instantiated Spec::Benchmark::lbm_r519 in 0.000164986s
+1730174638.81:     Finding src.alts took 0.000020981s
+1730174638.81:   Setting up lbm_r took 0.000627995s
+
+1730174638.81:   Reading benchmark directory for '/home/tdx/speccpu2017/benchspec/CPU', '/home/tdx/speccpu2017/benchspec', '628.pop2_s'
+1730174638.81:     Evaluated /home/tdx/speccpu2017/benchspec/CPU/628.pop2_s/Spec/object.pm in 0.002577066s
+1730174638.81:     Instantiated Spec::Benchmark::pop2_s628 in 0.000297070s
+1730174638.81:     Finding src.alts took 0.000030994s
+1730174638.81:   Setting up pop2_s took 0.003097057s
+
+1730174638.81:   Reading benchmark directory for '/home/tdx/speccpu2017/benchspec/CPU', '/home/tdx/speccpu2017/benchspec', 'CPU.bset'
+1730174638.81:   Reading benchmark directory for '/home/tdx/speccpu2017/benchspec/CPU', '/home/tdx/speccpu2017/benchspec', 'specspeed.bset'
+1730174638.81:   Reading benchmark directory for '/home/tdx/speccpu2017/benchspec/CPU', '/home/tdx/speccpu2017/benchspec', 'fprate_any_cpp.bset'
+1730174638.81:   Reading benchmark directory for '/home/tdx/speccpu2017/benchspec/CPU', '/home/tdx/speccpu2017/benchspec', 'intrate_any_cpp.bset'
+1730174638.81:   Reading benchmark directory for '/home/tdx/speccpu2017/benchspec/CPU', '/home/tdx/speccpu2017/benchspec', '996.specrand_fs'
+1730174638.81:     Evaluated /home/tdx/speccpu2017/benchspec/CPU/996.specrand_fs/Spec/object.pm in 0.000362158s
+1730174638.81:     Instantiated Spec::Benchmark::specrand_fs996 in 0.000168085s
+1730174638.81:     Finding src.alts took 0.000020981s
+1730174638.81:   Setting up specrand_fs took 0.000699043s
+
+1730174638.81:   Reading benchmark directory for '/home/tdx/speccpu2017/benchspec/CPU', '/home/tdx/speccpu2017/benchspec', '623.xalancbmk_s'
+1730174638.81:     Evaluated /home/tdx/speccpu2017/benchspec/CPU/623.xalancbmk_s/Spec/object.pm in 0.000349045s
+1730174638.81:     Instantiated Spec::Benchmark::xalancbmk_s623 in 0.000144958s
+1730174638.81:     Finding src.alts took 0.000015974s
+1730174638.81:   Setting up xalancbmk_s took 0.000674963s
+
+1730174638.81:   Reading benchmark directory for '/home/tdx/speccpu2017/benchspec/CPU', '/home/tdx/speccpu2017/benchspec', 'fprate_any_c.bset'
+1730174638.81:   Reading benchmark directory for '/home/tdx/speccpu2017/benchspec/CPU', '/home/tdx/speccpu2017/benchspec', 'intrate_pure_cpp.bset'
+1730174638.82:   Reading benchmark directory for '/home/tdx/speccpu2017/benchspec/CPU', '/home/tdx/speccpu2017/benchspec', '520.omnetpp_r'
+1730174638.82:     Evaluated /home/tdx/speccpu2017/benchspec/CPU/520.omnetpp_r/Spec/object.pm in 0.000442028s
+1730174638.82:     Instantiated Spec::Benchmark::omnetpp_r520 in 0.000168085s
+1730174638.82:     Finding src.alts took 0.000020981s
+1730174638.82:   Setting up omnetpp_r took 0.000777960s
+
+1730174638.82:   Reading benchmark directory for '/home/tdx/speccpu2017/benchspec/CPU', '/home/tdx/speccpu2017/benchspec', '511.povray_r'
+1730174638.82:     Evaluated /home/tdx/speccpu2017/benchspec/CPU/511.povray_r/Spec/object.pm in 0.000473022s
+1730174638.82:     Instantiated Spec::Benchmark::povray_r511 in 0.000154018s
+1730174638.82:     Finding src.alts took 0.000016928s
+1730174638.82:   Setting up povray_r took 0.000797987s
+
+1730174638.82:   Reading benchmark directory for '/home/tdx/speccpu2017/benchspec/CPU', '/home/tdx/speccpu2017/benchspec', '641.leela_s'
+1730174638.82:     Evaluated /home/tdx/speccpu2017/benchspec/CPU/641.leela_s/Spec/object.pm in 0.000206947s
+1730174638.82:     Instantiated Spec::Benchmark::leela_s641 in 0.000166893s
+1730174638.82:     Finding src.alts took 0.000014782s
+1730174638.82:   Setting up leela_s took 0.000539064s
+
+1730174638.82:   Reading benchmark directory for '/home/tdx/speccpu2017/benchspec/CPU', '/home/tdx/speccpu2017/benchspec', 'mixed_fortran.bset'
+1730174638.82:   Reading benchmark directory for '/home/tdx/speccpu2017/benchspec/CPU', '/home/tdx/speccpu2017/benchspec', 'fpspeed_any_c.bset'
+1730174638.82:   Reading benchmark directory for '/home/tdx/speccpu2017/benchspec/CPU', '/home/tdx/speccpu2017/benchspec', 'fprate_no_fortran.bset'
+1730174638.82:   Reading benchmark directory for '/home/tdx/speccpu2017/benchspec/CPU', '/home/tdx/speccpu2017/benchspec', 'intspeed_pure_cpp.bset'
+1730174638.82:   Reading benchmark directory for '/home/tdx/speccpu2017/benchspec/CPU', '/home/tdx/speccpu2017/benchspec', 'fprate_mixed_c.bset'
+1730174638.82:   Reading benchmark directory for '/home/tdx/speccpu2017/benchspec/CPU', '/home/tdx/speccpu2017/benchspec', 'serial.bset'
+1730174638.82:   Reading benchmark directory for '/home/tdx/speccpu2017/benchspec/CPU', '/home/tdx/speccpu2017/benchspec', 'fprate.bset'
+1730174638.82:   Reading benchmark directory for '/home/tdx/speccpu2017/benchspec/CPU', '/home/tdx/speccpu2017/benchspec', '631.deepsjeng_s'
+1730174638.82:     Evaluated /home/tdx/speccpu2017/benchspec/CPU/631.deepsjeng_s/Spec/object.pm in 0.000278950s
+1730174638.82:     Instantiated Spec::Benchmark::deepsjeng_s631 in 0.000215054s
+1730174638.82:     Finding src.alts took 0.000021935s
+1730174638.82:   Setting up deepsjeng_s took 0.000668049s
+
+1730174638.82:   Reading benchmark directory for '/home/tdx/speccpu2017/benchspec/CPU', '/home/tdx/speccpu2017/benchspec', 'intopenmp.bset'
+1730174638.83:   Reading benchmark directory for '/home/tdx/speccpu2017/benchspec/CPU', '/home/tdx/speccpu2017/benchspec', 'fprate_mixed_cpp.bset'
+1730174638.83:   Reading benchmark directory for '/home/tdx/speccpu2017/benchspec/CPU', '/home/tdx/speccpu2017/benchspec', 'intrate_no_cpp.bset'
+1730174638.83: Setting up suite took 0.133442879s
+1730174638.83: Reading suite directory for 'version.txt', '/home/tdx/speccpu2017/benchspec'
+1730174638.83: Reading suite directory for 'Makefile.defaults', '/home/tdx/speccpu2017/benchspec'
+
+1730174638.84: NOTICE: Expression evaluation for 'label' on line 58 of
+1730174638.84:         /home/tdx/speccpu2017/config/tdx2.cfg succeeded.
+1730174638.84:         Expression:     '"mytest"'
+1730174638.84:         Returned value: 'mytest'
+1730174638.84: NOTICE: Skipping expression evaluation for 'bits' on line 64 of
+1730174638.84:         /home/tdx/speccpu2017/config/tdx2.cfg
+1730174638.84: NOTICE: Skipping expression evaluation for 'build_ncpus' on line 68 of
+1730174638.84:         /home/tdx/speccpu2017/config/tdx2.cfg
+1730174638.84: NOTICE: Expression evaluation for 'model' on line 73 of
+1730174638.84:         /home/tdx/speccpu2017/config/tdx2.cfg succeeded.
+1730174638.84:         Expression:     '-m64'
+1730174638.84:         Returned value: '-m64'
+1730174638.85: NOTICE: Expression evaluation for 'gcc_dir' on line 154 of
+1730174638.85:         /home/tdx/speccpu2017/config/tdx2.cfg succeeded.
+1730174638.85:         Expression:     '"/usr"'
+1730174638.85:         Returned value: '/usr'
+1730174638.85: NOTICE: Skipping expression evaluation for 'suffix' on line 204 of
+1730174638.85:         /home/tdx/speccpu2017/config/tdx2.cfg
+1730174638.86: Running "specperl /home/tdx/speccpu2017/bin/sysinfo" to gather system information.
+1730174638.97: sysinfo: r6732 of 2022-11-07 (fe91c89b7ed5c36ae2c92cc097bec197)
+1730174638.97: sysinfo: ...getting basic information about kernel, users, and limits
+1730174639.27: sysinfo: Getting system information for Linux...
+1730174639.27: sysinfo: ...getting CPU info
+1730174639.48: sysinfo: ...getting info from numactl
+1730174639.48: sysinfo: ...getting memory info
+1730174639.48: sysinfo: ...getting info from systemd
