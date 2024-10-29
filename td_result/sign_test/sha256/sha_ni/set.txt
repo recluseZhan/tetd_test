@@ -1,0 +1,1 @@
+gcc sha256.c sha256_asm.S -z noexecstack -O3
