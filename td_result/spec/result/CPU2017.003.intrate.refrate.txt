@@ -1,0 +1,622 @@
+##################################################################################################################################
+#   INVALID RUN -- INVALID RUN -- INVALID RUN -- INVALID RUN -- INVALID RUN                                                      #
+#                                                                                                                                #
+# 'reportable' flag not set during run                                                                                           #
+# 520.omnetpp_r (base) did not have enough runs!                                                                                 #
+# 541.leela_r (base) did not have enough runs!                                                                                   #
+# 531.deepsjeng_r (base) did not have enough runs!                                                                               #
+# 502.gcc_r (base) did not have enough runs!                                                                                     #
+# 525.x264_r (base) did not have enough runs!                                                                                    #
+# 505.mcf_r (base) did not have enough runs!                                                                                     #
+# 523.xalancbmk_r (base) did not have enough runs!                                                                               #
+# 548.exchange2_r (base) did not have enough runs!                                                                               #
+# 500.perlbench_r (base) did not have enough runs!                                                                               #
+# 557.xz_r (base) did not have enough runs!                                                                                      #
+# 520.omnetpp_r (base) had invalid runs!                                                                                         #
+# 531.deepsjeng_r (base) had invalid runs!                                                                                       #
+# 502.gcc_r (base) had invalid runs!                                                                                             #
+# 505.mcf_r (base) had invalid runs!                                                                                             #
+# 523.xalancbmk_r (base) had invalid runs!                                                                                       #
+# 557.xz_r (base) had invalid runs!                                                                                              #
+# Run of 502.gcc_r (base) was not valid; status is RE                                                                            #
+# Run of 505.mcf_r (base) was not valid; status is RE                                                                            #
+# Run of 520.omnetpp_r (base) was not valid; status is RE                                                                        #
+# Run of 523.xalancbmk_r (base) was not valid; status is RE                                                                      #
+# Run of 531.deepsjeng_r (base) was not valid; status is RE                                                                      #
+# Run of 557.xz_r (base) was not valid; status is RE                                                                             #
+# Error 502.gcc_r: copy 9 non-zero return code (exit code=137, signal=0)                                                         #
+# Error 502.gcc_r: copy 2 non-zero return code (exit code=137, signal=0)                                                         #
+# Error 502.gcc_r: copy 3 non-zero return code (exit code=137, signal=0)                                                         #
+# Error 502.gcc_r: copy 10 non-zero return code (exit code=137, signal=0)                                                        #
+# Error 502.gcc_r: copy 14 non-zero return code (exit code=137, signal=0)                                                        #
+# Error 502.gcc_r: copy 6 non-zero return code (exit code=137, signal=0)                                                         #
+# Error 502.gcc_r: copy 5 non-zero return code (exit code=137, signal=0)                                                         #
+# Error 502.gcc_r: copy 11 non-zero return code (exit code=137, signal=0)                                                        #
+# Error 502.gcc_r: copy 7 non-zero return code (exit code=137, signal=0)                                                         #
+# Error 502.gcc_r: copy 1 non-zero return code (exit code=137, signal=0)                                                         #
+# Error 502.gcc_r: copy 13 non-zero return code (exit code=137, signal=0)                                                        #
+# Error 502.gcc_r: copy 0 non-zero return code (exit code=137, signal=0)                                                         #
+# Error 502.gcc_r: copy 8 non-zero return code (exit code=137, signal=0)                                                         #
+# Error 505.mcf_r: copy 14 non-zero return code (exit code=137, signal=0)                                                        #
+# Error 505.mcf_r: copy 9 non-zero return code (exit code=137, signal=0)                                                         #
+# Error 505.mcf_r: copy 5 non-zero return code (exit code=137, signal=0)                                                         #
+# Error 505.mcf_r: copy 0 non-zero return code (exit code=137, signal=0)                                                         #
+# Error 505.mcf_r: copy 13 non-zero return code (exit code=137, signal=0)                                                        #
+# Error 505.mcf_r: copy 12 non-zero return code (exit code=137, signal=0)                                                        #
+# Error 505.mcf_r: copy 8 non-zero return code (exit code=137, signal=0)                                                         #
+# Error 505.mcf_r: copy 7 non-zero return code (exit code=137, signal=0)                                                         #
+# Error 505.mcf_r: copy 4 non-zero return code (exit code=137, signal=0)                                                         #
+# Error 505.mcf_r: copy 2 non-zero return code (exit code=137, signal=0)                                                         #
+# Error 520.omnetpp_r: copy 4 non-zero return code (exit code=137, signal=0)                                                     #
+# Error 520.omnetpp_r: copy 14 non-zero return code (exit code=137, signal=0)                                                    #
+# Error 523.xalancbmk_r: copy 6 non-zero return code (exit code=137, signal=0)                                                   #
+# Error 523.xalancbmk_r: copy 7 non-zero return code (exit code=137, signal=0)                                                   #
+# Error 523.xalancbmk_r: copy 4 non-zero return code (exit code=137, signal=0)                                                   #
+# Error 523.xalancbmk_r: copy 9 non-zero return code (exit code=137, signal=0)                                                   #
+# Error 523.xalancbmk_r: copy 5 non-zero return code (exit code=137, signal=0)                                                   #
+# Error 523.xalancbmk_r: copy 13 non-zero return code (exit code=137, signal=0)                                                  #
+# Error 523.xalancbmk_r: copy 14 non-zero return code (exit code=137, signal=0)                                                  #
+# Error 523.xalancbmk_r: copy 12 non-zero return code (exit code=137, signal=0)                                                  #
+# Error 523.xalancbmk_r: copy 11 non-zero return code (exit code=137, signal=0)                                                  #
+# Error 531.deepsjeng_r: copy 12 non-zero return code (exit code=137, signal=0)                                                  #
+# Error 531.deepsjeng_r: copy 3 non-zero return code (exit code=137, signal=0)                                                   #
+# Error 531.deepsjeng_r: copy 8 non-zero return code (exit code=137, signal=0)                                                   #
+# Error 531.deepsjeng_r: copy 2 non-zero return code (exit code=137, signal=0)                                                   #
+# Error 531.deepsjeng_r: copy 6 non-zero return code (exit code=137, signal=0)                                                   #
+# Error 531.deepsjeng_r: copy 14 non-zero return code (exit code=137, signal=0)                                                  #
+# Error 531.deepsjeng_r: copy 0 non-zero return code (exit code=137, signal=0)                                                   #
+# Error 531.deepsjeng_r: copy 10 non-zero return code (exit code=137, signal=0)                                                  #
+# Error 531.deepsjeng_r: copy 13 non-zero return code (exit code=137, signal=0)                                                  #
+# Error 531.deepsjeng_r: copy 11 non-zero return code (exit code=137, signal=0)                                                  #
+# Error 531.deepsjeng_r: copy 7 non-zero return code (exit code=137, signal=0)                                                   #
+# Error 557.xz_r: copy 0 non-zero return code (exit code=137, signal=0)                                                          #
+# Error 557.xz_r: copy 14 non-zero return code (exit code=137, signal=0)                                                         #
+# Error 557.xz_r: copy 7 non-zero return code (exit code=137, signal=0)                                                          #
+# Error 557.xz_r: copy 4 non-zero return code (exit code=137, signal=0)                                                          #
+# Error 557.xz_r: copy 10 non-zero return code (exit code=137, signal=0)                                                         #
+# Error 557.xz_r: copy 5 non-zero return code (exit code=137, signal=0)                                                          #
+# Error 557.xz_r: copy 9 non-zero return code (exit code=137, signal=0)                                                          #
+# Error 557.xz_r: copy 1 non-zero return code (exit code=137, signal=0)                                                          #
+# Error 557.xz_r: copy 8 non-zero return code (exit code=137, signal=0)                                                          #
+# Error 557.xz_r: copy 11 non-zero return code (exit code=137, signal=0)                                                         #
+# Error 557.xz_r: copy 13 non-zero return code (exit code=137, signal=0)                                                         #
+#                                                                                                                                #
+#   INVALID RUN -- INVALID RUN -- INVALID RUN -- INVALID RUN -- INVALID RUN                                                      #
+##################################################################################################################################
+                                               SPEC CPU(R)2017 Integer Rate Result
+                                                         My Corporation 
+
+                           CPU2017 License: nnn (Your SPEC license number)          Test date: Nov-2024
+                           Test sponsor: My Corporation                 Hardware availability:         
+                           Tested by:    My Corporation                 Software availability:         
+
+                       Estimated                       Estimated
+                 Base     Base        Base        Peak     Peak        Peak
+Benchmarks       Copies  Run Time     Rate        Copies  Run Time     Rate 
+--------------- -------  ---------  ---------    -------  ---------  ---------
+500.perlbench_r      15        328       72.9  *
+502.gcc_r            15       1283            RE
+505.mcf_r            15        355            RE
+520.omnetpp_r        15        641            RE
+523.xalancbmk_r      15        291            RE
+525.x264_r           15        162      162    *
+531.deepsjeng_r      15        260            RE
+541.leela_r          15        432       57.5  *
+548.exchange2_r      15        157      250    *
+557.xz_r             15        180            RE
+=================================================================================
+500.perlbench_r      15        328       72.9  *
+502.gcc_r                                     NR
+505.mcf_r                                     NR
+520.omnetpp_r                                 NR
+523.xalancbmk_r                               NR
+525.x264_r           15        162      162    *
+531.deepsjeng_r                               NR
+541.leela_r          15        432       57.5  *
+548.exchange2_r      15        157      250    *
+557.xz_r                                      NR
+ Est. SPECrate(R)2017_int_base            114
+ Est. SPECrate(R)2017_int_peak                                         Not Run
+
+
+                                                             HARDWARE
+                                                             --------
+            CPU Name: 06/8f
+             Max MHz:  
+             Nominal:  
+             Enabled:  cores, 1 chip,  threads/core
+           Orderable:  
+            Cache L1:  
+                  L2:  
+                  L3:  
+               Other:  
+              Memory: 3.624 GB fixme: If using DDR4, the format is:
+                      'N GB (N x N GB nRxn PC4-nnnnX-X)'
+             Storage: 66 GB  add more disk info here
+               Other:  
+
+
+                                                             SOFTWARE
+                                                             --------
+                  OS: Ubuntu 24.04 LTS
+                      6.8.0-35-generic
+            Compiler: C/C++/Fortran: Version 10.1.0 of GCC, the
+                      GNU Compiler Collection
+            Parallel: No
+            Firmware:  
+         File System: ext4
+        System State: Run level 5 (add definition here)
+       Base Pointers: 64-bit
+       Peak Pointers: Not Applicable
+               Other:  
+    Power Management:  
+
+
+                                                   Environment Variables Notes
+                                                   ---------------------------
+    Environment variables set by runcpu before the start of the run:
+    LD_LIBRARY_PATH = "/usr/lib64/:/usr/lib/:/lib64"
+    
+
+                                                          Platform Notes
+                                                          --------------
+    
+     Sysinfo program /home/tdx/speccpu2017/bin/sysinfo
+     Rev: r6732 of 2022-11-07 fe91c89b7ed5c36ae2c92cc097bec197
+     running on tdx-guest Fri Nov  1 04:42:18 2024
+    
+     SUT (System Under Test) info as seen by some common utilities.
+    
+     ------------------------------------------------------------
+     Table of contents
+     ------------------------------------------------------------
+      1. uname -a
+      2. w
+      3. Username
+      4. ulimit -a
+      5. sysinfo process ancestry
+      6. /proc/cpuinfo
+      7. lscpu
+      8. numactl --hardware
+      9. /proc/meminfo
+     10. who -r
+     11. Systemd service manager version: systemd 255 (255.4-1ubuntu8.1)
+     12. Services, from systemctl list-unit-files
+     13. Linux kernel boot-time arguments, from /proc/cmdline
+     14. cpupower frequency-info
+     15. sysctl
+     16. /sys/kernel/mm/transparent_hugepage
+     17. /sys/kernel/mm/transparent_hugepage/khugepaged
+     18. OS release
+     19. Disk information
+     20. /sys/devices/virtual/dmi/id
+     21. dmidecode
+     22. BIOS
+     ------------------------------------------------------------
+    
+     ------------------------------------------------------------
+     1. uname -a
+       Linux tdx-guest 6.8.0-35-generic #35-Ubuntu SMP PREEMPT_DYNAMIC Mon May 20 15:51:52 UTC 2024 x86_64 x86_64
+       x86_64 GNU/Linux
+    
+     ------------------------------------------------------------
+     2. w
+        04:42:18 up 0 min,  1 user,  load average: 0.25, 0.07, 0.02
+       USER     TTY      FROM             LOGIN@   IDLE   JCPU   PCPU WHAT
+       root     hvc0     -                04:41    2.00s  2.22s   ?    sh -c w 2>/dev/null
+    
+     ------------------------------------------------------------
+     3. Username
+       From environment variable $USER:  root
+    
+     ------------------------------------------------------------
+     4. ulimit -a
+       time(seconds)        unlimited
+       file(blocks)         unlimited
+       data(kbytes)         unlimited
+       stack(kbytes)        8192
+       coredump(blocks)     0
+       memory(kbytes)       unlimited
+       locked memory(kbytes) 474996
+       process              14641
+       nofiles              1024
+       vmemory(kbytes)      unlimited
+       locks                unlimited
+       rtprio               0
+    
+     ------------------------------------------------------------
+     5. sysinfo process ancestry
+      /sbin/init
+      /bin/login -p --
+      -bash
+      runcpu --config=tdx4.cfg --tune=base --size=ref intrate --copies=15
+      runcpu --configfile tdx4.cfg --tune base --size ref --copies 15 --noreportable --nopower --runmode rate
+        --tune base --size refrate intrate --nopreenv --note-preenv --logfile
+        $SPEC/tmp/CPU2017.003/templogs/preenv.intrate.003.0.log --lognum 003.0 --from_runcpu 2
+      specperl $SPEC/bin/sysinfo
+     $SPEC = /home/tdx/speccpu2017
+    
+     ------------------------------------------------------------
+     6. /proc/cpuinfo
+         model name      : 06/8f
+         vendor_id       : GenuineIntel
+         cpu family      : 6
+         model           : 143
+         stepping        : 8
+         microcode       : 0x2b0005d1
+         bugs            : spectre_v1 spectre_v2 spec_store_bypass swapgs eibrs_pbrsb bhi
+         cpu cores       : 16
+         siblings        : 16
+         1 physical ids (chips)
+         16 processors (hardware threads)
+         physical id 0: core ids 0-15
+         physical id 0: apicids 0-15
+       Caution: /proc/cpuinfo data regarding chips, cores, and threads is not necessarily reliable, especially for
+       virtualized systems.  Use the above data carefully.
+    
+     ------------------------------------------------------------
+     7. lscpu
+    
+     From lscpu from util-linux 2.39.3:
+       Architecture:                         x86_64
+       CPU op-mode(s):                       32-bit, 64-bit
+       Address sizes:                        52 bits physical, 57 bits virtual
+       Byte Order:                           Little Endian
+       CPU(s):                               16
+       On-line CPU(s) list:                  0-15
+       Vendor ID:                            GenuineIntel
+       BIOS Vendor ID:                       QEMU
+       Model name:                           06/8f
+       BIOS Model name:                      pc-q35-8.2  CPU @ 2.0GHz
+       BIOS CPU family:                      1
+       CPU family:                           6
+       Model:                                143
+       Thread(s) per core:                   1
+       Core(s) per socket:                   16
+       Socket(s):                            1
+       Stepping:                             8
+       BogoMIPS:                             4800.00
+       Flags:                                fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat
+                                             clflush dts mmx fxsr sse sse2 ss ht tm syscall nx pdpe1gb rdtscp lm
+                                             constant_tsc bts rep_good nopl tsc_reliable nonstop_tsc cpuid
+                                             tsc_known_freq pni pclmulqdq dtes64 ds_cpl ssse3 fma cx16 pdcm pcid
+                                             sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx
+                                             f16c rdrand hypervisor lahf_lm abm 3dnowprefetch cpuid_fault ssbd
+                                             ibrs ibpb stibp ibrs_enhanced tdx_guest fsgsbase bmi1 avx2 smep bmi2
+                                             erms invpcid avx512f avx512dq rdseed adx smap avx512ifma clflushopt
+                                             clwb avx512cd sha_ni avx512bw avx512vl xsaveopt xsavec xgetbv1 xsaves
+                                             avx_vnni avx512_bf16 wbnoinvd avx512vbmi umip pku ospke avx512_vbmi2
+                                             gfni vaes vpclmulqdq avx512_vnni avx512_bitalg avx512_vpopcntdq la57
+                                             rdpid bus_lock_detect cldemote movdiri movdir64b fsrm md_clear
+                                             serialize tsxldtrk amx_bf16 avx512_fp16 amx_tile amx_int8 flush_l1d
+                                             arch_capabilities
+       Hypervisor vendor:                    KVM
+       Virtualization type:                  full
+       L1d cache:                            512 KiB (16 instances)
+       L1i cache:                            512 KiB (16 instances)
+       L2 cache:                             64 MiB (16 instances)
+       L3 cache:                             16 MiB (1 instance)
+       NUMA node(s):                         1
+       NUMA node0 CPU(s):                    0-15
+       Vulnerability Gather data sampling:   Not affected
+       Vulnerability Itlb multihit:          Not affected
+       Vulnerability L1tf:                   Not affected
+       Vulnerability Mds:                    Not affected
+       Vulnerability Meltdown:               Not affected
+       Vulnerability Mmio stale data:        Not affected
+       Vulnerability Reg file data sampling: Not affected
+       Vulnerability Retbleed:               Not affected
+       Vulnerability Spec rstack overflow:   Not affected
+       Vulnerability Spec store bypass:      Mitigation; Speculative Store Bypass disabled via prctl
+       Vulnerability Spectre v1:             Mitigation; usercopy/swapgs barriers and __user pointer sanitization
+       Vulnerability Spectre v2:             Mitigation; Enhanced / Automatic IBRS; IBPB conditional; RSB filling;
+                                             PBRSB-eIBRS SW sequence; BHI BHI_DIS_S
+       Vulnerability Srbds:                  Not affected
+       Vulnerability Tsx async abort:        Not affected
+    
+     From lscpu --cache:
+          NAME ONE-SIZE ALL-SIZE WAYS TYPE        LEVEL  SETS PHY-LINE COHERENCY-SIZE
+          L1d       32K     512K    8 Data            1    64        1             64
+          L1i       32K     512K    8 Instruction     1    64        1             64
+          L2         4M      64M   16 Unified         2  4096        1             64
+          L3        16M      16M   16 Unified         3 16384        1             64
+    
+     ------------------------------------------------------------
+     8. numactl --hardware
+     NOTE: a numactl 'node' might or might not correspond to a physical chip.
+       available: 1 nodes (0)
+       node 0 cpus: 0-15
+       node 0 size: 3710 MB
+       node 0 free: 3080 MB
+       node distances:
+       node   0
+         0:  10
+    
+     ------------------------------------------------------------
+     9. /proc/meminfo
+        MemTotal:        3799980 kB
+    
+     ------------------------------------------------------------
+     10. who -r
+       run-level 5 Nov 1 04:41
+    
+     ------------------------------------------------------------
+     11. Systemd service manager version: systemd 255 (255.4-1ubuntu8.1)
+       Default Target  Status
+       graphical       running
+    
+     ------------------------------------------------------------
+     12. Services, from systemctl list-unit-files
+       STATE            UNIT FILES
+       enabled          ModemManager apparmor apport blk-availability cloud-config cloud-final cloud-init
+                        cloud-init-local console-setup cron dmesg e2scrub_reap finalrd getty@ grub-common
+                        grub-initrd-fallback keyboard-setup lvm2-monitor multipathd networkd-dispatcher open-iscsi
+                        open-vm-tools rsyslog secureboot-db setvtrgb snapd ssh sysstat systemd-networkd
+                        systemd-networkd-wait-online systemd-pstore systemd-resolved systemd-timesyncd
+                        ua-reboot-cmds ubuntu-advantage udisks2 ufw unattended-upgrades vgauth
+       enabled-runtime  netplan-ovs-cleanup systemd-fsck-root systemd-remount-fs
+       disabled         console-getty debug-shell iscsid nftables rsync systemd-boot-check-no-failures
+                        systemd-confext systemd-network-generator systemd-networkd-wait-online@
+                        systemd-pcrlock-file-system systemd-pcrlock-firmware-code systemd-pcrlock-firmware-config
+                        systemd-pcrlock-machine-id systemd-pcrlock-make-policy
+                        systemd-pcrlock-secureboot-authority systemd-pcrlock-secureboot-policy systemd-sysext
+                        systemd-time-wait-sync
+       indirect         serial-getty@ systemd-sysupdate systemd-sysupdate-reboot uuidd
+       masked           cryptdisks cryptdisks-early hwclock multipath-tools-boot pollinate screen-cleanup sudo
+                        x11-common
+    
+     ------------------------------------------------------------
+     13. Linux kernel boot-time arguments, from /proc/cmdline
+       BOOT_IMAGE=/vmlinuz-6.8.0-35-generic
+       root=UUID=41106c9c-97fc-4396-8622-4f692c8c5bb1
+       ro
+       console=tty1
+       console=ttyS0
+    
+     ------------------------------------------------------------
+     14. cpupower frequency-info
+       analyzing CPU 4:
+         Unable to determine current policy
+         boost state support:
+           Supported: no
+           Active: no
+    
+     ------------------------------------------------------------
+     15. sysctl
+       kernel.numa_balancing               0
+       kernel.randomize_va_space           2
+       vm.compaction_proactiveness        20
+       vm.dirty_background_bytes           0
+       vm.dirty_background_ratio          10
+       vm.dirty_bytes                      0
+       vm.dirty_expire_centisecs        3000
+       vm.dirty_ratio                     20
+       vm.dirty_writeback_centisecs      500
+       vm.dirtytime_expire_seconds     43200
+       vm.extfrag_threshold              500
+       vm.min_unmapped_ratio               1
+       vm.nr_hugepages                     0
+       vm.nr_hugepages_mempolicy           0
+       vm.nr_overcommit_hugepages          0
+       vm.swappiness                      60
+       vm.watermark_boost_factor       15000
+       vm.watermark_scale_factor          10
+       vm.zone_reclaim_mode                0
+    
+     ------------------------------------------------------------
+     16. /sys/kernel/mm/transparent_hugepage
+       defrag          always defer defer+madvise [madvise] never
+       enabled         always [madvise] never
+       hpage_pmd_size  2097152
+       shmem_enabled   always within_size advise [never] deny force
+    
+     ------------------------------------------------------------
+     17. /sys/kernel/mm/transparent_hugepage/khugepaged
+       alloc_sleep_millisecs   60000
+       defrag                      1
+       max_ptes_none             511
+       max_ptes_shared           256
+       max_ptes_swap              64
+       pages_to_scan            4096
+       scan_sleep_millisecs    10000
+    
+     ------------------------------------------------------------
+     18. OS release
+       From /etc/*-release /etc/*-version
+       os-release Ubuntu 24.04 LTS
+    
+     ------------------------------------------------------------
+     19. Disk information
+     SPEC is set to: /home/tdx/speccpu2017
+       Filesystem     Type  Size  Used Avail Use% Mounted on
+       /dev/vda1      ext4   66G   56G   11G  85% /
+    
+     ------------------------------------------------------------
+     20. /sys/devices/virtual/dmi/id
+         Vendor:         QEMU
+         Product:        Standard PC (Q35 + ICH9, 2009)
+    
+     ------------------------------------------------------------
+     21. dmidecode
+       Additional information from dmidecode 3.5 follows.  WARNING: Use caution when you interpret this section.
+       The 'dmidecode' program reads system data which is "intended to allow hardware to be accurately
+       determined", but the intent may not be met, as there are frequent changes to hardware, firmware, and the
+       "DMTF SMBIOS" standard.
+       Memory:
+         1x QEMU Not Specified 4 GB
+    
+    
+     ------------------------------------------------------------
+     22. BIOS
+     (This section combines info from /sys/devices and dmidecode.)
+        BIOS Vendor:       Ubuntu distribution of EDK II
+        BIOS Version:      2024.02-3+tdx1.0
+        BIOS Date:         07/03/2024
+        BIOS Revision:     0.0
+
+                                                      Compiler Version Notes
+                                                      ----------------------
+    ============================================================================================================
+    C       | 500.perlbench_r(base) 502.gcc_r(base) 505.mcf_r(base) 525.x264_r(base) 557.xz_r(base)
+    ------------------------------------------------------------------------------------------------------------
+    gcc (Ubuntu 13.2.0-23ubuntu4) 13.2.0
+    Copyright (C) 2023 Free Software Foundation, Inc.
+    This is free software; see the source for copying conditions.  There is NO
+    warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+    ------------------------------------------------------------------------------------------------------------
+    
+    ============================================================================================================
+    C++     | 520.omnetpp_r(base) 523.xalancbmk_r(base) 531.deepsjeng_r(base) 541.leela_r(base)
+    ------------------------------------------------------------------------------------------------------------
+    g++ (Ubuntu 13.2.0-23ubuntu4) 13.2.0
+    Copyright (C) 2023 Free Software Foundation, Inc.
+    This is free software; see the source for copying conditions.  There is NO
+    warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+    ------------------------------------------------------------------------------------------------------------
+    
+    ============================================================================================================
+    Fortran | 548.exchange2_r(base)
+    ------------------------------------------------------------------------------------------------------------
+    GNU Fortran (Ubuntu 13.2.0-23ubuntu4) 13.2.0
+    Copyright (C) 2023 Free Software Foundation, Inc.
+    This is free software; see the source for copying conditions.  There is NO
+    warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+    ------------------------------------------------------------------------------------------------------------
+
+                                                     Base Compiler Invocation
+                                                     ------------------------
+C benchmarks: 
+     gcc
+
+C++ benchmarks: 
+     g++
+
+Fortran benchmarks: 
+     gfortran
+
+
+                                                      Base Portability Flags
+                                                      ----------------------
+ 500.perlbench_r: -DSPEC_LINUX_X64 -DSPEC_LP64
+       502.gcc_r: -DSPEC_LP64
+       505.mcf_r: -DSPEC_LP64
+   520.omnetpp_r: -DSPEC_LP64
+ 523.xalancbmk_r: -DSPEC_LINUX -DSPEC_LP64
+      525.x264_r: -DSPEC_LP64
+ 531.deepsjeng_r: -DSPEC_LP64
+     541.leela_r: -DSPEC_LP64
+ 548.exchange2_r: -DSPEC_LP64
+        557.xz_r: -DSPEC_LP64
+
+
+                                                     Base Optimization Flags
+                                                     -----------------------
+C benchmarks: 
+     -m64 -std=c99 -g -O3 -march=native -fno-strict-aliasing -fno-unsafe-math-optimizations -fno-finite-math-only -fgnu89-inline
+
+C++ benchmarks: 
+     -m64 -std=c++03 -g -O3 -march=native
+
+Fortran benchmarks: 
+     -m64 -g -O3 -march=native
+
+
+                                                         Base Other Flags
+                                                         ----------------
+C benchmarks: 
+     -fcommon
+
+
+  SPEC CPU and SPECrate are registered trademarks of the Standard Performance Evaluation Corporation.  All other brand and
+    product names appearing in this result are trademarks or registered trademarks of their respective holders.
+##################################################################################################################################
+#   INVALID RUN -- INVALID RUN -- INVALID RUN -- INVALID RUN -- INVALID RUN                                                      #
+#                                                                                                                                #
+# 'reportable' flag not set during run                                                                                           #
+# 520.omnetpp_r (base) did not have enough runs!                                                                                 #
+# 541.leela_r (base) did not have enough runs!                                                                                   #
+# 531.deepsjeng_r (base) did not have enough runs!                                                                               #
+# 502.gcc_r (base) did not have enough runs!                                                                                     #
+# 525.x264_r (base) did not have enough runs!                                                                                    #
+# 505.mcf_r (base) did not have enough runs!                                                                                     #
+# 523.xalancbmk_r (base) did not have enough runs!                                                                               #
+# 548.exchange2_r (base) did not have enough runs!                                                                               #
+# 500.perlbench_r (base) did not have enough runs!                                                                               #
+# 557.xz_r (base) did not have enough runs!                                                                                      #
+# 520.omnetpp_r (base) had invalid runs!                                                                                         #
+# 531.deepsjeng_r (base) had invalid runs!                                                                                       #
+# 502.gcc_r (base) had invalid runs!                                                                                             #
+# 505.mcf_r (base) had invalid runs!                                                                                             #
+# 523.xalancbmk_r (base) had invalid runs!                                                                                       #
+# 557.xz_r (base) had invalid runs!                                                                                              #
+# Run of 502.gcc_r (base) was not valid; status is RE                                                                            #
+# Run of 505.mcf_r (base) was not valid; status is RE                                                                            #
+# Run of 520.omnetpp_r (base) was not valid; status is RE                                                                        #
+# Run of 523.xalancbmk_r (base) was not valid; status is RE                                                                      #
+# Run of 531.deepsjeng_r (base) was not valid; status is RE                                                                      #
+# Run of 557.xz_r (base) was not valid; status is RE                                                                             #
+# Error 502.gcc_r: copy 9 non-zero return code (exit code=137, signal=0)                                                         #
+# Error 502.gcc_r: copy 2 non-zero return code (exit code=137, signal=0)                                                         #
+# Error 502.gcc_r: copy 3 non-zero return code (exit code=137, signal=0)                                                         #
+# Error 502.gcc_r: copy 10 non-zero return code (exit code=137, signal=0)                                                        #
+# Error 502.gcc_r: copy 14 non-zero return code (exit code=137, signal=0)                                                        #
+# Error 502.gcc_r: copy 6 non-zero return code (exit code=137, signal=0)                                                         #
+# Error 502.gcc_r: copy 5 non-zero return code (exit code=137, signal=0)                                                         #
+# Error 502.gcc_r: copy 11 non-zero return code (exit code=137, signal=0)                                                        #
+# Error 502.gcc_r: copy 7 non-zero return code (exit code=137, signal=0)                                                         #
+# Error 502.gcc_r: copy 1 non-zero return code (exit code=137, signal=0)                                                         #
+# Error 502.gcc_r: copy 13 non-zero return code (exit code=137, signal=0)                                                        #
+# Error 502.gcc_r: copy 0 non-zero return code (exit code=137, signal=0)                                                         #
+# Error 502.gcc_r: copy 8 non-zero return code (exit code=137, signal=0)                                                         #
+# Error 505.mcf_r: copy 14 non-zero return code (exit code=137, signal=0)                                                        #
+# Error 505.mcf_r: copy 9 non-zero return code (exit code=137, signal=0)                                                         #
+# Error 505.mcf_r: copy 5 non-zero return code (exit code=137, signal=0)                                                         #
+# Error 505.mcf_r: copy 0 non-zero return code (exit code=137, signal=0)                                                         #
+# Error 505.mcf_r: copy 13 non-zero return code (exit code=137, signal=0)                                                        #
+# Error 505.mcf_r: copy 12 non-zero return code (exit code=137, signal=0)                                                        #
+# Error 505.mcf_r: copy 8 non-zero return code (exit code=137, signal=0)                                                         #
+# Error 505.mcf_r: copy 7 non-zero return code (exit code=137, signal=0)                                                         #
+# Error 505.mcf_r: copy 4 non-zero return code (exit code=137, signal=0)                                                         #
+# Error 505.mcf_r: copy 2 non-zero return code (exit code=137, signal=0)                                                         #
+# Error 520.omnetpp_r: copy 4 non-zero return code (exit code=137, signal=0)                                                     #
+# Error 520.omnetpp_r: copy 14 non-zero return code (exit code=137, signal=0)                                                    #
+# Error 523.xalancbmk_r: copy 6 non-zero return code (exit code=137, signal=0)                                                   #
+# Error 523.xalancbmk_r: copy 7 non-zero return code (exit code=137, signal=0)                                                   #
+# Error 523.xalancbmk_r: copy 4 non-zero return code (exit code=137, signal=0)                                                   #
+# Error 523.xalancbmk_r: copy 9 non-zero return code (exit code=137, signal=0)                                                   #
+# Error 523.xalancbmk_r: copy 5 non-zero return code (exit code=137, signal=0)                                                   #
+# Error 523.xalancbmk_r: copy 13 non-zero return code (exit code=137, signal=0)                                                  #
+# Error 523.xalancbmk_r: copy 14 non-zero return code (exit code=137, signal=0)                                                  #
+# Error 523.xalancbmk_r: copy 12 non-zero return code (exit code=137, signal=0)                                                  #
+# Error 523.xalancbmk_r: copy 11 non-zero return code (exit code=137, signal=0)                                                  #
+# Error 531.deepsjeng_r: copy 12 non-zero return code (exit code=137, signal=0)                                                  #
+# Error 531.deepsjeng_r: copy 3 non-zero return code (exit code=137, signal=0)                                                   #
+# Error 531.deepsjeng_r: copy 8 non-zero return code (exit code=137, signal=0)                                                   #
+# Error 531.deepsjeng_r: copy 2 non-zero return code (exit code=137, signal=0)                                                   #
+# Error 531.deepsjeng_r: copy 6 non-zero return code (exit code=137, signal=0)                                                   #
+# Error 531.deepsjeng_r: copy 14 non-zero return code (exit code=137, signal=0)                                                  #
+# Error 531.deepsjeng_r: copy 0 non-zero return code (exit code=137, signal=0)                                                   #
+# Error 531.deepsjeng_r: copy 10 non-zero return code (exit code=137, signal=0)                                                  #
+# Error 531.deepsjeng_r: copy 13 non-zero return code (exit code=137, signal=0)                                                  #
+# Error 531.deepsjeng_r: copy 11 non-zero return code (exit code=137, signal=0)                                                  #
+# Error 531.deepsjeng_r: copy 7 non-zero return code (exit code=137, signal=0)                                                   #
+# Error 557.xz_r: copy 0 non-zero return code (exit code=137, signal=0)                                                          #
+# Error 557.xz_r: copy 14 non-zero return code (exit code=137, signal=0)                                                         #
+# Error 557.xz_r: copy 7 non-zero return code (exit code=137, signal=0)                                                          #
+# Error 557.xz_r: copy 4 non-zero return code (exit code=137, signal=0)                                                          #
+# Error 557.xz_r: copy 10 non-zero return code (exit code=137, signal=0)                                                         #
+# Error 557.xz_r: copy 5 non-zero return code (exit code=137, signal=0)                                                          #
+# Error 557.xz_r: copy 9 non-zero return code (exit code=137, signal=0)                                                          #
+# Error 557.xz_r: copy 1 non-zero return code (exit code=137, signal=0)                                                          #
+# Error 557.xz_r: copy 8 non-zero return code (exit code=137, signal=0)                                                          #
+# Error 557.xz_r: copy 11 non-zero return code (exit code=137, signal=0)                                                         #
+# Error 557.xz_r: copy 13 non-zero return code (exit code=137, signal=0)                                                         #
+#                                                                                                                                #
+#   INVALID RUN -- INVALID RUN -- INVALID RUN -- INVALID RUN -- INVALID RUN                                                      #
+##################################################################################################################################
+----------------------------------------------------------------------------------------------------------------------------------
+For questions about this result, please contact the tester.
+For other inquiries, please contact info@spec.org.
+Copyright 2017-2024 Standard Performance Evaluation Corporation
+Tested with SPEC CPU(R)2017 v1.1.9 on 2024-11-01 04:42:17+0000.
+Report generated on 2024-11-01 05:51:31 by CPU2017 text formatter v6255.

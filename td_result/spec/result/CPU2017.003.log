@@ -1,0 +1,2361 @@
+runcpu v6612 started at 2024-11-01 04:42:16 on "tdx-guest"
+runcpu is: /home/tdx/speccpu2017/bin/harness/runcpu
+runcpu: runcpu '--config=tdx4.cfg' '--tune=base' '--size=ref' intrate --copies=15
+toolset: linux-x86_64
+suite: CPU2017 1.1.9
+
+Locating benchmarks...found 47 benchmarks in 73 benchsets.
+Reading config file '/home/tdx/speccpu2017/config/tdx4.cfg'
+
+1 configuration selected:
+
+ Action    Run Mode   Workload     Report Type      Benchmarks
+--------   --------   --------   ----------------   ---------------------------
+validate   rate       refrate    SPECrate2017_int   intrate                    
+-------------------------------------------------------------------------------
+
+Setting up environment for running intrate...
+Starting runcpu for intrate...
+Running "specperl /home/tdx/speccpu2017/bin/sysinfo" to gather system information.
+sysinfo: r6732 of 2022-11-07 (fe91c89b7ed5c36ae2c92cc097bec197)
+sysinfo: ...getting basic information about kernel, users, and limits
+sysinfo: Getting system information for Linux...
+sysinfo: ...getting CPU info
+sysinfo: ...getting info from numactl
+sysinfo: ...getting memory info
+sysinfo: ...getting info from systemd
+sysinfo: ...getting power info
+sysinfo: ...getting system tuning info
+sysinfo: ...getting OS info
+sysinfo: ...getting disk info
+sysinfo: ...getting info from /sys/devices/virtual/dmi/id
+sysinfo: ...getting info from dmidecode
+Read 305 info lines from the sysinfo program:
+  1: notes_plat_sysinfo_100 =  
+  2: notes_plat_sysinfo_101 = Sysinfo program /home/tdx/speccpu2017/bin/sysinfo
+  3: notes_plat_sysinfo_102 = Rev: r6732 of 2022-11-07 fe91c89b7ed5c36ae2c92cc097bec197
+  4: notes_plat_sysinfo_103 = running on tdx-guest Fri Nov  1 04:42:18 2024
+  5: notes_plat_sysinfo_104 =  
+  6: notes_plat_sysinfo_105 = SUT (System Under Test) info as seen by some common utilities.
+  7: notes_plat_sysinfo_107 = 
+  8: notes_plat_sysinfo_108 = ------------------------------------------------------------
+  9: notes_plat_sysinfo_109 = Table of contents
+ 10: notes_plat_sysinfo_110 = ------------------------------------------------------------
+ 11: notes_plat_sysinfo_111 =  1. uname -a
+ 12: notes_plat_sysinfo_112 =  2. w
+ 13: notes_plat_sysinfo_113 =  3. Username
+ 14: notes_plat_sysinfo_114 =  4. ulimit -a
+ 15: notes_plat_sysinfo_115 =  5. sysinfo process ancestry
+ 16: notes_plat_sysinfo_116 =  6. /proc/cpuinfo
+ 17: notes_plat_sysinfo_117 =  7. lscpu
+ 18: notes_plat_sysinfo_118 =  8. numactl --hardware
+ 19: notes_plat_sysinfo_119 =  9. /proc/meminfo
+ 20: notes_plat_sysinfo_120 = 10. who -r
+ 21: notes_plat_sysinfo_121 = 11. Systemd service manager version: systemd 255 (255.4-1ubuntu8.1)
+ 22: notes_plat_sysinfo_122 = 12. Services, from systemctl list-unit-files
+ 23: notes_plat_sysinfo_123 = 13. Linux kernel boot-time arguments, from /proc/cmdline
+ 24: notes_plat_sysinfo_124 = 14. cpupower frequency-info
+ 25: notes_plat_sysinfo_125 = 15. sysctl
+ 26: notes_plat_sysinfo_126 = 16. /sys/kernel/mm/transparent_hugepage
+ 27: notes_plat_sysinfo_127 = 17. /sys/kernel/mm/transparent_hugepage/khugepaged
+ 28: notes_plat_sysinfo_128 = 18. OS release
+ 29: notes_plat_sysinfo_129 = 19. Disk information
+ 30: notes_plat_sysinfo_130 = 20. /sys/devices/virtual/dmi/id
+ 31: notes_plat_sysinfo_131 = 21. dmidecode
+ 32: notes_plat_sysinfo_132 = 22. BIOS
+ 33: notes_plat_sysinfo_133 = ------------------------------------------------------------
+ 34: notes_plat_sysinfo_206 =  
+ 35: notes_plat_sysinfo_207 = ------------------------------------------------------------
+ 36: notes_plat_sysinfo_208 = 1. uname -a
+ 37: notes_plat_sysinfo_209 =   Linux tdx-guest 6.8.0-35-generic #35-Ubuntu SMP PREEMPT_DYNAMIC Mon May 20 15:51:52 UTC 2024 x86_64 x86_64
+ 38: notes_plat_sysinfo_210 =   x86_64 GNU/Linux
+ 39: notes_plat_sysinfo_211 =  
+ 40: notes_plat_sysinfo_212 = ------------------------------------------------------------
+ 41: notes_plat_sysinfo_213 = 2. w
+ 42: notes_plat_sysinfo_214 =    04:42:18 up 0 min,  1 user,  load average: 0.25, 0.07, 0.02
+ 43: notes_plat_sysinfo_215 =   USER     TTY      FROM             LOGIN@   IDLE   JCPU   PCPU WHAT
+ 44: notes_plat_sysinfo_216 =   root     hvc0     -                04:41    2.00s  2.22s   ?    sh -c w 2>/dev/null
+ 45: notes_plat_sysinfo_217 =  
+ 46: notes_plat_sysinfo_218 = ------------------------------------------------------------
+ 47: notes_plat_sysinfo_219 = 3. Username
+ 48: notes_plat_sysinfo_220 =   From environment variable $USER:  root
+ 49: notes_plat_sysinfo_221 =  
+ 50: notes_plat_sysinfo_222 = ------------------------------------------------------------
+ 51: notes_plat_sysinfo_223 = 4. ulimit -a
+ 52: notes_plat_sysinfo_224 =   time(seconds)        unlimited
+ 53: notes_plat_sysinfo_225 =   file(blocks)         unlimited
+ 54: notes_plat_sysinfo_226 =   data(kbytes)         unlimited
+ 55: notes_plat_sysinfo_227 =   stack(kbytes)        8192
+ 56: notes_plat_sysinfo_228 =   coredump(blocks)     0
+ 57: notes_plat_sysinfo_229 =   memory(kbytes)       unlimited
+ 58: notes_plat_sysinfo_230 =   locked memory(kbytes) 474996
+ 59: notes_plat_sysinfo_231 =   process              14641
+ 60: notes_plat_sysinfo_232 =   nofiles              1024
+ 61: notes_plat_sysinfo_233 =   vmemory(kbytes)      unlimited
+ 62: notes_plat_sysinfo_234 =   locks                unlimited
+ 63: notes_plat_sysinfo_235 =   rtprio               0
+ 64: notes_plat_sysinfo_236 =  
+ 65: notes_plat_sysinfo_237 = ------------------------------------------------------------
+ 66: notes_plat_sysinfo_238 = 5. sysinfo process ancestry
+ 67: notes_plat_sysinfo_239 =  /sbin/init
+ 68: notes_plat_sysinfo_240 =  /bin/login -p --
+ 69: notes_plat_sysinfo_241 =  -bash
+ 70: notes_plat_sysinfo_242 =  runcpu --config=tdx4.cfg --tune=base --size=ref intrate --copies=15
+ 71: notes_plat_sysinfo_243 =  runcpu --configfile tdx4.cfg --tune base --size ref --copies 15 --noreportable --nopower --runmode rate
+ 72: notes_plat_sysinfo_244 =    --tune base --size refrate intrate --nopreenv --note-preenv --logfile
+ 73: notes_plat_sysinfo_245 =    $SPEC/tmp/CPU2017.003/templogs/preenv.intrate.003.0.log --lognum 003.0 --from_runcpu 2
+ 74: notes_plat_sysinfo_246 =  specperl $SPEC/bin/sysinfo
+ 75: notes_plat_sysinfo_247 = $SPEC = /home/tdx/speccpu2017
+ 76: notes_plat_sysinfo_248 =  
+ 77: notes_plat_sysinfo_249 = ------------------------------------------------------------
+ 78: notes_plat_sysinfo_250 = 6. /proc/cpuinfo
+ 79: notes_plat_sysinfo_251 =     model name      : 06/8f
+ 80: notes_plat_sysinfo_252 =     vendor_id       : GenuineIntel
+ 81: notes_plat_sysinfo_253 =     cpu family      : 6
+ 82: notes_plat_sysinfo_254 =     model           : 143
+ 83: notes_plat_sysinfo_255 =     stepping        : 8
+ 84: notes_plat_sysinfo_256 =     microcode       : 0x2b0005d1
+ 85: notes_plat_sysinfo_257 =     bugs            : spectre_v1 spectre_v2 spec_store_bypass swapgs eibrs_pbrsb bhi
+ 86: notes_plat_sysinfo_258 =     cpu cores       : 16
+ 87: notes_plat_sysinfo_259 =     siblings        : 16
+ 88: notes_plat_sysinfo_260 =     1 physical ids (chips)
+ 89: notes_plat_sysinfo_261 =     16 processors (hardware threads)
+ 90: notes_plat_sysinfo_262 =     physical id 0: core ids 0-15
+ 91: notes_plat_sysinfo_263 =     physical id 0: apicids 0-15
+ 92: notes_plat_sysinfo_264 =   Caution: /proc/cpuinfo data regarding chips, cores, and threads is not necessarily reliable, especially for
+ 93: notes_plat_sysinfo_265 =   virtualized systems.  Use the above data carefully.
+ 94: notes_plat_sysinfo_266 =  
+ 95: notes_plat_sysinfo_267 = ------------------------------------------------------------
+ 96: notes_plat_sysinfo_268 = 7. lscpu
+ 97: notes_plat_sysinfo_269 =  
+ 98: notes_plat_sysinfo_270 = From lscpu from util-linux 2.39.3:
+ 99: notes_plat_sysinfo_271 =   Architecture:                         x86_64
+100: notes_plat_sysinfo_272 =   CPU op-mode(s):                       32-bit, 64-bit
+101: notes_plat_sysinfo_273 =   Address sizes:                        52 bits physical, 57 bits virtual
+102: notes_plat_sysinfo_274 =   Byte Order:                           Little Endian
+103: notes_plat_sysinfo_275 =   CPU(s):                               16
+104: notes_plat_sysinfo_276 =   On-line CPU(s) list:                  0-15
+105: notes_plat_sysinfo_277 =   Vendor ID:                            GenuineIntel
+106: notes_plat_sysinfo_278 =   BIOS Vendor ID:                       QEMU
+107: notes_plat_sysinfo_279 =   Model name:                           06/8f
+108: notes_plat_sysinfo_280 =   BIOS Model name:                      pc-q35-8.2  CPU @ 2.0GHz
+109: notes_plat_sysinfo_281 =   BIOS CPU family:                      1
+110: notes_plat_sysinfo_282 =   CPU family:                           6
+111: notes_plat_sysinfo_283 =   Model:                                143
+112: notes_plat_sysinfo_284 =   Thread(s) per core:                   1
+113: notes_plat_sysinfo_285 =   Core(s) per socket:                   16
+114: notes_plat_sysinfo_286 =   Socket(s):                            1
+115: notes_plat_sysinfo_287 =   Stepping:                             8
+116: notes_plat_sysinfo_288 =   BogoMIPS:                             4800.00
+117: notes_plat_sysinfo_289 =   Flags:                                fpu vme de pse tsc msr pae mce cx8 apic sep mtrr pge mca cmov pat
+118: notes_plat_sysinfo_290 =                                         clflush dts mmx fxsr sse sse2 ss ht tm syscall nx pdpe1gb rdtscp lm
+119: notes_plat_sysinfo_291 =                                         constant_tsc bts rep_good nopl tsc_reliable nonstop_tsc cpuid
+120: notes_plat_sysinfo_292 =                                         tsc_known_freq pni pclmulqdq dtes64 ds_cpl ssse3 fma cx16 pdcm pcid
+121: notes_plat_sysinfo_293 =                                         sse4_1 sse4_2 x2apic movbe popcnt tsc_deadline_timer aes xsave avx
+122: notes_plat_sysinfo_294 =                                         f16c rdrand hypervisor lahf_lm abm 3dnowprefetch cpuid_fault ssbd
+123: notes_plat_sysinfo_295 =                                         ibrs ibpb stibp ibrs_enhanced tdx_guest fsgsbase bmi1 avx2 smep bmi2
+124: notes_plat_sysinfo_296 =                                         erms invpcid avx512f avx512dq rdseed adx smap avx512ifma clflushopt
+125: notes_plat_sysinfo_297 =                                         clwb avx512cd sha_ni avx512bw avx512vl xsaveopt xsavec xgetbv1 xsaves
+126: notes_plat_sysinfo_298 =                                         avx_vnni avx512_bf16 wbnoinvd avx512vbmi umip pku ospke avx512_vbmi2
+127: notes_plat_sysinfo_299 =                                         gfni vaes vpclmulqdq avx512_vnni avx512_bitalg avx512_vpopcntdq la57
+128: notes_plat_sysinfo_300 =                                         rdpid bus_lock_detect cldemote movdiri movdir64b fsrm md_clear
+129: notes_plat_sysinfo_301 =                                         serialize tsxldtrk amx_bf16 avx512_fp16 amx_tile amx_int8 flush_l1d
+130: notes_plat_sysinfo_302 =                                         arch_capabilities
+131: notes_plat_sysinfo_303 =   Hypervisor vendor:                    KVM
+132: notes_plat_sysinfo_304 =   Virtualization type:                  full
+133: notes_plat_sysinfo_305 =   L1d cache:                            512 KiB (16 instances)
+134: notes_plat_sysinfo_306 =   L1i cache:                            512 KiB (16 instances)
+135: notes_plat_sysinfo_307 =   L2 cache:                             64 MiB (16 instances)
+136: notes_plat_sysinfo_308 =   L3 cache:                             16 MiB (1 instance)
+137: notes_plat_sysinfo_309 =   NUMA node(s):                         1
+138: notes_plat_sysinfo_310 =   NUMA node0 CPU(s):                    0-15
+139: notes_plat_sysinfo_311 =   Vulnerability Gather data sampling:   Not affected
+140: notes_plat_sysinfo_312 =   Vulnerability Itlb multihit:          Not affected
+141: notes_plat_sysinfo_313 =   Vulnerability L1tf:                   Not affected
+142: notes_plat_sysinfo_314 =   Vulnerability Mds:                    Not affected
+143: notes_plat_sysinfo_315 =   Vulnerability Meltdown:               Not affected
+144: notes_plat_sysinfo_316 =   Vulnerability Mmio stale data:        Not affected
+145: notes_plat_sysinfo_317 =   Vulnerability Reg file data sampling: Not affected
+146: notes_plat_sysinfo_318 =   Vulnerability Retbleed:               Not affected
+147: notes_plat_sysinfo_319 =   Vulnerability Spec rstack overflow:   Not affected
+148: notes_plat_sysinfo_320 =   Vulnerability Spec store bypass:      Mitigation; Speculative Store Bypass disabled via prctl
+149: notes_plat_sysinfo_321 =   Vulnerability Spectre v1:             Mitigation; usercopy/swapgs barriers and __user pointer sanitization
+150: notes_plat_sysinfo_322 =   Vulnerability Spectre v2:             Mitigation; Enhanced / Automatic IBRS; IBPB conditional; RSB filling;
+151: notes_plat_sysinfo_323 =                                         PBRSB-eIBRS SW sequence; BHI BHI_DIS_S
+152: notes_plat_sysinfo_324 =   Vulnerability Srbds:                  Not affected
+153: notes_plat_sysinfo_325 =   Vulnerability Tsx async abort:        Not affected
+154: notes_plat_sysinfo_326 =  
+155: notes_plat_sysinfo_327 = From lscpu --cache:
+156: notes_plat_sysinfo_328 =      NAME ONE-SIZE ALL-SIZE WAYS TYPE        LEVEL  SETS PHY-LINE COHERENCY-SIZE
+157: notes_plat_sysinfo_329 =      L1d       32K     512K    8 Data            1    64        1             64
+158: notes_plat_sysinfo_330 =      L1i       32K     512K    8 Instruction     1    64        1             64
+159: notes_plat_sysinfo_331 =      L2         4M      64M   16 Unified         2  4096        1             64
+160: notes_plat_sysinfo_332 =      L3        16M      16M   16 Unified         3 16384        1             64
+161: notes_plat_sysinfo_333 =  
+162: notes_plat_sysinfo_334 = ------------------------------------------------------------
+163: notes_plat_sysinfo_335 = 8. numactl --hardware
+164: notes_plat_sysinfo_336 = NOTE: a numactl 'node' might or might not correspond to a physical chip.
+165: notes_plat_sysinfo_337 =   available: 1 nodes (0)
+166: notes_plat_sysinfo_338 =   node 0 cpus: 0-15
+167: notes_plat_sysinfo_339 =   node 0 size: 3710 MB
+168: notes_plat_sysinfo_340 =   node 0 free: 3080 MB
+169: notes_plat_sysinfo_341 =   node distances:
+170: notes_plat_sysinfo_342 =   node   0
+171: notes_plat_sysinfo_343 =     0:  10
+172: notes_plat_sysinfo_344 =  
+173: notes_plat_sysinfo_345 = ------------------------------------------------------------
+174: notes_plat_sysinfo_346 = 9. /proc/meminfo
+175: notes_plat_sysinfo_347 =    MemTotal:        3799980 kB
+176: notes_plat_sysinfo_348 =  
+177: notes_plat_sysinfo_349 = ------------------------------------------------------------
+178: notes_plat_sysinfo_350 = 10. who -r
+179: notes_plat_sysinfo_351 =   run-level 5 Nov 1 04:41
+180: notes_plat_sysinfo_352 =  
+181: notes_plat_sysinfo_353 = ------------------------------------------------------------
+182: notes_plat_sysinfo_354 = 11. Systemd service manager version: systemd 255 (255.4-1ubuntu8.1)
+183: notes_plat_sysinfo_355 =   Default Target  Status
+184: notes_plat_sysinfo_356 =   graphical       running
+185: notes_plat_sysinfo_357 =  
+186: notes_plat_sysinfo_358 = ------------------------------------------------------------
+187: notes_plat_sysinfo_359 = 12. Services, from systemctl list-unit-files
+188: notes_plat_sysinfo_360 =   STATE            UNIT FILES
+189: notes_plat_sysinfo_361 =   enabled          ModemManager apparmor apport blk-availability cloud-config cloud-final cloud-init
+190: notes_plat_sysinfo_362 =                    cloud-init-local console-setup cron dmesg e2scrub_reap finalrd getty@ grub-common
+191: notes_plat_sysinfo_363 =                    grub-initrd-fallback keyboard-setup lvm2-monitor multipathd networkd-dispatcher open-iscsi
+192: notes_plat_sysinfo_364 =                    open-vm-tools rsyslog secureboot-db setvtrgb snapd ssh sysstat systemd-networkd
+193: notes_plat_sysinfo_365 =                    systemd-networkd-wait-online systemd-pstore systemd-resolved systemd-timesyncd
+194: notes_plat_sysinfo_366 =                    ua-reboot-cmds ubuntu-advantage udisks2 ufw unattended-upgrades vgauth
+195: notes_plat_sysinfo_367 =   enabled-runtime  netplan-ovs-cleanup systemd-fsck-root systemd-remount-fs
+196: notes_plat_sysinfo_368 =   disabled         console-getty debug-shell iscsid nftables rsync systemd-boot-check-no-failures
+197: notes_plat_sysinfo_369 =                    systemd-confext systemd-network-generator systemd-networkd-wait-online@
+198: notes_plat_sysinfo_370 =                    systemd-pcrlock-file-system systemd-pcrlock-firmware-code systemd-pcrlock-firmware-config
+199: notes_plat_sysinfo_371 =                    systemd-pcrlock-machine-id systemd-pcrlock-make-policy
+200: notes_plat_sysinfo_372 =                    systemd-pcrlock-secureboot-authority systemd-pcrlock-secureboot-policy systemd-sysext
+201: notes_plat_sysinfo_373 =                    systemd-time-wait-sync
+202: notes_plat_sysinfo_374 =   indirect         serial-getty@ systemd-sysupdate systemd-sysupdate-reboot uuidd
+203: notes_plat_sysinfo_375 =   masked           cryptdisks cryptdisks-early hwclock multipath-tools-boot pollinate screen-cleanup sudo
+204: notes_plat_sysinfo_376 =                    x11-common
+205: notes_plat_sysinfo_377 =  
+206: notes_plat_sysinfo_378 = ------------------------------------------------------------
+207: notes_plat_sysinfo_379 = 13. Linux kernel boot-time arguments, from /proc/cmdline
+208: notes_plat_sysinfo_380 =   BOOT_IMAGE=/vmlinuz-6.8.0-35-generic
+209: notes_plat_sysinfo_381 =   root=UUID=41106c9c-97fc-4396-8622-4f692c8c5bb1
+210: notes_plat_sysinfo_382 =   ro
+211: notes_plat_sysinfo_383 =   console=tty1
+212: notes_plat_sysinfo_384 =   console=ttyS0
+213: notes_plat_sysinfo_385 =  
+214: notes_plat_sysinfo_386 = ------------------------------------------------------------
+215: notes_plat_sysinfo_387 = 14. cpupower frequency-info
+216: notes_plat_sysinfo_388 =   analyzing CPU 4:
+217: notes_plat_sysinfo_389 =     Unable to determine current policy
+218: notes_plat_sysinfo_390 =     boost state support:
+219: notes_plat_sysinfo_391 =       Supported: no
+220: notes_plat_sysinfo_392 =       Active: no
+221: notes_plat_sysinfo_393 =  
+222: notes_plat_sysinfo_394 = ------------------------------------------------------------
+223: notes_plat_sysinfo_395 = 15. sysctl
+224: notes_plat_sysinfo_396 =   kernel.numa_balancing               0
+225: notes_plat_sysinfo_397 =   kernel.randomize_va_space           2
+226: notes_plat_sysinfo_398 =   vm.compaction_proactiveness        20
+227: notes_plat_sysinfo_399 =   vm.dirty_background_bytes           0
+228: notes_plat_sysinfo_400 =   vm.dirty_background_ratio          10
+229: notes_plat_sysinfo_401 =   vm.dirty_bytes                      0
+230: notes_plat_sysinfo_402 =   vm.dirty_expire_centisecs        3000
+231: notes_plat_sysinfo_403 =   vm.dirty_ratio                     20
+232: notes_plat_sysinfo_404 =   vm.dirty_writeback_centisecs      500
+233: notes_plat_sysinfo_405 =   vm.dirtytime_expire_seconds     43200
+234: notes_plat_sysinfo_406 =   vm.extfrag_threshold              500
+235: notes_plat_sysinfo_407 =   vm.min_unmapped_ratio               1
+236: notes_plat_sysinfo_408 =   vm.nr_hugepages                     0
+237: notes_plat_sysinfo_409 =   vm.nr_hugepages_mempolicy           0
+238: notes_plat_sysinfo_410 =   vm.nr_overcommit_hugepages          0
+239: notes_plat_sysinfo_411 =   vm.swappiness                      60
+240: notes_plat_sysinfo_412 =   vm.watermark_boost_factor       15000
+241: notes_plat_sysinfo_413 =   vm.watermark_scale_factor          10
+242: notes_plat_sysinfo_414 =   vm.zone_reclaim_mode                0
+243: notes_plat_sysinfo_415 =  
+244: notes_plat_sysinfo_416 = ------------------------------------------------------------
+245: notes_plat_sysinfo_417 = 16. /sys/kernel/mm/transparent_hugepage
+246: notes_plat_sysinfo_418 =   defrag          always defer defer+madvise [madvise] never
+247: notes_plat_sysinfo_419 =   enabled         always [madvise] never
+248: notes_plat_sysinfo_420 =   hpage_pmd_size  2097152
+249: notes_plat_sysinfo_421 =   shmem_enabled   always within_size advise [never] deny force
+250: notes_plat_sysinfo_422 =  
+251: notes_plat_sysinfo_423 = ------------------------------------------------------------
+252: notes_plat_sysinfo_424 = 17. /sys/kernel/mm/transparent_hugepage/khugepaged
+253: notes_plat_sysinfo_425 =   alloc_sleep_millisecs   60000
+254: notes_plat_sysinfo_426 =   defrag                      1
+255: notes_plat_sysinfo_427 =   max_ptes_none             511
+256: notes_plat_sysinfo_428 =   max_ptes_shared           256
+257: notes_plat_sysinfo_429 =   max_ptes_swap              64
+258: notes_plat_sysinfo_430 =   pages_to_scan            4096
+259: notes_plat_sysinfo_431 =   scan_sleep_millisecs    10000
+260: notes_plat_sysinfo_432 =  
+261: notes_plat_sysinfo_433 = ------------------------------------------------------------
+262: notes_plat_sysinfo_434 = 18. OS release
+263: notes_plat_sysinfo_435 =   From /etc/*-release /etc/*-version
+264: notes_plat_sysinfo_436 =   os-release Ubuntu 24.04 LTS
+265: notes_plat_sysinfo_437 =  
+266: notes_plat_sysinfo_438 = ------------------------------------------------------------
+267: notes_plat_sysinfo_439 = 19. Disk information
+268: notes_plat_sysinfo_440 = SPEC is set to: /home/tdx/speccpu2017
+269: notes_plat_sysinfo_441 =   Filesystem     Type  Size  Used Avail Use% Mounted on
+270: notes_plat_sysinfo_442 =   /dev/vda1      ext4   66G   56G   11G  85% /
+271: notes_plat_sysinfo_443 =  
+272: notes_plat_sysinfo_444 = ------------------------------------------------------------
+273: notes_plat_sysinfo_445 = 20. /sys/devices/virtual/dmi/id
+274: notes_plat_sysinfo_446 =     Vendor:         QEMU
+275: notes_plat_sysinfo_447 =     Product:        Standard PC (Q35 + ICH9, 2009)
+276: notes_plat_sysinfo_448 =  
+277: notes_plat_sysinfo_449 = ------------------------------------------------------------
+278: notes_plat_sysinfo_450 = 21. dmidecode
+279: notes_plat_sysinfo_451 =   Additional information from dmidecode 3.5 follows.  WARNING: Use caution when you interpret this section.
+280: notes_plat_sysinfo_452 =   The 'dmidecode' program reads system data which is "intended to allow hardware to be accurately
+281: notes_plat_sysinfo_453 =   determined", but the intent may not be met, as there are frequent changes to hardware, firmware, and the
+282: notes_plat_sysinfo_454 =   "DMTF SMBIOS" standard.
+283: notes_plat_sysinfo_455 =   Memory:
+284: notes_plat_sysinfo_456 =     1x QEMU Not Specified 4 GB
+285: notes_plat_sysinfo_457 =  
+286: notes_plat_sysinfo_458 =  
+287: notes_plat_sysinfo_459 = ------------------------------------------------------------
+288: notes_plat_sysinfo_460 = 22. BIOS
+289: notes_plat_sysinfo_461 = (This section combines info from /sys/devices and dmidecode.)
+290: notes_plat_sysinfo_462 =    BIOS Vendor:       Ubuntu distribution of EDK II
+291: notes_plat_sysinfo_463 =    BIOS Version:      2024.02-3+tdx1.0
+292: notes_plat_sysinfo_464 =    BIOS Date:         07/03/2024
+293: notes_plat_sysinfo_465 =    BIOS Revision:     0.0
+294: hw_cpu_name        = 06/8f
+295: hw_disk            = 66 GB  add more disk info here
+296: hw_memory001       = 3.624 GB fixme: If using DDR4, the format is:
+297: hw_memory002       = 'N GB (N x N GB nRxn PC4-nnnnX-X)'
+298: hw_nchips          = 1
+299: hw_ncores          = 16
+300: hw_nthreadspercore = 1
+301: prepared_by        = root  (is never output, only tags rawfile)
+302: sw_file            = ext4
+303: sw_os001           = Ubuntu 24.04 LTS
+304: sw_os002           = 6.8.0-35-generic
+305: sw_state           = Run level 5 (add definition here)
+
+Retrieving flags file (/home/tdx/speccpu2017/config/flags/gcc.xml)...
+Verbosity = 5
+Action    = validate
+Tune      = base
+Label     = mytest-m64
+Size      = refrate
+benchmarks= 500.perlbench_r,502.gcc_r,505.mcf_r,520.omnetpp_r,523.xalancbmk_r,525.x264_r,531.deepsjeng_r,541.leela_r,548.exchange2_r,557.xz_r,999.specrand_ir
+outputs   = txt,html,cfg,pdf,csv
+username  = root
+Environment settings:
+LD_LIBRARY_PATH = "%{gcc_dir}/lib64/:%{gcc_dir}/lib/:/lib64"
+
+Benchmarks selected: 500.perlbench_r, 502.gcc_r, 505.mcf_r, 520.omnetpp_r, 523.xalancbmk_r, 525.x264_r, 531.deepsjeng_r, 541.leela_r, 548.exchange2_r, 557.xz_r, 999.specrand_ir
+Compiling Binaries
+------------------------------------------------------------------------
+COMP: "/usr/bin/gcc     -std=c99   -m64 -c -o options.o -DSPEC -DNDEBUG -DPERL_CORE -I. -Idist/IO -Icpan/Time-HiRes -Icpan/HTML-Parser -Iext/re -Ispecrand -DDOUBLE_SLASHES_SPECIAL=0 -DSPEC_AUTO_SUPPRESS_OPENMP -D_LARGE_FILES -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64  -g -O3 -march=native        -DSPEC_LINUX_X64  -fno-strict-aliasing -fno-unsafe-math-optimizations -fno-finite-math-only -fgnu89-inline -fcommon     -DSPEC_LP64  <source>"
+C: CC="/usr/bin/gcc     -std=c99   -m64"
+C: COBJOPT="-c -o options"
+P: CPUFLAGS="-DSPEC -DNDEBUG"
+P: BENCH_FLAGS="-DPERL_CORE -I. -Idist/IO -Icpan/Time-HiRes -Icpan/HTML-Parser -Iext/re -Ispecrand -DDOUBLE_SLASHES_SPECIAL=0 -DSPEC_AUTO_SUPPRESS_OPENMP -D_LARGE_FILES -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64"
+P: BENCH_CFLAGS=""
+O: OPTIMIZE="-g -O3 -march=native"
+O: COPTIMIZE=""
+P: PORTABILITY="-DSPEC_LINUX_X64"
+P: CPORTABILITY=""
+O: EXTRA_CFLAGS="-fno-strict-aliasing -fno-unsafe-math-optimizations -fno-finite-math-only -fgnu89-inline -fcommon"
+O: EXTRA_OPTIMIZE=""
+O: EXTRA_COPTIMIZE=""
+P: EXTRA_PORTABILITY="-DSPEC_LP64"
+P: EXTRA_CPORTABILITY=""
+LINK: "/usr/bin/gcc     -std=c99   -m64      -g -O3 -march=native     -DSPEC_LINUX_X64     <objects>   -lm         -o options  "
+C: LD="/usr/bin/gcc     -std=c99   -m64"
+O: OPTIMIZE="-g -O3 -march=native"
+P: PORTABILITY="-DSPEC_LINUX_X64"
+C: MATH_LIBS="-lm"
+C: LDOUT="-o options"
+ CC_VERSION_OPTION:
+gcc (Ubuntu 13.2.0-23ubuntu4) 13.2.0
+Copyright (C) 2023 Free Software Foundation, Inc.
+This is free software; see the source for copying conditions.  There is NO
+warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
+  Up to date 500.perlbench_r base mytest-m64
+------------------------------------------------------------------------
+COMP: "/usr/bin/gcc     -std=c99   -m64 -c -o options.o -DSPEC -DNDEBUG -I. -I./include -I./spec_qsort -DSPEC_502 -DSPEC_AUTO_SUPPRESS_OPENMP -DIN_GCC -DHAVE_CONFIG_H  -g -O3 -march=native          -fno-strict-aliasing -fno-unsafe-math-optimizations -fno-finite-math-only -fgnu89-inline -fcommon     -DSPEC_LP64  <source>"
+C: CC="/usr/bin/gcc     -std=c99   -m64"
+C: COBJOPT="-c -o options"
+P: CPUFLAGS="-DSPEC -DNDEBUG"
+P: BENCH_FLAGS="-I. -I./include -I./spec_qsort -DSPEC_502 -DSPEC_AUTO_SUPPRESS_OPENMP -DIN_GCC -DHAVE_CONFIG_H"
+P: BENCH_CFLAGS=""
+O: OPTIMIZE="-g -O3 -march=native"
+O: COPTIMIZE=""
+P: PORTABILITY=""
+P: CPORTABILITY=""
+O: EXTRA_CFLAGS="-fno-strict-aliasing -fno-unsafe-math-optimizations -fno-finite-math-only -fgnu89-inline -fcommon"
+O: EXTRA_OPTIMIZE=""
+O: EXTRA_COPTIMIZE=""
+P: EXTRA_PORTABILITY="-DSPEC_LP64"
+P: EXTRA_CPORTABILITY=""
+LINK: "/usr/bin/gcc     -std=c99   -m64      -g -O3 -march=native          <objects>   -lm         -o options  "
+C: LD="/usr/bin/gcc     -std=c99   -m64"
+O: OPTIMIZE="-g -O3 -march=native"
+C: MATH_LIBS="-lm"
+C: LDOUT="-o options"
+ CC_VERSION_OPTION:
+gcc (Ubuntu 13.2.0-23ubuntu4) 13.2.0
+Copyright (C) 2023 Free Software Foundation, Inc.
+This is free software; see the source for copying conditions.  There is NO
+warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
+  Up to date 502.gcc_r base mytest-m64
+------------------------------------------------------------------------
+COMP: "/usr/bin/gcc     -std=c99   -m64 -c -o options.o -DSPEC -DNDEBUG  -Ispec_qsort -DSPEC_AUTO_SUPPRESS_OPENMP -g -O3 -march=native          -fno-strict-aliasing -fno-unsafe-math-optimizations -fno-finite-math-only -fgnu89-inline -fcommon     -DSPEC_LP64  <source>"
+C: CC="/usr/bin/gcc     -std=c99   -m64"
+C: COBJOPT="-c -o options"
+P: CPUFLAGS="-DSPEC -DNDEBUG"
+P: BENCH_FLAGS=""
+P: BENCH_CFLAGS="-Ispec_qsort -DSPEC_AUTO_SUPPRESS_OPENMP"
+O: OPTIMIZE="-g -O3 -march=native"
+O: COPTIMIZE=""
+P: PORTABILITY=""
+P: CPORTABILITY=""
+O: EXTRA_CFLAGS="-fno-strict-aliasing -fno-unsafe-math-optimizations -fno-finite-math-only -fgnu89-inline -fcommon"
+O: EXTRA_OPTIMIZE=""
+O: EXTRA_COPTIMIZE=""
+P: EXTRA_PORTABILITY="-DSPEC_LP64"
+P: EXTRA_CPORTABILITY=""
+LINK: "/usr/bin/gcc     -std=c99   -m64      -g -O3 -march=native          <objects>   -lm         -o options  "
+C: LD="/usr/bin/gcc     -std=c99   -m64"
+O: OPTIMIZE="-g -O3 -march=native"
+C: MATH_LIBS="-lm"
+C: LDOUT="-o options"
+ CC_VERSION_OPTION:
+gcc (Ubuntu 13.2.0-23ubuntu4) 13.2.0
+Copyright (C) 2023 Free Software Foundation, Inc.
+This is free software; see the source for copying conditions.  There is NO
+warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
+  Up to date 505.mcf_r base mytest-m64
+------------------------------------------------------------------------
+COMP: "/usr/bin/g++     -std=c++03 -m64 -c -o options.o -DSPEC -DNDEBUG -Isimulator/platdep -Isimulator -Imodel -DWITH_NETBUILDER -DSPEC_AUTO_SUPPRESS_OPENMP  -g -O3 -march=native         -DSPEC_LP64  <source>"
+C: CXXC="/usr/bin/g++     -std=c++03 -m64"
+C: CXXOBJOPT="-c -o options"
+P: CPUFLAGS="-DSPEC -DNDEBUG"
+P: BENCH_FLAGS="-Isimulator/platdep -Isimulator -Imodel -DWITH_NETBUILDER -DSPEC_AUTO_SUPPRESS_OPENMP"
+P: BENCH_CXXFLAGS=""
+O: OPTIMIZE="-g -O3 -march=native"
+O: CXXOPTIMIZE=""
+P: PORTABILITY=""
+P: CXXPORTABILITY=""
+O: EXTRA_CXXFLAGS=""
+O: EXTRA_OPTIMIZE=""
+O: EXTRA_CXXOPTIMIZE=""
+P: EXTRA_PORTABILITY="-DSPEC_LP64"
+P: EXTRA_CXXPORTABILITY=""
+LINK: "/usr/bin/g++     -std=c++03 -m64      -g -O3 -march=native          <objects>            -o options  "
+C: LD="/usr/bin/g++     -std=c++03 -m64"
+O: OPTIMIZE="-g -O3 -march=native"
+C: LDOUT="-o options"
+ CXXC_VERSION_OPTION:
+g++ (Ubuntu 13.2.0-23ubuntu4) 13.2.0
+Copyright (C) 2023 Free Software Foundation, Inc.
+This is free software; see the source for copying conditions.  There is NO
+warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
+  Up to date 520.omnetpp_r base mytest-m64
+------------------------------------------------------------------------
+COMP: "/usr/bin/g++     -std=c++03 -m64 -c -o options.o -DSPEC -DNDEBUG  -DAPP_NO_THREADS -DXALAN_INMEM_MSG_LOADER -I. -Ixercesc -Ixercesc/dom -Ixercesc/dom/impl -Ixercesc/sax -Ixercesc/util/MsgLoaders/InMemory -Ixercesc/util/Transcoders/Iconv -Ixalanc/include -DPROJ_XMLPARSER -DPROJ_XMLUTIL -DPROJ_PARSERS -DPROJ_SAX4C -DPROJ_SAX2 -DPROJ_DOM -DPROJ_VALIDATORS -DXML_USE_INMEM_MESSAGELOADER -DSPEC_AUTO_SUPPRESS_OPENMP -g -O3 -march=native    -DSPEC_LINUX     -DSPEC_LP64  <source>"
+C: CXXC="/usr/bin/g++     -std=c++03 -m64"
+C: CXXOBJOPT="-c -o options"
+P: CPUFLAGS="-DSPEC -DNDEBUG"
+P: BENCH_FLAGS=""
+P: BENCH_CXXFLAGS="-DAPP_NO_THREADS -DXALAN_INMEM_MSG_LOADER -I. -Ixercesc -Ixercesc/dom -Ixercesc/dom/impl -Ixercesc/sax -Ixercesc/util/MsgLoaders/InMemory -Ixercesc/util/Transcoders/Iconv -Ixalanc/include -DPROJ_XMLPARSER -DPROJ_XMLUTIL -DPROJ_PARSERS -DPROJ_SAX4C -DPROJ_SAX2 -DPROJ_DOM -DPROJ_VALIDATORS -DXML_USE_INMEM_MESSAGELOADER -DSPEC_AUTO_SUPPRESS_OPENMP"
+O: OPTIMIZE="-g -O3 -march=native"
+O: CXXOPTIMIZE=""
+P: PORTABILITY="-DSPEC_LINUX"
+P: CXXPORTABILITY=""
+O: EXTRA_CXXFLAGS=""
+O: EXTRA_OPTIMIZE=""
+O: EXTRA_CXXOPTIMIZE=""
+P: EXTRA_PORTABILITY="-DSPEC_LP64"
+P: EXTRA_CXXPORTABILITY=""
+LINK: "/usr/bin/g++     -std=c++03 -m64      -g -O3 -march=native     -DSPEC_LINUX     <objects>            -o options  "
+C: LD="/usr/bin/g++     -std=c++03 -m64"
+O: OPTIMIZE="-g -O3 -march=native"
+P: PORTABILITY="-DSPEC_LINUX"
+C: LDOUT="-o options"
+ CXXC_VERSION_OPTION:
+g++ (Ubuntu 13.2.0-23ubuntu4) 13.2.0
+Copyright (C) 2023 Free Software Foundation, Inc.
+This is free software; see the source for copying conditions.  There is NO
+warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
+  Up to date 523.xalancbmk_r base mytest-m64
+------------------------------------------------------------------------
+COMP: "/usr/bin/gcc     -std=c99   -m64 -c -o options.o -DSPEC -DNDEBUG -Ildecod_src/inc -Ix264_src -Ix264_src/extras -Ix264_src/common -DSPEC_AUTO_SUPPRESS_OPENMP -DSPEC_AUTO_BYTEORDER=0x12345678  -g -O3 -march=native          -fno-strict-aliasing -fno-unsafe-math-optimizations -fno-finite-math-only -fgnu89-inline -fcommon     -DSPEC_LP64  <source>"
+C: CC="/usr/bin/gcc     -std=c99   -m64"
+C: COBJOPT="-c -o options"
+P: CPUFLAGS="-DSPEC -DNDEBUG"
+P: BENCH_FLAGS="-Ildecod_src/inc -Ix264_src -Ix264_src/extras -Ix264_src/common -DSPEC_AUTO_SUPPRESS_OPENMP -DSPEC_AUTO_BYTEORDER=0x12345678"
+P: BENCH_CFLAGS=""
+O: OPTIMIZE="-g -O3 -march=native"
+O: COPTIMIZE=""
+P: PORTABILITY=""
+P: CPORTABILITY=""
+O: EXTRA_CFLAGS="-fno-strict-aliasing -fno-unsafe-math-optimizations -fno-finite-math-only -fgnu89-inline -fcommon"
+O: EXTRA_OPTIMIZE=""
+O: EXTRA_COPTIMIZE=""
+P: EXTRA_PORTABILITY="-DSPEC_LP64"
+P: EXTRA_CPORTABILITY=""
+LINK: "/usr/bin/gcc     -std=c99   -m64      -g -O3 -march=native          <objects>   -lm         -o options  "
+C: LD="/usr/bin/gcc     -std=c99   -m64"
+O: OPTIMIZE="-g -O3 -march=native"
+C: MATH_LIBS="-lm"
+C: LDOUT="-o options"
+ CC_VERSION_OPTION:
+gcc (Ubuntu 13.2.0-23ubuntu4) 13.2.0
+Copyright (C) 2023 Free Software Foundation, Inc.
+This is free software; see the source for copying conditions.  There is NO
+warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
+COMP: "/usr/bin/gcc     -std=c99   -m64 -c -o options.o -DSPEC -DNDEBUG -Ildecod_src/inc -Ix264_src -Ix264_src/extras -Ix264_src/common -DSPEC_AUTO_SUPPRESS_OPENMP -DSPEC_AUTO_BYTEORDER=0x12345678  -g -O3 -march=native          -fno-strict-aliasing -fno-unsafe-math-optimizations -fno-finite-math-only -fgnu89-inline -fcommon     -DSPEC_LP64  <source>"
+C: CC="/usr/bin/gcc     -std=c99   -m64"
+C: COBJOPT="-c -o options"
+P: CPUFLAGS="-DSPEC -DNDEBUG"
+P: BENCH_FLAGS="-Ildecod_src/inc -Ix264_src -Ix264_src/extras -Ix264_src/common -DSPEC_AUTO_SUPPRESS_OPENMP -DSPEC_AUTO_BYTEORDER=0x12345678"
+P: BENCH_CFLAGS=""
+O: OPTIMIZE="-g -O3 -march=native"
+O: COPTIMIZE=""
+P: PORTABILITY=""
+P: CPORTABILITY=""
+O: EXTRA_CFLAGS="-fno-strict-aliasing -fno-unsafe-math-optimizations -fno-finite-math-only -fgnu89-inline -fcommon"
+O: EXTRA_OPTIMIZE=""
+O: EXTRA_COPTIMIZE=""
+P: EXTRA_PORTABILITY="-DSPEC_LP64"
+P: EXTRA_CPORTABILITY=""
+LINK: "/usr/bin/gcc     -std=c99   -m64      -g -O3 -march=native          <objects>   -lm         -o options  "
+C: LD="/usr/bin/gcc     -std=c99   -m64"
+O: OPTIMIZE="-g -O3 -march=native"
+C: MATH_LIBS="-lm"
+C: LDOUT="-o options"
+ CC_VERSION_OPTION:
+gcc (Ubuntu 13.2.0-23ubuntu4) 13.2.0
+Copyright (C) 2023 Free Software Foundation, Inc.
+This is free software; see the source for copying conditions.  There is NO
+warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
+COMP: "/usr/bin/gcc     -std=c99   -m64 -c -o options.o -DSPEC -DNDEBUG -Ildecod_src/inc -Ix264_src -Ix264_src/extras -Ix264_src/common -DSPEC_AUTO_SUPPRESS_OPENMP -DSPEC_AUTO_BYTEORDER=0x12345678  -g -O3 -march=native          -fno-strict-aliasing -fno-unsafe-math-optimizations -fno-finite-math-only -fgnu89-inline -fcommon     -DSPEC_LP64  <source>"
+C: CC="/usr/bin/gcc     -std=c99   -m64"
+C: COBJOPT="-c -o options"
+P: CPUFLAGS="-DSPEC -DNDEBUG"
+P: BENCH_FLAGS="-Ildecod_src/inc -Ix264_src -Ix264_src/extras -Ix264_src/common -DSPEC_AUTO_SUPPRESS_OPENMP -DSPEC_AUTO_BYTEORDER=0x12345678"
+P: BENCH_CFLAGS=""
+O: OPTIMIZE="-g -O3 -march=native"
+O: COPTIMIZE=""
+P: PORTABILITY=""
+P: CPORTABILITY=""
+O: EXTRA_CFLAGS="-fno-strict-aliasing -fno-unsafe-math-optimizations -fno-finite-math-only -fgnu89-inline -fcommon"
+O: EXTRA_OPTIMIZE=""
+O: EXTRA_COPTIMIZE=""
+P: EXTRA_PORTABILITY="-DSPEC_LP64"
+P: EXTRA_CPORTABILITY=""
+LINK: "/usr/bin/gcc     -std=c99   -m64      -g -O3 -march=native          <objects>   -lm         -o options  "
+C: LD="/usr/bin/gcc     -std=c99   -m64"
+O: OPTIMIZE="-g -O3 -march=native"
+C: MATH_LIBS="-lm"
+C: LDOUT="-o options"
+ CC_VERSION_OPTION:
+gcc (Ubuntu 13.2.0-23ubuntu4) 13.2.0
+Copyright (C) 2023 Free Software Foundation, Inc.
+This is free software; see the source for copying conditions.  There is NO
+warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
+  Up to date 525.x264_r base mytest-m64
+------------------------------------------------------------------------
+COMP: "/usr/bin/g++     -std=c++03 -m64 -c -o options.o -DSPEC -DNDEBUG -DSMALL_MEMORY -DSPEC_AUTO_SUPPRESS_OPENMP  -g -O3 -march=native         -DSPEC_LP64  <source>"
+C: CXXC="/usr/bin/g++     -std=c++03 -m64"
+C: CXXOBJOPT="-c -o options"
+P: CPUFLAGS="-DSPEC -DNDEBUG"
+P: BENCH_FLAGS="-DSMALL_MEMORY -DSPEC_AUTO_SUPPRESS_OPENMP"
+P: BENCH_CXXFLAGS=""
+O: OPTIMIZE="-g -O3 -march=native"
+O: CXXOPTIMIZE=""
+P: PORTABILITY=""
+P: CXXPORTABILITY=""
+O: EXTRA_CXXFLAGS=""
+O: EXTRA_OPTIMIZE=""
+O: EXTRA_CXXOPTIMIZE=""
+P: EXTRA_PORTABILITY="-DSPEC_LP64"
+P: EXTRA_CXXPORTABILITY=""
+LINK: "/usr/bin/g++     -std=c++03 -m64      -g -O3 -march=native          <objects>            -o options  "
+C: LD="/usr/bin/g++     -std=c++03 -m64"
+O: OPTIMIZE="-g -O3 -march=native"
+C: LDOUT="-o options"
+ CXXC_VERSION_OPTION:
+g++ (Ubuntu 13.2.0-23ubuntu4) 13.2.0
+Copyright (C) 2023 Free Software Foundation, Inc.
+This is free software; see the source for copying conditions.  There is NO
+warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
+  Up to date 531.deepsjeng_r base mytest-m64
+------------------------------------------------------------------------
+COMP: "/usr/bin/g++     -std=c++03 -m64 -c -o options.o -DSPEC -DNDEBUG -I. -DSPEC_AUTO_SUPPRESS_OPENMP  -g -O3 -march=native         -DSPEC_LP64  <source>"
+C: CXXC="/usr/bin/g++     -std=c++03 -m64"
+C: CXXOBJOPT="-c -o options"
+P: CPUFLAGS="-DSPEC -DNDEBUG"
+P: BENCH_FLAGS="-I. -DSPEC_AUTO_SUPPRESS_OPENMP"
+P: BENCH_CXXFLAGS=""
+O: OPTIMIZE="-g -O3 -march=native"
+O: CXXOPTIMIZE=""
+P: PORTABILITY=""
+P: CXXPORTABILITY=""
+O: EXTRA_CXXFLAGS=""
+O: EXTRA_OPTIMIZE=""
+O: EXTRA_CXXOPTIMIZE=""
+P: EXTRA_PORTABILITY="-DSPEC_LP64"
+P: EXTRA_CXXPORTABILITY=""
+LINK: "/usr/bin/g++     -std=c++03 -m64      -g -O3 -march=native          <objects>            -o options  "
+C: LD="/usr/bin/g++     -std=c++03 -m64"
+O: OPTIMIZE="-g -O3 -march=native"
+C: LDOUT="-o options"
+ CXXC_VERSION_OPTION:
+g++ (Ubuntu 13.2.0-23ubuntu4) 13.2.0
+Copyright (C) 2023 Free Software Foundation, Inc.
+This is free software; see the source for copying conditions.  There is NO
+warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
+  Up to date 541.leela_r base mytest-m64
+------------------------------------------------------------------------
+FPP: "specpp -DSPEC -DNDEBUG -DSPEC_AUTO_SUPPRESS_OPENMP -DSPEC_LP64 <source> -o <source>.fppized.f9x"
+P: CPUFLAGS="-DSPEC -DNDEBUG"
+P: BENCH_FLAGS="-DSPEC_AUTO_SUPPRESS_OPENMP"
+O: OPTIMIZE=""
+O: EXTRA_OPTIMIZE=""
+O: FPPOPTIMIZE=""
+O: EXTRA_FPPOPTIMIZE=""
+O: FOPTIMIZE=""
+O: EXTRA_FOPTIMIZE=""
+P: PORTABILITY=""
+P: EXTRA_PORTABILITY="-DSPEC_LP64"
+P: FPORTABILITY=""
+P: EXTRA_FPORTABILITY=""
+COMP: "/usr/bin/gfortran           -m64 -c -o options.o -g -O3 -march=native <source>"
+C: FC="/usr/bin/gfortran           -m64"
+C: FOBJOPT="-c -o options"
+P: CPUFLAGS="-DSPEC -DNDEBUG"
+P: BENCH_FLAGS="-DSPEC_AUTO_SUPPRESS_OPENMP"
+P: BENCH_FFLAGS=""
+O: OPTIMIZE="-g -O3 -march=native"
+O: FOPTIMIZE=""
+P: PORTABILITY=""
+P: FPORTABILITY=""
+O: EXTRA_FFLAGS=""
+O: EXTRA_OPTIMIZE=""
+O: EXTRA_FOPTIMIZE=""
+P: EXTRA_PORTABILITY="-DSPEC_LP64"
+P: EXTRA_FPORTABILITY=""
+LINK: "/usr/bin/gfortran           -m64      -g -O3 -march=native          <objects>            -o options  "
+C: LD="/usr/bin/gfortran           -m64"
+O: OPTIMIZE="-g -O3 -march=native"
+C: LDOUT="-o options"
+ FC_VERSION_OPTION:
+GNU Fortran (Ubuntu 13.2.0-23ubuntu4) 13.2.0
+Copyright (C) 2023 Free Software Foundation, Inc.
+This is free software; see the source for copying conditions.  There is NO
+warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
+  Up to date 548.exchange2_r base mytest-m64
+------------------------------------------------------------------------
+COMP: "/usr/bin/gcc     -std=c99   -m64 -c -o options.o -DSPEC -DNDEBUG -DSPEC_AUTO_BYTEORDER=0x12345678 -DHAVE_CONFIG_H=1 -DSPEC_MEM_IO -DSPEC_XZ -DSPEC_AUTO_SUPPRESS_OPENMP -I. -Ispec_mem_io -Isha-2 -Icommon -Iliblzma/api -Iliblzma/lzma -Iliblzma/common -Iliblzma/check -Iliblzma/simple -Iliblzma/delta -Iliblzma/lz -Iliblzma/rangecoder  -g -O3 -march=native          -fno-strict-aliasing -fno-unsafe-math-optimizations -fno-finite-math-only -fgnu89-inline -fcommon     -DSPEC_LP64  <source>"
+C: CC="/usr/bin/gcc     -std=c99   -m64"
+C: COBJOPT="-c -o options"
+P: CPUFLAGS="-DSPEC -DNDEBUG"
+P: BENCH_FLAGS="-DSPEC_AUTO_BYTEORDER=0x12345678 -DHAVE_CONFIG_H=1 -DSPEC_MEM_IO -DSPEC_XZ -DSPEC_AUTO_SUPPRESS_OPENMP -I. -Ispec_mem_io -Isha-2 -Icommon -Iliblzma/api -Iliblzma/lzma -Iliblzma/common -Iliblzma/check -Iliblzma/simple -Iliblzma/delta -Iliblzma/lz -Iliblzma/rangecoder"
+P: BENCH_CFLAGS=""
+O: OPTIMIZE="-g -O3 -march=native"
+O: COPTIMIZE=""
+P: PORTABILITY=""
+P: CPORTABILITY=""
+O: EXTRA_CFLAGS="-fno-strict-aliasing -fno-unsafe-math-optimizations -fno-finite-math-only -fgnu89-inline -fcommon"
+O: EXTRA_OPTIMIZE=""
+O: EXTRA_COPTIMIZE=""
+P: EXTRA_PORTABILITY="-DSPEC_LP64"
+P: EXTRA_CPORTABILITY=""
+LINK: "/usr/bin/gcc     -std=c99   -m64      -g -O3 -march=native          <objects>            -o options  "
+C: LD="/usr/bin/gcc     -std=c99   -m64"
+O: OPTIMIZE="-g -O3 -march=native"
+C: LDOUT="-o options"
+ CC_VERSION_OPTION:
+gcc (Ubuntu 13.2.0-23ubuntu4) 13.2.0
+Copyright (C) 2023 Free Software Foundation, Inc.
+This is free software; see the source for copying conditions.  There is NO
+warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
+  Up to date 557.xz_r base mytest-m64
+------------------------------------------------------------------------
+COMP: "/usr/bin/gcc     -std=c99   -m64 -c -o options.o -DSPEC -DNDEBUG -Ispecrand-common  -g -O3 -march=native          -fno-strict-aliasing -fno-unsafe-math-optimizations -fno-finite-math-only -fgnu89-inline -fcommon     -DSPEC_LP64  <source>"
+C: CC="/usr/bin/gcc     -std=c99   -m64"
+C: COBJOPT="-c -o options"
+P: CPUFLAGS="-DSPEC -DNDEBUG"
+P: BENCH_FLAGS="-Ispecrand-common"
+P: BENCH_CFLAGS=""
+O: OPTIMIZE="-g -O3 -march=native"
+O: COPTIMIZE=""
+P: PORTABILITY=""
+P: CPORTABILITY=""
+O: EXTRA_CFLAGS="-fno-strict-aliasing -fno-unsafe-math-optimizations -fno-finite-math-only -fgnu89-inline -fcommon"
+O: EXTRA_OPTIMIZE=""
+O: EXTRA_COPTIMIZE=""
+P: EXTRA_PORTABILITY="-DSPEC_LP64"
+P: EXTRA_CPORTABILITY=""
+LINK: "/usr/bin/gcc     -std=c99   -m64      -g -O3 -march=native          <objects>            -o options  "
+C: LD="/usr/bin/gcc     -std=c99   -m64"
+O: OPTIMIZE="-g -O3 -march=native"
+C: LDOUT="-o options"
+ CC_VERSION_OPTION:
+gcc (Ubuntu 13.2.0-23ubuntu4) 13.2.0
+Copyright (C) 2023 Free Software Foundation, Inc.
+This is free software; see the source for copying conditions.  There is NO
+warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
+  Up to date 999.specrand_ir base mytest-m64
+
+
+Setting Up Run Directories
+  Setting up 500.perlbench_r refrate (ref) base mytest-m64 (15 copies): run_base_refrate_mytest-m64.0211-0225
+  Setting up 502.gcc_r refrate (ref) base mytest-m64 (15 copies): run_base_refrate_mytest-m64.0076-0090
+  Setting up 505.mcf_r refrate (ref) base mytest-m64 (15 copies): run_base_refrate_mytest-m64.0211-0225
+  Setting up 520.omnetpp_r refrate (ref) base mytest-m64 (15 copies): run_base_refrate_mytest-m64.0211-0225
+  Setting up 523.xalancbmk_r refrate (ref) base mytest-m64 (15 copies): run_base_refrate_mytest-m64.0211-0225
+  Setting up 525.x264_r refrate (ref) base mytest-m64 (15 copies): OpenMP environment variables removed: None
+OpenMP environment variables in effect:
+	OMP_NUM_THREADS	=> '1'
+	OMP_THREAD_LIMIT	=> '1'
+Pre-run environment changes:
+	'OMP_NUM_THREADS' added: (value now '1')
+	'OMP_THREAD_LIMIT' added: (value now '1')
+Issuing command '/home/tdx/speccpu2017/bin/specinvoke -d /home/tdx/speccpu2017/benchspec/CPU/525.x264_r/run/run_base_refrate_mytest-m64.0211 -f inputgen.cmd -e inputgen.err -o inputgen.stdout'
+Start command: 2024-11-01 04:42:41 (1730436161.22898)
+Stop command: 2024-11-01 04:42:54 (1730436174.66899)
+Elapsed time for command: 00:00:13 (13.440013885498)
+Input generation total elapsed time = 13 seconds
+Input generation elapsed time (0:1) = 13.275868 seconds
+run_base_refrate_mytest-m64.0211-0225
+  Setting up 531.deepsjeng_r refrate (ref) base mytest-m64 (15 copies): run_base_refrate_mytest-m64.0211-0225
+  Setting up 541.leela_r refrate (ref) base mytest-m64 (15 copies): run_base_refrate_mytest-m64.0211-0225
+  Setting up 548.exchange2_r refrate (ref) base mytest-m64 (15 copies): run_base_refrate_mytest-m64.0211-0225
+  Setting up 557.xz_r refrate (ref) base mytest-m64 (15 copies): run_base_refrate_mytest-m64.0211-0225
+  Setting up 999.specrand_ir refrate (ref) base mytest-m64 (15 copies): run_base_refrate_mytest-m64.0211-0225
+-----------------------------------
+Running Benchmarks
+-----------------------------------
+  Running 500.perlbench_r refrate (ref) base mytest-m64 (15 copies) [2024-11-01 04:43:02]
+OpenMP environment variables removed: None
+OpenMP environment variables in effect:
+	OMP_NUM_THREADS	=> '1'
+	OMP_THREAD_LIMIT	=> '1'
+Pre-run environment changes:
+	'OMP_NUM_THREADS' added: (value now '1')
+	'OMP_THREAD_LIMIT' added: (value now '1')
+Commands to run (specinvoke command file):
+    -r
+    -N C
+    -C /home/tdx/speccpu2017/benchspec/CPU/500.perlbench_r/run/run_base_refrate_mytest-m64.0211
+    -C /home/tdx/speccpu2017/benchspec/CPU/500.perlbench_r/run/run_base_refrate_mytest-m64.0212
+    -C /home/tdx/speccpu2017/benchspec/CPU/500.perlbench_r/run/run_base_refrate_mytest-m64.0213
+    -C /home/tdx/speccpu2017/benchspec/CPU/500.perlbench_r/run/run_base_refrate_mytest-m64.0214
+    -C /home/tdx/speccpu2017/benchspec/CPU/500.perlbench_r/run/run_base_refrate_mytest-m64.0215
+    -C /home/tdx/speccpu2017/benchspec/CPU/500.perlbench_r/run/run_base_refrate_mytest-m64.0216
+    -C /home/tdx/speccpu2017/benchspec/CPU/500.perlbench_r/run/run_base_refrate_mytest-m64.0217
+    -C /home/tdx/speccpu2017/benchspec/CPU/500.perlbench_r/run/run_base_refrate_mytest-m64.0218
+    -C /home/tdx/speccpu2017/benchspec/CPU/500.perlbench_r/run/run_base_refrate_mytest-m64.0219
+    -C /home/tdx/speccpu2017/benchspec/CPU/500.perlbench_r/run/run_base_refrate_mytest-m64.0220
+    -C /home/tdx/speccpu2017/benchspec/CPU/500.perlbench_r/run/run_base_refrate_mytest-m64.0221
+    -C /home/tdx/speccpu2017/benchspec/CPU/500.perlbench_r/run/run_base_refrate_mytest-m64.0222
+    -C /home/tdx/speccpu2017/benchspec/CPU/500.perlbench_r/run/run_base_refrate_mytest-m64.0223
+    -C /home/tdx/speccpu2017/benchspec/CPU/500.perlbench_r/run/run_base_refrate_mytest-m64.0224
+    -C /home/tdx/speccpu2017/benchspec/CPU/500.perlbench_r/run/run_base_refrate_mytest-m64.0225
+    -o checkspam.2500.5.25.11.150.1.1.1.1.out -e checkspam.2500.5.25.11.150.1.1.1.1.err ../run_base_refrate_mytest-m64.0211/perlbench_r_base.mytest-m64 -I./lib checkspam.pl 2500 5 25 11 150 1 1 1 1 > checkspam.2500.5.25.11.150.1.1.1.1.out 2>> checkspam.2500.5.25.11.150.1.1.1.1.err (timed)
+    -o diffmail.4.800.10.17.19.300.out -e diffmail.4.800.10.17.19.300.err ../run_base_refrate_mytest-m64.0211/perlbench_r_base.mytest-m64 -I./lib diffmail.pl 4 800 10 17 19 300 > diffmail.4.800.10.17.19.300.out 2>> diffmail.4.800.10.17.19.300.err (timed)
+    -o splitmail.6400.12.26.16.100.0.out -e splitmail.6400.12.26.16.100.0.err ../run_base_refrate_mytest-m64.0211/perlbench_r_base.mytest-m64 -I./lib splitmail.pl 6400 12 26 16 100 0 > splitmail.6400.12.26.16.100.0.out 2>> splitmail.6400.12.26.16.100.0.err (timed)
+Specinvoke: /home/tdx/speccpu2017/bin/specinvoke -d /home/tdx/speccpu2017/benchspec/CPU/500.perlbench_r/run/run_base_refrate_mytest-m64.0211 -f speccmds.cmd -q -e speccmds.err -o speccmds.stdout
+Issuing command '/home/tdx/speccpu2017/bin/specinvoke -d /home/tdx/speccpu2017/benchspec/CPU/500.perlbench_r/run/run_base_refrate_mytest-m64.0211 -f speccmds.cmd -q -e speccmds.err -o speccmds.stdout'
+Start command: 2024-11-01 04:43:02 (1730436182.37118)
+Stop command: 2024-11-01 04:48:30 (1730436510.30114)
+Elapsed time for command: 00:05:27 (327.929956912994)
+Workload elapsed time (copy 1 workload 1) = 119.984011 seconds
+Workload elapsed time (copy 0 workload 1) = 120.046358 seconds
+Workload elapsed time (copy 12 workload 1) = 120.652078 seconds
+Workload elapsed time (copy 3 workload 1) = 120.685613 seconds
+Workload elapsed time (copy 11 workload 1) = 121.408584 seconds
+Workload elapsed time (copy 9 workload 1) = 124.778353 seconds
+Workload elapsed time (copy 4 workload 1) = 126.543909 seconds
+Workload elapsed time (copy 13 workload 1) = 127.342217 seconds
+Workload elapsed time (copy 5 workload 1) = 128.043535 seconds
+Workload elapsed time (copy 7 workload 1) = 129.335098 seconds
+Workload elapsed time (copy 8 workload 1) = 130.861833 seconds
+Workload elapsed time (copy 10 workload 1) = 131.949691 seconds
+Workload elapsed time (copy 2 workload 1) = 132.133011 seconds
+Workload elapsed time (copy 14 workload 1) = 133.224881 seconds
+Workload elapsed time (copy 6 workload 1) = 135.651538 seconds
+Workload elapsed time (copy 1 workload 2) = 59.773501 seconds
+Workload elapsed time (copy 3 workload 2) = 59.475624 seconds
+Workload elapsed time (copy 12 workload 2) = 59.62569 seconds
+Workload elapsed time (copy 0 workload 2) = 61.547015 seconds
+Workload elapsed time (copy 11 workload 2) = 61.446693 seconds
+Workload elapsed time (copy 13 workload 2) = 59.41096 seconds
+Workload elapsed time (copy 9 workload 2) = 62.558408 seconds
+Workload elapsed time (copy 5 workload 2) = 59.646 seconds
+Workload elapsed time (copy 4 workload 2) = 61.484401 seconds
+Workload elapsed time (copy 7 workload 2) = 60.645904 seconds
+Workload elapsed time (copy 10 workload 2) = 60.229805 seconds
+Workload elapsed time (copy 8 workload 2) = 62.738853 seconds
+Workload elapsed time (copy 2 workload 2) = 61.788397 seconds
+Workload elapsed time (copy 14 workload 2) = 61.575735 seconds
+Workload elapsed time (copy 6 workload 2) = 61.643407 seconds
+Workload elapsed time (copy 1 workload 3) = 114.788703 seconds
+Workload elapsed time (copy 2 workload 3) = 108.337955 seconds
+Workload elapsed time (copy 4 workload 3) = 116.978602 seconds
+Workload elapsed time (copy 3 workload 3) = 125.326292 seconds
+Workload elapsed time (copy 8 workload 3) = 116.063192 seconds
+Workload elapsed time (copy 12 workload 3) = 131.312786 seconds
+Workload elapsed time (copy 14 workload 3) = 117.935896 seconds
+Workload elapsed time (copy 9 workload 3) = 127.226124 seconds
+Workload elapsed time (copy 0 workload 3) = 135.834925 seconds
+Workload elapsed time (copy 5 workload 3) = 131.484807 seconds
+Workload elapsed time (copy 6 workload 3) = 122.598209 seconds
+Workload elapsed time (copy 11 workload 3) = 138.612867 seconds
+Workload elapsed time (copy 13 workload 3) = 136.696969 seconds
+Workload elapsed time (copy 10 workload 3) = 133.594431 seconds
+Workload elapsed time (copy 7 workload 3) = 137.782869 seconds
+Copy 0 of 500.perlbench_r (base refrate) run 1 finished at 2024-11-01 04:48:19.  Total elapsed time: 317.428298
+Copy 1 of 500.perlbench_r (base refrate) run 1 finished at 2024-11-01 04:47:56.  Total elapsed time: 294.546215
+Copy 2 of 500.perlbench_r (base refrate) run 1 finished at 2024-11-01 04:48:04.  Total elapsed time: 302.259363
+Copy 3 of 500.perlbench_r (base refrate) run 1 finished at 2024-11-01 04:48:07.  Total elapsed time: 305.487529
+Copy 4 of 500.perlbench_r (base refrate) run 1 finished at 2024-11-01 04:48:07.  Total elapsed time: 305.006912
+Copy 5 of 500.perlbench_r (base refrate) run 1 finished at 2024-11-01 04:48:21.  Total elapsed time: 319.174342
+Copy 6 of 500.perlbench_r (base refrate) run 1 finished at 2024-11-01 04:48:22.  Total elapsed time: 319.893154
+Copy 7 of 500.perlbench_r (base refrate) run 1 finished at 2024-11-01 04:48:30.  Total elapsed time: 327.763871
+Copy 8 of 500.perlbench_r (base refrate) run 1 finished at 2024-11-01 04:48:12.  Total elapsed time: 309.663878
+Copy 9 of 500.perlbench_r (base refrate) run 1 finished at 2024-11-01 04:48:16.  Total elapsed time: 314.562885
+Copy 10 of 500.perlbench_r (base refrate) run 1 finished at 2024-11-01 04:48:28.  Total elapsed time: 325.773927
+Copy 11 of 500.perlbench_r (base refrate) run 1 finished at 2024-11-01 04:48:23.  Total elapsed time: 321.468144
+Copy 12 of 500.perlbench_r (base refrate) run 1 finished at 2024-11-01 04:48:13.  Total elapsed time: 311.590554
+Copy 13 of 500.perlbench_r (base refrate) run 1 finished at 2024-11-01 04:48:25.  Total elapsed time: 323.450146
+Copy 14 of 500.perlbench_r (base refrate) run 1 finished at 2024-11-01 04:48:15.  Total elapsed time: 312.736512
+OpenMP environment variables removed: None
+OpenMP environment variables in effect:
+	OMP_NUM_THREADS	=> '1'
+	OMP_THREAD_LIMIT	=> '1'
+Pre-run environment changes:
+	'OMP_NUM_THREADS' added: (value now '1')
+	'OMP_THREAD_LIMIT' added: (value now '1')
+comparing 'checkspam.2500.5.25.11.150.1.1.1.1.out' with floatcompare=1, nansupport=no
+comparing 'diffmail.4.800.10.17.19.300.out' with floatcompare=1, nansupport=no
+comparing 'splitmail.6400.12.26.16.100.0.out' with floatcompare=1, nansupport=no
+Specinvoke: /home/tdx/speccpu2017/bin/specinvoke -d /home/tdx/speccpu2017/benchspec/CPU/500.perlbench_r/run/run_base_refrate_mytest-m64.0211 -f compare.cmd -E -e compare.err -o compare.stdout
+Issuing command '/home/tdx/speccpu2017/bin/specinvoke -d /home/tdx/speccpu2017/benchspec/CPU/500.perlbench_r/run/run_base_refrate_mytest-m64.0211 -f compare.cmd -E -e compare.err -o compare.stdout'
+Start command: 2024-11-01 04:48:30 (1730436510.44739)
+Stop command: 2024-11-01 04:48:31 (1730436511.51223)
+Elapsed time for command: 00:00:01 (1.0648410320282)
+Benchmark Times:
+  Run Start:    2024-11-01 04:43:02 (1730436182)
+  Rate Start:   2024-11-01 04:43:02 (1730436182.37888)
+  Rate End:     2024-11-01 04:48:30 (1730436510.14438)
+  Run Stop:     2024-11-01 04:48:30 (1730436510)
+  Run Elapsed:  00:05:28 (328)
+  Run Reported: 00:05:27 (327 765496969 327.765497)
+ Success 500.perlbench_r base refrate ratio=72.86, runtime=327.765497, copies=15, threads=1, power=0.00W, temp=0.00 degC, humidity=0.00%
+-----------------------------------
+  Running 502.gcc_r refrate (ref) base mytest-m64 (15 copies) [2024-11-01 04:48:32]
+OpenMP environment variables removed: None
+OpenMP environment variables in effect:
+	OMP_NUM_THREADS	=> '1'
+	OMP_THREAD_LIMIT	=> '1'
+Pre-run environment changes:
+	'OMP_NUM_THREADS' added: (value now '1')
+	'OMP_THREAD_LIMIT' added: (value now '1')
+Commands to run (specinvoke command file):
+    -r
+    -N C
+    -C /home/tdx/speccpu2017/benchspec/CPU/502.gcc_r/run/run_base_refrate_mytest-m64.0076
+    -C /home/tdx/speccpu2017/benchspec/CPU/502.gcc_r/run/run_base_refrate_mytest-m64.0077
+    -C /home/tdx/speccpu2017/benchspec/CPU/502.gcc_r/run/run_base_refrate_mytest-m64.0078
+    -C /home/tdx/speccpu2017/benchspec/CPU/502.gcc_r/run/run_base_refrate_mytest-m64.0079
+    -C /home/tdx/speccpu2017/benchspec/CPU/502.gcc_r/run/run_base_refrate_mytest-m64.0080
+    -C /home/tdx/speccpu2017/benchspec/CPU/502.gcc_r/run/run_base_refrate_mytest-m64.0081
+    -C /home/tdx/speccpu2017/benchspec/CPU/502.gcc_r/run/run_base_refrate_mytest-m64.0082
+    -C /home/tdx/speccpu2017/benchspec/CPU/502.gcc_r/run/run_base_refrate_mytest-m64.0083
+    -C /home/tdx/speccpu2017/benchspec/CPU/502.gcc_r/run/run_base_refrate_mytest-m64.0084
+    -C /home/tdx/speccpu2017/benchspec/CPU/502.gcc_r/run/run_base_refrate_mytest-m64.0085
+    -C /home/tdx/speccpu2017/benchspec/CPU/502.gcc_r/run/run_base_refrate_mytest-m64.0086
+    -C /home/tdx/speccpu2017/benchspec/CPU/502.gcc_r/run/run_base_refrate_mytest-m64.0087
+    -C /home/tdx/speccpu2017/benchspec/CPU/502.gcc_r/run/run_base_refrate_mytest-m64.0088
+    -C /home/tdx/speccpu2017/benchspec/CPU/502.gcc_r/run/run_base_refrate_mytest-m64.0089
+    -C /home/tdx/speccpu2017/benchspec/CPU/502.gcc_r/run/run_base_refrate_mytest-m64.0090
+    -o gcc-pp.opts-O3_-finline-limit_0_-fif-conversion_-fif-conversion2.out -e gcc-pp.opts-O3_-finline-limit_0_-fif-conversion_-fif-conversion2.err ../run_base_refrate_mytest-m64.0076/cpugcc_r_base.mytest-m64 gcc-pp.c -O3 -finline-limit=0 -fif-conversion -fif-conversion2 -o gcc-pp.opts-O3_-finline-limit_0_-fif-conversion_-fif-conversion2.s > gcc-pp.opts-O3_-finline-limit_0_-fif-conversion_-fif-conversion2.out 2>> gcc-pp.opts-O3_-finline-limit_0_-fif-conversion_-fif-conversion2.err (timed)
+    -o gcc-pp.opts-O2_-finline-limit_36000_-fpic.out -e gcc-pp.opts-O2_-finline-limit_36000_-fpic.err ../run_base_refrate_mytest-m64.0076/cpugcc_r_base.mytest-m64 gcc-pp.c -O2 -finline-limit=36000 -fpic -o gcc-pp.opts-O2_-finline-limit_36000_-fpic.s > gcc-pp.opts-O2_-finline-limit_36000_-fpic.out 2>> gcc-pp.opts-O2_-finline-limit_36000_-fpic.err (timed)
+    -o gcc-smaller.opts-O3_-fipa-pta.out -e gcc-smaller.opts-O3_-fipa-pta.err ../run_base_refrate_mytest-m64.0076/cpugcc_r_base.mytest-m64 gcc-smaller.c -O3 -fipa-pta -o gcc-smaller.opts-O3_-fipa-pta.s > gcc-smaller.opts-O3_-fipa-pta.out 2>> gcc-smaller.opts-O3_-fipa-pta.err (timed)
+    -o ref32.opts-O5.out -e ref32.opts-O5.err ../run_base_refrate_mytest-m64.0076/cpugcc_r_base.mytest-m64 ref32.c -O5 -o ref32.opts-O5.s > ref32.opts-O5.out 2>> ref32.opts-O5.err (timed)
+    -o ref32.opts-O3_-fselective-scheduling_-fselective-scheduling2.out -e ref32.opts-O3_-fselective-scheduling_-fselective-scheduling2.err ../run_base_refrate_mytest-m64.0076/cpugcc_r_base.mytest-m64 ref32.c -O3 -fselective-scheduling -fselective-scheduling2 -o ref32.opts-O3_-fselective-scheduling_-fselective-scheduling2.s > ref32.opts-O3_-fselective-scheduling_-fselective-scheduling2.out 2>> ref32.opts-O3_-fselective-scheduling_-fselective-scheduling2.err (timed)
+Specinvoke: /home/tdx/speccpu2017/bin/specinvoke -d /home/tdx/speccpu2017/benchspec/CPU/502.gcc_r/run/run_base_refrate_mytest-m64.0076 -f speccmds.cmd -q -e speccmds.err -o speccmds.stdout
+Issuing command '/home/tdx/speccpu2017/bin/specinvoke -d /home/tdx/speccpu2017/benchspec/CPU/502.gcc_r/run/run_base_refrate_mytest-m64.0076 -f speccmds.cmd -q -e speccmds.err -o speccmds.stdout'
+Start command: 2024-11-01 04:48:32 (1730436512.21147)
+Stop command: 2024-11-01 05:09:55 (1730437795.85011)
+Elapsed time for command: 00:21:23 (1283.63864517212)
+502.gcc_r: copy 9 non-zero return code (exit code=137, signal=0)
+
+****************************************
+Contents of gcc-pp.opts-O3_-finline-limit_0_-fif-conversion_-fif-conversion2.err
+****************************************
+gcc-pp.c: In function 'fibheap_delete_node':
+gcc-pp.c:19958:49: warning: overflow in implicit constant conversion
+gcc-pp.c: In function 'htab_mod_1':
+gcc-pp.c:25469:7: warning: right shift count >= width of type
+gcc-pp.c: At top level:
+gcc-pp.c:463503:13: warning: 'compute_transp' used but never defined
+gcc-pp.c:463518:12: warning: 'one_cprop_pass' used but never defined
+gcc-pp.c:463534:12: warning: 'one_pre_gcse_pass' used but never defined
+gcc-pp.c:463542:12: warning: 'one_code_hoisting_pass' used but never defined
+gcc-pp.c:463551:25: warning: 'find_rtx_in_ldst' used but never defined
+gcc-pp.c:463579:13: warning: 'store_motion' used but never defined
+gcc-pp.c:463582:13: warning: 'free_modify_mem_tables' used but never defined
+gcc-pp.c:463588:22: warning: 'is_too_expensive' used but never defined
+Killed
+
+****************************************
+****************************************
+Contents of speccmds.out
+****************************************
+specinvoke r4356
+ Invoked as: /home/tdx/speccpu2017/bin/specinvoke -d /home/tdx/speccpu2017/benchspec/CPU/502.gcc_r/run/run_base_refrate_mytest-m64.0076 -f speccmds.cmd -q -e speccmds.err -o speccmds.stdout
+timer ticks over every 1000 ns
+ Environment in effect for these runs:
+ # 1: USER=root
+ # 2: LANG=C.UTF-8
+ # 3: PATH=/home/tdx/speccpu2017/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
+ # 4: LESSOPEN=| /usr/bin/lesspipe %s
+ # 5: MEMORY_PRESSURE_WATCH=/sys/fs/cgroup/system.slice/system-serial\x2dgetty.slice/serial-getty@hvc0.service/memory.pressure
+ # 6: LS_COLORS=
+ # 7: MAIL=/var/mail/root
+ # 8: DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/0/bus
+ # 9: XDG_SESSION_TYPE=tty
+ #10: LC_LANG=C
+ #11: TERM=xterm-256color
+ #12: SHELL=/bin/bash
+ #13: INVOCATION_ID=df5b4a4c7b38482cb2c812e88c41b970
+ #14: CREDENTIALS_DIRECTORY=/run/credentials/serial-getty@hvc0.service
+ #15: XDG_DATA_DIRS=/usr/local/share:/usr/share:/var/lib/snapd/desktop
+ #16: SYSTEMD_EXEC_PID=901
+ #17: XDG_SESSION_CLASS=user
+ #18: SPECPERLLIB=/home/tdx/speccpu2017/bin/lib:/home/tdx/speccpu2017/bin
+ #19: LOGNAME=root
+ #20: LC_ALL=C
+ #21: _=/home/tdx/speccpu2017/bin/runcpu
+ #22: SPECDB_PWD=/home/tdx/speccpu2017
+ #23: SHLVL=1
+ #24: XDG_SESSION_ID=1
+ #25: PWD=/home/tdx/speccpu2017
+ #26: XDG_RUNTIME_DIR=/run/user/0
+ #27: OLDPWD=/root
+ #28: SPEC=/home/tdx/speccpu2017
+ #29: HUSHLOGIN=FALSE
+ #30: MEMORY_PRESSURE_WRITE=c29tZSAyMDAwMDAgMjAwMDAwMAA=
+ #31: LIBC_FATAL_STDERR_=1
+ #32: LD_LIBRARY_PATH=/usr/lib64/:/usr/lib/:/lib64
+ #33: LESSCLOSE=/usr/bin/lesspipe %s %s
+ #34: HOME=/root
+ #35: OMP_NUM_THREADS=1
+ #36: OMP_THREAD_LIMIT=1
+running commands in speccmds.cmd 1 times
+runs started at		1730436512, 218429000, Fri Nov  1 04:48:32 2024
+run 1 started at	1730436512, 218471000, Fri Nov  1 04:48:32 2024
+child started: 0,	1730436512, 218482000, pid=1706, '../run_base_refrate_mytest-m64.0076/cpugcc_r_base.mytest-m64 gcc-pp.c -O3 -finline-limit=0 -fif-conversion -fif-conversion2 -o gcc-pp.opts-O3_-finline-limit_0_-fif-conversion_-fif-conversion2.s > gcc-pp.opts-O3_-finline-limit_0_-fif-conversion_-fif-conversion2.out 2>> gcc-pp.opts-O3_-finline-limit_0_-fif-conversion_-fif-conversion2.err'
+child started: 1,	1730436512, 218811000, pid=1707, '../run_base_refrate_mytest-m64.0076/cpugcc_r_base.mytest-m64 gcc-pp.c -O3 -finline-limit=0 -fif-conversion -fif-conversion2 -o gcc-pp.opts-O3_-finline-limit_0_-fif-conversion_-fif-conversion2.s > gcc-pp.opts-O3_-finline-limit_0_-fif-conversion_-fif-conversion2.out 2>> gcc-pp.opts-O3_-finline-limit_0_-fif-conversion_-fif-conversion2.err'
+child started: 2,	1730436512, 218976000, pid=1708, '../run_base_refrate_mytest-m64.0076/cpugcc_r_base.mytest-m64 gcc-pp.c -O3 -finline-limit=0 -fif-conversion -fif-conversion2 -o gcc-pp.opts-O3_-finline-limit_0_-fif-conversion_-fif-conversion2.s > gcc-pp.opts-O3_-finline-limit_0_-fif-conversion_-fif-conversion2.out 2>> gcc-pp.opts-O3_-finline-limit_0_-fif-conversion_-fif-conversion2.err'
+child started: 3,	1730436512, 219161000, pid=1709, '../run_base_refrate_mytest-m64.0076/cpugcc_r_base.mytest-m64 gcc-pp.c -O3 -finline-limit=0 -fif-conversion -fif-conversion2 -o gcc-pp.opts-O3_-finline-limit_0_-fif-conversion_-fif-conversion2.s > gcc-pp.opts-O3_-finline-limit_0_-fif-conversion_-fif-conversion2.out 2>> gcc-pp.opts-O3_-finline-limit_0_-fif-conversion_-fif-conversion2.err'
+child started: 4,	1730436512, 219341000, pid=1710, '../run_base_refrate_mytest-m64.0076/cpugcc_r_base.mytest-m64 gcc-pp.c -O3 -finline-limit=0 -fif-conversion -fif-conversion2 -o gcc-pp.opts-O3_-finline-limit_0_-fif-conversion_-fif-conversion2.s > gcc-pp.opts-O3_-finline-limit_0_-fif-conversion_-fif-conversion2.out 2>> gcc-pp.opts-O3_-finline-limit_0_-fif-conversion_-fif-conversion2.err'
+child started: 5,	1730436512, 219521000, pid=1711, '../run_base_refrate_mytest-m64.0076/cpugcc_r_base.mytest-m64 gcc-pp.c -O3 -finline-limit=0 -fif-conversion -fif-conversion2 -o gcc-pp.opts-O3_-finline-limit_0_-fif-conversion_-fif-conversion2.s > gcc-pp.opts-O3_-finline-limit_0_-fif-conversion_-fif-conversion2.out 2>> gcc-pp.opts-O3_-finline-limit_0_-fif-conversion_-fif-conversion2.err'
+child started: 6,	1730436512, 219814000, pid=1712, '../run_base_refrate_mytest-m64.0076/cpugcc_r_base.mytest-m64 gcc-pp.c -O3 -finline-limit=0 -fif-conversion -fif-conversion2 -o gcc-pp.opts-O3_-finline-limit_0_-fif-conversion_-fif-conversion2.s > gcc-pp.opts-O3_-finline-limit_0_-fif-conversion_-fif-conversion2.out 2>> gcc-pp.opts-O3_-finline-limit_0_-fif-conversion_-fif-conversion2.err'
+child started: 7,	1730436512, 220023000, pid=1713, '../run_base_refrate_mytest-m64.0076/cpugcc_r_base.mytest-m64 gcc-pp.c -O3 -finline-limit=0 -fif-conversion -fif-conversion2 -o gcc-pp.opts-O3_-finline-limit_0_-fif-conversion_-fif-conversion2.s > gcc-pp.opts-O3_-finline-limit_0_-fif-conversion_-fif-conversion2.out 2>> gcc-pp.opts-O3_-finline-limit_0_-fif-conversion_-fif-conversion2.err'
+child started: 8,	1730436512, 220208000, pid=1714, '../run_base_refrate_mytest-m64.0076/cpugcc_r_base.mytest-m64 gcc-pp.c -O3 -finline-limit=0 -fif-conversion -fif-conversion2 -o gcc-pp.opts-O3_-finline-limit_0_-fif-conversion_-fif-conversion2.s > gcc-pp.opts-O3_-finline-limit_0_-fif-conversion_-fif-conversion2.out 2>> gcc-pp.opts-O3_-finline-limit_0_-fif-conversion_-fif-conversion2.err'
+child started: 9,	1730436512, 220395000, pid=1715, '../run_base_refrate_mytest-m64.0076/cpugcc_r_base.mytest-m64 gcc-pp.c -O3 -finline-limit=0 -fif-conversion -fif-conversion2 -o gcc-pp.opts-O3_-finline-limit_0_-fif-conversion_-fif-conversion2.s > gcc-pp.opts-O3_-finline-limit_0_-fif-conversion_-fif-conversion2.out 2>> gcc-pp.opts-O3_-finline-limit_0_-fif-conversion_-fif-conversion2.err'
+child started: 10,	1730436512, 220584000, pid=1716, '../run_base_refrate_mytest-m64.0076/cpugcc_r_base.mytest-m64 gcc-pp.c -O3 -finline-limit=0 -fif-conversion -fif-conversion2 -o gcc-pp.opts-O3_-finline-limit_0_-fif-conversion_-fif-conversion2.s > gcc-pp.opts-O3_-finline-limit_0_-fif-conversion_-fif-conversion2.out 2>> gcc-pp.opts-O3_-finline-limit_0_-fif-conversion_-fif-conversion2.err'
+child started: 11,	1730436512, 220848000, pid=1718, '../run_base_refrate_mytest-m64.0076/cpugcc_r_base.mytest-m64 gcc-pp.c -O3 -finline-limit=0 -fif-conversion -fif-conversion2 -o gcc-pp.opts-O3_-finline-limit_0_-fif-conversion_-fif-conversion2.s > gcc-pp.opts-O3_-finline-limit_0_-fif-conversion_-fif-conversion2.out 2>> gcc-pp.opts-O3_-finline-limit_0_-fif-conversion_-fif-conversion2.err'
+child started: 12,	1730436512, 221051000, pid=1719, '../run_base_refrate_mytest-m64.0076/cpugcc_r_base.mytest-m64 gcc-pp.c -O3 -finline-limit=0 -fif-conversion -fif-conversion2 -o gcc-pp.opts-O3_-finline-limit_0_-fif-conversion_-fif-conversion2.s > gcc-pp.opts-O3_-finline-limit_0_-fif-conversion_-fif-conversion2.out 2>> gcc-pp.opts-O3_-finline-limit_0_-fif-conversion_-fif-conversion2.err'
+child started: 13,	1730436512, 221264000, pid=1720, '../run_base_refrate_mytest-m64.0076/cpugcc_r_base.mytest-m64 gcc-pp.c -O3 -finline-limit=0 -fif-conversion -fif-conversion2 -o gcc-pp.opts-O3_-finline-limit_0_-fif-conversion_-fif-conversion2.s > gcc-pp.opts-O3_-finline-limit_0_-fif-conversion_-fif-conversion2.out 2>> gcc-pp.opts-O3_-finline-limit_0_-fif-conversion_-fif-conversion2.err'
+child started: 14,	1730436512, 221477000, pid=1723, '../run_base_refrate_mytest-m64.0076/cpugcc_r_base.mytest-m64 gcc-pp.c -O3 -finline-limit=0 -fif-conversion -fif-conversion2 -o gcc-pp.opts-O3_-finline-limit_0_-fif-conversion_-fif-conversion2.s > gcc-pp.opts-O3_-finline-limit_0_-fif-conversion_-fif-conversion2.out 2>> gcc-pp.opts-O3_-finline-limit_0_-fif-conversion_-fif-conversion2.err'
+child finished: 9,	1730436516, 107090000, sec=3, nsec=886695000, pid=1715, rc=35072
+child finished: 2,	1730436518, 253033000, sec=6, nsec=34057000, pid=1708, rc=35072
+child finished: 3,	1730436525, 485554000, sec=13, nsec=266393000, pid=1709, rc=35072
+child finished: 10,	1730436526, 746661000, sec=14, nsec=526077000, pid=1716, rc=35072
+child finished: 14,	1730436528, 144543000, sec=15, nsec=923066000, pid=1723, rc=35072
+child finished: 6,	1730436533, 175564000, sec=20, nsec=955750000, pid=1712, rc=35072
+child finished: 5,	1730436541, 834412000, sec=29, nsec=614891000, pid=1711, rc=35072
+child finished: 11,	1730436556, 824391000, sec=44, nsec=603543000, pid=1718, rc=35072
+child finished: 7,	1730436558, 532864000, sec=46, nsec=312841000, pid=1713, rc=35072
+child finished: 1,	1730436577, 422876000, sec=65, nsec=204065000, pid=1707, rc=35072
+child finished: 13,	1730436582, 535873000, sec=70, nsec=314609000, pid=1720, rc=35072
+child finished: 0,	1730436590, 428491000, sec=78, nsec=210009000, pid=1706, rc=35072
+child finished: 8,	1730437787, 378274000, sec=1275, nsec=158066000, pid=1714, rc=35072
+child finished: 12,	1730437794, 830483000, sec=1282, nsec=609432000, pid=1719, rc=0
+child finished: 4,	1730437795, 684065000, sec=1283, nsec=464724000, pid=1710, rc=0
+run 1 finished at:	1730437795, 684161000, Fri Nov  1 05:09:55 2024
+run 1 elapsed time:	      1283, 465690000, 1283.465690000
+runs finished at	1730437795, 688239000, Fri Nov  1 05:09:55 2024
+runs elapsed time:	      1283, 469810000, 1283.469810000
+error: a total of 13 children finished with errors
+specinvoke exit: rc=0
+
+****************************************
+Workload elapsed time (copy 9 workload 1) = 3.886695 seconds
+502.gcc_r: copy 2 non-zero return code (exit code=137, signal=0)
+
+Workload elapsed time (copy 2 workload 1) = 6.034057 seconds
+502.gcc_r: copy 3 non-zero return code (exit code=137, signal=0)
+
+Workload elapsed time (copy 3 workload 1) = 13.266393 seconds
+502.gcc_r: copy 10 non-zero return code (exit code=137, signal=0)
+
+Workload elapsed time (copy 10 workload 1) = 14.526077 seconds
+502.gcc_r: copy 14 non-zero return code (exit code=137, signal=0)
+
+Workload elapsed time (copy 14 workload 1) = 15.923066 seconds
+502.gcc_r: copy 6 non-zero return code (exit code=137, signal=0)
+
+Workload elapsed time (copy 6 workload 1) = 20.95575 seconds
+502.gcc_r: copy 5 non-zero return code (exit code=137, signal=0)
+
+Workload elapsed time (copy 5 workload 1) = 29.614891 seconds
+502.gcc_r: copy 11 non-zero return code (exit code=137, signal=0)
+
+Workload elapsed time (copy 11 workload 1) = 44.603543 seconds
+502.gcc_r: copy 7 non-zero return code (exit code=137, signal=0)
+
+Workload elapsed time (copy 7 workload 1) = 46.312841 seconds
+502.gcc_r: copy 1 non-zero return code (exit code=137, signal=0)
+
+Workload elapsed time (copy 1 workload 1) = 65.204065 seconds
+502.gcc_r: copy 13 non-zero return code (exit code=137, signal=0)
+
+Workload elapsed time (copy 13 workload 1) = 70.314609 seconds
+502.gcc_r: copy 0 non-zero return code (exit code=137, signal=0)
+
+Workload elapsed time (copy 0 workload 1) = 78.210009 seconds
+502.gcc_r: copy 8 non-zero return code (exit code=137, signal=0)
+
+Workload elapsed time (copy 8 workload 1) = 1275.158066 seconds
+Workload elapsed time (copy 12 workload 1) = 1282.609432 seconds
+Workload elapsed time (copy 4 workload 1) = 1283.464724 seconds
+Copy 0 of 502.gcc_r (base refrate) run 1 finished at 2024-11-01 04:49:50.  Total elapsed time: 78.210009
+Copy 1 of 502.gcc_r (base refrate) run 1 finished at 2024-11-01 04:49:37.  Total elapsed time: 65.204065
+Copy 2 of 502.gcc_r (base refrate) run 1 finished at 2024-11-01 04:48:38.  Total elapsed time: 6.034057
+Copy 3 of 502.gcc_r (base refrate) run 1 finished at 2024-11-01 04:48:45.  Total elapsed time: 13.266393
+Copy 4 of 502.gcc_r (base refrate) run 1 finished at 2024-11-01 05:09:55.  Total elapsed time: 1283.464724
+Copy 5 of 502.gcc_r (base refrate) run 1 finished at 2024-11-01 04:49:01.  Total elapsed time: 29.614891
+Copy 6 of 502.gcc_r (base refrate) run 1 finished at 2024-11-01 04:48:53.  Total elapsed time: 20.95575
+Copy 7 of 502.gcc_r (base refrate) run 1 finished at 2024-11-01 04:49:18.  Total elapsed time: 46.312841
+Copy 8 of 502.gcc_r (base refrate) run 1 finished at 2024-11-01 05:09:47.  Total elapsed time: 1275.158066
+Copy 9 of 502.gcc_r (base refrate) run 1 finished at 2024-11-01 04:48:36.  Total elapsed time: 3.886695
+Copy 10 of 502.gcc_r (base refrate) run 1 finished at 2024-11-01 04:48:46.  Total elapsed time: 14.526077
+Copy 11 of 502.gcc_r (base refrate) run 1 finished at 2024-11-01 04:49:16.  Total elapsed time: 44.603543
+Copy 12 of 502.gcc_r (base refrate) run 1 finished at 2024-11-01 05:09:54.  Total elapsed time: 1282.609432
+Copy 13 of 502.gcc_r (base refrate) run 1 finished at 2024-11-01 04:49:42.  Total elapsed time: 70.314609
+Copy 14 of 502.gcc_r (base refrate) run 1 finished at 2024-11-01 04:48:48.  Total elapsed time: 15.923066
+Benchmark Times:
+  Run Start:    2024-11-01 04:48:32 (1730436512)
+  Rate Start:   2024-11-01 04:48:32 (1730436512.21848)
+  Rate End:     2024-11-01 05:09:55 (1730437795.68407)
+  Run Stop:     2024-11-01 05:09:55 (1730437795)
+  Run Elapsed:  00:21:23 (1283)
+  Run Reported: 00:21:23 (1283 465583086 1283.465583)
+ Error 502.gcc_r base refrate ratio=16.55, runtime=1283.465583, copies=15, threads=1, power=0.00W, temp=0.00 degC, humidity=0.00%, errorcode=RE
+-----------------------------------
+  Running 505.mcf_r refrate (ref) base mytest-m64 (15 copies) [2024-11-01 05:09:55]
+OpenMP environment variables removed: None
+OpenMP environment variables in effect:
+	OMP_NUM_THREADS	=> '1'
+	OMP_THREAD_LIMIT	=> '1'
+Pre-run environment changes:
+	'OMP_NUM_THREADS' added: (value now '1')
+	'OMP_THREAD_LIMIT' added: (value now '1')
+Commands to run (specinvoke command file):
+    -r
+    -N C
+    -C /home/tdx/speccpu2017/benchspec/CPU/505.mcf_r/run/run_base_refrate_mytest-m64.0211
+    -C /home/tdx/speccpu2017/benchspec/CPU/505.mcf_r/run/run_base_refrate_mytest-m64.0212
+    -C /home/tdx/speccpu2017/benchspec/CPU/505.mcf_r/run/run_base_refrate_mytest-m64.0213
+    -C /home/tdx/speccpu2017/benchspec/CPU/505.mcf_r/run/run_base_refrate_mytest-m64.0214
+    -C /home/tdx/speccpu2017/benchspec/CPU/505.mcf_r/run/run_base_refrate_mytest-m64.0215
+    -C /home/tdx/speccpu2017/benchspec/CPU/505.mcf_r/run/run_base_refrate_mytest-m64.0216
+    -C /home/tdx/speccpu2017/benchspec/CPU/505.mcf_r/run/run_base_refrate_mytest-m64.0217
+    -C /home/tdx/speccpu2017/benchspec/CPU/505.mcf_r/run/run_base_refrate_mytest-m64.0218
+    -C /home/tdx/speccpu2017/benchspec/CPU/505.mcf_r/run/run_base_refrate_mytest-m64.0219
+    -C /home/tdx/speccpu2017/benchspec/CPU/505.mcf_r/run/run_base_refrate_mytest-m64.0220
+    -C /home/tdx/speccpu2017/benchspec/CPU/505.mcf_r/run/run_base_refrate_mytest-m64.0221
+    -C /home/tdx/speccpu2017/benchspec/CPU/505.mcf_r/run/run_base_refrate_mytest-m64.0222
+    -C /home/tdx/speccpu2017/benchspec/CPU/505.mcf_r/run/run_base_refrate_mytest-m64.0223
+    -C /home/tdx/speccpu2017/benchspec/CPU/505.mcf_r/run/run_base_refrate_mytest-m64.0224
+    -C /home/tdx/speccpu2017/benchspec/CPU/505.mcf_r/run/run_base_refrate_mytest-m64.0225
+    -o inp.out -e inp.err ../run_base_refrate_mytest-m64.0211/mcf_r_base.mytest-m64 inp.in  > inp.out 2>> inp.err (timed)
+Specinvoke: /home/tdx/speccpu2017/bin/specinvoke -d /home/tdx/speccpu2017/benchspec/CPU/505.mcf_r/run/run_base_refrate_mytest-m64.0211 -f speccmds.cmd -q -e speccmds.err -o speccmds.stdout
+Issuing command '/home/tdx/speccpu2017/bin/specinvoke -d /home/tdx/speccpu2017/benchspec/CPU/505.mcf_r/run/run_base_refrate_mytest-m64.0211 -f speccmds.cmd -q -e speccmds.err -o speccmds.stdout'
+Start command: 2024-11-01 05:09:56 (1730437796.06652)
+Stop command: 2024-11-01 05:15:50 (1730438150.91424)
+Elapsed time for command: 00:05:54 (354.847714185715)
+505.mcf_r: copy 14 non-zero return code (exit code=137, signal=0)
+
+****************************************
+Contents of inp.err
+****************************************
+Killed
+
+****************************************
+****************************************
+Contents of speccmds.out
+****************************************
+specinvoke r4356
+ Invoked as: /home/tdx/speccpu2017/bin/specinvoke -d /home/tdx/speccpu2017/benchspec/CPU/505.mcf_r/run/run_base_refrate_mytest-m64.0211 -f speccmds.cmd -q -e speccmds.err -o speccmds.stdout
+timer ticks over every 1000 ns
+ Environment in effect for these runs:
+ # 1: PATH=/home/tdx/speccpu2017/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
+ # 2: LESSOPEN=| /usr/bin/lesspipe %s
+ # 3: MEMORY_PRESSURE_WATCH=/sys/fs/cgroup/system.slice/system-serial\x2dgetty.slice/serial-getty@hvc0.service/memory.pressure
+ # 4: USER=root
+ # 5: LANG=C.UTF-8
+ # 6: DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/0/bus
+ # 7: MAIL=/var/mail/root
+ # 8: XDG_SESSION_TYPE=tty
+ # 9: LC_LANG=C
+ #10: LS_COLORS=
+ #11: LOGNAME=root
+ #12: LC_ALL=C
+ #13: SHELL=/bin/bash
+ #14: INVOCATION_ID=df5b4a4c7b38482cb2c812e88c41b970
+ #15: TERM=xterm-256color
+ #16: XDG_DATA_DIRS=/usr/local/share:/usr/share:/var/lib/snapd/desktop
+ #17: CREDENTIALS_DIRECTORY=/run/credentials/serial-getty@hvc0.service
+ #18: SYSTEMD_EXEC_PID=901
+ #19: SPECPERLLIB=/home/tdx/speccpu2017/bin/lib:/home/tdx/speccpu2017/bin
+ #20: XDG_SESSION_CLASS=user
+ #21: PWD=/home/tdx/speccpu2017
+ #22: XDG_RUNTIME_DIR=/run/user/0
+ #23: OLDPWD=/root
+ #24: HUSHLOGIN=FALSE
+ #25: SPEC=/home/tdx/speccpu2017
+ #26: LIBC_FATAL_STDERR_=1
+ #27: MEMORY_PRESSURE_WRITE=c29tZSAyMDAwMDAgMjAwMDAwMAA=
+ #28: LD_LIBRARY_PATH=/usr/lib64/:/usr/lib/:/lib64
+ #29: HOME=/root
+ #30: LESSCLOSE=/usr/bin/lesspipe %s %s
+ #31: _=/home/tdx/speccpu2017/bin/runcpu
+ #32: SPECDB_PWD=/home/tdx/speccpu2017
+ #33: SHLVL=1
+ #34: XDG_SESSION_ID=1
+ #35: OMP_NUM_THREADS=1
+ #36: OMP_THREAD_LIMIT=1
+running commands in speccmds.cmd 1 times
+runs started at		1730437796, 077150000, Fri Nov  1 05:09:56 2024
+run 1 started at	1730437796, 077615000, Fri Nov  1 05:09:56 2024
+child started: 0,	1730437796, 077741000, pid=1771, '../run_base_refrate_mytest-m64.0211/mcf_r_base.mytest-m64 inp.in  > inp.out 2>> inp.err'
+child started: 1,	1730437796, 078077000, pid=1772, '../run_base_refrate_mytest-m64.0211/mcf_r_base.mytest-m64 inp.in  > inp.out 2>> inp.err'
+child started: 2,	1730437796, 078302000, pid=1773, '../run_base_refrate_mytest-m64.0211/mcf_r_base.mytest-m64 inp.in  > inp.out 2>> inp.err'
+child started: 3,	1730437796, 078777000, pid=1774, '../run_base_refrate_mytest-m64.0211/mcf_r_base.mytest-m64 inp.in  > inp.out 2>> inp.err'
+child started: 4,	1730437796, 079081000, pid=1775, '../run_base_refrate_mytest-m64.0211/mcf_r_base.mytest-m64 inp.in  > inp.out 2>> inp.err'
+child started: 5,	1730437796, 079316000, pid=1776, '../run_base_refrate_mytest-m64.0211/mcf_r_base.mytest-m64 inp.in  > inp.out 2>> inp.err'
+child started: 6,	1730437796, 079612000, pid=1777, '../run_base_refrate_mytest-m64.0211/mcf_r_base.mytest-m64 inp.in  > inp.out 2>> inp.err'
+child started: 7,	1730437796, 079941000, pid=1778, '../run_base_refrate_mytest-m64.0211/mcf_r_base.mytest-m64 inp.in  > inp.out 2>> inp.err'
+child started: 8,	1730437796, 080149000, pid=1779, '../run_base_refrate_mytest-m64.0211/mcf_r_base.mytest-m64 inp.in  > inp.out 2>> inp.err'
+child started: 9,	1730437796, 080490000, pid=1780, '../run_base_refrate_mytest-m64.0211/mcf_r_base.mytest-m64 inp.in  > inp.out 2>> inp.err'
+child started: 10,	1730437796, 080848000, pid=1781, '../run_base_refrate_mytest-m64.0211/mcf_r_base.mytest-m64 inp.in  > inp.out 2>> inp.err'
+child started: 11,	1730437796, 081054000, pid=1782, '../run_base_refrate_mytest-m64.0211/mcf_r_base.mytest-m64 inp.in  > inp.out 2>> inp.err'
+child started: 12,	1730437796, 081301000, pid=1783, '../run_base_refrate_mytest-m64.0211/mcf_r_base.mytest-m64 inp.in  > inp.out 2>> inp.err'
+child started: 13,	1730437796, 081625000, pid=1784, '../run_base_refrate_mytest-m64.0211/mcf_r_base.mytest-m64 inp.in  > inp.out 2>> inp.err'
+child started: 14,	1730437796, 081954000, pid=1785, '../run_base_refrate_mytest-m64.0211/mcf_r_base.mytest-m64 inp.in  > inp.out 2>> inp.err'
+child finished: 14,	1730437819, 329258000, sec=23, nsec=247304000, pid=1785, rc=35072
+child finished: 9,	1730437819, 731601000, sec=23, nsec=651111000, pid=1780, rc=35072
+child finished: 5,	1730437819, 983222000, sec=23, nsec=903906000, pid=1776, rc=35072
+child finished: 0,	1730437820, 731505000, sec=24, nsec=653764000, pid=1771, rc=35072
+child finished: 13,	1730437820, 937418000, sec=24, nsec=855793000, pid=1784, rc=35072
+child finished: 12,	1730437822, 174412000, sec=26, nsec=93111000, pid=1783, rc=35072
+child finished: 8,	1730437827, 303383000, sec=31, nsec=223234000, pid=1779, rc=35072
+child finished: 7,	1730437827, 697159000, sec=31, nsec=617218000, pid=1778, rc=35072
+child finished: 4,	1730437828, 935273000, sec=32, nsec=856192000, pid=1775, rc=35072
+child finished: 2,	1730437830, 754743000, sec=34, nsec=676441000, pid=1773, rc=35072
+child finished: 1,	1730438112, 004173000, sec=315, nsec=926096000, pid=1772, rc=0
+child finished: 3,	1730438120, 533310000, sec=324, nsec=454533000, pid=1774, rc=0
+child finished: 11,	1730438140, 196298000, sec=344, nsec=115244000, pid=1782, rc=0
+child finished: 6,	1730438142, 349089000, sec=346, nsec=269477000, pid=1777, rc=0
+child finished: 10,	1730438150, 749396000, sec=354, nsec=668548000, pid=1781, rc=0
+run 1 finished at:	1730438150, 749501000, Fri Nov  1 05:15:50 2024
+run 1 elapsed time:	       354, 671886000, 354.671886000
+runs finished at	1730438150, 749548000, Fri Nov  1 05:15:50 2024
+runs elapsed time:	       354, 672398000, 354.672398000
+error: a total of 10 children finished with errors
+specinvoke exit: rc=0
+
+****************************************
+Workload elapsed time (copy 14 workload 1) = 23.247304 seconds
+505.mcf_r: copy 9 non-zero return code (exit code=137, signal=0)
+
+Workload elapsed time (copy 9 workload 1) = 23.651111 seconds
+505.mcf_r: copy 5 non-zero return code (exit code=137, signal=0)
+
+Workload elapsed time (copy 5 workload 1) = 23.903906 seconds
+505.mcf_r: copy 0 non-zero return code (exit code=137, signal=0)
+
+Workload elapsed time (copy 0 workload 1) = 24.653764 seconds
+505.mcf_r: copy 13 non-zero return code (exit code=137, signal=0)
+
+Workload elapsed time (copy 13 workload 1) = 24.855793 seconds
+505.mcf_r: copy 12 non-zero return code (exit code=137, signal=0)
+
+Workload elapsed time (copy 12 workload 1) = 26.093111 seconds
+505.mcf_r: copy 8 non-zero return code (exit code=137, signal=0)
+
+Workload elapsed time (copy 8 workload 1) = 31.223234 seconds
+505.mcf_r: copy 7 non-zero return code (exit code=137, signal=0)
+
+Workload elapsed time (copy 7 workload 1) = 31.617218 seconds
+505.mcf_r: copy 4 non-zero return code (exit code=137, signal=0)
+
+Workload elapsed time (copy 4 workload 1) = 32.856192 seconds
+505.mcf_r: copy 2 non-zero return code (exit code=137, signal=0)
+
+Workload elapsed time (copy 2 workload 1) = 34.676441 seconds
+Workload elapsed time (copy 1 workload 1) = 315.926096 seconds
+Workload elapsed time (copy 3 workload 1) = 324.454533 seconds
+Workload elapsed time (copy 11 workload 1) = 344.115244 seconds
+Workload elapsed time (copy 6 workload 1) = 346.269477 seconds
+Workload elapsed time (copy 10 workload 1) = 354.668548 seconds
+Copy 0 of 505.mcf_r (base refrate) run 1 finished at 2024-11-01 05:10:20.  Total elapsed time: 24.653764
+Copy 1 of 505.mcf_r (base refrate) run 1 finished at 2024-11-01 05:15:12.  Total elapsed time: 315.926096
+Copy 2 of 505.mcf_r (base refrate) run 1 finished at 2024-11-01 05:10:30.  Total elapsed time: 34.676441
+Copy 3 of 505.mcf_r (base refrate) run 1 finished at 2024-11-01 05:15:20.  Total elapsed time: 324.454533
+Copy 4 of 505.mcf_r (base refrate) run 1 finished at 2024-11-01 05:10:28.  Total elapsed time: 32.856192
+Copy 5 of 505.mcf_r (base refrate) run 1 finished at 2024-11-01 05:10:19.  Total elapsed time: 23.903906
+Copy 6 of 505.mcf_r (base refrate) run 1 finished at 2024-11-01 05:15:42.  Total elapsed time: 346.269477
+Copy 7 of 505.mcf_r (base refrate) run 1 finished at 2024-11-01 05:10:27.  Total elapsed time: 31.617218
+Copy 8 of 505.mcf_r (base refrate) run 1 finished at 2024-11-01 05:10:27.  Total elapsed time: 31.223234
+Copy 9 of 505.mcf_r (base refrate) run 1 finished at 2024-11-01 05:10:19.  Total elapsed time: 23.651111
+Copy 10 of 505.mcf_r (base refrate) run 1 finished at 2024-11-01 05:15:50.  Total elapsed time: 354.668548
+Copy 11 of 505.mcf_r (base refrate) run 1 finished at 2024-11-01 05:15:40.  Total elapsed time: 344.115244
+Copy 12 of 505.mcf_r (base refrate) run 1 finished at 2024-11-01 05:10:22.  Total elapsed time: 26.093111
+Copy 13 of 505.mcf_r (base refrate) run 1 finished at 2024-11-01 05:10:20.  Total elapsed time: 24.855793
+Copy 14 of 505.mcf_r (base refrate) run 1 finished at 2024-11-01 05:10:19.  Total elapsed time: 23.247304
+Benchmark Times:
+  Run Start:    2024-11-01 05:09:56 (1730437796)
+  Rate Start:   2024-11-01 05:09:56 (1730437796.07774)
+  Rate End:     2024-11-01 05:15:50 (1730438150.7494)
+  Run Stop:     2024-11-01 05:15:50 (1730438150)
+  Run Elapsed:  00:05:54 (354)
+  Run Reported: 00:05:54 (354 671655178 354.671655)
+ Error 505.mcf_r base refrate ratio=68.34, runtime=354.671655, copies=15, threads=1, power=0.00W, temp=0.00 degC, humidity=0.00%, errorcode=RE
+-----------------------------------
+  Running 520.omnetpp_r refrate (ref) base mytest-m64 (15 copies) [2024-11-01 05:15:51]
+OpenMP environment variables removed: None
+OpenMP environment variables in effect:
+	OMP_NUM_THREADS	=> '1'
+	OMP_THREAD_LIMIT	=> '1'
+Pre-run environment changes:
+	'OMP_NUM_THREADS' added: (value now '1')
+	'OMP_THREAD_LIMIT' added: (value now '1')
+Commands to run (specinvoke command file):
+    -r
+    -N C
+    -C /home/tdx/speccpu2017/benchspec/CPU/520.omnetpp_r/run/run_base_refrate_mytest-m64.0211
+    -C /home/tdx/speccpu2017/benchspec/CPU/520.omnetpp_r/run/run_base_refrate_mytest-m64.0212
+    -C /home/tdx/speccpu2017/benchspec/CPU/520.omnetpp_r/run/run_base_refrate_mytest-m64.0213
+    -C /home/tdx/speccpu2017/benchspec/CPU/520.omnetpp_r/run/run_base_refrate_mytest-m64.0214
+    -C /home/tdx/speccpu2017/benchspec/CPU/520.omnetpp_r/run/run_base_refrate_mytest-m64.0215
+    -C /home/tdx/speccpu2017/benchspec/CPU/520.omnetpp_r/run/run_base_refrate_mytest-m64.0216
+    -C /home/tdx/speccpu2017/benchspec/CPU/520.omnetpp_r/run/run_base_refrate_mytest-m64.0217
+    -C /home/tdx/speccpu2017/benchspec/CPU/520.omnetpp_r/run/run_base_refrate_mytest-m64.0218
+    -C /home/tdx/speccpu2017/benchspec/CPU/520.omnetpp_r/run/run_base_refrate_mytest-m64.0219
+    -C /home/tdx/speccpu2017/benchspec/CPU/520.omnetpp_r/run/run_base_refrate_mytest-m64.0220
+    -C /home/tdx/speccpu2017/benchspec/CPU/520.omnetpp_r/run/run_base_refrate_mytest-m64.0221
+    -C /home/tdx/speccpu2017/benchspec/CPU/520.omnetpp_r/run/run_base_refrate_mytest-m64.0222
+    -C /home/tdx/speccpu2017/benchspec/CPU/520.omnetpp_r/run/run_base_refrate_mytest-m64.0223
+    -C /home/tdx/speccpu2017/benchspec/CPU/520.omnetpp_r/run/run_base_refrate_mytest-m64.0224
+    -C /home/tdx/speccpu2017/benchspec/CPU/520.omnetpp_r/run/run_base_refrate_mytest-m64.0225
+    -o omnetpp.General-0.out -e omnetpp.General-0.err ../run_base_refrate_mytest-m64.0211/omnetpp_r_base.mytest-m64 -c General -r 0 > omnetpp.General-0.out 2>> omnetpp.General-0.err (timed)
+Specinvoke: /home/tdx/speccpu2017/bin/specinvoke -d /home/tdx/speccpu2017/benchspec/CPU/520.omnetpp_r/run/run_base_refrate_mytest-m64.0211 -f speccmds.cmd -q -e speccmds.err -o speccmds.stdout
+Issuing command '/home/tdx/speccpu2017/bin/specinvoke -d /home/tdx/speccpu2017/benchspec/CPU/520.omnetpp_r/run/run_base_refrate_mytest-m64.0211 -f speccmds.cmd -q -e speccmds.err -o speccmds.stdout'
+Start command: 2024-11-01 05:15:51 (1730438151.49822)
+Stop command: 2024-11-01 05:26:33 (1730438793.09739)
+Elapsed time for command: 00:10:41 (641.599169015884)
+520.omnetpp_r: copy 4 non-zero return code (exit code=137, signal=0)
+
+****************************************
+Contents of speccmds.out
+****************************************
+specinvoke r4356
+ Invoked as: /home/tdx/speccpu2017/bin/specinvoke -d /home/tdx/speccpu2017/benchspec/CPU/520.omnetpp_r/run/run_base_refrate_mytest-m64.0211 -f speccmds.cmd -q -e speccmds.err -o speccmds.stdout
+timer ticks over every 1000 ns
+ Environment in effect for these runs:
+ # 1: LS_COLORS=
+ # 2: MAIL=/var/mail/root
+ # 3: DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/0/bus
+ # 4: XDG_SESSION_TYPE=tty
+ # 5: LC_LANG=C
+ # 6: USER=root
+ # 7: LANG=C.UTF-8
+ # 8: LESSOPEN=| /usr/bin/lesspipe %s
+ # 9: MEMORY_PRESSURE_WATCH=/sys/fs/cgroup/system.slice/system-serial\x2dgetty.slice/serial-getty@hvc0.service/memory.pressure
+ #10: PATH=/home/tdx/speccpu2017/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
+ #11: SPECDB_PWD=/home/tdx/speccpu2017
+ #12: _=/home/tdx/speccpu2017/bin/runcpu
+ #13: XDG_SESSION_ID=1
+ #14: SHLVL=1
+ #15: OLDPWD=/root
+ #16: HUSHLOGIN=FALSE
+ #17: SPEC=/home/tdx/speccpu2017
+ #18: PWD=/home/tdx/speccpu2017
+ #19: XDG_RUNTIME_DIR=/run/user/0
+ #20: HOME=/root
+ #21: LESSCLOSE=/usr/bin/lesspipe %s %s
+ #22: LIBC_FATAL_STDERR_=1
+ #23: MEMORY_PRESSURE_WRITE=c29tZSAyMDAwMDAgMjAwMDAwMAA=
+ #24: LD_LIBRARY_PATH=/usr/lib64/:/usr/lib/:/lib64
+ #25: SYSTEMD_EXEC_PID=901
+ #26: INVOCATION_ID=df5b4a4c7b38482cb2c812e88c41b970
+ #27: TERM=xterm-256color
+ #28: SHELL=/bin/bash
+ #29: CREDENTIALS_DIRECTORY=/run/credentials/serial-getty@hvc0.service
+ #30: XDG_DATA_DIRS=/usr/local/share:/usr/share:/var/lib/snapd/desktop
+ #31: XDG_SESSION_CLASS=user
+ #32: SPECPERLLIB=/home/tdx/speccpu2017/bin/lib:/home/tdx/speccpu2017/bin
+ #33: LOGNAME=root
+ #34: LC_ALL=C
+ #35: OMP_NUM_THREADS=1
+ #36: OMP_THREAD_LIMIT=1
+running commands in speccmds.cmd 1 times
+runs started at		1730438151, 507516000, Fri Nov  1 05:15:51 2024
+run 1 started at	1730438151, 508338000, Fri Nov  1 05:15:51 2024
+child started: 0,	1730438151, 508355000, pid=1820, '../run_base_refrate_mytest-m64.0211/omnetpp_r_base.mytest-m64 -c General -r 0 > omnetpp.General-0.out 2>> omnetpp.General-0.err'
+child started: 1,	1730438151, 508608000, pid=1821, '../run_base_refrate_mytest-m64.0211/omnetpp_r_base.mytest-m64 -c General -r 0 > omnetpp.General-0.out 2>> omnetpp.General-0.err'
+child started: 2,	1730438151, 508876000, pid=1822, '../run_base_refrate_mytest-m64.0211/omnetpp_r_base.mytest-m64 -c General -r 0 > omnetpp.General-0.out 2>> omnetpp.General-0.err'
+child started: 3,	1730438151, 509118000, pid=1823, '../run_base_refrate_mytest-m64.0211/omnetpp_r_base.mytest-m64 -c General -r 0 > omnetpp.General-0.out 2>> omnetpp.General-0.err'
+child started: 4,	1730438151, 509552000, pid=1824, '../run_base_refrate_mytest-m64.0211/omnetpp_r_base.mytest-m64 -c General -r 0 > omnetpp.General-0.out 2>> omnetpp.General-0.err'
+child started: 5,	1730438151, 509868000, pid=1825, '../run_base_refrate_mytest-m64.0211/omnetpp_r_base.mytest-m64 -c General -r 0 > omnetpp.General-0.out 2>> omnetpp.General-0.err'
+child started: 6,	1730438151, 510129000, pid=1826, '../run_base_refrate_mytest-m64.0211/omnetpp_r_base.mytest-m64 -c General -r 0 > omnetpp.General-0.out 2>> omnetpp.General-0.err'
+child started: 7,	1730438151, 510387000, pid=1827, '../run_base_refrate_mytest-m64.0211/omnetpp_r_base.mytest-m64 -c General -r 0 > omnetpp.General-0.out 2>> omnetpp.General-0.err'
+child started: 8,	1730438151, 510619000, pid=1828, '../run_base_refrate_mytest-m64.0211/omnetpp_r_base.mytest-m64 -c General -r 0 > omnetpp.General-0.out 2>> omnetpp.General-0.err'
+child started: 9,	1730438151, 510982000, pid=1829, '../run_base_refrate_mytest-m64.0211/omnetpp_r_base.mytest-m64 -c General -r 0 > omnetpp.General-0.out 2>> omnetpp.General-0.err'
+child started: 10,	1730438151, 511284000, pid=1830, '../run_base_refrate_mytest-m64.0211/omnetpp_r_base.mytest-m64 -c General -r 0 > omnetpp.General-0.out 2>> omnetpp.General-0.err'
+child started: 11,	1730438151, 511529000, pid=1832, '../run_base_refrate_mytest-m64.0211/omnetpp_r_base.mytest-m64 -c General -r 0 > omnetpp.General-0.out 2>> omnetpp.General-0.err'
+child started: 12,	1730438151, 511934000, pid=1833, '../run_base_refrate_mytest-m64.0211/omnetpp_r_base.mytest-m64 -c General -r 0 > omnetpp.General-0.out 2>> omnetpp.General-0.err'
+child started: 13,	1730438151, 512226000, pid=1836, '../run_base_refrate_mytest-m64.0211/omnetpp_r_base.mytest-m64 -c General -r 0 > omnetpp.General-0.out 2>> omnetpp.General-0.err'
+child started: 14,	1730438151, 512490000, pid=1838, '../run_base_refrate_mytest-m64.0211/omnetpp_r_base.mytest-m64 -c General -r 0 > omnetpp.General-0.out 2>> omnetpp.General-0.err'
+child finished: 4,	1730438201, 967430000, sec=50, nsec=457878000, pid=1824, rc=35072
+child finished: 14,	1730438697, 009979000, sec=545, nsec=497489000, pid=1838, rc=35072
+child finished: 11,	1730438753, 528786000, sec=602, nsec=17257000, pid=1832, rc=0
+child finished: 10,	1730438755, 701023000, sec=604, nsec=189739000, pid=1830, rc=0
+child finished: 1,	1730438756, 940332000, sec=605, nsec=431724000, pid=1821, rc=0
+child finished: 7,	1730438758, 511639000, sec=607, nsec=1252000, pid=1827, rc=0
+child finished: 6,	1730438763, 233996000, sec=611, nsec=723867000, pid=1826, rc=0
+child finished: 9,	1730438766, 105231000, sec=614, nsec=594249000, pid=1829, rc=0
+child finished: 12,	1730438784, 934520000, sec=633, nsec=422586000, pid=1833, rc=0
+child finished: 13,	1730438786, 583700000, sec=635, nsec=71474000, pid=1836, rc=0
+child finished: 2,	1730438787, 456934000, sec=635, nsec=948058000, pid=1822, rc=0
+child finished: 3,	1730438787, 618852000, sec=636, nsec=109734000, pid=1823, rc=0
+child finished: 0,	1730438787, 686968000, sec=636, nsec=178613000, pid=1820, rc=0
+child finished: 5,	1730438792, 551718000, sec=641, nsec=41850000, pid=1825, rc=0
+child finished: 8,	1730438792, 935250000, sec=641, nsec=424631000, pid=1828, rc=0
+run 1 finished at:	1730438792, 935350000, Fri Nov  1 05:26:32 2024
+run 1 elapsed time:	       641, 427012000, 641.427012000
+runs finished at	1730438792, 935401000, Fri Nov  1 05:26:32 2024
+runs elapsed time:	       641, 427885000, 641.427885000
+error: a total of 2 children finished with errors
+specinvoke exit: rc=0
+
+****************************************
+Workload elapsed time (copy 4 workload 1) = 50.457878 seconds
+520.omnetpp_r: copy 14 non-zero return code (exit code=137, signal=0)
+
+Workload elapsed time (copy 14 workload 1) = 545.497489 seconds
+Workload elapsed time (copy 11 workload 1) = 602.017257 seconds
+Workload elapsed time (copy 10 workload 1) = 604.189739 seconds
+Workload elapsed time (copy 1 workload 1) = 605.431724 seconds
+Workload elapsed time (copy 7 workload 1) = 607.001252 seconds
+Workload elapsed time (copy 6 workload 1) = 611.723867 seconds
+Workload elapsed time (copy 9 workload 1) = 614.594249 seconds
+Workload elapsed time (copy 12 workload 1) = 633.422586 seconds
+Workload elapsed time (copy 13 workload 1) = 635.071474 seconds
+Workload elapsed time (copy 2 workload 1) = 635.948058 seconds
+Workload elapsed time (copy 3 workload 1) = 636.109734 seconds
+Workload elapsed time (copy 0 workload 1) = 636.178613 seconds
+Workload elapsed time (copy 5 workload 1) = 641.04185 seconds
+Workload elapsed time (copy 8 workload 1) = 641.424631 seconds
+Copy 0 of 520.omnetpp_r (base refrate) run 1 finished at 2024-11-01 05:26:27.  Total elapsed time: 636.178613
+Copy 1 of 520.omnetpp_r (base refrate) run 1 finished at 2024-11-01 05:25:56.  Total elapsed time: 605.431724
+Copy 2 of 520.omnetpp_r (base refrate) run 1 finished at 2024-11-01 05:26:27.  Total elapsed time: 635.948058
+Copy 3 of 520.omnetpp_r (base refrate) run 1 finished at 2024-11-01 05:26:27.  Total elapsed time: 636.109734
+Copy 4 of 520.omnetpp_r (base refrate) run 1 finished at 2024-11-01 05:16:41.  Total elapsed time: 50.457878
+Copy 5 of 520.omnetpp_r (base refrate) run 1 finished at 2024-11-01 05:26:32.  Total elapsed time: 641.04185
+Copy 6 of 520.omnetpp_r (base refrate) run 1 finished at 2024-11-01 05:26:03.  Total elapsed time: 611.723867
+Copy 7 of 520.omnetpp_r (base refrate) run 1 finished at 2024-11-01 05:25:58.  Total elapsed time: 607.001252
+Copy 8 of 520.omnetpp_r (base refrate) run 1 finished at 2024-11-01 05:26:32.  Total elapsed time: 641.424631
+Copy 9 of 520.omnetpp_r (base refrate) run 1 finished at 2024-11-01 05:26:06.  Total elapsed time: 614.594249
+Copy 10 of 520.omnetpp_r (base refrate) run 1 finished at 2024-11-01 05:25:55.  Total elapsed time: 604.189739
+Copy 11 of 520.omnetpp_r (base refrate) run 1 finished at 2024-11-01 05:25:53.  Total elapsed time: 602.017257
+Copy 12 of 520.omnetpp_r (base refrate) run 1 finished at 2024-11-01 05:26:24.  Total elapsed time: 633.422586
+Copy 13 of 520.omnetpp_r (base refrate) run 1 finished at 2024-11-01 05:26:26.  Total elapsed time: 635.071474
+Copy 14 of 520.omnetpp_r (base refrate) run 1 finished at 2024-11-01 05:24:57.  Total elapsed time: 545.497489
+Benchmark Times:
+  Run Start:    2024-11-01 05:15:51 (1730438151)
+  Rate Start:   2024-11-01 05:15:51 (1730438151.50835)
+  Rate End:     2024-11-01 05:26:32 (1730438792.93525)
+  Run Stop:     2024-11-01 05:26:33 (1730438793)
+  Run Elapsed:  00:10:42 (642)
+  Run Reported: 00:10:41 (641 426895141 641.426895)
+ Error 520.omnetpp_r base refrate ratio=30.68, runtime=641.426895, copies=15, threads=1, power=0.00W, temp=0.00 degC, humidity=0.00%, errorcode=RE
+-----------------------------------
+  Running 523.xalancbmk_r refrate (ref) base mytest-m64 (15 copies) [2024-11-01 05:26:33]
+OpenMP environment variables removed: None
+OpenMP environment variables in effect:
+	OMP_NUM_THREADS	=> '1'
+	OMP_THREAD_LIMIT	=> '1'
+Pre-run environment changes:
+	'OMP_NUM_THREADS' added: (value now '1')
+	'OMP_THREAD_LIMIT' added: (value now '1')
+Commands to run (specinvoke command file):
+    -r
+    -N C
+    -C /home/tdx/speccpu2017/benchspec/CPU/523.xalancbmk_r/run/run_base_refrate_mytest-m64.0211
+    -C /home/tdx/speccpu2017/benchspec/CPU/523.xalancbmk_r/run/run_base_refrate_mytest-m64.0212
+    -C /home/tdx/speccpu2017/benchspec/CPU/523.xalancbmk_r/run/run_base_refrate_mytest-m64.0213
+    -C /home/tdx/speccpu2017/benchspec/CPU/523.xalancbmk_r/run/run_base_refrate_mytest-m64.0214
+    -C /home/tdx/speccpu2017/benchspec/CPU/523.xalancbmk_r/run/run_base_refrate_mytest-m64.0215
+    -C /home/tdx/speccpu2017/benchspec/CPU/523.xalancbmk_r/run/run_base_refrate_mytest-m64.0216
+    -C /home/tdx/speccpu2017/benchspec/CPU/523.xalancbmk_r/run/run_base_refrate_mytest-m64.0217
+    -C /home/tdx/speccpu2017/benchspec/CPU/523.xalancbmk_r/run/run_base_refrate_mytest-m64.0218
+    -C /home/tdx/speccpu2017/benchspec/CPU/523.xalancbmk_r/run/run_base_refrate_mytest-m64.0219
+    -C /home/tdx/speccpu2017/benchspec/CPU/523.xalancbmk_r/run/run_base_refrate_mytest-m64.0220
+    -C /home/tdx/speccpu2017/benchspec/CPU/523.xalancbmk_r/run/run_base_refrate_mytest-m64.0221
+    -C /home/tdx/speccpu2017/benchspec/CPU/523.xalancbmk_r/run/run_base_refrate_mytest-m64.0222
+    -C /home/tdx/speccpu2017/benchspec/CPU/523.xalancbmk_r/run/run_base_refrate_mytest-m64.0223
+    -C /home/tdx/speccpu2017/benchspec/CPU/523.xalancbmk_r/run/run_base_refrate_mytest-m64.0224
+    -C /home/tdx/speccpu2017/benchspec/CPU/523.xalancbmk_r/run/run_base_refrate_mytest-m64.0225
+    -o ref-t5.out -e ref-t5.err ../run_base_refrate_mytest-m64.0211/cpuxalan_r_base.mytest-m64 -v t5.xml xalanc.xsl > ref-t5.out 2>> ref-t5.err (timed)
+Specinvoke: /home/tdx/speccpu2017/bin/specinvoke -d /home/tdx/speccpu2017/benchspec/CPU/523.xalancbmk_r/run/run_base_refrate_mytest-m64.0211 -f speccmds.cmd -q -e speccmds.err -o speccmds.stdout
+Issuing command '/home/tdx/speccpu2017/bin/specinvoke -d /home/tdx/speccpu2017/benchspec/CPU/523.xalancbmk_r/run/run_base_refrate_mytest-m64.0211 -f speccmds.cmd -q -e speccmds.err -o speccmds.stdout'
+Start command: 2024-11-01 05:26:34 (1730438794.04712)
+Stop command: 2024-11-01 05:31:25 (1730439085.16927)
+Elapsed time for command: 00:04:51 (291.122146129608)
+523.xalancbmk_r: copy 6 non-zero return code (exit code=137, signal=0)
+
+****************************************
+Contents of speccmds.out
+****************************************
+specinvoke r4356
+ Invoked as: /home/tdx/speccpu2017/bin/specinvoke -d /home/tdx/speccpu2017/benchspec/CPU/523.xalancbmk_r/run/run_base_refrate_mytest-m64.0211 -f speccmds.cmd -q -e speccmds.err -o speccmds.stdout
+timer ticks over every 1000 ns
+ Environment in effect for these runs:
+ # 1: SYSTEMD_EXEC_PID=901
+ # 2: SHELL=/bin/bash
+ # 3: INVOCATION_ID=df5b4a4c7b38482cb2c812e88c41b970
+ # 4: TERM=xterm-256color
+ # 5: CREDENTIALS_DIRECTORY=/run/credentials/serial-getty@hvc0.service
+ # 6: XDG_DATA_DIRS=/usr/local/share:/usr/share:/var/lib/snapd/desktop
+ # 7: SPECPERLLIB=/home/tdx/speccpu2017/bin/lib:/home/tdx/speccpu2017/bin
+ # 8: XDG_SESSION_CLASS=user
+ # 9: LOGNAME=root
+ #10: LC_ALL=C
+ #11: SPECDB_PWD=/home/tdx/speccpu2017
+ #12: _=/home/tdx/speccpu2017/bin/runcpu
+ #13: XDG_SESSION_ID=1
+ #14: SHLVL=1
+ #15: OLDPWD=/root
+ #16: HUSHLOGIN=FALSE
+ #17: SPEC=/home/tdx/speccpu2017
+ #18: PWD=/home/tdx/speccpu2017
+ #19: XDG_RUNTIME_DIR=/run/user/0
+ #20: LESSCLOSE=/usr/bin/lesspipe %s %s
+ #21: HOME=/root
+ #22: LIBC_FATAL_STDERR_=1
+ #23: LD_LIBRARY_PATH=/usr/lib64/:/usr/lib/:/lib64
+ #24: MEMORY_PRESSURE_WRITE=c29tZSAyMDAwMDAgMjAwMDAwMAA=
+ #25: USER=root
+ #26: LANG=C.UTF-8
+ #27: LESSOPEN=| /usr/bin/lesspipe %s
+ #28: MEMORY_PRESSURE_WATCH=/sys/fs/cgroup/system.slice/system-serial\x2dgetty.slice/serial-getty@hvc0.service/memory.pressure
+ #29: PATH=/home/tdx/speccpu2017/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
+ #30: LS_COLORS=
+ #31: DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/0/bus
+ #32: MAIL=/var/mail/root
+ #33: XDG_SESSION_TYPE=tty
+ #34: LC_LANG=C
+ #35: OMP_NUM_THREADS=1
+ #36: OMP_THREAD_LIMIT=1
+running commands in speccmds.cmd 1 times
+runs started at		1730438794, 055424000, Fri Nov  1 05:26:34 2024
+run 1 started at	1730438794, 056309000, Fri Nov  1 05:26:34 2024
+child started: 0,	1730438794, 056326000, pid=1887, '../run_base_refrate_mytest-m64.0211/cpuxalan_r_base.mytest-m64 -v t5.xml xalanc.xsl > ref-t5.out 2>> ref-t5.err'
+child started: 1,	1730438794, 056587000, pid=1888, '../run_base_refrate_mytest-m64.0211/cpuxalan_r_base.mytest-m64 -v t5.xml xalanc.xsl > ref-t5.out 2>> ref-t5.err'
+child started: 2,	1730438794, 056860000, pid=1889, '../run_base_refrate_mytest-m64.0211/cpuxalan_r_base.mytest-m64 -v t5.xml xalanc.xsl > ref-t5.out 2>> ref-t5.err'
+child started: 3,	1730438794, 057350000, pid=1890, '../run_base_refrate_mytest-m64.0211/cpuxalan_r_base.mytest-m64 -v t5.xml xalanc.xsl > ref-t5.out 2>> ref-t5.err'
+child started: 4,	1730438794, 057589000, pid=1891, '../run_base_refrate_mytest-m64.0211/cpuxalan_r_base.mytest-m64 -v t5.xml xalanc.xsl > ref-t5.out 2>> ref-t5.err'
+child started: 5,	1730438794, 057870000, pid=1892, '../run_base_refrate_mytest-m64.0211/cpuxalan_r_base.mytest-m64 -v t5.xml xalanc.xsl > ref-t5.out 2>> ref-t5.err'
+child started: 6,	1730438794, 058109000, pid=1893, '../run_base_refrate_mytest-m64.0211/cpuxalan_r_base.mytest-m64 -v t5.xml xalanc.xsl > ref-t5.out 2>> ref-t5.err'
+child started: 7,	1730438794, 058362000, pid=1894, '../run_base_refrate_mytest-m64.0211/cpuxalan_r_base.mytest-m64 -v t5.xml xalanc.xsl > ref-t5.out 2>> ref-t5.err'
+child started: 8,	1730438794, 058585000, pid=1895, '../run_base_refrate_mytest-m64.0211/cpuxalan_r_base.mytest-m64 -v t5.xml xalanc.xsl > ref-t5.out 2>> ref-t5.err'
+child started: 9,	1730438794, 058946000, pid=1896, '../run_base_refrate_mytest-m64.0211/cpuxalan_r_base.mytest-m64 -v t5.xml xalanc.xsl > ref-t5.out 2>> ref-t5.err'
+child started: 10,	1730438794, 059171000, pid=1897, '../run_base_refrate_mytest-m64.0211/cpuxalan_r_base.mytest-m64 -v t5.xml xalanc.xsl > ref-t5.out 2>> ref-t5.err'
+child started: 11,	1730438794, 059418000, pid=1898, '../run_base_refrate_mytest-m64.0211/cpuxalan_r_base.mytest-m64 -v t5.xml xalanc.xsl > ref-t5.out 2>> ref-t5.err'
+child started: 12,	1730438794, 059799000, pid=1899, '../run_base_refrate_mytest-m64.0211/cpuxalan_r_base.mytest-m64 -v t5.xml xalanc.xsl > ref-t5.out 2>> ref-t5.err'
+child started: 13,	1730438794, 060078000, pid=1900, '../run_base_refrate_mytest-m64.0211/cpuxalan_r_base.mytest-m64 -v t5.xml xalanc.xsl > ref-t5.out 2>> ref-t5.err'
+child started: 14,	1730438794, 060310000, pid=1903, '../run_base_refrate_mytest-m64.0211/cpuxalan_r_base.mytest-m64 -v t5.xml xalanc.xsl > ref-t5.out 2>> ref-t5.err'
+child finished: 6,	1730438830, 461820000, sec=36, nsec=403711000, pid=1893, rc=35072
+child finished: 7,	1730438837, 091065000, sec=43, nsec=32703000, pid=1894, rc=35072
+child finished: 4,	1730438850, 364211000, sec=56, nsec=306622000, pid=1891, rc=35072
+child finished: 9,	1730438872, 052282000, sec=77, nsec=993336000, pid=1896, rc=35072
+child finished: 5,	1730438888, 053653000, sec=93, nsec=995783000, pid=1892, rc=35072
+child finished: 13,	1730438899, 274041000, sec=105, nsec=213963000, pid=1900, rc=35072
+child finished: 14,	1730438916, 306588000, sec=122, nsec=246278000, pid=1903, rc=35072
+child finished: 12,	1730438924, 787495000, sec=130, nsec=727696000, pid=1899, rc=35072
+child finished: 11,	1730438935, 514608000, sec=141, nsec=455190000, pid=1898, rc=35072
+child finished: 1,	1730439079, 706974000, sec=285, nsec=650387000, pid=1888, rc=0
+child finished: 3,	1730439081, 639705000, sec=287, nsec=582355000, pid=1890, rc=0
+child finished: 0,	1730439081, 727457000, sec=287, nsec=671131000, pid=1887, rc=0
+child finished: 8,	1730439082, 926199000, sec=288, nsec=867614000, pid=1895, rc=0
+child finished: 10,	1730439083, 700165000, sec=289, nsec=640994000, pid=1897, rc=0
+child finished: 2,	1730439085, 008688000, sec=290, nsec=951828000, pid=1889, rc=0
+run 1 finished at:	1730439085, 008798000, Fri Nov  1 05:31:25 2024
+run 1 elapsed time:	       290, 952489000, 290.952489000
+runs finished at	1730439085, 008935000, Fri Nov  1 05:31:25 2024
+runs elapsed time:	       290, 953511000, 290.953511000
+error: a total of 9 children finished with errors
+specinvoke exit: rc=0
+
+****************************************
+Workload elapsed time (copy 6 workload 1) = 36.403711 seconds
+523.xalancbmk_r: copy 7 non-zero return code (exit code=137, signal=0)
+
+Workload elapsed time (copy 7 workload 1) = 43.032703 seconds
+523.xalancbmk_r: copy 4 non-zero return code (exit code=137, signal=0)
+
+Workload elapsed time (copy 4 workload 1) = 56.306622 seconds
+523.xalancbmk_r: copy 9 non-zero return code (exit code=137, signal=0)
+
+Workload elapsed time (copy 9 workload 1) = 77.993336 seconds
+523.xalancbmk_r: copy 5 non-zero return code (exit code=137, signal=0)
+
+Workload elapsed time (copy 5 workload 1) = 93.995783 seconds
+523.xalancbmk_r: copy 13 non-zero return code (exit code=137, signal=0)
+
+Workload elapsed time (copy 13 workload 1) = 105.213963 seconds
+523.xalancbmk_r: copy 14 non-zero return code (exit code=137, signal=0)
+
+Workload elapsed time (copy 14 workload 1) = 122.246278 seconds
+523.xalancbmk_r: copy 12 non-zero return code (exit code=137, signal=0)
+
+Workload elapsed time (copy 12 workload 1) = 130.727696 seconds
+523.xalancbmk_r: copy 11 non-zero return code (exit code=137, signal=0)
+
+Workload elapsed time (copy 11 workload 1) = 141.45519 seconds
+Workload elapsed time (copy 1 workload 1) = 285.650387 seconds
+Workload elapsed time (copy 3 workload 1) = 287.582355 seconds
+Workload elapsed time (copy 0 workload 1) = 287.671131 seconds
+Workload elapsed time (copy 8 workload 1) = 288.867614 seconds
+Workload elapsed time (copy 10 workload 1) = 289.640994 seconds
+Workload elapsed time (copy 2 workload 1) = 290.951828 seconds
+Copy 0 of 523.xalancbmk_r (base refrate) run 1 finished at 2024-11-01 05:31:21.  Total elapsed time: 287.671131
+Copy 1 of 523.xalancbmk_r (base refrate) run 1 finished at 2024-11-01 05:31:19.  Total elapsed time: 285.650387
+Copy 2 of 523.xalancbmk_r (base refrate) run 1 finished at 2024-11-01 05:31:25.  Total elapsed time: 290.951828
+Copy 3 of 523.xalancbmk_r (base refrate) run 1 finished at 2024-11-01 05:31:21.  Total elapsed time: 287.582355
+Copy 4 of 523.xalancbmk_r (base refrate) run 1 finished at 2024-11-01 05:27:30.  Total elapsed time: 56.306622
+Copy 5 of 523.xalancbmk_r (base refrate) run 1 finished at 2024-11-01 05:28:08.  Total elapsed time: 93.995783
+Copy 6 of 523.xalancbmk_r (base refrate) run 1 finished at 2024-11-01 05:27:10.  Total elapsed time: 36.403711
+Copy 7 of 523.xalancbmk_r (base refrate) run 1 finished at 2024-11-01 05:27:17.  Total elapsed time: 43.032703
+Copy 8 of 523.xalancbmk_r (base refrate) run 1 finished at 2024-11-01 05:31:22.  Total elapsed time: 288.867614
+Copy 9 of 523.xalancbmk_r (base refrate) run 1 finished at 2024-11-01 05:27:52.  Total elapsed time: 77.993336
+Copy 10 of 523.xalancbmk_r (base refrate) run 1 finished at 2024-11-01 05:31:23.  Total elapsed time: 289.640994
+Copy 11 of 523.xalancbmk_r (base refrate) run 1 finished at 2024-11-01 05:28:55.  Total elapsed time: 141.45519
+Copy 12 of 523.xalancbmk_r (base refrate) run 1 finished at 2024-11-01 05:28:44.  Total elapsed time: 130.727696
+Copy 13 of 523.xalancbmk_r (base refrate) run 1 finished at 2024-11-01 05:28:19.  Total elapsed time: 105.213963
+Copy 14 of 523.xalancbmk_r (base refrate) run 1 finished at 2024-11-01 05:28:36.  Total elapsed time: 122.246278
+Benchmark Times:
+  Run Start:    2024-11-01 05:26:34 (1730438794)
+  Rate Start:   2024-11-01 05:26:34 (1730438794.05633)
+  Rate End:     2024-11-01 05:31:25 (1730439085.00869)
+  Run Stop:     2024-11-01 05:31:25 (1730439085)
+  Run Elapsed:  00:04:51 (291)
+  Run Reported: 00:04:50 (290 952362060 290.952362)
+ Error 523.xalancbmk_r base refrate ratio=54.44, runtime=290.952362, copies=15, threads=1, power=0.00W, temp=0.00 degC, humidity=0.00%, errorcode=RE
+-----------------------------------
+  Running 525.x264_r refrate (ref) base mytest-m64 (15 copies) [2024-11-01 05:31:25]
+OpenMP environment variables removed: None
+OpenMP environment variables in effect:
+	OMP_NUM_THREADS	=> '1'
+	OMP_THREAD_LIMIT	=> '1'
+Pre-run environment changes:
+	'OMP_NUM_THREADS' added: (value now '1')
+	'OMP_THREAD_LIMIT' added: (value now '1')
+Commands to run (specinvoke command file):
+    -r
+    -N C
+    -C /home/tdx/speccpu2017/benchspec/CPU/525.x264_r/run/run_base_refrate_mytest-m64.0211
+    -C /home/tdx/speccpu2017/benchspec/CPU/525.x264_r/run/run_base_refrate_mytest-m64.0212
+    -C /home/tdx/speccpu2017/benchspec/CPU/525.x264_r/run/run_base_refrate_mytest-m64.0213
+    -C /home/tdx/speccpu2017/benchspec/CPU/525.x264_r/run/run_base_refrate_mytest-m64.0214
+    -C /home/tdx/speccpu2017/benchspec/CPU/525.x264_r/run/run_base_refrate_mytest-m64.0215
+    -C /home/tdx/speccpu2017/benchspec/CPU/525.x264_r/run/run_base_refrate_mytest-m64.0216
+    -C /home/tdx/speccpu2017/benchspec/CPU/525.x264_r/run/run_base_refrate_mytest-m64.0217
+    -C /home/tdx/speccpu2017/benchspec/CPU/525.x264_r/run/run_base_refrate_mytest-m64.0218
+    -C /home/tdx/speccpu2017/benchspec/CPU/525.x264_r/run/run_base_refrate_mytest-m64.0219
+    -C /home/tdx/speccpu2017/benchspec/CPU/525.x264_r/run/run_base_refrate_mytest-m64.0220
+    -C /home/tdx/speccpu2017/benchspec/CPU/525.x264_r/run/run_base_refrate_mytest-m64.0221
+    -C /home/tdx/speccpu2017/benchspec/CPU/525.x264_r/run/run_base_refrate_mytest-m64.0222
+    -C /home/tdx/speccpu2017/benchspec/CPU/525.x264_r/run/run_base_refrate_mytest-m64.0223
+    -C /home/tdx/speccpu2017/benchspec/CPU/525.x264_r/run/run_base_refrate_mytest-m64.0224
+    -C /home/tdx/speccpu2017/benchspec/CPU/525.x264_r/run/run_base_refrate_mytest-m64.0225
+    -o run_000-1000_x264_r_base.mytest-m64_x264_pass1.out -e run_000-1000_x264_r_base.mytest-m64_x264_pass1.err ../run_base_refrate_mytest-m64.0211/x264_r_base.mytest-m64 --pass 1 --stats x264_stats.log --bitrate 1000 --frames 1000 -o BuckBunny_New.264 BuckBunny.yuv 1280x720 > run_000-1000_x264_r_base.mytest-m64_x264_pass1.out 2>> run_000-1000_x264_r_base.mytest-m64_x264_pass1.err (timed)
+    -o run_000-1000_x264_r_base.mytest-m64_x264_pass2.out -e run_000-1000_x264_r_base.mytest-m64_x264_pass2.err ../run_base_refrate_mytest-m64.0211/x264_r_base.mytest-m64 --pass 2 --stats x264_stats.log --bitrate 1000 --dumpyuv 200 --frames 1000 -o BuckBunny_New.264 BuckBunny.yuv 1280x720 > run_000-1000_x264_r_base.mytest-m64_x264_pass2.out 2>> run_000-1000_x264_r_base.mytest-m64_x264_pass2.err (timed)
+    -o run_0500-1250_x264_r_base.mytest-m64_x264.out -e run_0500-1250_x264_r_base.mytest-m64_x264.err ../run_base_refrate_mytest-m64.0211/x264_r_base.mytest-m64 --seek 500 --dumpyuv 200 --frames 1250 -o BuckBunny_New.264 BuckBunny.yuv 1280x720 > run_0500-1250_x264_r_base.mytest-m64_x264.out 2>> run_0500-1250_x264_r_base.mytest-m64_x264.err (timed)
+Specinvoke: /home/tdx/speccpu2017/bin/specinvoke -d /home/tdx/speccpu2017/benchspec/CPU/525.x264_r/run/run_base_refrate_mytest-m64.0211 -f speccmds.cmd -q -e speccmds.err -o speccmds.stdout
+Issuing command '/home/tdx/speccpu2017/bin/specinvoke -d /home/tdx/speccpu2017/benchspec/CPU/525.x264_r/run/run_base_refrate_mytest-m64.0211 -f speccmds.cmd -q -e speccmds.err -o speccmds.stdout'
+Start command: 2024-11-01 05:31:25 (1730439085.44349)
+Stop command: 2024-11-01 05:34:07 (1730439247.83448)
+Elapsed time for command: 00:02:42 (162.39099407196)
+Workload elapsed time (copy 12 workload 1) = 26.88284 seconds
+Workload elapsed time (copy 3 workload 1) = 26.88553 seconds
+Workload elapsed time (copy 6 workload 1) = 26.884862 seconds
+Workload elapsed time (copy 10 workload 1) = 26.891513 seconds
+Workload elapsed time (copy 4 workload 1) = 26.899131 seconds
+Workload elapsed time (copy 1 workload 1) = 26.929444 seconds
+Workload elapsed time (copy 11 workload 1) = 26.932312 seconds
+Workload elapsed time (copy 13 workload 1) = 26.931907 seconds
+Workload elapsed time (copy 9 workload 1) = 26.940576 seconds
+Workload elapsed time (copy 7 workload 1) = 26.94125 seconds
+Workload elapsed time (copy 2 workload 1) = 26.997614 seconds
+Workload elapsed time (copy 5 workload 1) = 27.039322 seconds
+Workload elapsed time (copy 14 workload 1) = 27.319834 seconds
+Workload elapsed time (copy 0 workload 1) = 27.970089 seconds
+Workload elapsed time (copy 8 workload 1) = 28.427042 seconds
+Workload elapsed time (copy 10 workload 2) = 62.104936 seconds
+Workload elapsed time (copy 6 workload 2) = 62.116619 seconds
+Workload elapsed time (copy 5 workload 2) = 62.389297 seconds
+Workload elapsed time (copy 11 workload 2) = 62.501103 seconds
+Workload elapsed time (copy 1 workload 2) = 62.561368 seconds
+Workload elapsed time (copy 12 workload 2) = 63.041431 seconds
+Workload elapsed time (copy 4 workload 2) = 63.207021 seconds
+Workload elapsed time (copy 3 workload 2) = 63.391735 seconds
+Workload elapsed time (copy 2 workload 2) = 63.56215 seconds
+Workload elapsed time (copy 14 workload 2) = 63.506837 seconds
+Workload elapsed time (copy 8 workload 2) = 62.977998 seconds
+Workload elapsed time (copy 13 workload 2) = 64.56004 seconds
+Workload elapsed time (copy 0 workload 2) = 63.633146 seconds
+Workload elapsed time (copy 7 workload 2) = 65.458609 seconds
+Workload elapsed time (copy 9 workload 2) = 65.775372 seconds
+Workload elapsed time (copy 10 workload 3) = 67.156074 seconds
+Workload elapsed time (copy 1 workload 3) = 66.689579 seconds
+Workload elapsed time (copy 6 workload 3) = 67.184226 seconds
+Workload elapsed time (copy 5 workload 3) = 66.76174 seconds
+Workload elapsed time (copy 11 workload 3) = 67.263168 seconds
+Workload elapsed time (copy 3 workload 3) = 66.464745 seconds
+Workload elapsed time (copy 4 workload 3) = 66.670859 seconds
+Workload elapsed time (copy 2 workload 3) = 67.33862 seconds
+Workload elapsed time (copy 8 workload 3) = 66.548325 seconds
+Workload elapsed time (copy 12 workload 3) = 68.632124 seconds
+Workload elapsed time (copy 13 workload 3) = 67.0859 seconds
+Workload elapsed time (copy 9 workload 3) = 66.123143 seconds
+Workload elapsed time (copy 0 workload 3) = 68.456061 seconds
+Workload elapsed time (copy 14 workload 3) = 70.104113 seconds
+Workload elapsed time (copy 7 workload 3) = 69.823011 seconds
+Copy 0 of 525.x264_r (base refrate) run 1 finished at 2024-11-01 05:34:05.  Total elapsed time: 160.059296
+Copy 1 of 525.x264_r (base refrate) run 1 finished at 2024-11-01 05:34:01.  Total elapsed time: 156.180391
+Copy 2 of 525.x264_r (base refrate) run 1 finished at 2024-11-01 05:34:03.  Total elapsed time: 157.898384
+Copy 3 of 525.x264_r (base refrate) run 1 finished at 2024-11-01 05:34:02.  Total elapsed time: 156.74201
+Copy 4 of 525.x264_r (base refrate) run 1 finished at 2024-11-01 05:34:02.  Total elapsed time: 156.777011
+Copy 5 of 525.x264_r (base refrate) run 1 finished at 2024-11-01 05:34:01.  Total elapsed time: 156.190359
+Copy 6 of 525.x264_r (base refrate) run 1 finished at 2024-11-01 05:34:01.  Total elapsed time: 156.185707
+Copy 7 of 525.x264_r (base refrate) run 1 finished at 2024-11-01 05:34:07.  Total elapsed time: 162.22287
+Copy 8 of 525.x264_r (base refrate) run 1 finished at 2024-11-01 05:34:03.  Total elapsed time: 157.953365
+Copy 9 of 525.x264_r (base refrate) run 1 finished at 2024-11-01 05:34:04.  Total elapsed time: 158.839091
+Copy 10 of 525.x264_r (base refrate) run 1 finished at 2024-11-01 05:34:01.  Total elapsed time: 156.152523
+Copy 11 of 525.x264_r (base refrate) run 1 finished at 2024-11-01 05:34:02.  Total elapsed time: 156.696583
+Copy 12 of 525.x264_r (base refrate) run 1 finished at 2024-11-01 05:34:04.  Total elapsed time: 158.556395
+Copy 13 of 525.x264_r (base refrate) run 1 finished at 2024-11-01 05:34:04.  Total elapsed time: 158.577847
+Copy 14 of 525.x264_r (base refrate) run 1 finished at 2024-11-01 05:34:06.  Total elapsed time: 160.930784
+OpenMP environment variables removed: None
+OpenMP environment variables in effect:
+	OMP_NUM_THREADS	=> '1'
+	OMP_THREAD_LIMIT	=> '1'
+Pre-run environment changes:
+	'OMP_NUM_THREADS' added: (value now '1')
+	'OMP_THREAD_LIMIT' added: (value now '1')
+comparing 'imagevalidate_frame_1100.out' with reltol=0.085
+comparing 'imagevalidate_frame_1249.out' with reltol=0.085
+comparing 'imagevalidate_frame_200.out' with reltol=0.085
+comparing 'imagevalidate_frame_400.out' with reltol=0.085
+comparing 'imagevalidate_frame_600.out' with reltol=0.085
+comparing 'imagevalidate_frame_700.out' with reltol=0.085
+comparing 'imagevalidate_frame_800.out' with reltol=0.085
+comparing 'imagevalidate_frame_900.out' with reltol=0.085
+comparing 'imagevalidate_frame_999.out' with reltol=0.085
+Specinvoke: /home/tdx/speccpu2017/bin/specinvoke -d /home/tdx/speccpu2017/benchspec/CPU/525.x264_r/run/run_base_refrate_mytest-m64.0211 -f compare.cmd -E -e compare.err -o compare.stdout
+Issuing command '/home/tdx/speccpu2017/bin/specinvoke -d /home/tdx/speccpu2017/benchspec/CPU/525.x264_r/run/run_base_refrate_mytest-m64.0211 -f compare.cmd -E -e compare.err -o compare.stdout'
+Start command: 2024-11-01 05:34:08 (1730439248.00258)
+Stop command: 2024-11-01 05:34:09 (1730439249.77828)
+Elapsed time for command: 00:00:01 (1.77570009231567)
+Benchmark Times:
+  Run Start:    2024-11-01 05:31:25 (1730439085)
+  Rate Start:   2024-11-01 05:31:25 (1730439085.45163)
+  Rate End:     2024-11-01 05:34:07 (1730439247.67638)
+  Run Stop:     2024-11-01 05:34:07 (1730439247)
+  Run Elapsed:  00:02:42 (162)
+  Run Reported: 00:02:42 (162 224750995 162.224751)
+ Success 525.x264_r base refrate ratio=161.91, runtime=162.224751, copies=15, threads=1, power=0.00W, temp=0.00 degC, humidity=0.00%
+-----------------------------------
+  Running 531.deepsjeng_r refrate (ref) base mytest-m64 (15 copies) [2024-11-01 05:34:09]
+OpenMP environment variables removed: None
+OpenMP environment variables in effect:
+	OMP_NUM_THREADS	=> '1'
+	OMP_THREAD_LIMIT	=> '1'
+Pre-run environment changes:
+	'OMP_NUM_THREADS' added: (value now '1')
+	'OMP_THREAD_LIMIT' added: (value now '1')
+Commands to run (specinvoke command file):
+    -r
+    -N C
+    -C /home/tdx/speccpu2017/benchspec/CPU/531.deepsjeng_r/run/run_base_refrate_mytest-m64.0211
+    -C /home/tdx/speccpu2017/benchspec/CPU/531.deepsjeng_r/run/run_base_refrate_mytest-m64.0212
+    -C /home/tdx/speccpu2017/benchspec/CPU/531.deepsjeng_r/run/run_base_refrate_mytest-m64.0213
+    -C /home/tdx/speccpu2017/benchspec/CPU/531.deepsjeng_r/run/run_base_refrate_mytest-m64.0214
+    -C /home/tdx/speccpu2017/benchspec/CPU/531.deepsjeng_r/run/run_base_refrate_mytest-m64.0215
+    -C /home/tdx/speccpu2017/benchspec/CPU/531.deepsjeng_r/run/run_base_refrate_mytest-m64.0216
+    -C /home/tdx/speccpu2017/benchspec/CPU/531.deepsjeng_r/run/run_base_refrate_mytest-m64.0217
+    -C /home/tdx/speccpu2017/benchspec/CPU/531.deepsjeng_r/run/run_base_refrate_mytest-m64.0218
+    -C /home/tdx/speccpu2017/benchspec/CPU/531.deepsjeng_r/run/run_base_refrate_mytest-m64.0219
+    -C /home/tdx/speccpu2017/benchspec/CPU/531.deepsjeng_r/run/run_base_refrate_mytest-m64.0220
+    -C /home/tdx/speccpu2017/benchspec/CPU/531.deepsjeng_r/run/run_base_refrate_mytest-m64.0221
+    -C /home/tdx/speccpu2017/benchspec/CPU/531.deepsjeng_r/run/run_base_refrate_mytest-m64.0222
+    -C /home/tdx/speccpu2017/benchspec/CPU/531.deepsjeng_r/run/run_base_refrate_mytest-m64.0223
+    -C /home/tdx/speccpu2017/benchspec/CPU/531.deepsjeng_r/run/run_base_refrate_mytest-m64.0224
+    -C /home/tdx/speccpu2017/benchspec/CPU/531.deepsjeng_r/run/run_base_refrate_mytest-m64.0225
+    -o ref.out -e ref.err ../run_base_refrate_mytest-m64.0211/deepsjeng_r_base.mytest-m64 ref.txt > ref.out 2>> ref.err (timed)
+Specinvoke: /home/tdx/speccpu2017/bin/specinvoke -d /home/tdx/speccpu2017/benchspec/CPU/531.deepsjeng_r/run/run_base_refrate_mytest-m64.0211 -f speccmds.cmd -q -e speccmds.err -o speccmds.stdout
+Issuing command '/home/tdx/speccpu2017/bin/specinvoke -d /home/tdx/speccpu2017/benchspec/CPU/531.deepsjeng_r/run/run_base_refrate_mytest-m64.0211 -f speccmds.cmd -q -e speccmds.err -o speccmds.stdout'
+Start command: 2024-11-01 05:34:09 (1730439249.94888)
+Stop command: 2024-11-01 05:38:30 (1730439510.56244)
+Elapsed time for command: 00:04:20 (260.613564014435)
+531.deepsjeng_r: copy 12 non-zero return code (exit code=137, signal=0)
+
+****************************************
+Contents of ref.err
+****************************************
+Killed
+
+****************************************
+****************************************
+Contents of speccmds.out
+****************************************
+specinvoke r4356
+ Invoked as: /home/tdx/speccpu2017/bin/specinvoke -d /home/tdx/speccpu2017/benchspec/CPU/531.deepsjeng_r/run/run_base_refrate_mytest-m64.0211 -f speccmds.cmd -q -e speccmds.err -o speccmds.stdout
+timer ticks over every 1000 ns
+ Environment in effect for these runs:
+ # 1: SYSTEMD_EXEC_PID=901
+ # 2: SHELL=/bin/bash
+ # 3: TERM=xterm-256color
+ # 4: INVOCATION_ID=df5b4a4c7b38482cb2c812e88c41b970
+ # 5: XDG_DATA_DIRS=/usr/local/share:/usr/share:/var/lib/snapd/desktop
+ # 6: CREDENTIALS_DIRECTORY=/run/credentials/serial-getty@hvc0.service
+ # 7: SPECPERLLIB=/home/tdx/speccpu2017/bin/lib:/home/tdx/speccpu2017/bin
+ # 8: XDG_SESSION_CLASS=user
+ # 9: LOGNAME=root
+ #10: LC_ALL=C
+ #11: SPECDB_PWD=/home/tdx/speccpu2017
+ #12: _=/home/tdx/speccpu2017/bin/runcpu
+ #13: XDG_SESSION_ID=1
+ #14: SHLVL=1
+ #15: OLDPWD=/root
+ #16: SPEC=/home/tdx/speccpu2017
+ #17: HUSHLOGIN=FALSE
+ #18: PWD=/home/tdx/speccpu2017
+ #19: XDG_RUNTIME_DIR=/run/user/0
+ #20: HOME=/root
+ #21: LESSCLOSE=/usr/bin/lesspipe %s %s
+ #22: LD_LIBRARY_PATH=/usr/lib64/:/usr/lib/:/lib64
+ #23: LIBC_FATAL_STDERR_=1
+ #24: MEMORY_PRESSURE_WRITE=c29tZSAyMDAwMDAgMjAwMDAwMAA=
+ #25: USER=root
+ #26: LANG=C.UTF-8
+ #27: LESSOPEN=| /usr/bin/lesspipe %s
+ #28: MEMORY_PRESSURE_WATCH=/sys/fs/cgroup/system.slice/system-serial\x2dgetty.slice/serial-getty@hvc0.service/memory.pressure
+ #29: PATH=/home/tdx/speccpu2017/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
+ #30: LS_COLORS=
+ #31: MAIL=/var/mail/root
+ #32: DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/0/bus
+ #33: XDG_SESSION_TYPE=tty
+ #34: LC_LANG=C
+ #35: OMP_NUM_THREADS=1
+ #36: OMP_THREAD_LIMIT=1
+running commands in speccmds.cmd 1 times
+runs started at		1730439249, 957433000, Fri Nov  1 05:34:09 2024
+run 1 started at	1730439249, 957485000, Fri Nov  1 05:34:09 2024
+child started: 0,	1730439249, 957501000, pid=2578, '../run_base_refrate_mytest-m64.0211/deepsjeng_r_base.mytest-m64 ref.txt > ref.out 2>> ref.err'
+child started: 1,	1730439249, 957832000, pid=2579, '../run_base_refrate_mytest-m64.0211/deepsjeng_r_base.mytest-m64 ref.txt > ref.out 2>> ref.err'
+child started: 2,	1730439249, 958017000, pid=2580, '../run_base_refrate_mytest-m64.0211/deepsjeng_r_base.mytest-m64 ref.txt > ref.out 2>> ref.err'
+child started: 3,	1730439249, 958215000, pid=2581, '../run_base_refrate_mytest-m64.0211/deepsjeng_r_base.mytest-m64 ref.txt > ref.out 2>> ref.err'
+child started: 4,	1730439249, 958462000, pid=2582, '../run_base_refrate_mytest-m64.0211/deepsjeng_r_base.mytest-m64 ref.txt > ref.out 2>> ref.err'
+child started: 5,	1730439249, 958741000, pid=2583, '../run_base_refrate_mytest-m64.0211/deepsjeng_r_base.mytest-m64 ref.txt > ref.out 2>> ref.err'
+child started: 6,	1730439249, 958961000, pid=2584, '../run_base_refrate_mytest-m64.0211/deepsjeng_r_base.mytest-m64 ref.txt > ref.out 2>> ref.err'
+child started: 7,	1730439249, 959180000, pid=2585, '../run_base_refrate_mytest-m64.0211/deepsjeng_r_base.mytest-m64 ref.txt > ref.out 2>> ref.err'
+child started: 8,	1730439249, 959434000, pid=2586, '../run_base_refrate_mytest-m64.0211/deepsjeng_r_base.mytest-m64 ref.txt > ref.out 2>> ref.err'
+child started: 9,	1730439249, 959735000, pid=2587, '../run_base_refrate_mytest-m64.0211/deepsjeng_r_base.mytest-m64 ref.txt > ref.out 2>> ref.err'
+child started: 10,	1730439249, 959962000, pid=2590, '../run_base_refrate_mytest-m64.0211/deepsjeng_r_base.mytest-m64 ref.txt > ref.out 2>> ref.err'
+child started: 11,	1730439249, 960193000, pid=2591, '../run_base_refrate_mytest-m64.0211/deepsjeng_r_base.mytest-m64 ref.txt > ref.out 2>> ref.err'
+child started: 12,	1730439249, 960462000, pid=2594, '../run_base_refrate_mytest-m64.0211/deepsjeng_r_base.mytest-m64 ref.txt > ref.out 2>> ref.err'
+child started: 13,	1730439249, 960784000, pid=2596, '../run_base_refrate_mytest-m64.0211/deepsjeng_r_base.mytest-m64 ref.txt > ref.out 2>> ref.err'
+child started: 14,	1730439249, 960997000, pid=2598, '../run_base_refrate_mytest-m64.0211/deepsjeng_r_base.mytest-m64 ref.txt > ref.out 2>> ref.err'
+child finished: 12,	1730439251, 412220000, sec=1, nsec=451758000, pid=2594, rc=35072
+child finished: 3,	1730439251, 591541000, sec=1, nsec=633326000, pid=2581, rc=35072
+child finished: 8,	1730439251, 728603000, sec=1, nsec=769169000, pid=2586, rc=35072
+child finished: 2,	1730439251, 861772000, sec=1, nsec=903755000, pid=2580, rc=35072
+child finished: 6,	1730439251, 900688000, sec=1, nsec=941727000, pid=2584, rc=35072
+child finished: 14,	1730439252, 063756000, sec=2, nsec=102759000, pid=2598, rc=35072
+child finished: 0,	1730439252, 105804000, sec=2, nsec=148303000, pid=2578, rc=35072
+child finished: 10,	1730439252, 201697000, sec=2, nsec=241735000, pid=2590, rc=35072
+child finished: 13,	1730439252, 307998000, sec=2, nsec=347214000, pid=2596, rc=35072
+child finished: 11,	1730439252, 384499000, sec=2, nsec=424306000, pid=2591, rc=35072
+child finished: 7,	1730439252, 580579000, sec=2, nsec=621399000, pid=2585, rc=35072
+child finished: 9,	1730439499, 130637000, sec=249, nsec=170902000, pid=2587, rc=0
+child finished: 1,	1730439500, 348973000, sec=250, nsec=391141000, pid=2579, rc=0
+child finished: 5,	1730439510, 177312000, sec=260, nsec=218571000, pid=2583, rc=0
+child finished: 4,	1730439510, 392183000, sec=260, nsec=433721000, pid=2582, rc=0
+run 1 finished at:	1730439510, 392338000, Fri Nov  1 05:38:30 2024
+run 1 elapsed time:	       260, 434853000, 260.434853000
+runs finished at	1730439510, 392388000, Fri Nov  1 05:38:30 2024
+runs elapsed time:	       260, 434955000, 260.434955000
+error: a total of 11 children finished with errors
+specinvoke exit: rc=0
+
+****************************************
+Workload elapsed time (copy 12 workload 1) = 1.451758 seconds
+531.deepsjeng_r: copy 3 non-zero return code (exit code=137, signal=0)
+
+Workload elapsed time (copy 3 workload 1) = 1.633326 seconds
+531.deepsjeng_r: copy 8 non-zero return code (exit code=137, signal=0)
+
+Workload elapsed time (copy 8 workload 1) = 1.769169 seconds
+531.deepsjeng_r: copy 2 non-zero return code (exit code=137, signal=0)
+
+Workload elapsed time (copy 2 workload 1) = 1.903755 seconds
+531.deepsjeng_r: copy 6 non-zero return code (exit code=137, signal=0)
+
+Workload elapsed time (copy 6 workload 1) = 1.941727 seconds
+531.deepsjeng_r: copy 14 non-zero return code (exit code=137, signal=0)
+
+Workload elapsed time (copy 14 workload 1) = 2.102759 seconds
+531.deepsjeng_r: copy 0 non-zero return code (exit code=137, signal=0)
+
+Workload elapsed time (copy 0 workload 1) = 2.148303 seconds
+531.deepsjeng_r: copy 10 non-zero return code (exit code=137, signal=0)
+
+Workload elapsed time (copy 10 workload 1) = 2.241735 seconds
+531.deepsjeng_r: copy 13 non-zero return code (exit code=137, signal=0)
+
+Workload elapsed time (copy 13 workload 1) = 2.347214 seconds
+531.deepsjeng_r: copy 11 non-zero return code (exit code=137, signal=0)
+
+Workload elapsed time (copy 11 workload 1) = 2.424306 seconds
+531.deepsjeng_r: copy 7 non-zero return code (exit code=137, signal=0)
+
+Workload elapsed time (copy 7 workload 1) = 2.621399 seconds
+Workload elapsed time (copy 9 workload 1) = 249.170902 seconds
+Workload elapsed time (copy 1 workload 1) = 250.391141 seconds
+Workload elapsed time (copy 5 workload 1) = 260.218571 seconds
+Workload elapsed time (copy 4 workload 1) = 260.433721 seconds
+Copy 0 of 531.deepsjeng_r (base refrate) run 1 finished at 2024-11-01 05:34:12.  Total elapsed time: 2.148303
+Copy 1 of 531.deepsjeng_r (base refrate) run 1 finished at 2024-11-01 05:38:20.  Total elapsed time: 250.391141
+Copy 2 of 531.deepsjeng_r (base refrate) run 1 finished at 2024-11-01 05:34:11.  Total elapsed time: 1.903755
+Copy 3 of 531.deepsjeng_r (base refrate) run 1 finished at 2024-11-01 05:34:11.  Total elapsed time: 1.633326
+Copy 4 of 531.deepsjeng_r (base refrate) run 1 finished at 2024-11-01 05:38:30.  Total elapsed time: 260.433721
+Copy 5 of 531.deepsjeng_r (base refrate) run 1 finished at 2024-11-01 05:38:30.  Total elapsed time: 260.218571
+Copy 6 of 531.deepsjeng_r (base refrate) run 1 finished at 2024-11-01 05:34:11.  Total elapsed time: 1.941727
+Copy 7 of 531.deepsjeng_r (base refrate) run 1 finished at 2024-11-01 05:34:12.  Total elapsed time: 2.621399
+Copy 8 of 531.deepsjeng_r (base refrate) run 1 finished at 2024-11-01 05:34:11.  Total elapsed time: 1.769169
+Copy 9 of 531.deepsjeng_r (base refrate) run 1 finished at 2024-11-01 05:38:19.  Total elapsed time: 249.170902
+Copy 10 of 531.deepsjeng_r (base refrate) run 1 finished at 2024-11-01 05:34:12.  Total elapsed time: 2.241735
+Copy 11 of 531.deepsjeng_r (base refrate) run 1 finished at 2024-11-01 05:34:12.  Total elapsed time: 2.424306
+Copy 12 of 531.deepsjeng_r (base refrate) run 1 finished at 2024-11-01 05:34:11.  Total elapsed time: 1.451758
+Copy 13 of 531.deepsjeng_r (base refrate) run 1 finished at 2024-11-01 05:34:12.  Total elapsed time: 2.347214
+Copy 14 of 531.deepsjeng_r (base refrate) run 1 finished at 2024-11-01 05:34:12.  Total elapsed time: 2.102759
+Benchmark Times:
+  Run Start:    2024-11-01 05:34:09 (1730439249)
+  Rate Start:   2024-11-01 05:34:09 (1730439249.9575)
+  Rate End:     2024-11-01 05:38:30 (1730439510.39218)
+  Run Stop:     2024-11-01 05:38:30 (1730439510)
+  Run Elapsed:  00:04:21 (261)
+  Run Reported: 00:04:20 (260 434682130 260.434682)
+ Error 531.deepsjeng_r base refrate ratio=66.01, runtime=260.434682, copies=15, threads=1, power=0.00W, temp=0.00 degC, humidity=0.00%, errorcode=RE
+-----------------------------------
+  Running 541.leela_r refrate (ref) base mytest-m64 (15 copies) [2024-11-01 05:38:30]
+OpenMP environment variables removed: None
+OpenMP environment variables in effect:
+	OMP_NUM_THREADS	=> '1'
+	OMP_THREAD_LIMIT	=> '1'
+Pre-run environment changes:
+	'OMP_NUM_THREADS' added: (value now '1')
+	'OMP_THREAD_LIMIT' added: (value now '1')
+Commands to run (specinvoke command file):
+    -r
+    -N C
+    -C /home/tdx/speccpu2017/benchspec/CPU/541.leela_r/run/run_base_refrate_mytest-m64.0211
+    -C /home/tdx/speccpu2017/benchspec/CPU/541.leela_r/run/run_base_refrate_mytest-m64.0212
+    -C /home/tdx/speccpu2017/benchspec/CPU/541.leela_r/run/run_base_refrate_mytest-m64.0213
+    -C /home/tdx/speccpu2017/benchspec/CPU/541.leela_r/run/run_base_refrate_mytest-m64.0214
+    -C /home/tdx/speccpu2017/benchspec/CPU/541.leela_r/run/run_base_refrate_mytest-m64.0215
+    -C /home/tdx/speccpu2017/benchspec/CPU/541.leela_r/run/run_base_refrate_mytest-m64.0216
+    -C /home/tdx/speccpu2017/benchspec/CPU/541.leela_r/run/run_base_refrate_mytest-m64.0217
+    -C /home/tdx/speccpu2017/benchspec/CPU/541.leela_r/run/run_base_refrate_mytest-m64.0218
+    -C /home/tdx/speccpu2017/benchspec/CPU/541.leela_r/run/run_base_refrate_mytest-m64.0219
+    -C /home/tdx/speccpu2017/benchspec/CPU/541.leela_r/run/run_base_refrate_mytest-m64.0220
+    -C /home/tdx/speccpu2017/benchspec/CPU/541.leela_r/run/run_base_refrate_mytest-m64.0221
+    -C /home/tdx/speccpu2017/benchspec/CPU/541.leela_r/run/run_base_refrate_mytest-m64.0222
+    -C /home/tdx/speccpu2017/benchspec/CPU/541.leela_r/run/run_base_refrate_mytest-m64.0223
+    -C /home/tdx/speccpu2017/benchspec/CPU/541.leela_r/run/run_base_refrate_mytest-m64.0224
+    -C /home/tdx/speccpu2017/benchspec/CPU/541.leela_r/run/run_base_refrate_mytest-m64.0225
+    -o ref.out -e ref.err ../run_base_refrate_mytest-m64.0211/leela_r_base.mytest-m64 ref.sgf > ref.out 2>> ref.err (timed)
+Specinvoke: /home/tdx/speccpu2017/bin/specinvoke -d /home/tdx/speccpu2017/benchspec/CPU/541.leela_r/run/run_base_refrate_mytest-m64.0211 -f speccmds.cmd -q -e speccmds.err -o speccmds.stdout
+Issuing command '/home/tdx/speccpu2017/bin/specinvoke -d /home/tdx/speccpu2017/benchspec/CPU/541.leela_r/run/run_base_refrate_mytest-m64.0211 -f speccmds.cmd -q -e speccmds.err -o speccmds.stdout'
+Start command: 2024-11-01 05:38:30 (1730439510.85293)
+Stop command: 2024-11-01 05:45:43 (1730439943.31634)
+Elapsed time for command: 00:07:12 (432.463417053223)
+Workload elapsed time (copy 2 workload 1) = 412.138986 seconds
+Workload elapsed time (copy 14 workload 1) = 412.889093 seconds
+Workload elapsed time (copy 10 workload 1) = 412.909374 seconds
+Workload elapsed time (copy 3 workload 1) = 413.666016 seconds
+Workload elapsed time (copy 0 workload 1) = 414.307282 seconds
+Workload elapsed time (copy 12 workload 1) = 414.845282 seconds
+Workload elapsed time (copy 9 workload 1) = 415.035412 seconds
+Workload elapsed time (copy 1 workload 1) = 421.492534 seconds
+Workload elapsed time (copy 13 workload 1) = 422.349238 seconds
+Workload elapsed time (copy 8 workload 1) = 422.559213 seconds
+Workload elapsed time (copy 7 workload 1) = 426.332137 seconds
+Workload elapsed time (copy 6 workload 1) = 426.554048 seconds
+Workload elapsed time (copy 11 workload 1) = 427.168642 seconds
+Workload elapsed time (copy 4 workload 1) = 428.089355 seconds
+Workload elapsed time (copy 5 workload 1) = 432.292155 seconds
+Copy 0 of 541.leela_r (base refrate) run 1 finished at 2024-11-01 05:45:25.  Total elapsed time: 414.307282
+Copy 1 of 541.leela_r (base refrate) run 1 finished at 2024-11-01 05:45:32.  Total elapsed time: 421.492534
+Copy 2 of 541.leela_r (base refrate) run 1 finished at 2024-11-01 05:45:23.  Total elapsed time: 412.138986
+Copy 3 of 541.leela_r (base refrate) run 1 finished at 2024-11-01 05:45:24.  Total elapsed time: 413.666016
+Copy 4 of 541.leela_r (base refrate) run 1 finished at 2024-11-01 05:45:38.  Total elapsed time: 428.089355
+Copy 5 of 541.leela_r (base refrate) run 1 finished at 2024-11-01 05:45:43.  Total elapsed time: 432.292155
+Copy 6 of 541.leela_r (base refrate) run 1 finished at 2024-11-01 05:45:37.  Total elapsed time: 426.554048
+Copy 7 of 541.leela_r (base refrate) run 1 finished at 2024-11-01 05:45:37.  Total elapsed time: 426.332137
+Copy 8 of 541.leela_r (base refrate) run 1 finished at 2024-11-01 05:45:33.  Total elapsed time: 422.559213
+Copy 9 of 541.leela_r (base refrate) run 1 finished at 2024-11-01 05:45:25.  Total elapsed time: 415.035412
+Copy 10 of 541.leela_r (base refrate) run 1 finished at 2024-11-01 05:45:23.  Total elapsed time: 412.909374
+Copy 11 of 541.leela_r (base refrate) run 1 finished at 2024-11-01 05:45:38.  Total elapsed time: 427.168642
+Copy 12 of 541.leela_r (base refrate) run 1 finished at 2024-11-01 05:45:25.  Total elapsed time: 414.845282
+Copy 13 of 541.leela_r (base refrate) run 1 finished at 2024-11-01 05:45:33.  Total elapsed time: 422.349238
+Copy 14 of 541.leela_r (base refrate) run 1 finished at 2024-11-01 05:45:23.  Total elapsed time: 412.889093
+OpenMP environment variables removed: None
+OpenMP environment variables in effect:
+	OMP_NUM_THREADS	=> '1'
+	OMP_THREAD_LIMIT	=> '1'
+Pre-run environment changes:
+	'OMP_NUM_THREADS' added: (value now '1')
+	'OMP_THREAD_LIMIT' added: (value now '1')
+comparing 'ref.out' with 
+Specinvoke: /home/tdx/speccpu2017/bin/specinvoke -d /home/tdx/speccpu2017/benchspec/CPU/541.leela_r/run/run_base_refrate_mytest-m64.0211 -f compare.cmd -E -e compare.err -o compare.stdout
+Issuing command '/home/tdx/speccpu2017/bin/specinvoke -d /home/tdx/speccpu2017/benchspec/CPU/541.leela_r/run/run_base_refrate_mytest-m64.0211 -f compare.cmd -E -e compare.err -o compare.stdout'
+Start command: 2024-11-01 05:45:43 (1730439943.45116)
+Stop command: 2024-11-01 05:45:43 (1730439943.94676)
+Elapsed time for command: 00:00:00 (0.495602130889893)
+Benchmark Times:
+  Run Start:    2024-11-01 05:38:30 (1730439510)
+  Rate Start:   2024-11-01 05:38:30 (1730439510.86477)
+  Rate End:     2024-11-01 05:45:43 (1730439943.15851)
+  Run Stop:     2024-11-01 05:45:43 (1730439943)
+  Run Elapsed:  00:07:13 (433)
+  Run Reported: 00:07:12 (432 293743133 432.293743)
+ Success 541.leela_r base refrate ratio=57.46, runtime=432.293743, copies=15, threads=1, power=0.00W, temp=0.00 degC, humidity=0.00%
+-----------------------------------
+  Running 548.exchange2_r refrate (ref) base mytest-m64 (15 copies) [2024-11-01 05:45:44]
+OpenMP environment variables removed: None
+OpenMP environment variables in effect:
+	OMP_NUM_THREADS	=> '1'
+	OMP_THREAD_LIMIT	=> '1'
+Pre-run environment changes:
+	'OMP_NUM_THREADS' added: (value now '1')
+	'OMP_THREAD_LIMIT' added: (value now '1')
+Commands to run (specinvoke command file):
+    -r
+    -N C
+    -C /home/tdx/speccpu2017/benchspec/CPU/548.exchange2_r/run/run_base_refrate_mytest-m64.0211
+    -C /home/tdx/speccpu2017/benchspec/CPU/548.exchange2_r/run/run_base_refrate_mytest-m64.0212
+    -C /home/tdx/speccpu2017/benchspec/CPU/548.exchange2_r/run/run_base_refrate_mytest-m64.0213
+    -C /home/tdx/speccpu2017/benchspec/CPU/548.exchange2_r/run/run_base_refrate_mytest-m64.0214
+    -C /home/tdx/speccpu2017/benchspec/CPU/548.exchange2_r/run/run_base_refrate_mytest-m64.0215
+    -C /home/tdx/speccpu2017/benchspec/CPU/548.exchange2_r/run/run_base_refrate_mytest-m64.0216
+    -C /home/tdx/speccpu2017/benchspec/CPU/548.exchange2_r/run/run_base_refrate_mytest-m64.0217
+    -C /home/tdx/speccpu2017/benchspec/CPU/548.exchange2_r/run/run_base_refrate_mytest-m64.0218
+    -C /home/tdx/speccpu2017/benchspec/CPU/548.exchange2_r/run/run_base_refrate_mytest-m64.0219
+    -C /home/tdx/speccpu2017/benchspec/CPU/548.exchange2_r/run/run_base_refrate_mytest-m64.0220
+    -C /home/tdx/speccpu2017/benchspec/CPU/548.exchange2_r/run/run_base_refrate_mytest-m64.0221
+    -C /home/tdx/speccpu2017/benchspec/CPU/548.exchange2_r/run/run_base_refrate_mytest-m64.0222
+    -C /home/tdx/speccpu2017/benchspec/CPU/548.exchange2_r/run/run_base_refrate_mytest-m64.0223
+    -C /home/tdx/speccpu2017/benchspec/CPU/548.exchange2_r/run/run_base_refrate_mytest-m64.0224
+    -C /home/tdx/speccpu2017/benchspec/CPU/548.exchange2_r/run/run_base_refrate_mytest-m64.0225
+    -o exchange2.txt -e exchange2.err ../run_base_refrate_mytest-m64.0211/exchange2_r_base.mytest-m64 6 > exchange2.txt 2>> exchange2.err (timed)
+Specinvoke: /home/tdx/speccpu2017/bin/specinvoke -d /home/tdx/speccpu2017/benchspec/CPU/548.exchange2_r/run/run_base_refrate_mytest-m64.0211 -f speccmds.cmd -q -e speccmds.err -o speccmds.stdout
+Issuing command '/home/tdx/speccpu2017/bin/specinvoke -d /home/tdx/speccpu2017/benchspec/CPU/548.exchange2_r/run/run_base_refrate_mytest-m64.0211 -f speccmds.cmd -q -e speccmds.err -o speccmds.stdout'
+Start command: 2024-11-01 05:45:44 (1730439944.11626)
+Stop command: 2024-11-01 05:48:21 (1730440101.17696)
+Elapsed time for command: 00:02:37 (157.060700893402)
+Workload elapsed time (copy 0 workload 1) = 149.957897 seconds
+Workload elapsed time (copy 10 workload 1) = 151.109448 seconds
+Workload elapsed time (copy 1 workload 1) = 151.201477 seconds
+Workload elapsed time (copy 13 workload 1) = 151.520574 seconds
+Workload elapsed time (copy 5 workload 1) = 151.59765 seconds
+Workload elapsed time (copy 9 workload 1) = 152.31269 seconds
+Workload elapsed time (copy 11 workload 1) = 153.438954 seconds
+Workload elapsed time (copy 6 workload 1) = 153.840558 seconds
+Workload elapsed time (copy 8 workload 1) = 155.227418 seconds
+Workload elapsed time (copy 3 workload 1) = 155.413039 seconds
+Workload elapsed time (copy 14 workload 1) = 155.830883 seconds
+Workload elapsed time (copy 4 workload 1) = 156.306373 seconds
+Workload elapsed time (copy 2 workload 1) = 156.345734 seconds
+Workload elapsed time (copy 12 workload 1) = 156.879268 seconds
+Workload elapsed time (copy 7 workload 1) = 156.896091 seconds
+Copy 0 of 548.exchange2_r (base refrate) run 1 finished at 2024-11-01 05:48:14.  Total elapsed time: 149.957897
+Copy 1 of 548.exchange2_r (base refrate) run 1 finished at 2024-11-01 05:48:15.  Total elapsed time: 151.201477
+Copy 2 of 548.exchange2_r (base refrate) run 1 finished at 2024-11-01 05:48:20.  Total elapsed time: 156.345734
+Copy 3 of 548.exchange2_r (base refrate) run 1 finished at 2024-11-01 05:48:19.  Total elapsed time: 155.413039
+Copy 4 of 548.exchange2_r (base refrate) run 1 finished at 2024-11-01 05:48:20.  Total elapsed time: 156.306373
+Copy 5 of 548.exchange2_r (base refrate) run 1 finished at 2024-11-01 05:48:15.  Total elapsed time: 151.59765
+Copy 6 of 548.exchange2_r (base refrate) run 1 finished at 2024-11-01 05:48:17.  Total elapsed time: 153.840558
+Copy 7 of 548.exchange2_r (base refrate) run 1 finished at 2024-11-01 05:48:21.  Total elapsed time: 156.896091
+Copy 8 of 548.exchange2_r (base refrate) run 1 finished at 2024-11-01 05:48:19.  Total elapsed time: 155.227418
+Copy 9 of 548.exchange2_r (base refrate) run 1 finished at 2024-11-01 05:48:16.  Total elapsed time: 152.31269
+Copy 10 of 548.exchange2_r (base refrate) run 1 finished at 2024-11-01 05:48:15.  Total elapsed time: 151.109448
+Copy 11 of 548.exchange2_r (base refrate) run 1 finished at 2024-11-01 05:48:17.  Total elapsed time: 153.438954
+Copy 12 of 548.exchange2_r (base refrate) run 1 finished at 2024-11-01 05:48:21.  Total elapsed time: 156.879268
+Copy 13 of 548.exchange2_r (base refrate) run 1 finished at 2024-11-01 05:48:15.  Total elapsed time: 151.520574
+Copy 14 of 548.exchange2_r (base refrate) run 1 finished at 2024-11-01 05:48:19.  Total elapsed time: 155.830883
+OpenMP environment variables removed: None
+OpenMP environment variables in effect:
+	OMP_NUM_THREADS	=> '1'
+	OMP_THREAD_LIMIT	=> '1'
+Pre-run environment changes:
+	'OMP_NUM_THREADS' added: (value now '1')
+	'OMP_THREAD_LIMIT' added: (value now '1')
+comparing 's.txt' with 
+Specinvoke: /home/tdx/speccpu2017/bin/specinvoke -d /home/tdx/speccpu2017/benchspec/CPU/548.exchange2_r/run/run_base_refrate_mytest-m64.0211 -f compare.cmd -E -e compare.err -o compare.stdout
+Issuing command '/home/tdx/speccpu2017/bin/specinvoke -d /home/tdx/speccpu2017/benchspec/CPU/548.exchange2_r/run/run_base_refrate_mytest-m64.0211 -f compare.cmd -E -e compare.err -o compare.stdout'
+Start command: 2024-11-01 05:48:21 (1730440101.29745)
+Stop command: 2024-11-01 05:48:21 (1730440101.69897)
+Elapsed time for command: 00:00:00 (0.401524066925049)
+Benchmark Times:
+  Run Start:    2024-11-01 05:45:44 (1730439944)
+  Rate Start:   2024-11-01 05:45:44 (1730439944.12344)
+  Rate End:     2024-11-01 05:48:21 (1730440101.02095)
+  Run Stop:     2024-11-01 05:48:21 (1730440101)
+  Run Elapsed:  00:02:37 (157)
+  Run Reported: 00:02:36 (156 897515058 156.897515)
+ Success 548.exchange2_r base refrate ratio=250.48, runtime=156.897515, copies=15, threads=1, power=0.00W, temp=0.00 degC, humidity=0.00%
+-----------------------------------
+  Running 557.xz_r refrate (ref) base mytest-m64 (15 copies) [2024-11-01 05:48:21]
+OpenMP environment variables removed: None
+OpenMP environment variables in effect:
+	OMP_NUM_THREADS	=> '1'
+	OMP_THREAD_LIMIT	=> '1'
+Pre-run environment changes:
+	'OMP_NUM_THREADS' added: (value now '1')
+	'OMP_THREAD_LIMIT' added: (value now '1')
+Commands to run (specinvoke command file):
+    -r
+    -N C
+    -C /home/tdx/speccpu2017/benchspec/CPU/557.xz_r/run/run_base_refrate_mytest-m64.0211
+    -C /home/tdx/speccpu2017/benchspec/CPU/557.xz_r/run/run_base_refrate_mytest-m64.0212
+    -C /home/tdx/speccpu2017/benchspec/CPU/557.xz_r/run/run_base_refrate_mytest-m64.0213
+    -C /home/tdx/speccpu2017/benchspec/CPU/557.xz_r/run/run_base_refrate_mytest-m64.0214
+    -C /home/tdx/speccpu2017/benchspec/CPU/557.xz_r/run/run_base_refrate_mytest-m64.0215
+    -C /home/tdx/speccpu2017/benchspec/CPU/557.xz_r/run/run_base_refrate_mytest-m64.0216
+    -C /home/tdx/speccpu2017/benchspec/CPU/557.xz_r/run/run_base_refrate_mytest-m64.0217
+    -C /home/tdx/speccpu2017/benchspec/CPU/557.xz_r/run/run_base_refrate_mytest-m64.0218
+    -C /home/tdx/speccpu2017/benchspec/CPU/557.xz_r/run/run_base_refrate_mytest-m64.0219
+    -C /home/tdx/speccpu2017/benchspec/CPU/557.xz_r/run/run_base_refrate_mytest-m64.0220
+    -C /home/tdx/speccpu2017/benchspec/CPU/557.xz_r/run/run_base_refrate_mytest-m64.0221
+    -C /home/tdx/speccpu2017/benchspec/CPU/557.xz_r/run/run_base_refrate_mytest-m64.0222
+    -C /home/tdx/speccpu2017/benchspec/CPU/557.xz_r/run/run_base_refrate_mytest-m64.0223
+    -C /home/tdx/speccpu2017/benchspec/CPU/557.xz_r/run/run_base_refrate_mytest-m64.0224
+    -C /home/tdx/speccpu2017/benchspec/CPU/557.xz_r/run/run_base_refrate_mytest-m64.0225
+    -o cld.tar-160-6.out -e cld.tar-160-6.err ../run_base_refrate_mytest-m64.0211/xz_r_base.mytest-m64 cld.tar.xz 160 19cf30ae51eddcbefda78dd06014b4b96281456e078ca7c13e1c0c9e6aaea8dff3efb4ad6b0456697718cede6bd5454852652806a657bb56e07d61128434b474 59796407 61004416 6 > cld.tar-160-6.out 2>> cld.tar-160-6.err (timed)
+    -o cpu2006docs.tar-250-6e.out -e cpu2006docs.tar-250-6e.err ../run_base_refrate_mytest-m64.0211/xz_r_base.mytest-m64 cpu2006docs.tar.xz 250 055ce243071129412e9dd0b3b69a21654033a9b723d874b2015c774fac1553d9713be561ca86f74e4f16f22e664fc17a79f30caa5ad2c04fbc447549c2810fae 23047774 23513385 6e > cpu2006docs.tar-250-6e.out 2>> cpu2006docs.tar-250-6e.err (timed)
+    -o input.combined-250-7.out -e input.combined-250-7.err ../run_base_refrate_mytest-m64.0211/xz_r_base.mytest-m64 input.combined.xz 250 a841f68f38572a49d86226b7ff5baeb31bd19dc637a922a972b2e6d1257a890f6a544ecab967c313e370478c74f760eb229d4eef8a8d2836d233d3e9dd1430bf 40401484 41217675 7 > input.combined-250-7.out 2>> input.combined-250-7.err (timed)
+Specinvoke: /home/tdx/speccpu2017/bin/specinvoke -d /home/tdx/speccpu2017/benchspec/CPU/557.xz_r/run/run_base_refrate_mytest-m64.0211 -f speccmds.cmd -q -e speccmds.err -o speccmds.stdout
+Issuing command '/home/tdx/speccpu2017/bin/specinvoke -d /home/tdx/speccpu2017/benchspec/CPU/557.xz_r/run/run_base_refrate_mytest-m64.0211 -f speccmds.cmd -q -e speccmds.err -o speccmds.stdout'
+Start command: 2024-11-01 05:48:21 (1730440101.88378)
+Stop command: 2024-11-01 05:51:22 (1730440282.54823)
+Elapsed time for command: 00:03:00 (180.664445161819)
+557.xz_r: copy 0 non-zero return code (exit code=137, signal=0)
+
+****************************************
+Contents of cld.tar-160-6.err
+****************************************
+Killed
+
+****************************************
+****************************************
+Contents of speccmds.out
+****************************************
+specinvoke r4356
+ Invoked as: /home/tdx/speccpu2017/bin/specinvoke -d /home/tdx/speccpu2017/benchspec/CPU/557.xz_r/run/run_base_refrate_mytest-m64.0211 -f speccmds.cmd -q -e speccmds.err -o speccmds.stdout
+timer ticks over every 1000 ns
+ Environment in effect for these runs:
+ # 1: LC_ALL=C
+ # 2: LOGNAME=root
+ # 3: SPECPERLLIB=/home/tdx/speccpu2017/bin/lib:/home/tdx/speccpu2017/bin
+ # 4: XDG_SESSION_CLASS=user
+ # 5: SYSTEMD_EXEC_PID=901
+ # 6: XDG_DATA_DIRS=/usr/local/share:/usr/share:/var/lib/snapd/desktop
+ # 7: CREDENTIALS_DIRECTORY=/run/credentials/serial-getty@hvc0.service
+ # 8: INVOCATION_ID=df5b4a4c7b38482cb2c812e88c41b970
+ # 9: TERM=xterm-256color
+ #10: SHELL=/bin/bash
+ #11: HOME=/root
+ #12: LESSCLOSE=/usr/bin/lesspipe %s %s
+ #13: LD_LIBRARY_PATH=/usr/lib64/:/usr/lib/:/lib64
+ #14: LIBC_FATAL_STDERR_=1
+ #15: MEMORY_PRESSURE_WRITE=c29tZSAyMDAwMDAgMjAwMDAwMAA=
+ #16: HUSHLOGIN=FALSE
+ #17: SPEC=/home/tdx/speccpu2017
+ #18: OLDPWD=/root
+ #19: XDG_RUNTIME_DIR=/run/user/0
+ #20: PWD=/home/tdx/speccpu2017
+ #21: XDG_SESSION_ID=1
+ #22: SHLVL=1
+ #23: SPECDB_PWD=/home/tdx/speccpu2017
+ #24: _=/home/tdx/speccpu2017/bin/runcpu
+ #25: MEMORY_PRESSURE_WATCH=/sys/fs/cgroup/system.slice/system-serial\x2dgetty.slice/serial-getty@hvc0.service/memory.pressure
+ #26: LESSOPEN=| /usr/bin/lesspipe %s
+ #27: PATH=/home/tdx/speccpu2017/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
+ #28: LANG=C.UTF-8
+ #29: USER=root
+ #30: LC_LANG=C
+ #31: XDG_SESSION_TYPE=tty
+ #32: MAIL=/var/mail/root
+ #33: DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/0/bus
+ #34: LS_COLORS=
+ #35: OMP_NUM_THREADS=1
+ #36: OMP_THREAD_LIMIT=1
+running commands in speccmds.cmd 1 times
+runs started at		1730440101, 893378000, Fri Nov  1 05:48:21 2024
+run 1 started at	1730440101, 893428000, Fri Nov  1 05:48:21 2024
+child started: 0,	1730440101, 893444000, pid=2782, '../run_base_refrate_mytest-m64.0211/xz_r_base.mytest-m64 cld.tar.xz 160 19cf30ae51eddcbefda78dd06014b4b96281456e078ca7c13e1c0c9e6aaea8dff3efb4ad6b0456697718cede6bd5454852652806a657bb56e07d61128434b474 59796407 61004416 6 > cld.tar-160-6.out 2>> cld.tar-160-6.err'
+child started: 1,	1730440101, 893800000, pid=2783, '../run_base_refrate_mytest-m64.0211/xz_r_base.mytest-m64 cld.tar.xz 160 19cf30ae51eddcbefda78dd06014b4b96281456e078ca7c13e1c0c9e6aaea8dff3efb4ad6b0456697718cede6bd5454852652806a657bb56e07d61128434b474 59796407 61004416 6 > cld.tar-160-6.out 2>> cld.tar-160-6.err'
+child started: 2,	1730440101, 893996000, pid=2784, '../run_base_refrate_mytest-m64.0211/xz_r_base.mytest-m64 cld.tar.xz 160 19cf30ae51eddcbefda78dd06014b4b96281456e078ca7c13e1c0c9e6aaea8dff3efb4ad6b0456697718cede6bd5454852652806a657bb56e07d61128434b474 59796407 61004416 6 > cld.tar-160-6.out 2>> cld.tar-160-6.err'
+child started: 3,	1730440101, 894209000, pid=2785, '../run_base_refrate_mytest-m64.0211/xz_r_base.mytest-m64 cld.tar.xz 160 19cf30ae51eddcbefda78dd06014b4b96281456e078ca7c13e1c0c9e6aaea8dff3efb4ad6b0456697718cede6bd5454852652806a657bb56e07d61128434b474 59796407 61004416 6 > cld.tar-160-6.out 2>> cld.tar-160-6.err'
+child started: 4,	1730440101, 894412000, pid=2786, '../run_base_refrate_mytest-m64.0211/xz_r_base.mytest-m64 cld.tar.xz 160 19cf30ae51eddcbefda78dd06014b4b96281456e078ca7c13e1c0c9e6aaea8dff3efb4ad6b0456697718cede6bd5454852652806a657bb56e07d61128434b474 59796407 61004416 6 > cld.tar-160-6.out 2>> cld.tar-160-6.err'
+child started: 5,	1730440101, 894629000, pid=2787, '../run_base_refrate_mytest-m64.0211/xz_r_base.mytest-m64 cld.tar.xz 160 19cf30ae51eddcbefda78dd06014b4b96281456e078ca7c13e1c0c9e6aaea8dff3efb4ad6b0456697718cede6bd5454852652806a657bb56e07d61128434b474 59796407 61004416 6 > cld.tar-160-6.out 2>> cld.tar-160-6.err'
+child started: 6,	1730440101, 894957000, pid=2788, '../run_base_refrate_mytest-m64.0211/xz_r_base.mytest-m64 cld.tar.xz 160 19cf30ae51eddcbefda78dd06014b4b96281456e078ca7c13e1c0c9e6aaea8dff3efb4ad6b0456697718cede6bd5454852652806a657bb56e07d61128434b474 59796407 61004416 6 > cld.tar-160-6.out 2>> cld.tar-160-6.err'
+child started: 7,	1730440101, 895196000, pid=2789, '../run_base_refrate_mytest-m64.0211/xz_r_base.mytest-m64 cld.tar.xz 160 19cf30ae51eddcbefda78dd06014b4b96281456e078ca7c13e1c0c9e6aaea8dff3efb4ad6b0456697718cede6bd5454852652806a657bb56e07d61128434b474 59796407 61004416 6 > cld.tar-160-6.out 2>> cld.tar-160-6.err'
+child started: 8,	1730440101, 895482000, pid=2790, '../run_base_refrate_mytest-m64.0211/xz_r_base.mytest-m64 cld.tar.xz 160 19cf30ae51eddcbefda78dd06014b4b96281456e078ca7c13e1c0c9e6aaea8dff3efb4ad6b0456697718cede6bd5454852652806a657bb56e07d61128434b474 59796407 61004416 6 > cld.tar-160-6.out 2>> cld.tar-160-6.err'
+child started: 9,	1730440101, 895831000, pid=2791, '../run_base_refrate_mytest-m64.0211/xz_r_base.mytest-m64 cld.tar.xz 160 19cf30ae51eddcbefda78dd06014b4b96281456e078ca7c13e1c0c9e6aaea8dff3efb4ad6b0456697718cede6bd5454852652806a657bb56e07d61128434b474 59796407 61004416 6 > cld.tar-160-6.out 2>> cld.tar-160-6.err'
+child started: 10,	1730440101, 896084000, pid=2792, '../run_base_refrate_mytest-m64.0211/xz_r_base.mytest-m64 cld.tar.xz 160 19cf30ae51eddcbefda78dd06014b4b96281456e078ca7c13e1c0c9e6aaea8dff3efb4ad6b0456697718cede6bd5454852652806a657bb56e07d61128434b474 59796407 61004416 6 > cld.tar-160-6.out 2>> cld.tar-160-6.err'
+child started: 11,	1730440101, 896342000, pid=2795, '../run_base_refrate_mytest-m64.0211/xz_r_base.mytest-m64 cld.tar.xz 160 19cf30ae51eddcbefda78dd06014b4b96281456e078ca7c13e1c0c9e6aaea8dff3efb4ad6b0456697718cede6bd5454852652806a657bb56e07d61128434b474 59796407 61004416 6 > cld.tar-160-6.out 2>> cld.tar-160-6.err'
+child started: 12,	1730440101, 896612000, pid=2797, '../run_base_refrate_mytest-m64.0211/xz_r_base.mytest-m64 cld.tar.xz 160 19cf30ae51eddcbefda78dd06014b4b96281456e078ca7c13e1c0c9e6aaea8dff3efb4ad6b0456697718cede6bd5454852652806a657bb56e07d61128434b474 59796407 61004416 6 > cld.tar-160-6.out 2>> cld.tar-160-6.err'
+child started: 13,	1730440101, 896942000, pid=2800, '../run_base_refrate_mytest-m64.0211/xz_r_base.mytest-m64 cld.tar.xz 160 19cf30ae51eddcbefda78dd06014b4b96281456e078ca7c13e1c0c9e6aaea8dff3efb4ad6b0456697718cede6bd5454852652806a657bb56e07d61128434b474 59796407 61004416 6 > cld.tar-160-6.out 2>> cld.tar-160-6.err'
+child started: 14,	1730440101, 897133000, pid=2801, '../run_base_refrate_mytest-m64.0211/xz_r_base.mytest-m64 cld.tar.xz 160 19cf30ae51eddcbefda78dd06014b4b96281456e078ca7c13e1c0c9e6aaea8dff3efb4ad6b0456697718cede6bd5454852652806a657bb56e07d61128434b474 59796407 61004416 6 > cld.tar-160-6.out 2>> cld.tar-160-6.err'
+child finished: 0,	1730440102, 139906000, sec=0, nsec=246462000, pid=2782, rc=35072
+child finished: 14,	1730440102, 186305000, sec=0, nsec=289172000, pid=2801, rc=35072
+child finished: 7,	1730440102, 225934000, sec=0, nsec=330738000, pid=2789, rc=35072
+child finished: 4,	1730440102, 288441000, sec=0, nsec=394029000, pid=2786, rc=35072
+child finished: 10,	1730440102, 358166000, sec=0, nsec=462082000, pid=2792, rc=35072
+child finished: 5,	1730440102, 431287000, sec=0, nsec=536658000, pid=2787, rc=35072
+child finished: 9,	1730440102, 512740000, sec=0, nsec=616909000, pid=2791, rc=35072
+child finished: 1,	1730440102, 594555000, sec=0, nsec=700755000, pid=2783, rc=35072
+child finished: 8,	1730440102, 640100000, sec=0, nsec=744618000, pid=2790, rc=35072
+child finished: 11,	1730440104, 664208000, sec=2, nsec=767866000, pid=2795, rc=35072
+child finished: 13,	1730440110, 580296000, sec=8, nsec=683354000, pid=2800, rc=35072
+child finished: 12,	1730440235, 813959000, sec=133, nsec=917347000, pid=2797, rc=0
+child finished: 3,	1730440274, 377635000, sec=172, nsec=483426000, pid=2785, rc=0
+child finished: 2,	1730440279, 389516000, sec=177, nsec=495520000, pid=2784, rc=0
+child finished: 6,	1730440282, 380245000, sec=180, nsec=485288000, pid=2788, rc=0
+run 1 finished at:	1730440282, 380384000, Fri Nov  1 05:51:22 2024
+run 1 elapsed time:	       180, 486956000, 180.486956000
+runs finished at	1730440282, 380444000, Fri Nov  1 05:51:22 2024
+runs elapsed time:	       180, 487066000, 180.487066000
+error: a total of 11 children finished with errors
+specinvoke exit: rc=0
+
+****************************************
+Workload elapsed time (copy 0 workload 1) = 0.246462 seconds
+557.xz_r: copy 14 non-zero return code (exit code=137, signal=0)
+
+Workload elapsed time (copy 14 workload 1) = 0.289172 seconds
+557.xz_r: copy 7 non-zero return code (exit code=137, signal=0)
+
+Workload elapsed time (copy 7 workload 1) = 0.330738 seconds
+557.xz_r: copy 4 non-zero return code (exit code=137, signal=0)
+
+Workload elapsed time (copy 4 workload 1) = 0.394029 seconds
+557.xz_r: copy 10 non-zero return code (exit code=137, signal=0)
+
+Workload elapsed time (copy 10 workload 1) = 0.462082 seconds
+557.xz_r: copy 5 non-zero return code (exit code=137, signal=0)
+
+Workload elapsed time (copy 5 workload 1) = 0.536658 seconds
+557.xz_r: copy 9 non-zero return code (exit code=137, signal=0)
+
+Workload elapsed time (copy 9 workload 1) = 0.616909 seconds
+557.xz_r: copy 1 non-zero return code (exit code=137, signal=0)
+
+Workload elapsed time (copy 1 workload 1) = 0.700755 seconds
+557.xz_r: copy 8 non-zero return code (exit code=137, signal=0)
+
+Workload elapsed time (copy 8 workload 1) = 0.744618 seconds
+557.xz_r: copy 11 non-zero return code (exit code=137, signal=0)
+
+Workload elapsed time (copy 11 workload 1) = 2.767866 seconds
+557.xz_r: copy 13 non-zero return code (exit code=137, signal=0)
+
+Workload elapsed time (copy 13 workload 1) = 8.683354 seconds
+Workload elapsed time (copy 12 workload 1) = 133.917347 seconds
+Workload elapsed time (copy 3 workload 1) = 172.483426 seconds
+Workload elapsed time (copy 2 workload 1) = 177.49552 seconds
+Workload elapsed time (copy 6 workload 1) = 180.485288 seconds
+Copy 0 of 557.xz_r (base refrate) run 1 finished at 2024-11-01 05:48:22.  Total elapsed time: 0.246462
+Copy 1 of 557.xz_r (base refrate) run 1 finished at 2024-11-01 05:48:22.  Total elapsed time: 0.700755
+Copy 2 of 557.xz_r (base refrate) run 1 finished at 2024-11-01 05:51:19.  Total elapsed time: 177.49552
+Copy 3 of 557.xz_r (base refrate) run 1 finished at 2024-11-01 05:51:14.  Total elapsed time: 172.483426
+Copy 4 of 557.xz_r (base refrate) run 1 finished at 2024-11-01 05:48:22.  Total elapsed time: 0.394029
+Copy 5 of 557.xz_r (base refrate) run 1 finished at 2024-11-01 05:48:22.  Total elapsed time: 0.536658
+Copy 6 of 557.xz_r (base refrate) run 1 finished at 2024-11-01 05:51:22.  Total elapsed time: 180.485288
+Copy 7 of 557.xz_r (base refrate) run 1 finished at 2024-11-01 05:48:22.  Total elapsed time: 0.330738
+Copy 8 of 557.xz_r (base refrate) run 1 finished at 2024-11-01 05:48:22.  Total elapsed time: 0.744618
+Copy 9 of 557.xz_r (base refrate) run 1 finished at 2024-11-01 05:48:22.  Total elapsed time: 0.616909
+Copy 10 of 557.xz_r (base refrate) run 1 finished at 2024-11-01 05:48:22.  Total elapsed time: 0.462082
+Copy 11 of 557.xz_r (base refrate) run 1 finished at 2024-11-01 05:48:24.  Total elapsed time: 2.767866
+Copy 12 of 557.xz_r (base refrate) run 1 finished at 2024-11-01 05:50:35.  Total elapsed time: 133.917347
+Copy 13 of 557.xz_r (base refrate) run 1 finished at 2024-11-01 05:48:30.  Total elapsed time: 8.683354
+Copy 14 of 557.xz_r (base refrate) run 1 finished at 2024-11-01 05:48:22.  Total elapsed time: 0.289172
+Benchmark Times:
+  Run Start:    2024-11-01 05:48:21 (1730440101)
+  Rate Start:   2024-11-01 05:48:21 (1730440101.89344)
+  Rate End:     2024-11-01 05:51:22 (1730440282.38024)
+  Run Stop:     2024-11-01 05:51:22 (1730440282)
+  Run Elapsed:  00:03:01 (181)
+  Run Reported: 00:03:00 (180 486800909 180.486801)
+ Error 557.xz_r base refrate ratio=89.76, runtime=180.486801, copies=15, threads=1, power=0.00W, temp=0.00 degC, humidity=0.00%, errorcode=RE
+-----------------------------------
+  Running 999.specrand_ir refrate (ref) base mytest-m64 (15 copies) [2024-11-01 05:51:22]
+OpenMP environment variables removed: None
+OpenMP environment variables in effect:
+	OMP_NUM_THREADS	=> '1'
+	OMP_THREAD_LIMIT	=> '1'
+Pre-run environment changes:
+	'OMP_NUM_THREADS' added: (value now '1')
+	'OMP_THREAD_LIMIT' added: (value now '1')
+Commands to run (specinvoke command file):
+    -r
+    -N C
+    -C /home/tdx/speccpu2017/benchspec/CPU/999.specrand_ir/run/run_base_refrate_mytest-m64.0211
+    -C /home/tdx/speccpu2017/benchspec/CPU/999.specrand_ir/run/run_base_refrate_mytest-m64.0212
+    -C /home/tdx/speccpu2017/benchspec/CPU/999.specrand_ir/run/run_base_refrate_mytest-m64.0213
+    -C /home/tdx/speccpu2017/benchspec/CPU/999.specrand_ir/run/run_base_refrate_mytest-m64.0214
+    -C /home/tdx/speccpu2017/benchspec/CPU/999.specrand_ir/run/run_base_refrate_mytest-m64.0215
+    -C /home/tdx/speccpu2017/benchspec/CPU/999.specrand_ir/run/run_base_refrate_mytest-m64.0216
+    -C /home/tdx/speccpu2017/benchspec/CPU/999.specrand_ir/run/run_base_refrate_mytest-m64.0217
+    -C /home/tdx/speccpu2017/benchspec/CPU/999.specrand_ir/run/run_base_refrate_mytest-m64.0218
+    -C /home/tdx/speccpu2017/benchspec/CPU/999.specrand_ir/run/run_base_refrate_mytest-m64.0219
+    -C /home/tdx/speccpu2017/benchspec/CPU/999.specrand_ir/run/run_base_refrate_mytest-m64.0220
+    -C /home/tdx/speccpu2017/benchspec/CPU/999.specrand_ir/run/run_base_refrate_mytest-m64.0221
+    -C /home/tdx/speccpu2017/benchspec/CPU/999.specrand_ir/run/run_base_refrate_mytest-m64.0222
+    -C /home/tdx/speccpu2017/benchspec/CPU/999.specrand_ir/run/run_base_refrate_mytest-m64.0223
+    -C /home/tdx/speccpu2017/benchspec/CPU/999.specrand_ir/run/run_base_refrate_mytest-m64.0224
+    -C /home/tdx/speccpu2017/benchspec/CPU/999.specrand_ir/run/run_base_refrate_mytest-m64.0225
+    -o rand.234923.out -e rand.234923.err ../run_base_refrate_mytest-m64.0211/specrand_ir_base.mytest-m64 1255432124 234923 > rand.234923.out 2>> rand.234923.err (timed)
+Specinvoke: /home/tdx/speccpu2017/bin/specinvoke -d /home/tdx/speccpu2017/benchspec/CPU/999.specrand_ir/run/run_base_refrate_mytest-m64.0211 -f speccmds.cmd -q -e speccmds.err -o speccmds.stdout
+Issuing command '/home/tdx/speccpu2017/bin/specinvoke -d /home/tdx/speccpu2017/benchspec/CPU/999.specrand_ir/run/run_base_refrate_mytest-m64.0211 -f speccmds.cmd -q -e speccmds.err -o speccmds.stdout'
+Start command: 2024-11-01 05:51:22 (1730440282.76962)
+Stop command: 2024-11-01 05:51:23 (1730440283.03345)
+Elapsed time for command: 00:00:00 (0.263822078704834)
+Workload elapsed time (copy 4 workload 1) = 0.061734 seconds
+Workload elapsed time (copy 1 workload 1) = 0.065806 seconds
+Workload elapsed time (copy 13 workload 1) = 0.064256 seconds
+Workload elapsed time (copy 8 workload 1) = 0.072643 seconds
+Workload elapsed time (copy 5 workload 1) = 0.089353 seconds
+Workload elapsed time (copy 10 workload 1) = 0.088271 seconds
+Workload elapsed time (copy 9 workload 1) = 0.089976 seconds
+Workload elapsed time (copy 0 workload 1) = 0.094255 seconds
+Workload elapsed time (copy 12 workload 1) = 0.092232 seconds
+Workload elapsed time (copy 6 workload 1) = 0.094669 seconds
+Workload elapsed time (copy 3 workload 1) = 0.09627 seconds
+Workload elapsed time (copy 14 workload 1) = 0.092549 seconds
+Workload elapsed time (copy 11 workload 1) = 0.093817 seconds
+Workload elapsed time (copy 7 workload 1) = 0.09556 seconds
+Workload elapsed time (copy 2 workload 1) = 0.097549 seconds
+Copy 0 of 999.specrand_ir (base refrate) run 1 finished at 2024-11-01 05:51:22.  Total elapsed time: 0.094255
+Copy 1 of 999.specrand_ir (base refrate) run 1 finished at 2024-11-01 05:51:22.  Total elapsed time: 0.065806
+Copy 2 of 999.specrand_ir (base refrate) run 1 finished at 2024-11-01 05:51:22.  Total elapsed time: 0.097549
+Copy 3 of 999.specrand_ir (base refrate) run 1 finished at 2024-11-01 05:51:22.  Total elapsed time: 0.09627
+Copy 4 of 999.specrand_ir (base refrate) run 1 finished at 2024-11-01 05:51:22.  Total elapsed time: 0.061734
+Copy 5 of 999.specrand_ir (base refrate) run 1 finished at 2024-11-01 05:51:22.  Total elapsed time: 0.089353
+Copy 6 of 999.specrand_ir (base refrate) run 1 finished at 2024-11-01 05:51:22.  Total elapsed time: 0.094669
+Copy 7 of 999.specrand_ir (base refrate) run 1 finished at 2024-11-01 05:51:22.  Total elapsed time: 0.09556
+Copy 8 of 999.specrand_ir (base refrate) run 1 finished at 2024-11-01 05:51:22.  Total elapsed time: 0.072643
+Copy 9 of 999.specrand_ir (base refrate) run 1 finished at 2024-11-01 05:51:22.  Total elapsed time: 0.089976
+Copy 10 of 999.specrand_ir (base refrate) run 1 finished at 2024-11-01 05:51:22.  Total elapsed time: 0.088271
+Copy 11 of 999.specrand_ir (base refrate) run 1 finished at 2024-11-01 05:51:22.  Total elapsed time: 0.093817
+Copy 12 of 999.specrand_ir (base refrate) run 1 finished at 2024-11-01 05:51:22.  Total elapsed time: 0.092232
+Copy 13 of 999.specrand_ir (base refrate) run 1 finished at 2024-11-01 05:51:22.  Total elapsed time: 0.064256
+Copy 14 of 999.specrand_ir (base refrate) run 1 finished at 2024-11-01 05:51:22.  Total elapsed time: 0.092549
+OpenMP environment variables removed: None
+OpenMP environment variables in effect:
+	OMP_NUM_THREADS	=> '1'
+	OMP_THREAD_LIMIT	=> '1'
+Pre-run environment changes:
+	'OMP_NUM_THREADS' added: (value now '1')
+	'OMP_THREAD_LIMIT' added: (value now '1')
+comparing 'rand.234923.out' with floatcompare=1, nansupport=0
+Specinvoke: /home/tdx/speccpu2017/bin/specinvoke -d /home/tdx/speccpu2017/benchspec/CPU/999.specrand_ir/run/run_base_refrate_mytest-m64.0211 -f compare.cmd -E -e compare.err -o compare.stdout
+Issuing command '/home/tdx/speccpu2017/bin/specinvoke -d /home/tdx/speccpu2017/benchspec/CPU/999.specrand_ir/run/run_base_refrate_mytest-m64.0211 -f compare.cmd -E -e compare.err -o compare.stdout'
+Start command: 2024-11-01 05:51:23 (1730440283.15577)
+Stop command: 2024-11-01 05:51:24 (1730440284.31648)
+Elapsed time for command: 00:00:01 (1.16071200370789)
+Benchmark Times:
+  Run Start:    2024-11-01 05:51:22 (1730440282)
+  Rate Start:   2024-11-01 05:51:22 (1730440282.77854)
+  Rate End:     2024-11-01 05:51:22 (1730440282.87671)
+  Run Stop:     2024-11-01 05:51:23 (1730440283)
+  Run Elapsed:  00:00:01 (1)
+  Run Reported: 00:00:00 (0 98162174 0.098162)
+ Success 999.specrand_ir base refrate ratio=1528.09, runtime=0.098162, copies=15, threads=1, power=0.00W, temp=0.00 degC, humidity=0.00%
+Success: 1x500.perlbench_r 1x525.x264_r 1x541.leela_r 1x548.exchange2_r 1x999.specrand_ir
+Error: 1x502.gcc_r 1x505.mcf_r 1x520.omnetpp_r 1x523.xalancbmk_r 1x531.deepsjeng_r 1x557.xz_r
+Producing Raw Reports
+ label: mytest-m64
+  workload: refrate (ref)
+   benchset: intspeed
+   benchset: intrate
+   metric: SPECrate2017_int_base
+    format: raw -> /home/tdx/speccpu2017/result/CPU2017.003.intrate.refrate.rsf
+Parsing flags for 500.perlbench_r base: done
+Parsing flags for 502.gcc_r base: done
+Parsing flags for 505.mcf_r base: done
+Parsing flags for 520.omnetpp_r base: done
+Parsing flags for 523.xalancbmk_r base: done
+Parsing flags for 525.x264_r base: done
+Parsing flags for 531.deepsjeng_r base: done
+Parsing flags for 541.leela_r base: done
+Parsing flags for 548.exchange2_r base: done
+Parsing flags for 557.xz_r base: done
+Doing flag reduction: done
+    format: flags -> /home/tdx/speccpu2017/result/CPU2017.003.intrate.refrate.flags.html
+    format: cfg -> /home/tdx/speccpu2017/result/CPU2017.003.intrate.refrate.cfg, /home/tdx/speccpu2017/result/CPU2017.003.intrate.refrate.orig.cfg
+    format: CSV -> /home/tdx/speccpu2017/result/CPU2017.003.intrate.refrate.csv
+    format: PDF -> /home/tdx/speccpu2017/result/CPU2017.003.intrate.refrate.pdf
+    format: HTML -> /home/tdx/speccpu2017/result/CPU2017.003.intrate.refrate.html
+    format: Text -> /home/tdx/speccpu2017/result/CPU2017.003.intrate.refrate.txt
+   benchset: fpspeed
+   benchset: fprate
+runcpu finished at 2024-11-01 05:51:31; 4153 total seconds elapsed
+The log for this run is in /home/tdx/speccpu2017/result/CPU2017.003.log
+
+runcpu finished at 2024-11-01 05:51:31; 4155 total seconds elapsed
