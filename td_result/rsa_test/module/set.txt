@@ -1,0 +1,7 @@
+openssl genpkey -algorithm RSA -out private_key.pem -pkeyopt rsa_keygen_bits:3072
+openssl rsa -in private_key.pem -pubout -out public_key.pem
+
+openssl rsa -in private_key.pem -outform DER -out private_key.der
+openssl rsa -pubin -in public_key.pem -outform DER -out public_key.der
+
+xxd -i xxx.der
