@@ -1,0 +1,25 @@
+2136:   ./test
+000055629c89b000      4K r---- test
+000055629c89c000     16K r-x-- test
+000055629c8a0000      8K r---- test
+000055629c8a2000      4K r---- test
+000055629c8a3000      4K rw--- test
+000055629dd2a000 371616K rw---   [ anon ]
+000073a070000000    160K r---- libc.so.6
+000073a070028000   1568K r-x-- libc.so.6
+000073a0701b0000    316K r---- libc.so.6
+000073a0701ff000     16K r---- libc.so.6
+000073a070203000      8K rw--- libc.so.6
+000073a070205000     52K rw---   [ anon ]
+000073a070221000     12K rw---   [ anon ]
+000073a07022b000      8K rw---   [ anon ]
+000073a07022d000      4K r---- ld-linux-x86-64.so.2
+000073a07022e000    172K r-x-- ld-linux-x86-64.so.2
+000073a070259000     40K r---- ld-linux-x86-64.so.2
+000073a070263000      8K r---- ld-linux-x86-64.so.2
+000073a070265000      8K rw--- ld-linux-x86-64.so.2
+00007ffccb10f000    132K rw---   [ stack ]
+00007ffccb1ba000     16K r----   [ anon ]
+00007ffccb1be000      8K r-x--   [ anon ]
+ffffffffff600000      4K --x--   [ anon ]
+ total           374184K
