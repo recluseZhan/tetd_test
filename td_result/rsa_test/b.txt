@@ -1,0 +1,596 @@
+
+rsa_sign1.ko:     file format elf64-x86-64
+
+
+Disassembly of section .text:
+
+0000000000000000 <__pfx_uf_akcrypto.constprop.0.isra.0>:
+   0:	90                   	nop
+   1:	90                   	nop
+   2:	90                   	nop
+   3:	90                   	nop
+   4:	90                   	nop
+   5:	90                   	nop
+   6:	90                   	nop
+   7:	90                   	nop
+   8:	90                   	nop
+   9:	90                   	nop
+   a:	90                   	nop
+   b:	90                   	nop
+   c:	90                   	nop
+   d:	90                   	nop
+   e:	90                   	nop
+   f:	90                   	nop
+
+0000000000000010 <uf_akcrypto.constprop.0.isra.0>:
+        ret = tr->err;
+    }
+    return ret;
+}
+ 
+static int uf_akcrypto(struct crypto_akcipher *tfm,
+  10:	e8 00 00 00 00       	call   15 <uf_akcrypto.constprop.0.isra.0+0x5>
+  15:	55                   	push   %rbp
+  16:	48 89 e5             	mov    %rsp,%rbp
+  19:	41 57                	push   %r15
+  1b:	49 89 f7             	mov    %rsi,%r15
+
+		if (size > KMALLOC_MAX_CACHE_SIZE)
+			return kmalloc_large(size, flags);
+
+		index = kmalloc_index(size);
+		return kmalloc_trace(
+  1e:	be c0 0c 00 00       	mov    $0xcc0,%esi
+  23:	41 56                	push   %r14
+  25:	49 89 fe             	mov    %rdi,%r14
+  28:	41 55                	push   %r13
+  2a:	41 89 d5             	mov    %edx,%r13d
+#endif
+static __always_inline u32 hash_64_generic(u64 val, unsigned int bits)
+{
+#if BITS_PER_LONG == 64
+	/* 64x64-bit multiply is efficient on all 64-bit processors */
+	return val * GOLDEN_RATIO_64 >> (64 - bits);
+  2d:	48 ba eb 83 b5 80 46 	movabs $0x61c8864680b583eb,%rdx
+  34:	86 c8 61 
+  37:	41 54                	push   %r12
+  39:	53                   	push   %rbx
+  3a:	48 83 c4 80          	add    $0xffffffffffffff80,%rsp
+  3e:	65 48 8b 04 25 28 00 	mov    %gs:0x28,%rax
+  45:	00 00 
+  47:	48 89 45 d0          	mov    %rax,-0x30(%rbp)
+  4b:	31 c0                	xor    %eax,%eax
+				kmalloc_caches[kmalloc_type(flags, _RET_IP_)][index],
+  4d:	48 8b 45 08          	mov    0x8(%rbp),%rax
+		return KMALLOC_RANDOM_START + hash_64(caller ^ random_kmalloc_seed,
+  51:	48 33 05 00 00 00 00 	xor    0x0(%rip),%rax        # 58 <uf_akcrypto.constprop.0.isra.0+0x48>
+                         void *data, int datalen, int phase)
+{
+    void *xbuf = NULL;
+    struct akcipher_request *req;
+    void *outbuf = NULL;
+    struct tcrypt_result result;
+  58:	48 c7 45 a8 00 00 00 	movq   $0x0,-0x58(%rbp)
+  5f:	00 
+  60:	48 0f af c2          	imul   %rdx,%rax
+  64:	48 c7 45 b0 00 00 00 	movq   $0x0,-0x50(%rbp)
+  6b:	00 
+  6c:	48 c7 45 b8 00 00 00 	movq   $0x0,-0x48(%rbp)
+  73:	00 
+  74:	48 c7 45 c0 00 00 00 	movq   $0x0,-0x40(%rbp)
+  7b:	00 
+				kmalloc_caches[kmalloc_type(flags, _RET_IP_)][index],
+  7c:	48 c1 e8 3c          	shr    $0x3c,%rax
+  80:	48 c7 45 c8 00 00 00 	movq   $0x0,-0x38(%rbp)
+  87:	00 
+		return kmalloc_trace(
+  88:	48 8d 14 c5 00 00 00 	lea    0x0(,%rax,8),%rdx
+  8f:	00 
+    unsigned int out_len_max = 0;
+    struct scatterlist src, dst;
+  90:	48 c7 85 68 ff ff ff 	movq   $0x0,-0x98(%rbp)
+  97:	00 00 00 00 
+  9b:	48 29 c2             	sub    %rax,%rdx
+  9e:	48 c7 45 80 00 00 00 	movq   $0x0,-0x80(%rbp)
+  a5:	00 
+  a6:	48 89 d0             	mov    %rdx,%rax
+  a9:	ba 00 10 00 00       	mov    $0x1000,%edx
+  ae:	48 c7 85 70 ff ff ff 	movq   $0x0,-0x90(%rbp)
+  b5:	00 00 00 00 
+  b9:	48 c1 e0 04          	shl    $0x4,%rax
+  bd:	48 c7 45 88 00 00 00 	movq   $0x0,-0x78(%rbp)
+  c4:	00 
+  c5:	48 8b b8 00 00 00 00 	mov    0x0(%rax),%rdi
+  cc:	48 c7 45 90 00 00 00 	movq   $0x0,-0x70(%rbp)
+  d3:	00 
+  d4:	48 c7 85 78 ff ff ff 	movq   $0x0,-0x88(%rbp)
+  db:	00 00 00 00 
+  df:	48 c7 45 98 00 00 00 	movq   $0x0,-0x68(%rbp)
+  e6:	00 
+  e7:	48 c7 45 a0 00 00 00 	movq   $0x0,-0x60(%rbp)
+  ee:	00 
+  ef:	e8 00 00 00 00       	call   f4 <uf_akcrypto.constprop.0.isra.0+0xe4>
+   // int priv_key_len = strlen(priv_key);
+    //priv_key_len=609;
+    //printk("pub:%d\n",pub_key_len);
+    int err = -ENOMEM;
+    xbuf = kmalloc(PAGE_SIZE, GFP_KERNEL);
+    if (!xbuf)
+  f4:	48 85 c0             	test   %rax,%rax
+  f7:	0f 84 85 01 00 00    	je     282 <uf_akcrypto.constprop.0.isra.0+0x272>
+static inline struct akcipher_request *akcipher_request_alloc(
+	struct crypto_akcipher *tfm, gfp_t gfp)
+{
+	struct akcipher_request *req;
+
+	req = kmalloc(sizeof(*req) + crypto_akcipher_reqsize(tfm), gfp);
+  fd:	41 8b 3e             	mov    (%r14),%edi
+				flags, size);
+	}
+	return __kmalloc(size, flags);
+ 100:	be c0 0c 00 00       	mov    $0xcc0,%esi
+ 105:	49 89 c4             	mov    %rax,%r12
+ 108:	48 83 c7 48          	add    $0x48,%rdi
+ 10c:	e8 00 00 00 00       	call   111 <uf_akcrypto.constprop.0.isra.0+0x101>
+ 111:	48 89 c3             	mov    %rax,%rbx
+	if (likely(req))
+ 114:	48 85 c0             	test   %rax,%rax
+ 117:	0f 84 5d 01 00 00    	je     27a <uf_akcrypto.constprop.0.isra.0+0x26a>
+	return &tfm->base;
+ 11d:	49 8d 46 08          	lea    0x8(%r14),%rax
+ * structure.
+ */
+static inline void init_completion(struct completion *x)
+{
+	x->done = 0;
+	init_swait_queue_head(&x->wait);
+ 121:	48 c7 c2 00 00 00 00 	mov    $0x0,%rdx
+ 128:	48 8d 7d b0          	lea    -0x50(%rbp),%rdi
+ 12c:	48 c7 c6 00 00 00 00 	mov    $0x0,%rsi
+ 133:	48 89 43 20          	mov    %rax,0x20(%rbx)
+	x->done = 0;
+ 137:	c7 45 a8 00 00 00 00 	movl   $0x0,-0x58(%rbp)
+	init_swait_queue_head(&x->wait);
+ 13e:	e8 00 00 00 00       	call   143 <uf_akcrypto.constprop.0.isra.0+0x133>
+					       const void *key,
+					       unsigned int keylen)
+{
+	struct akcipher_alg *alg = crypto_akcipher_alg(tfm);
+
+	return alg->set_priv_key(tfm, key, keylen);
+ 143:	49 8b 46 20          	mov    0x20(%r14),%rax
+ 147:	ba 61 02 00 00       	mov    $0x261,%edx
+ 14c:	4c 89 f7             	mov    %r14,%rdi
+ 14f:	48 8b 35 00 00 00 00 	mov    0x0(%rip),%rsi        # 156 <uf_akcrypto.constprop.0.isra.0+0x146>
+ 156:	48 8b 40 a8          	mov    -0x58(%rax),%rax
+ 15a:	e8 00 00 00 00       	call   15f <uf_akcrypto.constprop.0.isra.0+0x14f>
+         err = crypto_akcipher_set_pub_key(tfm, pub_key, pub_key_len);
+    }else{
+         err = crypto_akcipher_set_priv_key(tfm, priv_key, priv_key_len);
+    }
+//  err = crypto_akcipher_set_priv_key(tfm, priv_key, priv_key_len);
+    if (err){
+ 15f:	85 c0                	test   %eax,%eax
+ 161:	0f 85 19 02 00 00    	jne    380 <uf_akcrypto.constprop.0.isra.0+0x370>
+	return alg->max_size(tfm);
+ 167:	49 8b 46 20          	mov    0x20(%r14),%rax
+ 16b:	4c 89 f7             	mov    %r14,%rdi
+ 16e:	48 8b 40 b0          	mov    -0x50(%rax),%rax
+ 172:	e8 00 00 00 00       	call   177 <uf_akcrypto.constprop.0.isra.0+0x167>
+ 177:	be c0 0d 00 00       	mov    $0xdc0,%esi
+ 17c:	41 89 c6             	mov    %eax,%r14d
+        goto free_req;
+    }
+ 
+    err = -ENOMEM;
+    out_len_max = crypto_akcipher_maxsize(tfm);
+    outbuf = kzalloc(out_len_max, GFP_KERNEL);
+ 17f:	89 c0                	mov    %eax,%eax
+ 181:	48 89 c7             	mov    %rax,%rdi
+ 184:	48 89 85 58 ff ff ff 	mov    %rax,-0xa8(%rbp)
+ 18b:	e8 00 00 00 00       	call   190 <uf_akcrypto.constprop.0.isra.0+0x180>
+ 190:	48 89 85 60 ff ff ff 	mov    %rax,-0xa0(%rbp)
+    if (!outbuf)
+ 197:	48 85 c0             	test   %rax,%rax
+ 19a:	0f 84 d2 00 00 00    	je     272 <uf_akcrypto.constprop.0.isra.0+0x262>
+         goto free_req;
+ 
+    if (WARN_ON(datalen > PAGE_SIZE))
+         goto free_all;
+ 
+    memcpy(xbuf, data, datalen);
+ 1a0:	41 83 fd 08          	cmp    $0x8,%r13d
+ 1a4:	0f 82 08 01 00 00    	jb     2b2 <uf_akcrypto.constprop.0.isra.0+0x2a2>
+ 1aa:	44 89 e8             	mov    %r13d,%eax
+ 1ad:	41 8d 4d ff          	lea    -0x1(%r13),%ecx
+ 1b1:	49 8b 54 07 f8       	mov    -0x8(%r15,%rax,1),%rdx
+ 1b6:	49 89 54 04 f8       	mov    %rdx,-0x8(%r12,%rax,1)
+ 1bb:	83 f9 08             	cmp    $0x8,%ecx
+ 1be:	72 16                	jb     1d6 <uf_akcrypto.constprop.0.isra.0+0x1c6>
+ 1c0:	83 e1 f8             	and    $0xfffffff8,%ecx
+ 1c3:	31 c0                	xor    %eax,%eax
+ 1c5:	89 c2                	mov    %eax,%edx
+ 1c7:	83 c0 08             	add    $0x8,%eax
+ 1ca:	49 8b 34 17          	mov    (%r15,%rdx,1),%rsi
+ 1ce:	49 89 34 14          	mov    %rsi,(%r12,%rdx,1)
+ 1d2:	39 c8                	cmp    %ecx,%eax
+ 1d4:	72 ef                	jb     1c5 <uf_akcrypto.constprop.0.isra.0+0x1b5>
+    sg_init_one(&src, xbuf, datalen);
+ 1d6:	48 8d 85 68 ff ff ff 	lea    -0x98(%rbp),%rax
+ 1dd:	44 89 ea             	mov    %r13d,%edx
+    sg_init_one(&dst, outbuf, out_len_max);
+ 1e0:	4c 8d 7d 88          	lea    -0x78(%rbp),%r15
+    sg_init_one(&src, xbuf, datalen);
+ 1e4:	4c 89 e6             	mov    %r12,%rsi
+ 1e7:	48 89 c7             	mov    %rax,%rdi
+ 1ea:	e8 00 00 00 00       	call   1ef <uf_akcrypto.constprop.0.isra.0+0x1df>
+    sg_init_one(&dst, outbuf, out_len_max);
+ 1ef:	48 8b b5 60 ff ff ff 	mov    -0xa0(%rbp),%rsi
+ 1f6:	44 89 f2             	mov    %r14d,%edx
+ 1f9:	4c 89 ff             	mov    %r15,%rdi
+ 1fc:	e8 00 00 00 00       	call   201 <uf_akcrypto.constprop.0.isra.0+0x1f1>
+	req->src = src;
+ 201:	48 8d 85 68 ff ff ff 	lea    -0x98(%rbp),%rax
+	req->dst = dst;
+ 208:	4c 89 7b 38          	mov    %r15,0x38(%rbx)
+	req->src = src;
+ 20c:	48 89 43 30          	mov    %rax,0x30(%rbx)
+	return __crypto_akcipher_alg(crypto_akcipher_tfm(tfm)->__crt_alg);
+ 210:	48 8b 43 20          	mov    0x20(%rbx),%rax
+	req->src_len = src_len;
+ 214:	44 89 6b 40          	mov    %r13d,0x40(%rbx)
+	req->dst_len = dst_len;
+ 218:	44 89 73 44          	mov    %r14d,0x44(%rbx)
+	return __crypto_akcipher_alg(crypto_akcipher_tfm(tfm)->__crt_alg);
+ 21c:	4c 8b 68 18          	mov    0x18(%rax),%r13
+}
+#define arch_atomic64_sub_and_test arch_atomic64_sub_and_test
+
+static __always_inline void arch_atomic64_inc(atomic64_t *v)
+{
+	asm volatile(LOCK_PREFIX "incq %0"
+ 220:	f0 49 ff 45 c8       	lock incq -0x38(%r13)
+		atomic64_add(req->src_len, &istat->encrypt_tlen);
+ 225:	8b 43 40             	mov    0x40(%rbx),%eax
+	asm volatile(LOCK_PREFIX "addq %1,%0"
+ 228:	f0 49 01 45 d0       	lock add %rax,-0x30(%r13)
+	return crypto_akcipher_errstat(alg, alg->encrypt(req));
+ 22d:	49 8b 45 90          	mov    -0x70(%r13),%rax
+ 231:	48 89 df             	mov    %rbx,%rdi
+ 234:	e8 00 00 00 00       	call   239 <uf_akcrypto.constprop.0.isra.0+0x229>
+	if (err && err != -EINPROGRESS && err != -EBUSY)
+ 239:	85 c0                	test   %eax,%eax
+ 23b:	0f 84 aa 00 00 00    	je     2eb <uf_akcrypto.constprop.0.isra.0+0x2db>
+ 241:	83 f8 8d             	cmp    $0xffffff8d,%eax
+ 244:	0f 84 a6 00 00 00    	je     2f0 <uf_akcrypto.constprop.0.isra.0+0x2e0>
+ 24a:	83 f8 f0             	cmp    $0xfffffff0,%eax
+ 24d:	0f 84 9d 00 00 00    	je     2f0 <uf_akcrypto.constprop.0.isra.0+0x2e0>
+	asm volatile(LOCK_PREFIX "incq %0"
+ 253:	f0 49 ff 45 f8       	lock incq -0x8(%r13)
+    if (phase){
+        en_ret=crypto_akcipher_encrypt(req);
+        
+        err = wait_async_op(&result, en_ret);
+        if (err) {
+            pr_err("alg: akcipher: encrypt test failed. err %d\n", err);
+ 258:	48 c7 c7 00 00 00 00 	mov    $0x0,%rdi
+ 25f:	89 c6                	mov    %eax,%esi
+ 261:	e8 00 00 00 00       	call   266 <uf_akcrypto.constprop.0.isra.0+0x256>
+        }
+        hexdump(outbuf, out_len_max);
+    }
+ 
+free_all:
+    kfree(outbuf);
+ 266:	48 8b bd 60 ff ff ff 	mov    -0xa0(%rbp),%rdi
+ 26d:	e8 00 00 00 00       	call   272 <uf_akcrypto.constprop.0.isra.0+0x262>
+	kfree_sensitive(req);
+ 272:	48 89 df             	mov    %rbx,%rdi
+ 275:	e8 00 00 00 00       	call   27a <uf_akcrypto.constprop.0.isra.0+0x26a>
+free_req:
+    akcipher_request_free(req);
+free_xbuf:
+    kfree(xbuf);
+ 27a:	4c 89 e7             	mov    %r12,%rdi
+ 27d:	e8 00 00 00 00       	call   282 <uf_akcrypto.constprop.0.isra.0+0x272>
+    return err;
+}
+ 282:	48 8b 45 d0          	mov    -0x30(%rbp),%rax
+ 286:	65 48 2b 04 25 28 00 	sub    %gs:0x28,%rax
+ 28d:	00 00 
+ 28f:	0f 85 24 01 00 00    	jne    3b9 <uf_akcrypto.constprop.0.isra.0+0x3a9>
+ 295:	48 83 ec 80          	sub    $0xffffffffffffff80,%rsp
+ 299:	5b                   	pop    %rbx
+ 29a:	41 5c                	pop    %r12
+ 29c:	41 5d                	pop    %r13
+ 29e:	41 5e                	pop    %r14
+ 2a0:	41 5f                	pop    %r15
+ 2a2:	5d                   	pop    %rbp
+ 2a3:	31 c0                	xor    %eax,%eax
+ 2a5:	31 d2                	xor    %edx,%edx
+ 2a7:	31 c9                	xor    %ecx,%ecx
+ 2a9:	31 f6                	xor    %esi,%esi
+ 2ab:	31 ff                	xor    %edi,%edi
+ 2ad:	e9 00 00 00 00       	jmp    2b2 <uf_akcrypto.constprop.0.isra.0+0x2a2>
+    memcpy(xbuf, data, datalen);
+ 2b2:	41 f6 c5 04          	test   $0x4,%r13b
+ 2b6:	0f 85 e4 00 00 00    	jne    3a0 <uf_akcrypto.constprop.0.isra.0+0x390>
+ 2bc:	45 85 ed             	test   %r13d,%r13d
+ 2bf:	0f 84 11 ff ff ff    	je     1d6 <uf_akcrypto.constprop.0.isra.0+0x1c6>
+ 2c5:	41 0f b6 07          	movzbl (%r15),%eax
+ 2c9:	41 88 04 24          	mov    %al,(%r12)
+ 2cd:	41 f6 c5 02          	test   $0x2,%r13b
+ 2d1:	0f 84 ff fe ff ff    	je     1d6 <uf_akcrypto.constprop.0.isra.0+0x1c6>
+ 2d7:	44 89 e8             	mov    %r13d,%eax
+ 2da:	41 0f b7 54 07 fe    	movzwl -0x2(%r15,%rax,1),%edx
+ 2e0:	66 41 89 54 04 fe    	mov    %dx,-0x2(%r12,%rax,1)
+ 2e6:	e9 eb fe ff ff       	jmp    1d6 <uf_akcrypto.constprop.0.isra.0+0x1c6>
+    if (ret == -EINPROGRESS || ret == -EBUSY) {
+ 2eb:	83 f8 8d             	cmp    $0xffffff8d,%eax
+ 2ee:	75 1b                	jne    30b <uf_akcrypto.constprop.0.isra.0+0x2fb>
+        wait_for_completion(&tr->completion);
+ 2f0:	48 8d 7d a8          	lea    -0x58(%rbp),%rdi
+ 2f4:	e8 00 00 00 00       	call   2f9 <uf_akcrypto.constprop.0.isra.0+0x2e9>
+        ret = tr->err;
+ 2f9:	8b 45 c8             	mov    -0x38(%rbp),%eax
+ * This inline function should be used to reinitialize a completion structure so it can
+ * be reused. This is especially important after complete_all() is used.
+ */
+static inline void reinit_completion(struct completion *x)
+{
+	x->done = 0;
+ 2fc:	c7 45 a8 00 00 00 00 	movl   $0x0,-0x58(%rbp)
+        if (err) {
+ 303:	85 c0                	test   %eax,%eax
+ 305:	0f 85 4d ff ff ff    	jne    258 <uf_akcrypto.constprop.0.isra.0+0x248>
+        memcpy(crypted,outbuf,out_len_max);
+ 30b:	48 8b 95 58 ff ff ff 	mov    -0xa8(%rbp),%rdx
+ 312:	48 8b b5 60 ff ff ff 	mov    -0xa0(%rbp),%rsi
+ 319:	48 8b 3d 00 00 00 00 	mov    0x0(%rip),%rdi        # 320 <uf_akcrypto.constprop.0.isra.0+0x310>
+ 320:	e8 00 00 00 00       	call   325 <uf_akcrypto.constprop.0.isra.0+0x315>
+        crypted_len = out_len_max;
+ 325:	44 89 35 00 00 00 00 	mov    %r14d,0x0(%rip)        # 32c <uf_akcrypto.constprop.0.isra.0+0x31c>
+        hexdump(crypted, out_len_max);
+ 32c:	4c 8b 2d 00 00 00 00 	mov    0x0(%rip),%r13        # 333 <uf_akcrypto.constprop.0.isra.0+0x323>
+    while(len--)
+ 333:	41 8d 46 ff          	lea    -0x1(%r14),%eax
+ 337:	45 85 f6             	test   %r14d,%r14d
+ 33a:	74 1f                	je     35b <uf_akcrypto.constprop.0.isra.0+0x34b>
+ 33c:	4d 8d 74 05 01       	lea    0x1(%r13,%rax,1),%r14
+        printk(KERN_CONT "%02x",*buf++);
+ 341:	41 0f b6 75 00       	movzbl 0x0(%r13),%esi
+ 346:	49 83 c5 01          	add    $0x1,%r13
+ 34a:	48 c7 c7 00 00 00 00 	mov    $0x0,%rdi
+ 351:	e8 00 00 00 00       	call   356 <uf_akcrypto.constprop.0.isra.0+0x346>
+    while(len--)
+ 356:	4d 39 ee             	cmp    %r13,%r14
+ 359:	75 e6                	jne    341 <uf_akcrypto.constprop.0.isra.0+0x331>
+    printk("\n");
+ 35b:	48 c7 c7 00 00 00 00 	mov    $0x0,%rdi
+ 362:	e8 00 00 00 00       	call   367 <uf_akcrypto.constprop.0.isra.0+0x357>
+    kfree(outbuf);
+ 367:	48 8b bd 60 ff ff ff 	mov    -0xa0(%rbp),%rdi
+ 36e:	e8 00 00 00 00       	call   373 <uf_akcrypto.constprop.0.isra.0+0x363>
+ 373:	48 89 df             	mov    %rbx,%rdi
+ 376:	e8 00 00 00 00       	call   37b <uf_akcrypto.constprop.0.isra.0+0x36b>
+ 37b:	e9 fa fe ff ff       	jmp    27a <uf_akcrypto.constprop.0.isra.0+0x26a>
+        printk("set key error! %d,,,,,%d\n", err,phase);
+ 380:	ba 01 00 00 00       	mov    $0x1,%edx
+ 385:	89 c6                	mov    %eax,%esi
+ 387:	48 c7 c7 00 00 00 00 	mov    $0x0,%rdi
+ 38e:	e8 00 00 00 00       	call   393 <uf_akcrypto.constprop.0.isra.0+0x383>
+ 393:	48 89 df             	mov    %rbx,%rdi
+ 396:	e8 00 00 00 00       	call   39b <uf_akcrypto.constprop.0.isra.0+0x38b>
+ 39b:	e9 da fe ff ff       	jmp    27a <uf_akcrypto.constprop.0.isra.0+0x26a>
+    memcpy(xbuf, data, datalen);
+ 3a0:	41 8b 07             	mov    (%r15),%eax
+ 3a3:	41 89 04 24          	mov    %eax,(%r12)
+ 3a7:	44 89 e8             	mov    %r13d,%eax
+ 3aa:	41 8b 54 07 fc       	mov    -0x4(%r15,%rax,1),%edx
+ 3af:	41 89 54 04 fc       	mov    %edx,-0x4(%r12,%rax,1)
+ 3b4:	e9 1d fe ff ff       	jmp    1d6 <uf_akcrypto.constprop.0.isra.0+0x1c6>
+}
+ 3b9:	e8 00 00 00 00       	call   3be <uf_akcrypto.constprop.0.isra.0+0x3ae>
+ 3be:	66 90                	xchg   %ax,%ax
+
+00000000000003c0 <__pfx_sign>:
+ 3c0:	90                   	nop
+ 3c1:	90                   	nop
+ 3c2:	90                   	nop
+ 3c3:	90                   	nop
+ 3c4:	90                   	nop
+ 3c5:	90                   	nop
+ 3c6:	90                   	nop
+ 3c7:	90                   	nop
+ 3c8:	90                   	nop
+ 3c9:	90                   	nop
+ 3ca:	90                   	nop
+ 3cb:	90                   	nop
+ 3cc:	90                   	nop
+ 3cd:	90                   	nop
+ 3ce:	90                   	nop
+ 3cf:	90                   	nop
+
+00000000000003d0 <sign>:
+     return err;
+}
+#define DATA_SIZE 33
+int sign(void);
+int sign(void)
+{  
+ 3d0:	e8 00 00 00 00       	call   3d5 <sign+0x5>
+ 3d5:	48 ba eb 83 b5 80 46 	movabs $0x61c8864680b583eb,%rdx
+ 3dc:	86 c8 61 
+ 3df:	55                   	push   %rbp
+		return kmalloc_trace(
+ 3e0:	be c0 0c 00 00       	mov    $0xcc0,%esi
+ 3e5:	48 89 e5             	mov    %rsp,%rbp
+ 3e8:	53                   	push   %rbx
+ 3e9:	48 83 ec 30          	sub    $0x30,%rsp
+				kmalloc_caches[kmalloc_type(flags, _RET_IP_)][index],
+ 3ed:	65 48 8b 04 25 28 00 	mov    %gs:0x28,%rax
+ 3f4:	00 00 
+ 3f6:	48 89 45 f0          	mov    %rax,-0x10(%rbp)
+ 3fa:	48 8b 45 08          	mov    0x8(%rbp),%rax
+		return KMALLOC_RANDOM_START + hash_64(caller ^ random_kmalloc_seed,
+ 3fe:	48 33 05 00 00 00 00 	xor    0x0(%rip),%rax        # 405 <sign+0x35>
+ 405:	48 0f af c2          	imul   %rdx,%rax
+				kmalloc_caches[kmalloc_type(flags, _RET_IP_)][index],
+ 409:	48 c1 e8 3c          	shr    $0x3c,%rax
+		return kmalloc_trace(
+ 40d:	48 8d 14 c5 00 00 00 	lea    0x0(,%rax,8),%rdx
+ 414:	00 
+ 415:	48 29 c2             	sub    %rax,%rdx
+ 418:	48 89 d0             	mov    %rdx,%rax
+ 41b:	ba 00 10 00 00       	mov    $0x1000,%edx
+ 420:	48 c1 e0 04          	shl    $0x4,%rax
+ 424:	48 8b b8 00 00 00 00 	mov    0x0(%rax),%rdi
+ 42b:	e8 00 00 00 00       	call   430 <sign+0x60>
+    crypted = kmalloc(PAGE_SIZE, GFP_KERNEL);
+ 430:	48 89 05 00 00 00 00 	mov    %rax,0x0(%rip)        # 437 <sign+0x67>
+    if (!crypted){
+ 437:	48 85 c0             	test   %rax,%rax
+ 43a:	0f 84 9c 00 00 00    	je     4dc <sign+0x10c>
+        printk("crypted kmalloc error\n");
+        return -1;
+    }
+    //const char *msg = "\x54\x85\x9b\x34\x2c\x49\xea\x2a\x54\x85\x9b\x34\x2c\x49\xea\x2a\x54\x85\x9b\x34\x2c\x49\xea\x2a";
+    char msg[DATA_SIZE];
+    memset(msg,'a',DATA_SIZE);
+ 440:	48 b8 61 61 61 61 61 	movabs $0x6161616161616161,%rax
+ 447:	61 61 61 
+     tfm = crypto_alloc_akcipher("rsa", CRYPTO_ALG_INTERNAL, 0);
+ 44a:	31 d2                	xor    %edx,%edx
+ 44c:	be 00 20 00 00       	mov    $0x2000,%esi
+ 451:	48 c7 c7 00 00 00 00 	mov    $0x0,%rdi
+    memset(msg,'a',DATA_SIZE);
+ 458:	48 89 45 cf          	mov    %rax,-0x31(%rbp)
+ 45c:	48 89 45 d7          	mov    %rax,-0x29(%rbp)
+ 460:	48 89 45 df          	mov    %rax,-0x21(%rbp)
+ 464:	48 89 45 e7          	mov    %rax,-0x19(%rbp)
+    msg[DATA_SIZE-1]='\0';
+ 468:	c6 45 ef 00          	movb   $0x0,-0x11(%rbp)
+     tfm = crypto_alloc_akcipher("rsa", CRYPTO_ALG_INTERNAL, 0);
+ 46c:	e8 00 00 00 00       	call   471 <sign+0xa1>
+ 471:	48 89 c3             	mov    %rax,%rbx
+     if (IS_ERR(tfm)) {
+ 474:	48 3d 00 f0 ff ff    	cmp    $0xfffffffffffff000,%rax
+ 47a:	77 4a                	ja     4c6 <sign+0xf6>
+     err = uf_akcrypto(tfm,data,datalen,phase);
+ 47c:	48 8d 75 cf          	lea    -0x31(%rbp),%rsi
+ 480:	48 89 c7             	mov    %rax,%rdi
+ 483:	ba 20 00 00 00       	mov    $0x20,%edx
+ 488:	e8 83 fb ff ff       	call   10 <uf_akcrypto.constprop.0.isra.0>
+	return &tfm->base;
+ 48d:	48 8d 73 08          	lea    0x8(%rbx),%rsi
+	crypto_destroy_tfm(tfm, crypto_akcipher_tfm(tfm));
+ 491:	48 89 df             	mov    %rbx,%rdi
+ 494:	e8 00 00 00 00       	call   499 <sign+0xc9>
+
+    int msg_len = strlen(msg);
+    userfaultfd_akcrypto(msg,msg_len,1);
+    //userfaultfd_akcrypto(crypted,crypted_len,0);
+    kfree(crypted);
+ 499:	48 8b 3d 00 00 00 00 	mov    0x0(%rip),%rdi        # 4a0 <sign+0xd0>
+ 4a0:	e8 00 00 00 00       	call   4a5 <sign+0xd5>
+    return 0;
+ 4a5:	31 c0                	xor    %eax,%eax
+}
+ 4a7:	48 8b 55 f0          	mov    -0x10(%rbp),%rdx
+ 4ab:	65 48 2b 14 25 28 00 	sub    %gs:0x28,%rdx
+ 4b2:	00 00 
+ 4b4:	75 21                	jne    4d7 <sign+0x107>
+ 4b6:	48 8b 5d f8          	mov    -0x8(%rbp),%rbx
+ 4ba:	c9                   	leave
+ 4bb:	31 d2                	xor    %edx,%edx
+ 4bd:	31 f6                	xor    %esi,%esi
+ 4bf:	31 ff                	xor    %edi,%edi
+ 4c1:	e9 00 00 00 00       	jmp    4c6 <sign+0xf6>
+             pr_err("alg: akcipher: Failed to load tfm for rsa: %ld\n", PTR_ERR(tfm));
+ 4c6:	48 89 c6             	mov    %rax,%rsi
+ 4c9:	48 c7 c7 00 00 00 00 	mov    $0x0,%rdi
+ 4d0:	e8 00 00 00 00       	call   4d5 <sign+0x105>
+             return PTR_ERR(tfm);
+ 4d5:	eb c2                	jmp    499 <sign+0xc9>
+}
+ 4d7:	e8 00 00 00 00       	call   4dc <sign+0x10c>
+        printk("crypted kmalloc error\n");
+ 4dc:	48 c7 c7 00 00 00 00 	mov    $0x0,%rdi
+ 4e3:	e8 00 00 00 00       	call   4e8 <sign+0x118>
+        return -1;
+ 4e8:	83 c8 ff             	or     $0xffffffff,%eax
+ 4eb:	eb ba                	jmp    4a7 <sign+0xd7>
+
+Disassembly of section .init.text:
+
+0000000000000000 <__pfx_init_module>:
+   0:	90                   	nop
+   1:	90                   	nop
+   2:	90                   	nop
+   3:	90                   	nop
+   4:	90                   	nop
+   5:	90                   	nop
+   6:	90                   	nop
+   7:	90                   	nop
+   8:	90                   	nop
+   9:	90                   	nop
+   a:	90                   	nop
+   b:	90                   	nop
+   c:	90                   	nop
+   d:	90                   	nop
+   e:	90                   	nop
+   f:	90                   	nop
+
+0000000000000010 <init_module>:
+static int __init rsa_sign_init(void){
+  10:	e8 00 00 00 00       	call   15 <init_module+0x5>
+  15:	55                   	push   %rbp
+    pr_info("RSA Sign module entering...\n");
+  16:	48 c7 c7 00 00 00 00 	mov    $0x0,%rdi
+static int __init rsa_sign_init(void){
+  1d:	48 89 e5             	mov    %rsp,%rbp
+    pr_info("RSA Sign module entering...\n");
+  20:	e8 00 00 00 00       	call   25 <init_module+0x15>
+    return 0;
+}
+  25:	31 c0                	xor    %eax,%eax
+  27:	5d                   	pop    %rbp
+  28:	31 ff                	xor    %edi,%edi
+  2a:	e9 00 00 00 00       	jmp    2f <__UNIQUE_ID_depends253>
+
+Disassembly of section .exit.text:
+
+0000000000000000 <__pfx_cleanup_module>:
+   0:	90                   	nop
+   1:	90                   	nop
+   2:	90                   	nop
+   3:	90                   	nop
+   4:	90                   	nop
+   5:	90                   	nop
+   6:	90                   	nop
+   7:	90                   	nop
+   8:	90                   	nop
+   9:	90                   	nop
+   a:	90                   	nop
+   b:	90                   	nop
+   c:	90                   	nop
+   d:	90                   	nop
+   e:	90                   	nop
+   f:	90                   	nop
+
+0000000000000010 <cleanup_module>:
+
+static void __exit rsa_sign_exit(void)
+{
+  10:	55                   	push   %rbp
+    pr_info("RSA Sign module exiting...\n");
+  11:	48 c7 c7 00 00 00 00 	mov    $0x0,%rdi
+{
+  18:	48 89 e5             	mov    %rsp,%rbp
+    pr_info("RSA Sign module exiting...\n");
+  1b:	e8 00 00 00 00       	call   20 <cleanup_module+0x10>
+}
+  20:	5d                   	pop    %rbp
+  21:	31 c0                	xor    %eax,%eax
+  23:	31 ff                	xor    %edi,%edi
+  25:	e9 00 00 00 00       	jmp    2a <_note_14+0x12>
