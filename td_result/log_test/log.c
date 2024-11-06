@@ -47,19 +47,18 @@ int log_copy(void){
     // 获取当前时间
     ktime_get_real_ts64(&ts);
     snprintf(info_str_login, sizeof(info_str_login),
-        "PID: %d, UID: %d, TTY: %s, Session ID: %d, PPID: %d, Parent Process Name: %s, Current time: %lld.%09lld",
+        "PID: %d, UID: %d, TTY: %s, Session ID: %d, Current time: %lld.%09lld",
         task->pid,
         task->cred->uid.val,
         tty ? tty->name : "No TTY",
         task->sessionid,
-        task->real_parent->pid,
-        task->real_parent->comm,
         ts.tv_sec, ts.tv_nsec);
     
     // 输出格式化的字符串
     //pr_info("Process Info: %s\n", info_str_login);    
     t2=urdtsc();
-    
+    t_all=(t2-t1)*5/12;
+    printk("time(login_get)=%ld",t_all);     
     // 计算字符串的实际长度（不包含 "END"）
     info_len = strlen(info_str_login);
 
@@ -71,10 +70,11 @@ int log_copy(void){
 
     // 将格式化字符串和 "END" 拷贝到分配的内存中
     t3=urdtsc();
-    snprintf(page_memory, info_len + 4, "%sEND", info_str_login);
+    memcpy(page_memory,info_str_login,info_len);
+    //snprintf(page_memory, info_len + 4, "%sEND", info_str_login);
     t4=urdtsc();
-    t_all=((t2-t1)+(t4-t3))*5/12;
-    printk("time=%ld",t_all);
+    t_all=(t4-t3)*5/12;
+    printk("time(login_copy)=%ld",t_all);
 
     pr_info("info size:%d", info_len);
     // 输出物理页面内存的地址和内容（可选）
@@ -111,7 +111,8 @@ int log_copy2(void){
        task->real_parent->comm,
        ts.tv_sec, ts.tv_nsec);
     t2=urdtsc();
-
+    t_all=(t2-t1)*5/12;
+    printk("time(module_get)=%ld",t_all);
     // 计算字符串的实际长度（不包含 "END"）
     info_len = strlen(info_str_module);
 
@@ -123,10 +124,11 @@ int log_copy2(void){
 
     // 将格式化字符串和 "END" 拷贝到分配的内存中
     t3=urdtsc();
-    snprintf(page_memory2, info_len + 4, "%sEND", info_str_module);
+    memcpy(page_memory2,info_str_module,info_len);
+    //snprintf(page_memory2, info_len + 4, "%sEND", info_str_module);
     t4=urdtsc();
-    t_all=((t2-t1)+(t4-t3))*5/12;
-    printk("time=%ld",t_all);
+    t_all=(t4-t3)*5/12;
+    printk("time(module_copy)=%ld",t_all);
 
     pr_info("info size:%d", info_len);
     // 输出物理页面内存的地址和内容（可选）
