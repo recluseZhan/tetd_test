@@ -1,0 +1,13 @@
+7266:   ./test
+0000000000400000      4K r---- test
+0000000000401000    544K r-x-- test
+0000000000489000    160K r---- test
+00000000004b1000     20K r---- test
+00000000004b6000      8K rw--- test
+00000000004b8000     24K rw---   [ anon ]
+0000000001401000 530752K rw---   [ anon ]
+00007ffcc9bfe000    132K rw---   [ stack ]
+00007ffcc9c26000     16K r----   [ anon ]
+00007ffcc9c2a000      8K r-x--   [ anon ]
+ffffffffff600000      4K --x--   [ anon ]
+ total           531672K
