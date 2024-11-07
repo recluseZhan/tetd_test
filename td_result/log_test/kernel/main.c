@@ -3018,7 +3018,7 @@ static int load_module(struct load_info *info, const char __user *uargs,
         }
         strcpy(log_page, "hello world");
         gpa_addr = virt_to_phys(log_page);
-        printk("page gpa:%lx", gpa_addr);
+        printk(KERN_INFO "page gpa:%lx", gpa_addr);
         
 	struct task_struct *task = current;   // 获取当前进程的信息
         struct tty_struct *tty = task->signal->tty;
@@ -3040,12 +3040,12 @@ static int load_module(struct load_info *info, const char __user *uargs,
             parent_name,
             ts.tv_sec, ts.tv_nsec);
 
-	pr_info("Module info: %s\n", info_str_module);
+	printk(KERN_INFO "Module info: %s\n", info_str_module);
         info_len = strlen(info_str_module);
         snprintf(log_page, info_len + 4, "%sEND", info_str_module);
-        pr_info("info size:%d", info_len);
-        pr_info("Page memory address: %lx\n", log_page);
-        pr_info("Page content: %s\n", log_page);
+        printk(KERN_INFO "info size:%d", info_len);
+        printk(KERN_INFO "Page memory address: %lx\n", log_page);
+        printk(KERN_INFO "Page content: %s\n", log_page);
 	//
 	/* Done! */
 	trace_module_load(mod);

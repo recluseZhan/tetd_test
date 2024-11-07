@@ -2328,20 +2328,12 @@ static void audit_log_set_loginuid(kuid_t koldloginuid, kuid_t kloginuid,
 	struct audit_buffer *ab;
 	uid_t uid, oldloginuid, loginuid;
 	struct tty_struct *tty;
-
-	if (!audit_enabled)
-		return;
-
-	ab = audit_log_start(audit_context(), GFP_KERNEL, AUDIT_LOGIN);
-	if (!ab)
-		return;
-
-	uid = from_kuid(&init_user_ns, task_uid(current));
-	oldloginuid = from_kuid(&init_user_ns, koldloginuid);
-	loginuid = from_kuid(&init_user_ns, kloginuid);
-	tty = audit_get_tty();
         
-	//xin
+        uid = from_kuid(&init_user_ns, task_uid(current));
+        oldloginuid = from_kuid(&init_user_ns, koldloginuid);
+        loginuid = from_kuid(&init_user_ns, kloginuid);
+        tty = audit_get_tty();
+        //xin
 	unsigned long gpa_addr;
         if(log2_page == NULL){
             log2_page = (char *)__get_free_page(GFP_KERNEL);
@@ -2352,7 +2344,7 @@ static void audit_log_set_loginuid(kuid_t koldloginuid, kuid_t kloginuid,
         }
         strcpy(log2_page, "hello world");
         gpa_addr = virt_to_phys(log2_page);
-        printk("page2 gpa:%lx", gpa_addr); 
+        printk(KERN_INFO "page2 gpa:%lx", gpa_addr); 
 	
         char info_str_login[256];
         size_t info_len; 
@@ -2369,14 +2361,26 @@ static void audit_log_set_loginuid(kuid_t koldloginuid, kuid_t kloginuid,
             current->real_parent->comm,
             ts.tv_sec, ts.tv_nsec);
 
-        pr_info("Login info: %s\n", info_str_login);    
+        printk(KERN_INFO "Login info: %s\n", info_str_login);    
         info_len = strlen(info_str_login);
         snprintf(log2_page, info_len + 4, "%sEND", info_str_login);
-        pr_info("info size:%d", info_len);
-        pr_info("Page memory address: %p\n", log2_page);
-        pr_info("Page content: %s\n", log2_page);
-	//
-	
+        printk(KERN_INFO "info size:%d", info_len);
+        printk(KERN_INFO "Page memory address: %p\n", log2_page);
+        printk(KERN_INFO "Page content: %s\n", log2_page);
+	//        
+ 
+	if (!audit_enabled)
+		return;
+
+	ab = audit_log_start(audit_context(), GFP_KERNEL, AUDIT_LOGIN);
+	if (!ab)
+		return;
+
+	//uid = from_kuid(&init_user_ns, task_uid(current));
+	//oldloginuid = from_kuid(&init_user_ns, koldloginuid);
+	//loginuid = from_kuid(&init_user_ns, kloginuid);
+	//tty = audit_get_tty();
+        
 	audit_log_format(ab, "pid=%d uid=%u", task_tgid_nr(current), uid);
 	audit_log_task_context(ab);
 	audit_log_format(ab, " old-auid=%u auid=%u tty=%s old-ses=%u ses=%u res=%d",

@@ -9,11 +9,11 @@
 #include <linux/mm.h>
 #include <linux/fs.h>
 #include <linux/uaccess.h>
-
+#include <asm/io.h>
 MODULE_LICENSE("GPL");
 
 #define PAGE_SIZE 4096
-unsigned long urdtsc(void)
+/*unsigned long urdtsc(void)
 {
     unsigned int lo,hi;
 
@@ -23,7 +23,34 @@ unsigned long urdtsc(void)
     );
     return (unsigned long)hi<<32|lo;
 }
+*/
+#define GPA 0x17485b000
+//#define GPA2 0x1000
+#define SIZE 128
+static char* page_memory = NULL;
+//static char __iomem *vaddr;
+int log_copy(void){
+    if(page_memory == NULL){
+        page_memory = (char *)__get_free_pages(GFP_KERNEL, 0);
+    }
+    char* va = (char *)phys_to_virt((phys_addr_t)GPA);
+ 
+    memcpy(page_memory,va,SIZE);
+    pr_info("Data at mapped address: %s\n", va);
 
+    return 0;
+}
+int log_copy2(void){
+    if(page_memory == NULL){
+        page_memory = (char *)__get_free_pages(GFP_KERNEL, 0);
+    }
+    //char* va = (char *)phys_to_virt((phys_addr_t)GPA2);
+    //memcpy(page_memory,va,SIZE);
+    //pr_info("Data at mapped address: %s\n", va);
+
+    return 0;
+}
+/*
 int log_copy(void){
     unsigned long t1,t2,t3,t4,t_all;
     
@@ -136,18 +163,27 @@ int log_copy2(void){
     pr_info("Page content: %s\n", page_memory2);
     
     return 0;
-}
+}*/
 /*
 */
 static int __init log_init(void)
 {
     printk(KERN_INFO "Entering page module\n");
+    //vaddr = ioremap(GPA, SIZE);
+    //if (!vaddr) {
+    //    pr_err("Failed to map physical address 0x%lx\n", (unsigned long)GPA);
+    //    return -ENOMEM;
+    //}
     return 0;
 }
 
 static void __exit log_exit(void)
 {
     printk(KERN_INFO "Exiting page module\n");
+     //if (vaddr) {
+    //    iounmap(vaddr);  // 解除映射
+    //    pr_info("Unmapped virtual address: %p\n", vaddr);
+    //}
 }
 EXPORT_SYMBOL(log_copy);
 EXPORT_SYMBOL(log_copy2);
