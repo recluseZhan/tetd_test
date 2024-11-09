@@ -9,7 +9,7 @@ static inline uint64_t read_tsc() {
     __asm__ __volatile__ ("rdtsc" : "=a"(lo), "=d"(hi));
     return ((uint64_t)hi << 32) | lo;
 }
-
+/*
 void avx512_memcpy_optimized(void *dest, const void *src, size_t n) {
     size_t i;
 
@@ -25,8 +25,8 @@ void avx512_memcpy_optimized(void *dest, const void *src, size_t n) {
         ((char *)dest)[i] = ((const char *)src)[i];
     }
 }
-
-int main() {
+*/
+int main() {/*
     size_t sizes[] = {4096, 2 * 1024 * 1024}; // 4K 和 2M
     char *src[2], *dest[2];
 
@@ -43,25 +43,40 @@ int main() {
         for (size_t i = 0; i < sizes[j]; i++) {
             src[j][i] = (char)(i % 256);
         }
-
+*/
+        unsigned long size =2*1024*1024;
+	char* src;
+	char* dest;
+	//char src[size],dest[size];
         uint64_t start, end;
 
+	if (posix_memalign(&src, 4096, size) != 0) {
+            fprintf(stderr, "Failed to allocate aligned memory\n");
+            return 1;
+        }
+	if (posix_memalign(&dest, 4096, size) != 0) {
+            fprintf(stderr, "Failed to allocate aligned memory\n");
+            return 1;
+        }
+
+	memset(src,3,size);
+	memset(dest,1,size);
         // 开始拷贝时间测量
         start = read_tsc();
-	memcpy(dest[j],src[j],sizes[j]);
+	memcpy(dest,src,size);
         //avx512_memcpy_optimized(dest[j], src[j], sizes[j]); // 使用优化的 AVX-512 拷贝
         end = read_tsc();
 
         // 计算时间（以纳秒为单位）
-        double frequency = 2.4e9; // 2.4 GHz
-        double time_ns = (end - start) / (frequency / 1e9);
-
-        printf("Copy time for %zu bytes (ns): %f\n", sizes[j], time_ns);
+        //double frequency = 2.4e9; // 2.4 GHz
+        //double time_ns = (end - start) / (frequency / 1e9);
+        unsigned long time_ns=(end-start)*5/12;
+        printf("Copy time for %zu bytes (ns): %ld\n", size, time_ns);
 
         // 释放内存
-        free(src[j]);
-        free(dest[j]);
-    }
+	free(src);
+	free(dest);
+    //}
 
     return 0;
 }
