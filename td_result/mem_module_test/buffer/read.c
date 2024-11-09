@@ -33,16 +33,16 @@ int read_from_buffer(void)
 static int __init read_module_init(void)
 {
     if (!shared_mem) {
-        pr_err("共享内存尚未分配\n");
+        pr_err("memory fail\n");
         return -ENOMEM;
     }
-    pr_info("读取模块加载成功\n");
+    pr_info("insmod read module\n");
     return 0;
 }
 
 static void __exit read_module_exit(void)
 {
-    pr_info("读取模块已卸载\n");
+    pr_info("read module exit\n");
 }
 
 EXPORT_SYMBOL(read_from_buffer);

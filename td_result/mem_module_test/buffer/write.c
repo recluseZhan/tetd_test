@@ -28,7 +28,8 @@ unsigned long tail = 0;
 void write_to_buffer(unsigned long len) {
     unsigned long bytes_written = 0;
     unsigned long phys_addr = 0x00900000;
-    unsigned long data = virt_to_phys(phys_addr);
+    unsigned long virt_addr = 0xffffffff80000000;
+    void *data = phys_to_virt(phys_addr);
     unsigned long t1,t2,t_all=0;
     while (bytes_written < len) {
         //while (((head + 1) % RING_BUFFER_SIZE) == tail) {
@@ -44,9 +45,10 @@ void write_to_buffer(unsigned long len) {
 	bytes_written += PAGE_SIZE;
     }
     printk("time:%ld",t_all);
+    printk("%lx",(void*)PAGE_OFFSET);
 }
 
-#define DATA_SIZE (2*1024*1024)
+#define DATA_SIZE (800*1024*1024)
 //#define DATA_SIZE 4096
 void write_kernel_to_buffer(void){
     write_to_buffer(DATA_SIZE);
