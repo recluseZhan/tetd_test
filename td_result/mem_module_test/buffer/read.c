@@ -3,7 +3,8 @@
 #include <linux/delay.h>
 
 #define RING_BUFFER_SIZE (256 * 1024)  // 256KB
-#define DATA_SIZE (1*1024*1024)
+//#define DATA_SIZE (1*1024*1024)
+#define DATA_SIZE 4096
 #define PAGE_SIZE 4096
 extern char *shared_mem;
 extern unsigned long head;

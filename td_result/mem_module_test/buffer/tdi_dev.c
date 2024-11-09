@@ -27,7 +27,7 @@ static int tdi_dev_release(struct inode *inode, struct file *filp)
 // read dev
 static ssize_t tdi_dev_read(struct file *filp, char __user *buf, size_t size, loff_t *offset) 
 {    
-    //read_from_buffer();
+    read_from_buffer();
     return 0;
 } 
 
