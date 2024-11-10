@@ -1,10 +1,16 @@
 #include <linux/module.h>
 #include <linux/kernel.h>
+#include <linux/mm.h>
+#include <linux/io.h>
 #include <linux/delay.h>
 
+#define IVSHMEM_BAR0_ADDRESS 0x383800000000  // BAR 2 地址
+#define IVSHMEM_BAR0_SIZE (1 * 1024 * 1024)            // BAR 2 大小
+void __iomem *ivshmem_base;  // 保存映射的基地址
+			     //
 #define RING_BUFFER_SIZE (256 * 1024)  // 256KB
 //#define DATA_SIZE (1*1024*1024)
-#define DATA_SIZE 4096
+#define DATA_SIZE (4096*3)
 #define PAGE_SIZE 4096
 extern char *shared_mem;
 extern unsigned long head;
@@ -18,7 +24,7 @@ int read_from_buffer(void)
         while (tail == head) {
             cpu_relax();  // 
         }
-        memcpy(print_buffer,shared_mem+tail,PAGE_SIZE);
+        memcpy(print_buffer,ivshmem_base+tail,PAGE_SIZE);
 	
         tail = (tail+PAGE_SIZE)%RING_BUFFER_SIZE;
 	bytes_readed += PAGE_SIZE;
@@ -32,9 +38,10 @@ int read_from_buffer(void)
 
 static int __init read_module_init(void)
 {
-    if (!shared_mem) {
-        pr_err("memory fail\n");
-        return -ENOMEM;
+    ivshmem_base = ioremap(IVSHMEM_BAR0_ADDRESS, IVSHMEM_BAR0_SIZE);
+    if (!ivshmem_base) {
+        pr_err("Could not map ivshmem memory\n");
+        return -EIO;
     }
     pr_info("insmod read module\n");
     return 0;
@@ -43,6 +50,10 @@ static int __init read_module_init(void)
 static void __exit read_module_exit(void)
 {
     pr_info("read module exit\n");
+    if (ivshmem_base) {
+        iounmap(ivshmem_base);
+        pr_info("ivshmem memory unmapped\n");
+    }
 }
 
 EXPORT_SYMBOL(read_from_buffer);
