@@ -1,0 +1,41 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <sys/mman.h>
+#include <fcntl.h>
+#include <unistd.h>
+
+int main() {
+    unsigned long va = 0x40000000;  // 要映射的虚拟地址
+    unsigned long pa = 0x7ffff000;  // 对应的物理地址
+    printf("hello");
+    // 打开 /dev/mem 设备文件，用于物理内存映射
+    int fd = open("/dev/mem", O_RDWR | O_SYNC);
+    if (fd == -1) {
+        perror("open");
+        exit(EXIT_FAILURE);
+    }
+
+    // 将物理地址映射到虚拟地址
+    void *mapped = mmap((void *)va, 4096, PROT_READ | PROT_WRITE,
+                        MAP_FIXED | MAP_SHARED, fd, pa);
+    if (mapped == MAP_FAILED) {
+        perror("mmap");
+        close(fd);
+        exit(EXIT_FAILURE);
+    }
+
+    printf("Successfully mapped PA 0x%lx to VA 0x%lx\n", pa, va);
+
+    // 访问映射的地址
+    unsigned long *ptr = (unsigned long *)va;
+    printf("Value at mapped address: %lu\n", *ptr);
+    *ptr = 42;  // 修改映射的内存
+    printf("Value at mapped address: %lu\n", *ptr);
+
+    // 解除映射
+    munmap(mapped, 4096);
+    close(fd);
+
+    return 0;
+}
+

@@ -1,0 +1,15 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
+
+int main() {
+    unsigned long *addr = (unsigned long *)0x10000000;  // 一个适当的虚拟地址
+    printf("hello!\n");
+    printf("Trying to access address: %p\n", addr);
+
+    unsigned long value = *addr;  // 访问未映射地址，应该触发 Level 2 Translation Fault
+
+    printf("Value at address: %lx\n", value);  // 不会执行到这一行
+    return 0;
+}
+
