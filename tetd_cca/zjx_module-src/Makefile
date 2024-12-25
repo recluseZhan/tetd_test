@@ -8,6 +8,13 @@ set_ipa1-objs := set_ipa.o
 obj-m += get_ipa1.o
 get_ipa1-objs := get_ipa.o
 
+#obj-m += destroy_ipa1.o
+#destroy_ipa1-objs := destroy_ipa.o
+
+obj-m += destroy_undelegate_ipa1.o
+destroy_undelegate_ipa1-objs := destroy_undelegate_ipa.o
+
+
 all:
 	make -C $(KERNEL_DIR) M=$(PWD) ARCH=arm64 CROSS_COMPILE=$(CROSS_COMPILE) modules
 

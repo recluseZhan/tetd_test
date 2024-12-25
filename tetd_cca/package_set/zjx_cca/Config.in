@@ -1,0 +1,4 @@
+config BR2_PACKAGE_ZJX_CCA
+	bool "zjx_cca"
+	help
+		This is a zjx_cca.

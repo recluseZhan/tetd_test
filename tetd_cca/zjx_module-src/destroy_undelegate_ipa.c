@@ -8,13 +8,14 @@
 #include <linux/page-flags.h>
 #include <asm/rmi_cmds.h>
 
+
 static unsigned long vcpu_addr = 0;  // 默认值为 0，表示未设置
 module_param(vcpu_addr, ulong, S_IRUGO);  // 定义模块参数 vcpu_addr，类型为 unsigned long（地址）
 MODULE_PARM_DESC(vcpu_addr, "The address of the VCPU to map protected memory");
 
-static unsigned long ipa_addr = 0;
-module_param(ipa_addr, ulong, S_IRUGO);
-MODULE_PARM_DESC(ipa_addr, "The address of the ipa addr");
+//static unsigned long ipa_addr = 0;
+//module_param(ipa_addr, ulong, S_IRUGO);
+//MODULE_PARM_DESC(ipa_addr, "The address of the ipa addr");
 
 static int __init realm_unmap_undelegate_init(void)
 {
@@ -50,7 +51,8 @@ static int __init realm_unmap_undelegate_init(void)
     
     printk(KERN_INFO "Realm object acquired successfully.\n");
     
-    realm_destroy_undelegate_range(realm,base_ipa,ipa_addr,size);
+    kvm_realm_unmap_range(kvm,base_ipa,size); 
+    //realm_destroy_undelegate_range(realm,base_ipa,size);
     printk(KERN_INFO "Protected memory unmapping successful.\n");
     return 0;
 }
@@ -65,5 +67,5 @@ module_exit(realm_unmap_undelegate_exit);
 
 MODULE_LICENSE("GPL");
 MODULE_AUTHOR("Your Name");
-MODULE_DESCRIPTION("A kernel module to map protected memory in a Realm.");
+MODULE_DESCRIPTION("A kernel module to unmap protected memory in a Realm.");
 

@@ -25,7 +25,7 @@ static int __init realm_unmap_init(void)
     struct kvm_mmu_memory_cache memcache;
     //struct kvm_mmu_memory_cache *memcache = &vcpu->arch.mmu_page_cache;  // 内存管理缓存
     int ret;
-
+    unsigned long data_out, top_out;
     printk(KERN_INFO "Initializing Realm Mapping...\n");
 
     // 获取当前 VCPU
@@ -52,13 +52,13 @@ static int __init realm_unmap_init(void)
     rd = virt_to_phys(realm->rd);
     printk(KERN_INFO "Realm object acquired successfully.\n");
     
-    ret = rmi_data_destroy(rd,base_ipa);
+    ret = rmi_data_destroy(rd,base_ipa,&data_out,&top_out);
     if (ret) {
         printk(KERN_ERR "Failed to unmap protected memory.\n");
         return -EFAULT;
     }
 
-    printk(KERN_INFO "Protected memory unmapping successful.\n");
+    printk(KERN_INFO "Protected memory unmapping successful,data_out:%lx,top_out:%lx\n",data_out,top_out);
     return 0;
 }
 

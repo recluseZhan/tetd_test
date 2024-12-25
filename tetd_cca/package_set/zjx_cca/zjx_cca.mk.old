@@ -1,0 +1,24 @@
+################################################################################
+# Package metadata
+################################################################################
+ZJX_CCA_VERSION = 1.0
+ZJX_CCA_SITE = file://$(TOPDIR)/../zjx_cca-src
+ZJX_CCA_LICENSE = MIT
+ZJX_CCA_LICENSE_FILES = LICENSE
+
+################################################################################
+# Package configuration
+################################################################################
+define ZJX_CCA_BUILD_CMDS
+    $(MAKE) -C $(@D)
+endef
+
+define ZJX_CCA_INSTALL_TARGET_CMDS
+    $(INSTALL) -D -m 0755 $(@D)/zjx_cca_binary $(TARGET_DIR)/usr/bin/zjx_cca
+endef
+
+################################################################################
+# Register package
+################################################################################
+$(eval $(generic-package))
+

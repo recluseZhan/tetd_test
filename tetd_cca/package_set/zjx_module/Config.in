@@ -1,0 +1,4 @@
+config BR2_PACKAGE_ZJX_MODULE
+	bool "zjx_module"
+	help
+		This is a zjx_module.

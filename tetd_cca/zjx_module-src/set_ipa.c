@@ -24,8 +24,8 @@ static int __init realm_map_init(void)
     unsigned long size = 0x1000;           // 映射大小（4KB 页面）
     unsigned long dst_page_pa;
     //kvm_pfn_t pfn = 0x100000;              // 页面的 PFN（物理帧号）
-    //struct kvm_mmu_memory_cache memcache;
-    struct kvm_mmu_memory_cache memcache = vcpu->arch.mmu_page_cache;  // 内存管理缓存
+    struct kvm_mmu_memory_cache memcache;
+    //struct kvm_mmu_memory_cache *memcache = &vcpu->arch.mmu_page_cache;  // 内存管理缓存
     int ret;
 
     printk(KERN_INFO "Initializing Realm Mapping...\n");
