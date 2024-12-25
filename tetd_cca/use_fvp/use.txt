@@ -1,0 +1,415 @@
+参考1：https://gitlab.arm.com/arm-reference-solutions/arm-reference-solutions-docs/-/blob/master/docs/aemfvp-a-rme/user-guide.rst 
+
+参考2：https://learn.arm.com/learning-paths/servers-and-cloud-computing/rme-cca-basics/rme-cca-fvp/ 
+
+参考3：[https://developer.arm.com/Tools and Software/Fixed Virtual Platforms/Arm Architecture FVPs](https://developer.arm.com/Tools%20and%20Software/Fixed%20Virtual%20Platforms/Arm%20Architecture%20FVPs) 
+
+AEMFVP-A-RME && FVP_Base_RevC-2xAEMva 安装：
+
+```bash
+# docker镜像：https://github.com/dongyubin/DockerHub
+# 加入组：sudo usermod -aG docker ${USER}
+# sudo systemctl restart docker
+# logout
+
+# 0. Obtain the Container Repository
+git clone --branch AEMFVP-A-RME-2023.12.22 https://git.gitlab.arm.com/arm-reference-solutions/docker.git
+
+# 1. Build Container Image
+cd docker
+./container.sh build
+docker image list
+# shall output a similar message as below:
+# REPOSITORY        TAG       IMAGE ID       CREATED       SIZE
+# aemfvp-builder    latest    2fa7ce18f57a   7 mins ago    1.83GB
+mkdir ~/rme-stack
+./container.sh -v ~/rme-stack run
+
+# 2. Build Stack
+cd ~/rme-stack
+
+# 推荐清华源
+# vim /bin/repo
+# --- REPO_URL = "https://gerrit.googlesource.com/git-repo"
+# +++ REPO_URL = "https://mirrors.tuna.tsinghua.edu.cn/git/git-repo/"
+repo init -u https://git.gitlab.arm.com/arm-reference-solutions/arm-reference-solutions-manifest.git -m pinned-aemfvp-a-rme.xml -b refs/tags/AEMFVP-A-RME-2023.12.22
+repo sync -c -j $(nproc) --fetch-submodules --force-sync --no-clone-bundle
+
+# Patch the Linux kernel Kconfig file for arm64 targets.
+# This patch enables extending the bootloader provided command line arguments.
+# It is required to speed up execution of the software stack.
+# cd linux
+# wget https://raw.githubusercontent.com/ArmDeveloperEcosystem/arm-learning-paths/main/content/learning-paths/servers-and-cloud-computing/rme-cca-basics/kconfig.patch
+# git apply --ignore-space-change --whitespace=warn --inaccurate-eof -v kconfig.patch
+# cd ..
+
+# ./build-scripts/aemfvp-a-rme/build-test-buildroot.sh -h
+./build-scripts/aemfvp-a-rme/build-test-buildroot.sh -p aemfvp-a-rme all
+
+ls output/aemfvp-a-rme/
+# Contents of output should have required bins and images
+# bl1.bin  fip.bin  fip-std-tests.bin  host-fs.ext4  Image
+
+# To exit the container type exit.
+exit
+
+# 3. Run the software stack
+# Installing FVP
+
+## a. Container Execution
+# 启动容器环境中的参考栈
+./container.sh -v ~/rme-stack run
+# 容器会自动安装兼容的 ARM_AEM_FVP module.
+# 路径在容器内为 /home/<username>/models
+# Export Model Path in Docker
+export FVP_DIR=/home/<username>/models
+# Export Automate (Optional)
+export Automate=true
+
+## b. Host Execution
+cd ~/rme-stack
+mkdir FVP && cd FVP
+#wget https://developer.arm.com/-/cdn-downloads/permalink/FVPs-Architecture/FM-11.27/FVP_Base_RevC-2xAEMvA_11.27_19_Linux64.tgz
+#tar -xvzf FVP_Base_RevC-2xAEMvA_11.27_19_Linux64.tgz
+# 版本可能不对，可以直接从容器环境拷贝
+docker ps
+docker cp docker_id:<docker_dir> <host_dir>
+
+# Export Model path
+# MODEL=~/rme-stack/Base_RevC_AEMvA_pkg/models/Linux64_GCC-9.3/FVP_Base_RevC-2xAEMvA
+export FVP_DIR=~/rme-stack/FVP
+# Export Automate (Optional)
+export Automate=true
+
+### cases (cd ~/rmp-stack)
+# note: 远程的时候需要在自己的主机上开启x11 forwarding.
+# 比如：win的Xming+PuTTY(enable x11 forwarding), mac的XQuartz(ssh +X ...))
+# echo $DISPLAY
+# 1. Boot the Stack
+# Note: This use case can be automated.
+./model-scripts/aemfvp-a-rme/boot.sh -p aemfvp-a-rme shell
+# telnet localhost 5000
+# Note: Poweroff the guest gracefully with poweroff command after use.
+
+# 2. Create a Virtual Guest in Realm World
+# Launch FVP for interactive shell in accordance with section "Boot the Stack".
+# Login to buildroot prompt
+lkvm run --realm -c 2 -m 256 -k /realm/Image -d /realm/realm-fs.ext4 -p earlycon
+# --realm,               launch guest in realm security state
+# -c, --cpus <n>         Number of CPUs
+# -m, --mem <size>.      Virtual machine memory size
+# -d, --disk <image>     Disk  image or rootfs directory
+# -k, --kernel <kernel>  Kernel to boot in virtual machine
+# Note: Poweroff the guest gracefully with poweroff command after use.
+
+# 3. Validate four World Boot
+./model-scripts/aemfvp-a-rme/boot.sh -p aemfvp-a-rme validate
+# Secure world boot successful
+# Realm world boot successful
+# Non-Secure world boot successful
+# Four world boot successful
+
+# 4. Create Realm and normal VM parallely
+# Then use kvmtool to launch a realm guest in a screen.
+screen -md -S "realm"  lkvm run --realm -c 2 -m 256 -k /realm/Image -d /realm/realm-fs.ext4 -p earlycon
+# Launch a normal VM in a screen.
+screen -md -S "nsvm"  lkvm run -c 2 -m 256 -k /realm/Image -d /realm/realm-fs.ext4 -p earlycon
+# verify that the screen session is running
+screen -ls
+# User can connect and disconnect from these screen terminals using (screen -r) to connect 
+# and (CTRL-A + d) to disconnect and route back to original terminal.
+```
+
+buildroot配置
+
+```bash
+# 为了保证编译环境的完整性，以下编译的时候均在docker 环境中执行 #
+# https://wiki.t-firefly.com/ROC-RK3308-CC/buildroot_development.html
+# https://www.cnblogs.com/arnoldlu/p/9553995.html
+
+# 修改buildroot选项，编译后的目录分为output/host和output/target等 #
+cd ~/rme-stack/buildroot
+make menuconfig
+## 开始编译，参数后面加入-j4表示4个线程编译，V=0表示简易输出日志。
+## make toolchain -j4 V=0
+## make
+
+# 针对menuconfig的修改单独编译和打包 #
+## 如果有补丁重复报错，可能注释build-scripts/build-linux.sh 111行
+### #Apply kconf patch which support cmd line extend to disable cpuidle.
+###     git apply --ignore-space-change --whitespace=warn --inaccurate-eof -v $LINUX_CMD_LINE_EXTEND_PATCH
+
+cd ~/rme_stack
+./build-scripts/aemfvp-a-rme/build-test-buildroot.sh -p aemfvp-a-rme build
+./build-scripts/aemfvp-a-rme/build-test-buildroot.sh -p aemfvp-a-rme package
+## ./build-scripts/aemfvp-a-rme/build-test-buildroot.sh -p aemfvp-a-rme all
+
+# 交叉编译 #
+## 配置环境变量
+cd ~/rme-stack/buildroot/output/host/bin
+echo "export PATH=\$PATH:$(pwd)" >> ~/.bashrc
+source ~/.bashrc
+### 直接输入aarch64-linux-gcc即可使用工具链。
+
+## 自定义buildroot包
+mkdir -p  ~/rme-stack/buildroot/package/zjx_cca
+
+## 在~/rme-stack/buildroot/package/zjx_cca目录下添加Config.in文件
+config BR2_PACKAGE_ZJX_CCA
+        bool "zjx_cca"
+        help
+                This is a zjx_cca.
+      
+## 在~/rme-stack/buildroot/package/zjx_cca目录下添加zjx_cca.mk（是一个Makefile）文件
+### ZJX_CCA_SITE: 假设你的源码位于 ~/zjx_cca-src。
+### ZJX_CCA_BUILD_CMDS: 定义如何编译项目。
+### ZJX_CCA_INSTALL_TARGET_CMDS: 定义如何安装到目标文件系统，最终可执行文件会放在 /usr/bin/zjx_cca。
+###  { 如下：
+##################################################
+###########
+#
+## zjx_cca
+#
+###################################################
+###########
+ifeq ($(BR2_PACKAGE_ZJX_CCA), y)
+        ZJX_CCA_VERSION:=1.0.0
+        ZJX_CCA_SITE:=$(TOPDIR)/../zjx_cca-src
+        ZJX_CCA_SITE_METHOD:=local
+        ZJX_CCA_INSTALL_TARGET:=YES
+define ZJX_CCA_BUILD_CMDS
+        $(TARGET_MAKE_ENV) $(MAKE) CC=$(TARGET_CC) CXX=$(TARGET_CXX) -C $(@D)
+endef
+define ZJX_CCA_CLEAN_CMDS
+        $(TARGET_MAKE_ENV) $(MAKE) -C $(@D) clean
+endef
+define ZJX_CCA_INSTALL_TARGET_CMDS
+        $(TARGET_MAKE_ENV) $(MAKE) -C $(@D) install
+endef
+define ZJX_CCA_UNINSTALL_TARGET_CMDS
+        $(TARGET_MAKE_ENV) $(MAKE) -C $(@D) uninstall
+endef
+$(eval $(generic-package))
+endif
+### }
+
+## 修改buildroot主配置
+### 添加 zjx_cca 到 Buildroot 包列表：
+### 编辑 ~/rme-stack/buildroot/package/Config.in，在文件末尾添加：
+### menu "Text editors and viewers"
+###        source "package/uemacs/Config.in"
+###        source "package/vim/Config.in"
+### endmenu
++ menu "Private package"
+	+ source "package/zjx_cca/Config.in"
++ endmenu
+### endmenu
+
+### 进入菜单配置：
+cd ~/rme-stack/buildroot
+make menuconfig
+### 启用 zjx_cca 包：通过Target packages -> Private package进入，选中zjx_cca。
+### 然后make savedefconfig，对zjx_cca的配置就会保存到qemu_arm_vexpress_defconfig中。
+
+### 实例源码demo.c：
+#include <stdio.h>
+#include <stdlib.h>
+int main(int argc, char *argv[])
+{
+    printf("hello world\n");
+    return 0;
+}
+### 实例源码的Makefile
+### CXX可更改为CC，如果没有g++的话
+DEPS =
+OBJ = demo.o
+CFLAGS =
+%.o: %.c $(DEPS)
+    $(CC) -c -o $@ $< $(CFLAGS)
+demo: $(OBJ)
+    $(CXX) -o $@ $^ $(CFLAGS)
+.PHONY: clean
+clean:
+    rm -f *.o *~ demo
+.PHONY: install
+install:
+    cp -f demo $(TARGET_DIR)/usr/bin/
+.PHONY: uninstall
+uninstall:
+    rm -f $(TARGET_DIR)/usr/bin/demo
+
+### 编译
+### make zjx_cca
+### 打包进文件系统
+### make
+### 修改源码后重新编译包
+### make zjx_cca-rebuild
+### Package-specific:
+###  <pkg>                  - Build and install <pkg> and all its dependencies
+###  <pkg>-source           - Only download the source files for <pkg>
+###  <pkg>-extract          - Extract <pkg> sources
+###  <pkg>-patch            - Apply patches to <pkg>
+###  <pkg>-depends          - Build <pkg>'s dependencies
+###  <pkg>-configure        - Build <pkg> up to the configure step
+###  <pkg>-build            - Build <pkg> up to the build step
+###  <pkg>-graph-depends    - Generate a graph of <pkg>'s dependencies
+###  <pkg>-dirclean         - Remove <pkg> build directory
+###  <pkg>-reconfigure      - Restart the build from the configure step
+###  <pkg>-rebuild          - Restart the build from the build step
+
+{
+# kernel module交叉编译
+## ~/rme-stack/zjx_module-src
+### Makefile
+CROSS_COMPILE ?= /home/ubuntu/rme-stack/buildroot/output/host/bin/aarch64-linux-
+KERNEL_DIR = /home/ubuntu/rme-stack/linux/lib/modules/6.7.0-rc4-g19ff5f60db62-dirty/build
+PWD := $(shell pwd)
+
+obj-m += zjx_module.o
+zjx_module-objs := hello.o
+
+all:
+        make -C $(KERNEL_DIR) M=$(PWD) ARCH=arm64 CROSS_COMPILE=$(CROSS_COMPILE) modules
+
+clean:
+        make -C $(KERNEL_DIR) M=$(PWD) ARCH=arm64 CROSS_COMPILE=$(CROSS_COMPILE) clean
+
+## ~/rme-stack/buildroot/package/zjx_module
+### Config.in
+config BR2_PACKAGE_ZJX_MODULE
+        bool "zjx_module"
+        help
+                This is a zjx_module.
+
+### zjx_module.mk
+ifeq ($(BR2_PACKAGE_ZJX_MODULE), y)
+        ZJX_LINUX_DIR := $(TOPDIR)/../linux/lib/modules/6.7.0-rc4-g19ff5f60db62-dirty/build
+        ZJX_MODULE_VERSION := 1.0.0
+        ZJX_MODULE_SITE := $(TOPDIR)/../zjx_module-src
+        ZJX_MODULE_SITE_METHOD := local
+        ZJX_MODULE_INSTALL_TARGET := YES
+
+define ZJX_MODULE_BUILD_CMDS
+        $(MAKE) -C $(ZJX_LINUX_DIR) M=$(ZJX_MODULE_SITE) ARCH=arm64 CROSS_COMPILE=$(TOPDIR)/output/host/bin/aarch64-linux- modules
+endef
+
+# 内核模块的清理命令
+define ZJX_MODULE_CLEAN_CMDS
+        $(MAKE) -C $(ZJX_LINUX_DIR) M=$(ZJX_MODULE_SITE) ARCH=arm64 CROSS_COMPILE=$(TOPDIR)/output/host/bin/aarch64-linux- clean
+endef
+
+# 内核模块的安装命令
+define ZJX_MODULE_INSTALL_TARGET_CMDS
+        $(INSTALL) -d $(TARGET_DIR)/lib/modules/$(LINUX_VERSION)
+        $(INSTALL) -m 644 $(ZJX_MODULE_SITE)/$(ZJX_MODULE_NAME).ko $(TARGET_DIR)/lib/modules/$(LINUX_VERSION)/
+endef
+
+# 内核模块的卸载命令
+define ZJX_MODULE_UNINSTALL_TARGET_CMDS
+        $(TARGET_MAKE_ENV) $(MAKE) -C $(ZJX_LINUX_DIR) M=$(ZJX_MODULE_SITE) unload
+endef
+
+# 执行通用的构建规则
+$(eval $(generic-package))
+endif
+
+}
+```
+
+kernel编译
+
+```bash
+# 可以考虑把buildroot和父目录下的output重命名，之后重新build和package，重新编所有
+# ./build-scripts/aemfvp-a-rme/build-test-buildroot.sh -p aemfvp-a-rme build
+# ./build-scripts/aemfvp-a-rme/build-test-buildroot.sh -p aemfvp-a-rme package
+# 也可以按下面的单独编
+
+# 步骤 1：准备交叉编译工具链
+## 为了编译 ARM 架构的内核，你需要一个 ARM 架构的交叉编译工具链。你可以使用 Buildroot 提供的工具链，或者单独安装如 gcc-arm-linux-gnueabihf 或 gcc-arm-linux-gnuea64。
+## 如果你使用 Buildroot 提供的交叉编译工具链，你可以在环境变量中设置 CROSS_COMPILE 来指定交叉编译器的路径。
+export CROSS_COMPILE=/path/to/your/arm/toolchain/bin/arm-linux-gnueabihf-
+## 对于 ARM 64 位，工具链一般是 aarch64-linux-gnu-，例如：
+export CROSS_COMPILE=/home/ubuntu/rme-stack/buildroot/output/host/bin/aarch64-linux-
+
+# 步骤 2：获取内核源代码
+git clone https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git
+cd linux
+## 或者，如果你已经有了自己的内核源代码树（例如，Buildroot 中提供的内核源代码），直接进入该目录即可。
+
+# 步骤 3：配置内核
+## 在ARM设备上编译内核时，你需要首先配置内核。你可以使用 menuconfig、xconfig 或 oldconfig 等工具来配置内核。
+## 使用 menuconfig：
+## 如果你的终端大小足够大，使用 menuconfig：
+make ARCH=arm64 menuconfig
+## 这将启动一个交互式界面，允许你配置内核选项。
+
+## 如果终端太小，或者没有显示的工具，可以尝试使用 xconfig（图形界面）或手动编辑 .config 文件。
+## 使用 xconfig（如果有图形界面）：
+make ARCH=arm64 xconfig
+
+## 如果你想要从现有的配置开始，或者你在其他平台上已经有了一个 .config 文件，可以使用：
+make ARCH=arm64 oldconfig
+
+## 生成一个默认配置
+make ARCH=arm64 defconfig
+
+# 步骤 4：编译内核（下面的CROSS_COMPILE=$CROSS_COMPILE都可以不要）
+## 在配置好内核后，可以开始编译内核。执行以下命令来编译内核和模块：
+make ARCH=arm64 CROSS_COMPILE=$CROSS_COMPILE -j$(nproc)
+## ARCH=arm64：指定目标架构是 ARM 64 位。
+## CROSS_COMPILE：指定交叉编译工具链的前缀。
+## -j$(nproc)：指定编译时使用的 CPU 核心数。nproc 命令返回当前系统的处理器核心数。
+
+## 编译内核镜像：
+## 如果你只需要编译内核镜像，可以使用以下命令：
+make ARCH=arm64 CROSS_COMPILE=$CROSS_COMPILE zImage
+
+## 编译模块：
+## 如果你需要编译内核模块，可以使用：
+make ARCH=arm64 CROSS_COMPILE=$CROSS_COMPILE modules
+
+# 步骤 5：安装模块（可选）
+## 如果你需要将编译好的模块安装到指定目录，可以运行：
+make ARCH=arm64 CROSS_COMPILE=$CROSS_COMPILE INSTALL_MOD_PATH=/path/to/modules install
+## 上面那个会安装一些东西到/boot，如果不想影响boot，按照下面这个：
+make ARCH=arm64 CROSS_COMPILE=$CROSS_COMPILE INSTALL_MOD_PATH=/path/to/modules modules_install
+
+## 特例：modules.order 文件丢失：
+## make ARCH=arm64 prepare
+## make ARCH=arm64 modules
+## make ARCH=arm64 CROSS_COMPILE=$CROSS_COMPILE INSTALL_MOD_PATH=/path/to/modules modules_install
+## (
+## make ARCH=arm64 CROSS_COMPILE=$CROSS_COMPILE INSTALL_MOD_PATH=/home/ubuntu/rme-stack/linux modules_install
+## )
+
+# 步骤 6：编译设备树（如果需要）
+## 在某些 ARM 设备上，你可能还需要编译设备树（Device Tree）。设备树源文件（*.dts）通常位于 arch/arm/boot/dts/ 或 arch/arm64/boot/dts/ 目录下。
+## 编译设备树：
+make ARCH=arm64 CROSS_COMPILE=$CROSS_COMPILE dtbs
+
+# 步骤 7：打包并复制到目标设备
+## 编译完成后，你会得到一个内核镜像文件（如 zImage 或 Image），以及一个设备树文件（如 *.dtb）和内核模块（*.ko）。
+## 将内核镜像、设备树文件和模块复制到目标设备上。
+## 将内核镜像（如 zImage）复制到设备的启动分区。
+## 将设备树文件（如 *.dtb）复制到设备的 /boot/ 目录。
+## 将模块复制到设备的 /lib/modules/$(kernel_version)/ 目录。
+
+# 步骤 8：在目标设备上安装内核（如果需要）
+## 你可以通过复制文件的方式将编译好的内核和模块安装到目标设备，或者使用以下命令直接将文件复制到设备的启动分区。
+## 将内核镜像和设备树文件复制到目标设备的 /boot/ 目录。
+## 将模块安装到目标设备：
+scp /path/to/modules/*.ko user@target:/lib/modules/$(kernel_version)/
+
+# 步骤 9：重启并加载新内核
+## 完成内核安装后，可以重新启动设备，并加载新内核。
+## 对于大多数 ARM 设备，修改启动加载器的配置文件（如 u-boot）来指定新的内核镜像路径。
+## 重新启动设备，并确保选择了正确的内核镜像。
+
+# 附：清理内核
+## 删除大部分编译产生的文件，包括对象文件 (*.o) 和模块文件 (*.ko)
+make clean
+## 删除所有的编译中间文件、生成的配置文件以及编译工具（如 .config 和 System.map），恢复到一个干净的状态。
+make mrproper
+## 完全清理所有内容：可以确保完全清除所有缓存和临时文件。相当于mrproper之后再删除编辑器备份和补丁文件。
+make distclean
+```
