@@ -10,7 +10,7 @@ extern void read_page(void);
 
 static int __init read_page_init(void)
 {
-    printk(KERN_INFO "Module2 exiting\n");
+    printk(KERN_INFO "Module2 entering\n");
     read_page();
     return 0;
 }

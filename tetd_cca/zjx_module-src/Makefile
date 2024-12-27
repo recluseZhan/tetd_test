@@ -14,6 +14,9 @@ get_ipa1-objs := get_ipa.o
 obj-m += destroy_undelegate_ipa1.o
 destroy_undelegate_ipa1-objs := destroy_undelegate_ipa.o
 
+obj-m += destroy_ipa1.o
+destroy_ipa1-objs := destroy_ipa.o
+
 obj-m += realm_app1_1.o
 realm_app1_1-objs := realm_app1.o
 

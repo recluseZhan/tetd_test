@@ -39,7 +39,9 @@ static int __init allocate_page_init(void)
     printk(KERN_INFO "Page allocated\n");
     printk(KERN_INFO "Virtual address: %lx\n", vaddr);
     printk(KERN_INFO "Physical address: %lx\n", paddr);
-
+    printk(KERN_INFO "Virtual address: %lx\n", page);
+    printk(KERN_INFO "Physical address: %lx\n", virt_to_phys(page));
+    printk(KERN_INFO "Physical address: %lx\n", virt_to_phys(vaddr));
     return 0;
 }
 
