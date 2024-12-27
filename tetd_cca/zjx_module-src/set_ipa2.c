@@ -6,6 +6,7 @@
 #include <asm/kvm_rme.h>
 #include <linux/moduleparam.h>
 #include <linux/page-flags.h>
+#include <asm/rmi_cmds.h>
 
 extern int realm_map(void);
 static int __init realm_map_init(void)
