@@ -5,6 +5,9 @@ PWD := $(shell pwd)
 obj-m += set_ipa1.o
 set_ipa1-objs := set_ipa.o
 
+obj-m += set_ipa2_1.o
+set_ipa2_1-objs := set_ipa2.o
+
 obj-m += get_ipa1.o
 get_ipa1-objs := get_ipa.o
 

@@ -8,13 +8,16 @@
 #include <linux/page-flags.h>
 #include <asm/rsi.h>
 
+static unsigned long base_ipa = 0x7ffff000;
+module_param(base_ipa, ulong, S_IRUGO);
+MODULE_PARM_DESC(base_ipa, "The address of the base_ipa");
 
 static int __init realm_get_init(void)
 {
-    phys_addr_t base_ipa = 0x7ffff000; // 映射基础地址
-    phys_addr_t end_ipa = 0x80000000;           // 映射大小（4KB 页面）
+    phys_addr_t start_ipa = base_ipa;
+    phys_addr_t end_ipa = base_ipa + 0x1000;
     
-    set_memory_range_protected(base_ipa,end_ipa);
+    set_memory_range_protected(start_ipa,end_ipa);
 
     printk(KERN_INFO "Protected memory getting successful.\n");
     return 0;
