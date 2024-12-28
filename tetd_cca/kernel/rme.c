@@ -187,9 +187,23 @@ void realm_destroy_undelegate_range(struct realm *realm,
 
 	while (ipa < end) {
 		ret = rmi_data_destroy(rd, ipa, &addr, &top);
+		//xin
+		if(ipa==0x90000000){
+		    printk(KERN_INFO "RMI_DATA_DESTROY %d",ret);
+		}
+		//if (RMI_RETURN_STATUS(ret) == RMI_SUCCESS){
+		//    printk(KERN_INFO "RMI_DATA_DESTROY => SUCCESS");
+		//}
+		//
 		if (RMI_RETURN_STATUS(ret) == RMI_ERROR_RTT) {
+			//xin
+			//printk(KERN_INFO "xin:rmi_error_rtt");
+			//
 			if (top > ipa) {
 				/* UNASSIGNED */
+				//xin
+				//printk(KERN_INFO "xin:unassigned");
+				//
 				ipa = top;
 				continue;
 			}
@@ -201,11 +215,17 @@ void realm_destroy_undelegate_range(struct realm *realm,
 					       RMI_RETURN_INDEX(ret) + 1, rtt);
 			if (WARN_ON(ret)) {
 				free_delegated_page(realm, rtt);
+				//xin
+				//printk(KERN_INFO "xin:free_delegated_page");
+				//
 				break;
 			}
 			/* retry */
 			continue;
 		} else if (WARN_ON(ret)) {
+			//xin
+			//printk(KERN_INFO "xin:else if");
+			//
 			break;
 		}
 		ret = rmi_granule_undelegate(addr);

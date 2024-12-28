@@ -23,6 +23,9 @@ realm_app1_1-objs := realm_app1.o
 obj-m += realm_app2_1.o
 realm_app2_1-objs := realm_app2.o
 
+obj-m += realm_module1.o
+realm_module1-objs := realm_module.o
+
 all:
 	make -C $(KERNEL_DIR) M=$(PWD) ARCH=arm64 CROSS_COMPILE=$(CROSS_COMPILE) modules
 
