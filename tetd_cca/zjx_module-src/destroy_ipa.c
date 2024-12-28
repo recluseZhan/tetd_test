@@ -12,7 +12,7 @@ static unsigned long vcpu_addr = 0;  // 默认值为 0，表示未设置
 module_param(vcpu_addr, ulong, S_IRUGO);  // 定义模块参数 vcpu_addr，类型为 unsigned long（地址）
 MODULE_PARM_DESC(vcpu_addr, "The address of the VCPU to map protected memory");
 
-static unsigned long base_ipa = 0x7ffff000;
+static unsigned long base_ipa = 0x90000000;
 module_param(base_ipa, ulong, S_IRUGO);
 MODULE_PARM_DESC(base_ipa, "The address of the base_ipa");
 

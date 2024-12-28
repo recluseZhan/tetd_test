@@ -11,13 +11,9 @@ static unsigned long vcpu_addr = 0x0;
 module_param(vcpu_addr, ulong, S_IRUGO);
 MODULE_PARM_DESC(vcpu_addr, "The address of the VCPU to map protected memory");
 
-static unsigned long base_ipa = 0x7ffff000;
+static unsigned long base_ipa = 0x90000000;
 module_param(base_ipa, ulong, S_IRUGO);
 MODULE_PARM_DESC(base_ipa, "The address of the base_ipa");
-
-static unsigned long pa_flag = 0;
-module_param(pa_flag, ulong, S_IRUGO);
-MODULE_PARM_DESC(pa_flag, "This is pa_flag");
 
 static struct page *dst_page;
 static struct kvm_vcpu *vcpu;
@@ -28,14 +24,19 @@ static phys_addr_t dst_page_pa;
 static struct kvm_mmu_memory_cache *memcache;
 static phys_addr_t rd;
 
-int realm_map(void){
+int realm_map(unsigned long step){
     int ret;
     unsigned long phys;
     phys = dst_page_pa;
     
     printk(KERN_INFO "rd:%lx,hpa:%lx,ipa:%lx",rd,phys,base_ipa);
-    ret = rmi_data_create_unknown(rd,phys,base_ipa);
-    //ret = realm_map_protected(realm, 0, base_ipa, dst_page, size, memcache);
+    
+    if(step == 0){
+	ret = realm_map_protected(realm, 0, base_ipa, dst_page, size, memcache);
+    }else{
+        ret = rmi_data_create_unknown(rd,phys,base_ipa);
+    }
+
     if (ret) {
         printk(KERN_ERR "Failed to map protected memory.\n");
         return -EFAULT;

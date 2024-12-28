@@ -8,10 +8,14 @@
 #include <linux/page-flags.h>
 #include <asm/rmi_cmds.h>
 
-extern int realm_map(void);
+static unsigned long step = 0;
+module_param(step, ulong, S_IRUGO);
+MODULE_PARM_DESC(step, "This is step");
+
+extern int realm_map(unsigned long step);
 static int __init realm_map_init(void)
 {
-    realm_map();
+    realm_map(step);
     printk(KERN_INFO "Protected memory mapping2 successful.\n");
     return 0;
 }
