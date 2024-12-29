@@ -8,7 +8,7 @@
 #include <linux/page-flags.h>
 #include <asm/rsi.h>
 
-static unsigned long base_ipa = 0x90000000;
+static unsigned long base_ipa = 0x20000000;
 module_param(base_ipa, ulong, S_IRUGO);
 MODULE_PARM_DESC(base_ipa, "The address of the base_ipa");
 

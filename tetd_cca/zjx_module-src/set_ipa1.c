@@ -11,7 +11,7 @@ static unsigned long vcpu_addr = 0x0;
 module_param(vcpu_addr, ulong, S_IRUGO);
 MODULE_PARM_DESC(vcpu_addr, "The address of the VCPU to map protected memory");
 
-static unsigned long base_ipa = 0x90000000;
+static unsigned long base_ipa = 0x20000000;
 module_param(base_ipa, ulong, S_IRUGO);
 MODULE_PARM_DESC(base_ipa, "The address of the base_ipa");
 

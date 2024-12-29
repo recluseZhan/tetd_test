@@ -7,7 +7,7 @@
 #include <stdlib.h>
 
 int main(int argc, char *argv[]) {
-    unsigned long base_ipa = 0x90000000;
+    unsigned long base_ipa = 0x20000000;
     size_t size = 0x1000;
 
     if (argc > 1) {
