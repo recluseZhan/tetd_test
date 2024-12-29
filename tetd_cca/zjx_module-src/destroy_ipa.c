@@ -16,6 +16,14 @@ static unsigned long base_ipa = 0x90000000;
 module_param(base_ipa, ulong, S_IRUGO);
 MODULE_PARM_DESC(base_ipa, "The address of the base_ipa");
 
+static unsigned long step = 0;
+module_param(step, ulong, S_IRUGO);
+MODULE_PARM_DESC(step, "This is step");
+
+static unsigned long hpa = 0;
+module_param(hpa, ulong, S_IRUGO);
+MODULE_PARM_DESC(hpa, "This is hpa");
+
 static int __init realm_unmap_init(void)
 {
     struct kvm_vcpu *vcpu;                 // 当前 VCPU
@@ -23,7 +31,7 @@ static int __init realm_unmap_init(void)
     struct realm *realm;                   // Realm 对象
     unsigned long rd;
     
-    unsigned long size = 0x1000;           // 映射大小（4KB 页面）
+    unsigned long size = PAGE_SIZE;           // 映射大小（4KB 页面）
     struct kvm_mmu_memory_cache memcache;
     //struct kvm_mmu_memory_cache *memcache = &vcpu->arch.mmu_page_cache;  // 内存管理缓存
     int ret;
@@ -54,7 +62,11 @@ static int __init realm_unmap_init(void)
     rd = virt_to_phys(realm->rd);
     printk(KERN_INFO "Realm object acquired successfully.\n");
     
-    ret = rmi_data_destroy(rd,base_ipa,&data_out,&top_out);
+    if(step==0){
+        ret = rmi_data_destroy(rd,base_ipa,&data_out,&top_out);
+    }else{
+        ret = rmi_granule_undelegate(hpa);
+    }
     if (ret) {
         printk(KERN_ERR "Failed to unmap protected memory.\n");
         return -EFAULT;

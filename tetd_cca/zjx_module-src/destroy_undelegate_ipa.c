@@ -23,7 +23,7 @@ static int __init realm_unmap_undelegate_init(void)
     struct kvm *kvm;
     struct realm *realm;
     
-    unsigned long size = 0x1000;
+    unsigned long size = PAGE_SIZE;
 
     printk(KERN_INFO "Initializing Realm Mapping...\n");
 

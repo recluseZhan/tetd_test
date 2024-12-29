@@ -19,7 +19,7 @@ static struct page *dst_page;
 static struct kvm_vcpu *vcpu;
 static struct kvm *kvm;
 static struct realm *realm;
-static unsigned long size = 0x1000;
+static unsigned long size = PAGE_SIZE;
 static phys_addr_t dst_page_pa;
 static struct kvm_mmu_memory_cache *memcache;
 static phys_addr_t rd;
