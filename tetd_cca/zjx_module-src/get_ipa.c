@@ -7,6 +7,8 @@
 #include <linux/moduleparam.h>
 #include <linux/page-flags.h>
 #include <asm/rsi.h>
+#include <asm/rsi_cmds.h>
+#include <asm/rsi_smc.h>
 
 static unsigned long base_ipa = 0x20000000;
 module_param(base_ipa, ulong, S_IRUGO);
@@ -24,9 +26,13 @@ static int __init realm_get_init(void)
 {
     phys_addr_t start_ipa = (phys_addr_t)base_ipa;
     phys_addr_t end_ipa = base_ipa + size;
-    
+    struct arm_smccc_res res;
+    //phys_addr_t *top;
+
     if(empty==0){
-        set_memory_range_protected(start_ipa,end_ipa);
+        //set_memory_range_protected(start_ipa,end_ipa);
+	invoke_rsi_fn_smc_with_res(SMC_RSI_IPA_STATE_SET,base_ipa,end_ipa,RSI_RIPAS_RAM,RSI_CHANGE_DESTROYED,&res);
+	printk("res=%lx,*top=%lx,res.a0=%lx",res,res.a1,res.a0);
     }else{
         set_memory_range_shared(start_ipa,end_ipa);
     }

@@ -1,9 +1,11 @@
 #!/bin/bash
 
 cd ..
+rm -rf output.old
 mv output output.old
 
 cd buildroot
+rm -rf output.old
 mv output output.old
 
 cd ..
