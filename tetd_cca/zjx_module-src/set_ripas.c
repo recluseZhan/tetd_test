@@ -11,9 +11,13 @@ static unsigned long vcpu_addr = 0x0;
 module_param(vcpu_addr, ulong, S_IRUGO);
 MODULE_PARM_DESC(vcpu_addr, "The address of the VCPU to map protected memory");
 
-static unsigned long base_ipa = 0x1000;
+static unsigned long base_ipa = 0x20000000;
 module_param(base_ipa, ulong, S_IRUGO);
 MODULE_PARM_DESC(base_ipa, "The address of the base_ipa");
+
+static unsigned long top_size = 0x1000;
+module_param(top_size, ulong, S_IRUGO);
+MODULE_PARM_DESC(top_size, "The address of the top_size");
 
 static struct kvm_vcpu *vcpu;
 static struct kvm *kvm;
@@ -21,20 +25,18 @@ static struct realm *realm;
 static struct realm_rec *rec;
 static unsigned long size = PAGE_SIZE;
 static phys_addr_t rd;
-static phys_addr_t rec;
+static phys_addr_t rec_phys;
 
-int realm_ripas{
+void realm_ripas(void){
     unsigned long next;
     unsigned long end;
-    int ret=0;
-    end=base_ipa+size;
+    int ret = 0;
 
-    ret = rmi_rtt_set_ripas(rd,rec,base_ipa,end,&next);
+    end = base_ipa + top_size;
 
-    printk(KERN_INFO "ret=%lx,next=%lx",ret,next);
-
+    ret = rmi_rtt_set_ripas(rd,rec_phys,base_ipa,end,&next);
+    printk(KERN_INFO "ret=%lx,next=%lx",ret,next); 
 }
-EXPORT_SYMBOL(realm_ripas);
 
 static int __init realm_ripas_init(void)
 {
@@ -61,11 +63,12 @@ static int __init realm_ripas_init(void)
         printk(KERN_ERR "Failed to get rec.\n");
         return -EINVAL;
     }
+    rec_phys = virt_to_phys(rec->rec_page);
 
     printk(KERN_INFO "Realm object acquired successfully.\n");
     
     rd = virt_to_phys(realm->rd);
-    
+    realm_ripas(); 
     return 0;
 }
 

@@ -8,6 +8,9 @@ set_ipa1_1-objs := set_ipa1.o
 obj-m += set_ipa2_1.o
 set_ipa2_1-objs := set_ipa2.o
 
+obj-m += set_ripas1.o
+set_ripas1-objs := set_ripas.o
+
 obj-m += get_ipa1.o
 get_ipa1-objs := get_ipa.o
 
