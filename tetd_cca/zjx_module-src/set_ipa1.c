@@ -81,11 +81,15 @@ static int __init realm_map_init(void)
     printk(KERN_INFO "dst_va:%lx,dst_pa:%lx",dst_page,dst_page_pa);
     
     rd = virt_to_phys(realm->rd);
+
+    //realm_map(0);
+
     return 0;
 }
 
 static void __exit realm_map_exit(void)
 {
+    //free_page(dst_page);
     printk(KERN_INFO "Exiting Realm Mapping Module...\n");
 }
 

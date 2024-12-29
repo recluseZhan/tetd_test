@@ -188,9 +188,9 @@ void realm_destroy_undelegate_range(struct realm *realm,
 	while (ipa < end) {
 		ret = rmi_data_destroy(rd, ipa, &addr, &top);
 		//xin
-		if(ipa==0x90000000){
-		    printk(KERN_INFO "RMI_DATA_DESTROY %d",ret);
-		}
+		//if(ipa==0x90000000){
+		//    printk(KERN_INFO "RMI_DATA_DESTROY %d",ret);
+		//}
 		//if (RMI_RETURN_STATUS(ret) == RMI_SUCCESS){
 		//    printk(KERN_INFO "RMI_DATA_DESTROY => SUCCESS");
 		//}
@@ -1086,6 +1086,9 @@ int realm_set_ipa_state(struct kvm_vcpu *vcpu,
 
 	return ret;
 }
+//xin
+EXPORT_SYMBOL(realm_set_ipa_state);
+//
 
 static int realm_init_ipa_state(struct realm *realm,
 				unsigned long ipa,
@@ -1487,7 +1490,7 @@ out_err:
 }
 
 //xin
-static int vflag = 1;
+static int vflag = 4;
 //
 int kvm_create_rec(struct kvm_vcpu *vcpu)
 {
@@ -1500,7 +1503,7 @@ int kvm_create_rec(struct kvm_vcpu *vcpu)
 	int r, i;
         
         //xin
-        if(vflag>=0){
+        if(vflag>0){
             vflag = vflag - 1;
             printk("vcpu=0x%lx\n",vcpu);
         }

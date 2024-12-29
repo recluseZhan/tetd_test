@@ -19,6 +19,10 @@ static unsigned long top_size = 0x1000;
 module_param(top_size, ulong, S_IRUGO);
 MODULE_PARM_DESC(top_size, "The address of the top_size");
 
+static unsigned long ripas = 1;
+module_param(ripas, ulong, S_IRUGO);
+MODULE_PARM_DESC(ripas, "The address of the ripas");
+
 static struct kvm_vcpu *vcpu;
 static struct kvm *kvm;
 static struct realm *realm;
@@ -34,7 +38,8 @@ void realm_ripas(void){
 
     end = base_ipa + top_size;
 
-    ret = rmi_rtt_set_ripas(rd,rec_phys,base_ipa,end,&next);
+    ret = realm_set_ipa_state(vcpu,base_ipa,end,ripas);
+    //ret = rmi_rtt_set_ripas(rd,rec_phys,base_ipa,end,&next);
     printk(KERN_INFO "ret=%lx,next=%lx",ret,next); 
 }
 
