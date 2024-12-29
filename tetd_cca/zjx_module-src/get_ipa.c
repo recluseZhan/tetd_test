@@ -34,7 +34,9 @@ static int __init realm_get_init(void)
 	invoke_rsi_fn_smc_with_res(SMC_RSI_IPA_STATE_SET,base_ipa,end_ipa,RSI_RIPAS_RAM,RSI_CHANGE_DESTROYED,&res);
 	printk("res=%lx,*top=%lx,res.a0=%lx",res,res.a1,res.a0);
     }else{
-        set_memory_range_shared(start_ipa,end_ipa);
+        //set_memory_range_shared(start_ipa,end_ipa);
+	invoke_rsi_fn_smc_with_res(SMC_RSI_IPA_STATE_SET,base_ipa,end_ipa,RSI_RIPAS_EMPTY,RSI_CHANGE_DESTROYED,&res);
+        printk("res=%lx,*top=%lx,res.a0=%lx",res,res.a1,res.a0);
     }
     printk(KERN_INFO "Protected memory getting successful.\n");
     return 0;
