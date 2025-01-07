@@ -20,6 +20,12 @@ destroy_undelegate_ipa1-objs := destroy_undelegate_ipa.o
 obj-m += destroy_ipa1.o
 destroy_ipa1-objs := destroy_ipa.o
 
+obj-m += block1.o
+block1-objs := block.o
+
+obj-m += unblock1.o
+unblock1-objs := unblock.o
+
 all:
 	make -C $(KERNEL_DIR) M=$(PWD) ARCH=arm64 CROSS_COMPILE=$(CROSS_COMPILE) modules
 
