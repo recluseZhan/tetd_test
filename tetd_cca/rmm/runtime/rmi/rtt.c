@@ -1104,6 +1104,7 @@ void smc_data_destroy(unsigned long rd_addr,
 	assert(g_data != NULL);
 	//xin
 	// -- granule_memzero(g_data, SLOT_DELEGATED);
+	granule_memzero(g_data, SLOT_DELEGATED);
 	//
 	granule_unlock_transition(g_data, GRANULE_STATE_DELEGATED);
 
