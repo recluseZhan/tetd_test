@@ -1519,11 +1519,17 @@ unsigned long smc_ipa_block(unsigned long rd_addr, unsigned long map_addr)
 		s2tte_write(&s2tt[wi.index], s2tte);
 		invalidate_page(&s2_ctx, map_addr);
 	} else {
+		buffer_unmap(s2tt);
+		granule_unlock(wi.g_llt);
+		buffer_unmap(rd);
+		granule_unlock(g_rd);
 		return RMI_ERROR_RTT;
 	}
 
 	buffer_unmap(s2tt);
 	granule_unlock(wi.g_llt);
+	buffer_unmap(rd);
+	granule_unlock(g_rd);
         
 	printf("smc_ipa_block success.\n");
 	return RMI_SUCCESS;
@@ -1577,13 +1583,21 @@ unsigned long smc_ipa_unblock(unsigned long rd_addr, unsigned long map_addr)
 		s2tte_write(&s2tt[wi.index], s2tte);
 		invalidate_page(&s2_ctx, map_addr);
 	} else {
+		buffer_unmap(s2tt);             
+    	granule_unlock(wi.g_llt); 
+		buffer_unmap(rd);
+		granule_unlock(g_rd);
 		return RMI_ERROR_RTT;
 	}
 
 	buffer_unmap(s2tt);
 	granule_unlock(wi.g_llt);
-        
+	buffer_unmap(rd);
+	granule_unlock(g_rd);
+
 	printf("smc_ipa_unblock success.\n");
 	return RMI_SUCCESS;
 }
+
+
 //
