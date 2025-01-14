@@ -1,0 +1,4 @@
+# vim ~/.bashrc
+
+++ export FVP_DIR=~/rme-stack/FVP
+++ export PATH=$PATH:/home/zjx/rme-stack/buildroot/output/host/bin
