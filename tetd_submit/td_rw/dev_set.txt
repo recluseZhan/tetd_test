@@ -1,0 +1,15 @@
+<qemu:arg value='-device'/>
+<qemu:arg value='ivshmem-plain,memdev=hostmem,bus=pcie.0,addr=0x7'/>
+<qemu:arg value='-object'/>
+<qemu:arg value='memory-backend-file,size=1M,share=on,mem-path=/dev/shm/ivshmem,id=hostmem'/>
+
+
+BAR0:dev reg(MMIO)
+BAR1:MSI-X PBA(ivshmem-doorbell)
+BAR2:shared mem
+
+lspci
+ls -l /sys/bus/pci/devices/
+lspci -vvv -s 00:07.0
+cat /sys/bus/pci/devices
+
