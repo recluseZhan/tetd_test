@@ -109,7 +109,7 @@ static int __init memory_copy_init(void) {
     pr_info("Start copying 2GB physical memory to ivshmem...\n");
 
     // 遍历所有有效的物理内存页
-    for (pfn = 0; pfn < max_pfn/2; pfn++) {
+    for (pfn = 0; pfn < max_pfn; pfn++) {
         if (!pfn_valid(pfn)) {
             continue;
         }
