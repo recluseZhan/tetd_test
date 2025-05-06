@@ -31,7 +31,7 @@ static int __init memory_copy_init(void) {
     unsigned long pfn;
     unsigned long max_pfn;
     void *vaddr;
-    phys_addr_t phys=-0x1000;
+    phys_addr_t phys=0;
     size_t page_size = PAGE_SIZE;
 
     unsigned long t1,t2,t_all=0;
@@ -41,24 +41,25 @@ static int __init memory_copy_init(void) {
         pr_err("Failed to remap ivshmem memory\n");
         return -ENOMEM;
     }
-
+     
     // 获取系统最大页帧号
     max_pfn = get_num_physpages();
 
     pr_info("Start copying 2GB physical memory to ivshmem...\n");
 
-    // 遍历所有有效的物理内存页
-    for (pfn = 0; pfn < 524288; pfn++) {
+    // 遍历所有有效的物理内存页 524288
+    for (pfn = 0; pfn < max_pfn; pfn++) {
         if (!pfn_valid(pfn)) {
 	    printk("error pfn:%lx\n",pfn);
             continue;
         }
-        phys = phys + 0x1000;
+        //phys = phys + 0x1000;
         // 获取该页帧的物理地址
-        //phys = (phys_addr_t)pfn << PAGE_SHIFT;
+        phys = (phys_addr_t)pfn << PAGE_SHIFT;
         // 使用 memremap 映射物理地址为内核虚拟地址
         vaddr = memremap(phys, page_size, MEMREMAP_WB);
 	printk("phys=%lx,va=%lx\n",phys,vaddr);
+	//phys = phys + 0x1000;
         if (!vaddr) {
             pr_err("Failed to remap physical page at PFN %lu\n", pfn);
             continue;
@@ -80,9 +81,9 @@ static int __init memory_copy_init(void) {
         memunmap(vaddr);
 
         // 为了避免过多的日志输出，适当调整日志的打印频率
-        if (pfn % (max_pfn / 100) == 0) {
+        //if (pfn % (max_pfn / 100) == 0) {
             pr_info("Copied %lu/%lu pages...\n", pfn, max_pfn);
-        }
+        //}
     }
     printk(KERN_INFO "Copying took %llu ns\n", t_all);
     pr_info("2GB physical memory copied to ivshmem completed.\n");
