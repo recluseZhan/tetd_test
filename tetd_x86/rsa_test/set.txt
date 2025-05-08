@@ -1,0 +1,27 @@
+# 用 OpenSSL 生成真正的 3072‑bit 密钥对：
+openssl genrsa -out key.pem 3072
+
+# n
+openssl rsa -in key.pem -noout -modulus | cut -d'=' -f2 > hex_n.txt
+# e
+openssl rsa -in key.pem -noout -text | grep 'publicExponent' | sed -n 's/.*(0x\([0-9A-Fa-f]*\)).*/\1/p' > hex_e.txt
+# d
+openssl rsa -in key.pem -noout -text | sed -n '/privateExponent:/,/prime1:/p' | tr -d ' :\n' | sed 's/^privateExponent=//' > hex_d.txt
+
+
+# other
+# 导出私钥参数 n、e、d
+openssl rsa -in private.pem -noout -text \
+  | sed -n '/modulus:/,/publicExponent/p' \
+  | sed 's/://;s/ //g;s/^\s*//' > tmp_n_hex.txt
+
+openssl rsa -in private.pem -noout -text \
+  | sed -n -e '/publicExponent:/,/privateExponent:/p' \
+  | sed -n 's/ *publicExponent: [0-9]* (0x\([0-9a-fA-F]*\)).*/\1/p' > tmp_e_hex.txt
+
+openssl rsa -in private.pem -noout -text \
+  | sed -n '/privateExponent:/,/prime1:/p' \
+  | sed 's/://;s/ //g;s/^\s*//' > tmp_d_hex.txt
+# 生成密钥
+openssl genpkey -algorithm RSA -pkeyopt rsa_keygen_bits:3072 -out private.pem
+openssl rsa -pubout -in private.pem -out public.pem
