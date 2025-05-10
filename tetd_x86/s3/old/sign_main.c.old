@@ -1,0 +1,348 @@
+// sign_main.c
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <stdint.h>
+#include "bignum.h"    // 你的大数接口：bignum_init, bignum_from_int, bignum_mul, bignum_mod, bignum_lshift, bignum_divmod, bignum_add, bignum_sub, bignum_cmp, bignum_getbit, bignum_numbits, bignum_assign
+
+// -----------------------------------------------------------------------------
+// 1) 填入你的 RSA‑3072 CRT 用参数（全部 hex 字符串）
+//    hex_n   : 1536 hex chars
+//    hex_e   : "010001"
+//    hex_p   : 768 hex chars
+//    hex_q   : 768 hex chars
+//    hex_dp  : 768 hex chars
+//    hex_dq  : 768 hex chars
+//    hex_qinv: 768 hex chars
+// -----------------------------------------------------------------------------
+extern void sha256_ni_transform(uint8_t *hash, const uint8_t *data, size_t len);
+
+// modulus n
+static const char *hex_n =
+  "be18818a7e95c519e0be692f0ca7f4a6da1522e2d40f0a256ee5d073d9230215"
+  "b4566c6951a70b3b667ab7f893f6bbff3ac88173694d6c31cee8c2f263772720"
+  "080b44656c690ef50fd579da476e2dc76fd4be713b68854b645828130aae5e57"
+  "da604c45811fff3f368405d8ef8fbaf3904e934d55a273cf607b3f7b48dcc9ea"
+  "6886f62091da7a68368d98685152dfe30927c18df8ab072ef2d81d8d44e92e8e"
+  "f5a385ee45bdab8cd0b6588b53b5e6644eae3dc175ee58081a8099b66f1d0437"
+  "61e3cdb49e4a9402890830395264dcb65127630a53550bb0a3e942c6644267b7"
+  "5cd33bf1cb8d8fbcfb1b88ced120747e3ad90881cc7b2d2c8f0c1e5423321482"
+  "79d09649c03270bcb9632c4d51fd1a7a168208eb1d6d04f94da86db850396281"
+  "f31813510f333b68c4f3c1fdf9090291ac9f80d4bd440fae5c1e47220ddd2a68"
+  "47158670a476ec0be66150316a847240fa4bbeb9a894d7f90fa18275dbc7f0e9"
+  "e8dbb031456ab60f0495cb3db4c80d6cb73671ba617f812479c50212ccca9e67";
+
+// public exponent
+static const char *hex_e = "010001";
+
+// private exponent
+static const char *hex_d =
+  "0e84373ae8ee6da8cb92d43175994b2e300536841fdc2e282c4f271b51aa420f"
+  "2a40574860fb37f90745b9257b1722701bd5bd479f9e51497f1acdeda34edc11"
+  "597692cddea37f32e8f74d0b85879268b7cf8538dc67df95f6f461cb0d2117af"
+  "44768a1c875476dcd040460f5f9698438a9cead4185aaed6ad457c298bfce051"
+  "22e8fb84028a03eda5622c10a5f5303259914c4f427d67afb177c8cf459890fc"
+  "f5cbd0ff20704583715a1b6a385af1b1c34311bae3a899d709e9bc2899aa4642"
+  "055a05f565326f04508c4be52c49496c291f542e81b175bcb0e03bf274a5a265"
+  "af1923350f419b00bce8389bc67f30a732dc90d09be7c89436a5df7301b668cb"
+  "f1090a89c7c48cbc3a433a326916f842d7dcbefb834b8d74775909ed7d0a8a9e"
+  "b1a2636a6d134220695a9ca6e03a363317b6d2df11c08c9ff9326dd47df90efa"
+  "df8be58e05b0ae1e95c32238871239259e240fb8a6ffd83b49b0a5bf75d15413"
+  "cfd8ea2166638580ccf32c5740a4b5f23e1b213d3775d919967198222475e2a1";
+
+
+// p
+static const char *hex_p =
+  "ea5640bbc5535566424d91d3f7421b09fb05702a43e4efa31e6cd1947edb20b3"
+  "3b564182ce682a42336dc4ec11bd3adcb355f372e436df97d888888c242360eb"
+  "fdd75cc3edd9c3bf51d215c0aabc821f984305783c5677cf2f1ab6ae06907544"
+  "8ed55cbea218ee6378253e80ea3f4af62e4eaeb48ab33f19f7e199d51cc05f92"
+  "71037972edfeb2922439718a42cc4187c88b7c31d44608a5f641473ea3bbbaea"
+  "3338d43059f3de1612cd19058d85b470b3c95824cf659eb897f93b110f1bd3d9";
+
+// q
+static const char *hex_q =
+  "cfab4117838cdefc5410c543c1b942e97c9753de4b1e05b567e8292bdd257133"
+  "51aa6b8109f7e4491944ca9a99b968b48c78040cb8d87bc1271422ea9e3d309e"
+  "bed4965f8b4bcb32b8ed3daeb0639dd1bd63986410a3a8c06e8c034c5c6a06da"
+  "e4bbdb307ee2c198b69afc67901d0a19b51f00ae0723ce9befe56d476d6f794d"
+  "55c67e61f9c8bf76c3774b02c1005f3efa1465359b9b10e97da33c44703da11f"
+  "1ef0455c74acf7dffe3b7be8711ffa2ae678d48b8b0e4b9e8bccbc9e8b1bdc3f";
+
+// dp = d mod (p-1)
+static const char *hex_dp =
+  "80f75f40f7e45907a24dd687f578683121f968359a901062918809ffd3a0fd6a"
+  "26a9ddfc0364c87d0e98c6dbb51793a18b012eae7872cab362f421521f416941"
+  "f7bde2cbe1c70b37ebebd714e5e2412aea3d587147a3bee443644c4d92474682"
+  "a8a93c159e58623a54110b491fa21dbb46d8fec555e038462e69f6a396e338b5"
+  "fb8491fe7284cdfa27fd85433667fb58a34240e39b93bf86b6f44e25672f163b"
+  "765d3c4a2ff74aae93425516fd402c822a30115690ddb87097130f32e041cc61";
+
+// dq = d mod (q-1)
+static const char *hex_dq =
+  "39d37d0f9820fce294620b1bfff09f7236b048b9487f76a579e68ab85d1f14f3"
+  "6e551f14527b458519552f79773ecaaa23c733917b5344ba9730233ce38d3461"
+  "afcfb083b05d0d9af525929c771f760db647ea624ac3d7b4a5d3b503696458be"
+  "511d023ef1c620946e9c9f9612ea132aef654fa225f8d18a5875b1454772d7fb"
+  "31dc50cae56c01ec87274baadba547e058709f721aff45e94e83cabf5fe5b95c"
+  "da179ba8d0106e0160609df32eb4f1cb4a5bf10b5e503fbc493f5c726557ffaf";
+
+// qinv = q^(-1) mod p
+static const char *hex_qinv =
+  "ae172813b4ef72775c2798b194348355cb7e7f74947d364b83f6e296e9e00559"
+  "efb482990ad4fb335b9cb6ed7c68d5a19d244bade44292d94f33010f3815a991"
+  "c0211990a002ef686c35ecd3e0602129bb1e35bf9cd5663b52ce9c97154fcfca"
+  "8d5403e6c59de8e785ee64b3ab6b7593f0c899ea9f823f22b5cbeb766b8fbe8b"
+  "232143dd9a28c0f0550b87fedb19cdf52e02009773b9cdc722cace719b3665d9"
+  "3bf21dadac7d5669bbfb14000ef48f66c174bbc24739987c3a6b20eb9da62152";
+
+// -----------------------------------------------------------------------------
+// 把 hex 字符串转换为大数 r
+// -----------------------------------------------------------------------------
+static void bn_from_hex(struct bn *r, const char *hex) {
+    size_t H = strlen(hex);
+    size_t B = H/2;
+    uint8_t *buf = malloc(B);
+    for (size_t i = 0; i < B; i++) {
+        unsigned v;
+        sscanf(hex + 2*i, "%2x", &v);
+        buf[i] = (uint8_t)v;
+    }
+    struct bn res, tmp, byte;
+    bignum_init(&res);
+    bignum_from_int(&tmp, 256);
+    for (size_t i = 0; i < B; i++) {
+        // res = res * 256
+        bignum_mul(&res, &tmp, &res);
+        // byte = buf[i]
+        bignum_from_int(&byte, buf[i]);
+        // res = res + byte
+        bignum_add(&res, &byte, &res);
+    }
+    *r = res;
+    free(buf);
+}
+
+// -----------------------------------------------------------------------------
+// 把大数 r 写成 len 字节大端到 out[]
+// -----------------------------------------------------------------------------
+static void bn_to_bytes(const struct bn *r, uint8_t *out, size_t len) {
+    struct bn q, quot, rem, base;
+    bignum_assign(&q, (struct bn*)r);
+    bignum_from_int(&base, 256);
+    for (size_t i = 0; i < len; i++) {
+        bignum_divmod(&q, &base, &quot, &rem);
+        out[len-1-i] = (uint8_t)bignum_to_int(&rem);
+        bignum_assign(&q, &quot);
+    }
+}
+
+// -----------------------------------------------------------------------------
+// 从 RSA_Montgomery.c 拷贝的 Montgomery 乘法接口：
+//   out = x*y*R^{-1} mod m, R=2^{mBits}
+// -----------------------------------------------------------------------------
+void montMult(struct bn*  x, struct bn*  y, struct bn*  m, int mBits, struct bn*  out){
+
+	struct bn t;
+	bignum_init(&t);
+
+	int i;
+	for(i = mBits; i > 0 ; i--){					//efficient loop exit
+
+		int t0Bit = bignum_getbit(&t,0);
+		int xiBit = bignum_getbit(x, mBits - i);	//loop exit requires subtraction here
+		int y0Bit = bignum_getbit(y,0);
+		int op = t0Bit + (xiBit * y0Bit);
+
+		if(xiBit == 1){
+			bignum_add(&t, y, &t);
+		}
+
+		if(op == 1){
+			bignum_add(&t, m, &t);
+		}
+
+		bignum_rshift(&t,&t, 1);
+	}
+
+	if(bignum_cmp(&t, m) >= 0){
+		bignum_sub(&t,m,&t);
+	}
+
+	bignum_assign(out,&t);
+}
+
+
+static void bn_to_bytes_hex(const struct bn *r, uint8_t *out, size_t len){
+    size_t hexlen = len*2;
+    char *hex = malloc(hexlen + 1);
+    // 按照 bignum_to_string 要求传入正好 hexlen（偶数）
+    bignum_to_string((struct bn*)r, hex, hexlen);
+    hex[hexlen] = '\0';
+
+    // 从每两个 hex 字符解析一个字节
+    for(size_t i = 0; i < len; i++){
+        unsigned v;
+        sscanf(hex + 2*i, "%2x", &v);
+        out[i] = v;
+    }
+    free(hex);
+}
+
+
+// -----------------------------------------------------------------------------
+// RSA‑3072 CRT 签名，带 LUT 加速
+//   input[inlen) → 明文 (≤384 bytes)，输出签名到 output[384]
+// -----------------------------------------------------------------------------
+void rsa3072_sign_crt(const uint8_t *input,
+                     size_t        inlen,
+                     uint8_t      *output)
+{
+    // 1) 载入所有大数
+    struct bn bn_n, bn_e, bn_p, bn_q, bn_dp, bn_dq, bn_qinv;
+    bn_from_hex(&bn_n,    hex_n);
+    bn_from_hex(&bn_e,    hex_e);
+    bn_from_hex(&bn_p,    hex_p);
+    bn_from_hex(&bn_q,    hex_q);
+    bn_from_hex(&bn_dp,   hex_dp);
+    bn_from_hex(&bn_dq,   hex_dq);
+    bn_from_hex(&bn_qinv, hex_qinv);
+
+    // **别忘了** 计算 nBits
+    int pBits = bignum_numbits(&bn_p);
+    int qBits = bignum_numbits(&bn_q);
+    int nBits = bignum_numbits(&bn_n);
+
+    // 2) 预计算 R² mod p/q
+    struct bn one, tmp, R2p, R2q;
+    bignum_from_int(&one, 1);
+    bignum_lshift(&one, &tmp, 2*pBits);
+    bignum_mod (&tmp, &bn_p, &R2p);
+    bignum_lshift(&one, &tmp, 2*qBits);
+    bignum_mod (&tmp, &bn_q, &R2q);
+
+    // 3) 明文 → m
+    struct bn m;
+    bignum_init(&m);
+    struct bn mul256, bytebn;
+    bignum_from_int(&mul256, 256);
+    for (size_t i = 0; i < inlen; i++) {
+        bignum_mul(&m, &mul256, &m);
+        bignum_from_int(&bytebn, input[i]);
+        bignum_add(&m, &bytebn, &m);
+    }
+
+    // 4) m mod p, m mod q
+    struct bn m1, m2;
+    bignum_mod(&m, &bn_p, &m1);
+    bignum_mod(&m, &bn_q, &m2);
+
+    // 5) Montgomery 化 m1R, m2R
+    struct bn m1R, m2R;
+    montMult(&m1, &R2p, &bn_p, pBits, &m1R);
+    montMult(&m2, &R2q, &bn_q, qBits, &m2R);
+
+    // 6) 构造 LUT_p[0..pBits-1], LUT_q[0..qBits-1]
+    struct bn *lut_p = malloc(sizeof(struct bn)*pBits);
+    struct bn *lut_q = malloc(sizeof(struct bn)*qBits);
+    bignum_assign(&lut_p[0], &m1R);
+    for (int i = 1; i < pBits; i++) {
+        montMult(&lut_p[i-1], &lut_p[i-1], &bn_p, pBits, &lut_p[i]);
+    }
+    bignum_assign(&lut_q[0], &m2R);
+    for (int i = 1; i < qBits; i++) {
+        montMult(&lut_q[i-1], &lut_q[i-1], &bn_q, qBits, &lut_q[i]);
+    }
+
+    // 7) 利用 LUT 做 s1, s2
+    struct bn acc, s1, s2;
+    // s1
+    bignum_from_int(&acc,1);
+    montMult(&acc, &R2p, &bn_p, pBits, &acc);
+    for (int i = 0; i < pBits; i++) {
+        if (bignum_getbit(&bn_dp,i))
+            montMult(&acc, &lut_p[i], &bn_p, pBits, &acc);
+    }
+    montMult(&acc, &one,  &bn_p, pBits, &s1);
+    // s2
+    bignum_from_int(&acc,1);
+    montMult(&acc, &R2q, &bn_q, qBits, &acc);
+    for (int i = 0; i < qBits; i++) {
+        if (bignum_getbit(&bn_dq,i))
+            montMult(&acc, &lut_q[i], &bn_q, qBits, &acc);
+    }
+    montMult(&acc, &one,  &bn_q, qBits, &s2);
+
+    free(lut_p);
+    free(lut_q);
+
+    // 8) CRT 重组合（注意这里改为 % n）
+    struct bn diff, sum, h, qh, sig;
+    if (bignum_cmp(&s1,&s2) >= 0) {
+        bignum_sub(&s1,&s2,&diff);
+    } else {
+        bignum_add(&s1,&bn_p,&sum);
+        bignum_sub(&sum,&s2,&diff);
+    }
+    // h = diff * qinv mod p
+    montMult(&diff, &bn_qinv, &bn_p, pBits, &h);
+    // **这里必须用模 n**，否则永远得 0
+    montMult(&h, &bn_q, &bn_q, nBits, &qh);
+   // montMult(&h, &bn_q, &bn_n, nBits, &qh);
+
+    bignum_add(&s2,&qh,&sig);
+    if (bignum_cmp(&sig,&bn_n) >= 0) {
+        bignum_sub(&sig,&bn_n,&sig);
+    }
+    //
+        char buf[384*2+1];
+
+// 打印 m mod p / q
+    bignum_mod(&m, &bn_p, &m1);
+    bignum_to_string(&m1, buf, 384*2);
+    printf("DEBUG m1 (m mod p) = %s\n", buf);
+
+    bignum_mod(&m, &bn_q, &m2);
+    bignum_to_string(&m2, buf, 384*2);
+    printf("DEBUG m2 (m mod q) = %s\n", buf);
+
+// 打印 s1, s2
+    // montMult 后得到的 s1 已经在代码里叫 s1
+    bignum_to_string(&s1, buf, 384*2);
+    printf("DEBUG s1 = %s\n", buf);
+
+    bignum_to_string(&s2, buf, 384*2);
+    printf("DEBUG s2 = %s\n", buf);
+
+// 打印 CRT 重组合中间量 diff, h, qh
+    bignum_to_string(&diff, buf, 384*2);
+    printf("DEBUG diff = %s\n", buf);
+
+    bignum_to_string(&h, buf, 384*2);
+    printf("DEBUG h    = %s\n", buf);
+
+    bignum_to_string(&qh, buf, 384*2);
+    printf("DEBUG qh   = %s\n", buf);
+
+// 最后打印 sig 本身（再一次确认）
+    bignum_to_string(&sig, buf, 384*2);
+    printf("DEBUG sig  = %s\n", buf);
+
+
+    // 9) 输出 384 字节签名
+    bn_to_bytes_hex(&sig, output, 384);
+}
+// -----------------------------------------------------------------------------
+// 测试 main()
+// -----------------------------------------------------------------------------
+int main(void) {
+    uint8_t msg[32];
+    for (int i = 0; i < 32; i++) msg[i] = rand() & 0xFF;
+    uint8_t sig[384];
+    rsa3072_sign_crt(msg, 384, sig);
+    //printf("Signature: ");
+    //for (int i = 0; i < 384; i++) printf("%02x", sig[i]);
+    printf("\n");
+    return 0;
+}
+
