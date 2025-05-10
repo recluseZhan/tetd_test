@@ -1,4 +1,4 @@
-C = gcc
+CC = gcc
 CFLAGS = -O2 -Wall
 
 OBJS = sign_main.o bignum.o sha256_asm_ni.o
