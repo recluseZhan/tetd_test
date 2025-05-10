@@ -2,10 +2,6 @@
  * RSA-3072 signature using Montgomery multiplication and CRT optimization
 */
 
-#include <stdint.h>
-#include <string.h>
-#include <stdio.h>
-#include <stdlib.h>
 #include "bignum.h"
 
 #define RSA_KEY_BITS 3072
@@ -13,10 +9,11 @@
 
 typedef uint8_t u8;
 
-#define LUT_SIZE 3073
+// Because CRT, two LUTs of dp/dq (3072 / 2 + 1)
+#define LUT_SIZE 1537
 static struct bn lut[LUT_SIZE];
 
-extern void sha256_ni_transform(uint8_t *hash, const uint8_t *data, size_t len);
+extern void sha256_ni_transform(uint8_t *hash, const uint8_t *data, uint64_t len);
 
 /* Key parameters in hex */
 // modulus n (3072‑bit)
@@ -97,17 +94,6 @@ static const char *hex_qinv =
   "232143dd9a28c0f0550b87fedb19cdf52e02009773b9cdc722cace719b3665d9"
   "3bf21dadac7d5669bbfb14000ef48f66c174bbc24739987c3a6b20eb9da62152";
 
-unsigned long urdtsc(void)
-{
-    unsigned int lo,hi;
-
-    __asm__ __volatile__
-    (
-        "rdtsc":"=a"(lo),"=d"(hi)
-    );
-    return (unsigned long)hi<<32|lo;
-}
-
 static void print_hash(u8 *hash) {
     for (int i = 0; i < 32; i++) {
         printf("%02x", hash[i]);
@@ -121,6 +107,13 @@ void print_hex(const u8 *data, int len) {
         printf("%02x", data[i]);
     }
     printf("\n");
+}
+
+void init_lut(struct bn *x, struct bn *m, int mBits, struct bn *r2m) {
+    montMult(x, r2m, m, mBits, &lut[0]);
+    for (int i = 1; i <= mBits; i++) {
+        montMult(&lut[i-1], &lut[i-1], m, mBits, &lut[i]);
+    }
 }
 
 /* Montgomery multiplication (X * Y * R^{-1} mod M) */
@@ -246,10 +239,14 @@ int rsa_sign(const u8 *input, u8 *output, uint64_t input_len){
     /* Load message */
     bytes_to_bn(&m, hash, 32);
 
+    // Init p LUT
+    init_lut(&m, &p, pBits, &r2p);
     /* Compute m1 = m^dp mod p */
     //modExp(&m, &dp, pBits, &p, pBits, &r2p, &m1);
     modExpLUT(&m, &dp, pBits, &p, pBits, &r2p, &m1);
-
+    
+    // Init q LUT
+    init_lut(&m, &q, qBits, &r2q);
     /* Compute m2 = m^dq mod q */
     //modExp(&m, &dq, qBits, &q, qBits, &r2q, &m2);
     modExpLUT(&m, &dq, qBits, &q, qBits, &r2q, &m2);
@@ -290,12 +287,7 @@ int main() {
     for (int i = 0; i < input_len; i++){
         input[i] = rand() % 256;
     }
-
-    unsigned long t1,t2;
-    t1=urdtsc();
     rsa_sign(input, output, input_len);
-    t2=urdtsc();
-    printf("time=%lld\n",(t2-t1)*5/12);
 
     free(input);
     free(output);
