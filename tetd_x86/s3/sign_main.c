@@ -1,7 +1,6 @@
 /*
- * RSA_Montgomery.c
  * RSA-3072 signature using Montgomery multiplication and CRT optimization
- */
+*/
 
 #include <stdint.h>
 #include <string.h>
@@ -13,6 +12,9 @@
 #define RSA_KEY_BYTES (RSA_KEY_BITS / 8)
 
 typedef uint8_t u8;
+
+#define LUT_SIZE 3073
+static struct bn lut[LUT_SIZE];
 
 /* Key parameters in hex */
 // modulus n (3072‑bit)
@@ -30,7 +32,7 @@ static const char *hex_n =
   "47158670a476ec0be66150316a847240fa4bbeb9a894d7f90fa18275dbc7f0e9"
   "e8dbb031456ab60f0495cb3db4c80d6cb73671ba617f812479c50212ccca9e67";
 
-// public exponent e = 65537
+// public exponent e
 static const char *hex_e = "010001";
 
 // private exponent d
@@ -93,7 +95,6 @@ static const char *hex_qinv =
   "232143dd9a28c0f0550b87fedb19cdf52e02009773b9cdc722cace719b3665d9"
   "3bf21dadac7d5669bbfb14000ef48f66c174bbc24739987c3a6b20eb9da62152";
 
-
 unsigned long urdtsc(void)
 {
     unsigned int lo,hi;
@@ -112,6 +113,7 @@ void print_hex(const u8 *data, int len) {
     }
     printf("\n");
 }
+
 /* Montgomery multiplication (X * Y * R^{-1} mod M) */
 void montMult(struct bn* x, struct bn* y, struct bn* m, int mBits, struct bn* out){
     struct bn t;
@@ -145,16 +147,43 @@ void modExp(struct bn* x, struct bn* e, int eBits, struct bn* m, int mBits, stru
     montMult(&z1, &tmp, m, mBits, out);
 }
 
+/* Mod Exp using precomputed LUT */
+void modExpLUT(struct bn* x, struct bn* e, int eBits, struct bn* m, int mBits, struct bn* r2m, struct bn* out){
+	struct bn z,one;
+	struct bn parr[3];
+	struct bn zarr[3];
+	int b = 1;
+	int i = 0;
+
+	bignum_from_int(&z, 1);
+	montMult(&z,r2m,m, mBits, &zarr[1]);
+	bignum_assign(&parr[1],&lut[0]);
+
+	for(; i < eBits; i++){
+	    bignum_assign(&parr[2],&lut[i+1]);
+	    if(bignum_getbit(e, i) == 1){
+	        montMult(&zarr[1],&lut[i],m,mBits,&zarr[2]);
+	    }else{
+		bignum_assign(&zarr[2],&zarr[1]);
+	    }
+	    bignum_assign(&parr[1], &parr[2]);
+	    bignum_assign(&zarr[1], &zarr[2]);
+       	    b++;
+	}
+	bignum_from_int(&one, 1);
+	montMult(&zarr[1], &one, m, mBits, out);
+}
+
 /* Load big number from hex string */
 static void hex_to_bn(struct bn *n, const char *hex){
     bignum_from_string(n, (char*)hex, strlen(hex));
 }
 
 /* Convert big-endian byte array to bn */
-static void bytes_to_bn(struct bn *n, const u8 *in){
+static void bytes_to_bn(struct bn *n, const u8 *in, uint64_t in_len){
     bignum_init(n);
-    for(int i = 0; i < RSA_KEY_BYTES; i++){
-        int b = in[RSA_KEY_BYTES - 1 - i];
+    for(int i = 0; i < in_len; i++){
+        int b = in[in_len - 1 - i];
         int w = i / WORD_SIZE;
         int off = i % WORD_SIZE;
         n->array[w] |= ((DTYPE)b) << (8 * off);
@@ -162,16 +191,16 @@ static void bytes_to_bn(struct bn *n, const u8 *in){
 }
 
 /* Convert bn to big-endian byte array */
-static void bn_to_bytes(const struct bn *n, u8 *out){
-    for(int i = 0; i < RSA_KEY_BYTES; i++){
+static void bn_to_bytes(const struct bn *n, u8 *out, uint64_t in_len){
+    for(int i = 0; i < in_len; i++){
         int w = i / WORD_SIZE;
         int off = i % WORD_SIZE;
-        out[RSA_KEY_BYTES - 1 - i] = (u8)((n->array[w] >> (8 * off)) & 0xFF);
+        out[in_len - 1 - i] = (u8)((n->array[w] >> (8 * off)) & 0xFF);
     }
 }
 
 /* RSA-3072 signature using CRT optimization */
-int rsa_sign(const u8 *input, u8 *output){
+int rsa_sign(const u8 *input, u8 *output, uint64_t input_len){
     struct bn n, p, q, dp, dq, qinv;
     struct bn m, m1, m2, h, tmp;
     struct bn r2p, r2q, R, R2;
@@ -201,12 +230,12 @@ int rsa_sign(const u8 *input, u8 *output){
     bignum_mod(&R2, &q, &r2q);
 
     /* Load message */
-    bytes_to_bn(&m, input);
+    bytes_to_bn(&m, input, input_len);
 
     /* Compute m1 = m^dp mod p */
-    modExp(&m, &dp, pBits, &p, pBits, &r2p, &m1);
+    modExpLUT(&m, &dp, pBits, &p, pBits, &r2p, &m1);
     /* Compute m2 = m^dq mod q */
-    modExp(&m, &dq, qBits, &q, qBits, &r2q, &m2);
+    modExpLUT(&m, &dq, qBits, &q, qBits, &r2q, &m2);
 
     /* h = (m1 - m2) mod p */
     if(bignum_cmp(&m1, &m2) < 0){
@@ -225,7 +254,7 @@ int rsa_sign(const u8 *input, u8 *output){
     bignum_add(&m2, &tmp, &tmp);
 
     /* Output signature */
-    bn_to_bytes(&tmp, output);
+    bn_to_bytes(&tmp, output, RSA_KEY_BYTES);
      
     /* Print signature in hex */
     printf("Signature: ");
@@ -255,13 +284,13 @@ int rsa_verify(const u8 *signature, u8 *recovered) {
     bignum_mod(&R2, &n, &r2n);      // r2n = R^2 mod n
 
     // 3. 将字节数组 signature 转为大数 s
-    bytes_to_bn(&s, signature);
+    bytes_to_bn(&s, signature, RSA_KEY_BYTES);
 
     // 4. 执行蒙哥马利指数运算： m = s^e mod n
-    modExp(&s, &e, eBits, &n, nBits, &r2n, &m);
+    modExpLUT(&s, &e, eBits, &n, nBits, &r2n, &m);
 
     // 5. 将结果 m 转回字节，并打印
-    bn_to_bytes(&m, recovered);
+    bn_to_bytes(&m, recovered, 32);
     printf("Recovered message: ");
     for (int i = 0; i < 32; i++) {
         printf("%02x", recovered[i]);
@@ -271,7 +300,6 @@ int rsa_verify(const u8 *signature, u8 *recovered) {
     return 0;
 }
 
-/* Sample main: sign hex-encoded message and print signature */
 int main() {
     u8 message[32];
     u8 signature[RSA_KEY_BYTES];
@@ -279,7 +307,7 @@ int main() {
     memset(message,0x33,32);
     unsigned long t1,t2;
     t1=urdtsc();
-    rsa_sign(message, signature);
+    rsa_sign(message, signature, 32);
     t2=urdtsc();
     printf("time=%lld\n",(t2-t1)*5/12);
     if (rsa_verify(signature, recovered) == 0){

@@ -1,28 +1,8 @@
 #ifndef __BIGNUM_H__
 #define __BIGNUM_H__
-/*
-
-Big number library - arithmetic on multiple-precision unsigned integers.
-
-This library is an implementation of arithmetic on arbitrarily large integers.
-
-The difference between this and other implementations, is that the data structure
-has optimal memory utilization (i.e. a 1024 bit integer takes up 128 bytes RAM),
-and all memory is allocated statically: no dynamic allocation for better or worse.
-
-Primary goals are correctness, clarity of code and clean, portable implementation.
-Secondary goal is a memory footprint small enough to make it suitable for use in
-embedded applications.
-
-
-The current state is correct functionality and adequate performance.
-There may well be room for performance-optimizations and improvements.
-
-*/
 
 #include <stdint.h>
 #include <assert.h>
-
 
 /* This macro defines the word size in bytes of the array that constitues the big-number data structure. */
 #ifndef WORD_SIZE
@@ -30,7 +10,6 @@ There may well be room for performance-optimizations and improvements.
 #endif
 
 #define BN_ARRAY_SIZE    ((384 / WORD_SIZE) + 1)
-
 
 /* Here comes the compile-time specialization for how large the underlying array size should be. */
 /* The choices are 1, 2 and 4 bytes in size with uint32, uint64 for WORD_SIZE==4, as temporary. */
@@ -116,5 +95,3 @@ int bignum_numbits(struct bn* bn);
 void bignum_print(struct bn* num);
 
 #endif /* #ifndef __BIGNUM_H__ */
-
-

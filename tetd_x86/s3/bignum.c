@@ -1,23 +1,3 @@
-/*
-
-Big number library - arithmetic on multiple-precision unsigned integers.
-
-This library is an implementation of arithmetic on arbitrarily large integers.
-
-The difference between this and other implementations, is that the data structure
-has optimal memory utilization (i.e. a 1024 bit integer takes up 128 bytes RAM),
-and all memory is allocated statically: no dynamic allocation for better or worse.
-
-Primary goals are correctness, clarity of code and clean, portable implementation.
-Secondary goal is a memory footprint small enough to make it suitable for use in
-embedded applications.
-
-
-The current state is correct functionality and adequate performance.
-There may well be room for performance-optimizations and improvements.
-
-*/
-
 #include <stdio.h>
 #include <stdbool.h>
 #include <assert.h>
@@ -29,9 +9,22 @@ static void _rshift_one_bit(struct bn* a);
 static void _lshift_word(struct bn* a, int nwords);
 static void _rshift_word(struct bn* a, int nwords);
 
-
-
 /* Public / Exported functions. */
+void bignum_init(struct bn* n)
+{
+    register int z = z-z;
+    int i = z;
+    n->array[0] = z;
+    for (i = BN_ARRAY_SIZE - 1; i > 0; i -=4)
+    {
+        n->array[i] = z;
+	n->array[i-1] = z;
+	n->array[i-2] = z;
+	n->array[i-3] = z;
+    }
+}
+
+/* unopt
 void bignum_init(struct bn* n)
 {
   require(n, "n is null");
@@ -41,8 +34,7 @@ void bignum_init(struct bn* n)
   {
     n->array[i] = 0;
   }
-}
-
+}*/
 
 void bignum_from_int(struct bn* n, DTYPE_TMP i)
 {
@@ -69,7 +61,6 @@ void bignum_from_int(struct bn* n, DTYPE_TMP i)
 #endif
 }
 
-
 int bignum_to_int(struct bn* n)
 {
   require(n, "n is null");
@@ -91,7 +82,6 @@ int bignum_to_int(struct bn* n)
 
   return ret;
 }
-
 
 void bignum_from_string(struct bn* n, char* str, int nbytes)
 {
@@ -117,7 +107,6 @@ void bignum_from_string(struct bn* n, char* str, int nbytes)
     j += 1;               /* step one element forward in the array. */
   }
 }
-
 
 void bignum_to_string(struct bn* n, char* str, int nbytes)
 {
@@ -154,7 +143,6 @@ void bignum_to_string(struct bn* n, char* str, int nbytes)
   str[i] = 0;
 }
 
-
 void bignum_dec(struct bn* n)
 {
   require(n, "n is null");
@@ -175,7 +163,6 @@ void bignum_dec(struct bn* n)
     }
   }
 }
-
 
 void bignum_inc(struct bn* n)
 {
@@ -198,7 +185,37 @@ void bignum_inc(struct bn* n)
   }
 }
 
+void bignum_add(struct bn* a, struct bn* b, struct bn* c)
+{
+	DTYPE_TMP tmp;
+	int carry = carry - carry;
+	int i = 1;
 
+	tmp = (DTYPE_TMP)a->array[0] + b->array[0] + carry;
+	carry = (tmp > MAX_VAL);
+	c->array[0] = (tmp & MAX_VAL);
+
+	for (; i < BN_ARRAY_SIZE; i+=4)
+	{
+
+		tmp = (DTYPE_TMP)a->array[i] + b->array[i] + carry;
+		carry = (tmp > MAX_VAL);
+		c->array[i] = (tmp & MAX_VAL);
+
+		tmp = (DTYPE_TMP)a->array[i+1] + b->array[i+1] + carry;
+		carry = (tmp > MAX_VAL);
+		c->array[i+1] = (tmp & MAX_VAL);
+
+		tmp = (DTYPE_TMP)a->array[i+2] + b->array[i+2] + carry;
+		carry = (tmp > MAX_VAL);
+		c->array[i+2] = (tmp & MAX_VAL);
+
+		tmp = (DTYPE_TMP)a->array[i+3] + b->array[i+3] + carry;
+		carry = (tmp > MAX_VAL);
+		c->array[i+3] = (tmp & MAX_VAL);
+	}
+}
+/* unopt
 void bignum_add(struct bn* a, struct bn* b, struct bn* c)
 {
   require(a, "a is null");
@@ -214,7 +231,7 @@ void bignum_add(struct bn* a, struct bn* b, struct bn* c)
     carry = (tmp > MAX_VAL);
     c->array[i] = (tmp & MAX_VAL);
   }
-}
+}*/
 
 
 void bignum_sub(struct bn* a, struct bn* b, struct bn* c)
@@ -344,7 +361,29 @@ void bignum_lshift(struct bn* a, struct bn* b, int nbits)
   }
 }
 
+void bignum_rshift(struct bn* a, struct bn* b, int nbits)
+{
+	/* Handle shift in multiples of word-size */
+	int nwords = nbits >> 5;
+	if (nwords != 0)
+	{
+		int z = nwords << 5;
+		_rshift_word(a, nwords);
+		nbits -= (z);
+	}
 
+	if (nbits != 0)
+	{
+		int z = 32 - nbits;
+		int i;
+		for (i = 0; i < (BN_ARRAY_SIZE - 1); i++)
+		{
+			a->array[i] = (a->array[i] >> nbits) | (a->array[i + 1] << (z));
+		}
+		a->array[i] >>= nbits;
+	}
+}
+/* unopt
 void bignum_rshift(struct bn* a, struct bn* b, int nbits)
 {
   require(a, "a is null");
@@ -352,7 +391,7 @@ void bignum_rshift(struct bn* a, struct bn* b, int nbits)
   require(nbits >= 0, "no negative shifts");
 
   bignum_assign(b, a);
-  /* Handle shift in multiples of word-size */
+  // Handle shift in multiples of word-size
   const int nbits_pr_word = (WORD_SIZE * 8);
   int nwords = nbits / nbits_pr_word;
   if (nwords != 0)
@@ -371,7 +410,7 @@ void bignum_rshift(struct bn* a, struct bn* b, int nbits)
     b->array[i] >>= nbits;
   }
 
-}
+}*/
 
 void bignum_mod(struct bn* a, struct bn* b, struct bn* c)
 {
@@ -561,7 +600,21 @@ void bignum_isqrt(struct bn *a, struct bn* b)
   bignum_assign(b,&low);
 }
 
+void bignum_assign(struct bn* dst, struct bn* src)
+{
+	register int i = BN_ARRAY_SIZE-1;
+	for (; i > 0; i-=4)		//loop opt
+	{
+		dst->array[i] = src->array[i];
+		dst->array[i-1] = src->array[i-1];
+		dst->array[i-2] = src->array[i-2];
+		dst->array[i-3] = src->array[i-3];
 
+	}
+	dst->array[0] = src->array[0];
+
+}
+/* unopt
 void bignum_assign(struct bn* dst, struct bn* src)
 {
   require(dst, "dst is null");
@@ -572,8 +625,14 @@ void bignum_assign(struct bn* dst, struct bn* src)
   {
     dst->array[i] = src->array[i];
   }
-}
+}*/
 
+int bignum_getbit(struct bn* a, int n){
+	int arrayInd = (n >> 5);
+	int shift = (n - (arrayInd << 5));
+	return (a->array[arrayInd] >> shift) & 1;
+}
+/* unopt
 int bignum_getbit(struct bn* a, int n){
 
 	int arrayInd = (n / 32);
@@ -581,8 +640,21 @@ int bignum_getbit(struct bn* a, int n){
 	uint32_t num = a->array[arrayInd];
 	uint32_t numChanged = (num >> numShift);
 	return numChanged % 2;
-}
+}*/
 
+int bignum_numbits(struct bn* bn){
+
+	register int f = (BN_ARRAY_SIZE << 5) -1;
+
+	for (;f > 0; --f){
+		int b = bignum_getbit(bn, f);
+		if (b == 1){
+			return f+1;
+		}
+	}
+	return 0;
+}
+/* unopt
 int bignum_numbits(struct bn* bn){
 
 	int m = 0;
@@ -596,7 +668,7 @@ int bignum_numbits(struct bn* bn){
 		}
 	}
 	return m;
-}
+}*/
 
 void bignum_print(struct bn* num){
 
@@ -668,5 +740,3 @@ static void _rshift_one_bit(struct bn* a)
   }
   a->array[BN_ARRAY_SIZE - 1] >>= 1;
 }
-
-
