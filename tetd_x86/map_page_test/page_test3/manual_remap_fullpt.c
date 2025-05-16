@@ -13,12 +13,12 @@
 #define P4D_SHIFT     39UL
 #define PGD_SHIFT     48UL
 
-//#define PHYS_START    0x00900000UL
-//#define PHYS_END      0x00901000UL
+#define PHYS_START    0x00900000UL
+#define PHYS_END      0x00901000UL
+#define PTE_FLAGS   (_PAGE_PRESENT | _PAGE_RW | _PAGE_PWT | _PAGE_PCD)  // 0x1A3
 
-
-#define PHYS_START 0x383800000000
-#define PHYS_END 0x383800001000
+//#define PHYS_START 0x383800000000
+//#define PHYS_END 0x383800001000
 
 #define VSTART_ADDR   VMALLOC_START
 
@@ -34,6 +34,18 @@ static inline unsigned long read_cr3(void)
 static inline void *phys_to_virt_k(unsigned long phys)
 {
     return __va(phys);
+}
+
+static inline void manual_invlpg(unsigned long vaddr) {
+    asm volatile("invlpg (%0)" ::"r" (vaddr) : "memory");
+}
+
+void manual_flush_tlb_kernel_range(unsigned long start, unsigned long end) {
+    start = start & PAGE_MASK;
+    end = ALIGN(end, PAGE_SIZE);
+    for (; start < end; start += PAGE_SIZE) {
+        manual_invlpg(start);
+    }
 }
 
 static int manual_remap_range(unsigned long phys_start, unsigned long phys_end, unsigned long virt_start)
@@ -100,7 +112,7 @@ static int manual_remap_range(unsigned long phys_start, unsigned long phys_end, 
         pte = phys_to_virt_k(pmd[i3] & PAGE_MASK);
 
         /* PTE */
-        pte[i4] = (phys & PAGE_MASK) | 0x3UL;
+        pte[i4] = (phys & PAGE_MASK) | PTE_FLAGS;
     }
     //flush_tlb_kernel_range(virt_start, virt_start + (phys_end - phys_start));
     return 0;
@@ -120,6 +132,7 @@ static int __init manual_remap_init(void)
         pr_err("manual_remap_fullpt: remap_range failed %d\n", ret);
         return ret;
     }
+    manual_flush_tlb_kernel_range(VSTART_ADDR, VSTART_ADDR + 0x1000);
     pr_info("manual_remap_fullpt: mapping done\n");
 
     test_ptr = (unsigned long *)VSTART_ADDR;
