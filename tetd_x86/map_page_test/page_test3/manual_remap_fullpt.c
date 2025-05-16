@@ -13,11 +13,12 @@
 #define P4D_SHIFT     39UL
 #define PGD_SHIFT     48UL
 
-#define PHYS_START    0x00900000UL
-#define PHYS_END      0x00901000UL
+//#define PHYS_START    0x00900000UL
+//#define PHYS_END      0x00901000UL
 
-//#define PHYS_START 0x383800000000
-//#define PHYS_END 0x383800001000
+
+#define PHYS_START 0x383800000000
+#define PHYS_END 0x383800001000
 
 #define VSTART_ADDR   VMALLOC_START
 
@@ -55,41 +56,46 @@ static int manual_remap_range(unsigned long phys_start, unsigned long phys_end, 
 
         /* PML5/PGD */
         if (!(pgd[i0] & 1UL)) {
-            unsigned long np = __get_free_pages(GFP_KERNEL, 0);
+            unsigned long np = __get_free_pages(GFP_KERNEL | __GFP_ZERO, 0);
             if (!np) return -ENOMEM;
+	    printk("will get free page\n");
             //pgd[i0] = (((unsigned long)np - PAGE_OFFSET) & PAGE_MASK) | 0x3UL;
 	    np = virt_to_phys((void *)np);
 	    pgd[i0] = (np & PAGE_MASK) | 0x3UL;
+	    printk("get free page\n");
         }
         p4d = phys_to_virt_k(pgd[i0] & PAGE_MASK);
 
         /* P4D */
         if (!(p4d[i1] & 1UL)) {
-            unsigned long np = __get_free_pages(GFP_KERNEL, 0);
+            unsigned long np = __get_free_pages(GFP_KERNEL | __GFP_ZERO, 0);
             if (!np) return -ENOMEM;
             //p4d[i1] = (((unsigned long)np - PAGE_OFFSET) & PAGE_MASK) | 0x3UL;
 	    np = virt_to_phys((void *)np);
 	    p4d[i1] = (np & PAGE_MASK) | 0x3UL;
+	    printk("get free page\n");
         }
         pud = phys_to_virt_k(p4d[i1] & PAGE_MASK);
 
         /* PUD */
         if (!(pud[i2] & 1UL)) {
-            unsigned long np = __get_free_pages(GFP_KERNEL, 0);
+            unsigned long np = __get_free_pages(GFP_KERNEL | __GFP_ZERO, 0);
             if (!np) return -ENOMEM;
             //pud[i2] = (((unsigned long)np - PAGE_OFFSET) & PAGE_MASK) | 0x3UL;
 	    np = virt_to_phys((void *)np);
 	    pud[i2] = (np & PAGE_MASK) | 0x3UL;
+	    printk("get free page\n");
         }
         pmd = phys_to_virt_k(pud[i2] & PAGE_MASK);
 
         /* PMD */
         if (!(pmd[i3] & 1UL)) {
-            unsigned long np = __get_free_pages(GFP_KERNEL, 0);
+            unsigned long np = __get_free_pages(GFP_KERNEL | __GFP_ZERO, 0);
             if (!np) return -ENOMEM;
 	    //pmd[i3] = (((unsigned long)np - PAGE_OFFSET) & PAGE_MASK) | 0x3UL;
             np = virt_to_phys((void *)np);
 	    pmd[i3] = (np & PAGE_MASK) | 0x3UL;
+	    printk("get free page\n");
         }
         pte = phys_to_virt_k(pmd[i3] & PAGE_MASK);
 
