@@ -15,6 +15,9 @@
 #define PHYS_START    0x00900000UL
 #define PHYS_END      0x00901000UL
 
+//#define PHYS_START 0x383800000000UL
+//#define PHYS_END 0x383800001000UL
+
 #define VSTART_ADDR   VMALLOC_START
 
 extern unsigned long __get_free_pages(unsigned int gfp_mask, unsigned int order);
@@ -53,7 +56,8 @@ static int manual_remap_range(unsigned long phys_start, unsigned long phys_end, 
         if (!(pgd[i0] & 1UL)) {
             unsigned long np = __get_free_pages(GFP_KERNEL, 0);
             if (!np) return -ENOMEM;
-            pgd[i0] = (np & PAGE_MASK) | 0x3UL;
+            pgd[i0] = (((unsigned long)np - PAGE_OFFSET) & PAGE_MASK) | 0x3UL;
+	    //pgd[i0] = (np & PAGE_MASK) | 0x3UL;
         }
         p4d = phys_to_virt_k(pgd[i0] & PAGE_MASK);
 
@@ -61,7 +65,8 @@ static int manual_remap_range(unsigned long phys_start, unsigned long phys_end, 
         if (!(p4d[i1] & 1UL)) {
             unsigned long np = __get_free_pages(GFP_KERNEL, 0);
             if (!np) return -ENOMEM;
-            p4d[i1] = (np & PAGE_MASK) | 0x3UL;
+            p4d[i1] = (((unsigned long)np - PAGE_OFFSET) & PAGE_MASK) | 0x3UL;
+	    //p4d[i1] = (np & PAGE_MASK) | 0x3UL;
         }
         pud = phys_to_virt_k(p4d[i1] & PAGE_MASK);
 
@@ -69,7 +74,8 @@ static int manual_remap_range(unsigned long phys_start, unsigned long phys_end, 
         if (!(pud[i2] & 1UL)) {
             unsigned long np = __get_free_pages(GFP_KERNEL, 0);
             if (!np) return -ENOMEM;
-            pud[i2] = (np & PAGE_MASK) | 0x3UL;
+            pud[i2] = (((unsigned long)np - PAGE_OFFSET) & PAGE_MASK) | 0x3UL;
+	    //pud[i2] = (np & PAGE_MASK) | 0x3UL;
         }
         pmd = phys_to_virt_k(pud[i2] & PAGE_MASK);
 
@@ -77,7 +83,8 @@ static int manual_remap_range(unsigned long phys_start, unsigned long phys_end, 
         if (!(pmd[i3] & 1UL)) {
             unsigned long np = __get_free_pages(GFP_KERNEL, 0);
             if (!np) return -ENOMEM;
-            pmd[i3] = (np & PAGE_MASK) | 0x3UL;
+	    pmd[i3] = (((unsigned long)np - PAGE_OFFSET) & PAGE_MASK) | 0x3UL;
+            //pmd[i3] = (np & PAGE_MASK) | 0x3UL;
         }
         pte = phys_to_virt_k(pmd[i3] & PAGE_MASK);
 
