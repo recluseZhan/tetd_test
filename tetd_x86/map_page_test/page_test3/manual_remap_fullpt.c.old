@@ -1,0 +1,123 @@
+#include <linux/module.h>
+#include <linux/init.h>
+#include <linux/mm.h>
+#include <linux/vmalloc.h>
+#include <linux/gfp.h>
+
+/*—— 支持 x86_64 五级页表 ——*/
+#define PAGE_SHIFT    12UL
+#define PAGE_SIZE     (1UL << PAGE_SHIFT)
+#define PAGE_MASK     (~(PAGE_SIZE - 1))
+#define PTRS_PER_LVL  512UL
+
+/* 各级索引偏移 */
+#define PTE_SHIFT     12UL
+#define PMD_SHIFT     21UL
+#define PUD_SHIFT     30UL
+#define P4D_SHIFT     39UL
+#define PGD_SHIFT     48UL
+
+/* 要映射的物理区间 */
+#define PHYS_START    0x00900000UL
+#define PHYS_END      0x00901000UL
+
+/* 映射到 vmalloc 起始处，确保 vmalloc 区域足够大 */
+#define VSTART_ADDR   VMALLOC_START
+
+/* 引用内核函数 */
+extern unsigned long __get_free_pages(unsigned int gfp_mask, unsigned int order);
+
+/* 读写 CR3 */
+static inline unsigned long read_cr3(void)
+{
+    unsigned long val;
+    asm volatile("mov %%cr3, %0" : "=r"(val));
+    return val;
+}
+
+/* 转换: 物理 -> 直映虚拟 */
+static inline void *phys_to_virt_k(unsigned long phys)
+{
+    return __va(phys);
+}
+
+static int __init manual_remap_init(void)
+{
+    unsigned long phys = PHYS_START & PAGE_MASK;
+    unsigned long virt = VSTART_ADDR & PAGE_MASK;
+    unsigned long cr3 = read_cr3() & PAGE_MASK;
+    unsigned long *pgd = phys_to_virt_k(cr3);
+    unsigned long *p4d, *pud, *pmd, *pte;
+    unsigned long ent;
+    int i0,i1,i2,i3,i4;
+
+    pr_info("manual_remap_fullpt: map phys [0x%lx–0x%lx] to vmalloc start 0x%lx\n",
+            PHYS_START, PHYS_END, virt);
+
+    for (; phys <= PHYS_END; phys += PAGE_SIZE, virt += PAGE_SIZE) {
+        i0 = (virt >> PGD_SHIFT) & (PTRS_PER_LVL - 1);
+        i1 = (virt >> P4D_SHIFT) & (PTRS_PER_LVL - 1);
+        i2 = (virt >> PUD_SHIFT) & (PTRS_PER_LVL - 1);
+        i3 = (virt >> PMD_SHIFT) & (PTRS_PER_LVL - 1);
+        i4 = (virt >> PTE_SHIFT) & (PTRS_PER_LVL - 1);
+
+        /* PML5/PGD */
+        ent = pgd[i0];
+        if (!(ent & 1UL)) {
+            unsigned long np = __get_free_pages(GFP_KERNEL, 0);
+            if (!np) return -ENOMEM;
+            pgd[i0] = (np & PAGE_MASK) | 0x3UL;
+            ent = pgd[i0];
+        }
+
+        /* P4D */
+        p4d = phys_to_virt_k(ent & PAGE_MASK);
+        ent = p4d[i1];
+        if (!(ent & 1UL)) {
+            unsigned long np = __get_free_pages(GFP_KERNEL, 0);
+            if (!np) return -ENOMEM;
+            p4d[i1] = (np & PAGE_MASK) | 0x3UL;
+            ent = p4d[i1];
+        }
+
+        /* PUD */
+        pud = phys_to_virt_k(ent & PAGE_MASK);
+        ent = pud[i2];
+        if (!(ent & 1UL)) {
+            unsigned long np = __get_free_pages(GFP_KERNEL, 0);
+            if (!np) return -ENOMEM;
+            pud[i2] = (np & PAGE_MASK) | 0x3UL;
+            ent = pud[i2];
+        }
+
+        /* PMD */
+        pmd = phys_to_virt_k(ent & PAGE_MASK);
+        ent = pmd[i3];
+        if (!(ent & 1UL)) {
+            unsigned long np = __get_free_pages(GFP_KERNEL, 0);
+            if (!np) return -ENOMEM;
+            pmd[i3] = (np & PAGE_MASK) | 0x3UL;
+            ent = pmd[i3];
+        }
+
+        /* PTE */
+        pte = phys_to_virt_k(ent & PAGE_MASK);
+        pte[i4] = (phys & PAGE_MASK) | 0x3UL;
+    }
+
+    pr_info("manual_remap_fullpt: mapping complete\n");
+    return 0;
+}
+
+static void __exit manual_remap_exit(void)
+{
+    pr_info("manual_remap_fullpt: module unloaded, mappings remain\n");
+}
+
+module_init(manual_remap_init);
+module_exit(manual_remap_exit);
+
+MODULE_LICENSE("GPL");
+MODULE_AUTHOR("Your Name");
+MODULE_DESCRIPTION("Manual full 5-level page table mapping into vmalloc area");
+
