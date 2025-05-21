@@ -1,5 +1,5 @@
 #include <linux/module.h>
-#include <linux/vmalloc.h>
+//#include <linux/vmalloc.h>
 #include <asm/io.h>
 
 #define PAGE_SHIFT    12UL
@@ -20,7 +20,10 @@
 //#define PHYS_START 0x383800000000
 //#define PHYS_END 0x383800001000
 
-#define VSTART_ADDR   VMALLOC_START
+#define VSTART_ADDR 0xffa0000000000000UL
+//#define VSTART_ADDR   VMALLOC_START
+//#define __VMALLOC_BASE_L4     0xffffc90000000000UL
+//#define __VMALLOC_BASE_L5     0xffa0000000000000UL
 
 extern unsigned long __get_free_pages(unsigned int gfp_mask, unsigned int order);
 
